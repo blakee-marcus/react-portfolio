@@ -1,0 +1,154 @@
+@import url(//fonts.googleapis.com/css?family=Vibur);
+@import url('https://fonts.googleapis.com/css2?family=Overpass:wght@100&display=swap');
+
+:root {
+    --spacing-one: calc(1rem * 0.5);
+    --spacing-two: calc(1rem);
+    --spacing-five: calc(2.5rem);
+}
+
+html,
+body {
+    height: 100%;
+}
+
+main {
+    margin: 0 auto;
+    max-width: 90%;
+    padding: 50px 30px;
+}
+
+body {
+    background: #112 url(./assets/images/backgroud.png) center no-repeat;
+    background-size: cover;
+    margin: 0;
+}
+
+li {
+    list-style: none;
+}
+
+header a {
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.75);
+}
+
+nav {
+    font: 400 1.5rem "Overpass";
+    display: flex;
+    flex-wrap: wrap;
+    text-align: right;
+    float: right;
+    justify-content: right;
+    background-color: rgba(38, 38, 38, 0.65);
+}
+/*  Neon Sign Effect from https://codepen.io/nodws/pen/WNjXbr */
+.name {
+    font: 400 5.5rem "Vibur";
+    color: rgba(255, 255, 255, 0.75);
+    /* width: 65%; */
+    height: 2.5rem;
+    user-select: none;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+
+.name b {
+    font: 600 7.5rem "Vibur";
+    color: rgba(255, 255, 255, 0.75);
+    text-shadow: 0 -40em 100em, 0 0 2em, 0 0 1em #ca5cdd, 0 0 0.5em #ca5cdd,
+        0 0 0.1em #ca5cdd, 0 10em 3em #000;
+}
+
+.name b span {
+    animation: blink linear infinite 2s;
+}
+
+.name b span:nth-of-type(2) {
+    animation: blink linear infinite 3s;
+}
+
+@keyframes blink {
+    78% {
+        color: inherit;
+        text-shadow: inherit;
+    }
+    79% {
+        color: #333;
+    }
+    80% {
+        text-shadow: none;
+    }
+    81% {
+        color: inherit;
+        text-shadow: inherit;
+    }
+    82% {
+        color: #333;
+        text-shadow: none;
+    }
+    83% {
+        color: inherit;
+        text-shadow: inherit;
+    }
+    92% {
+        color: #333;
+        text-shadow: none;
+    }
+    92.5% {
+        color: inherit;
+        text-shadow: inherit;
+    }
+}
+/* End of Neon Sign Effect Found @ https://codepen.io/nodws/pen/WNjXbr */
+
+.nav-item {
+}
+
+.name a {
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.75);
+}
+
+.flex-row {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.px-1 {
+    padding-right: var(--spacing-one);
+    padding-left: var(--spacing-one);
+}
+
+.mx-2 {
+    margin-right: var(--spacing-two);
+    margin-left: var(--spacing-two);
+}
+
+.modalBackdrop {
+    background: rgba(0, 0, 0, 0.65);
+    bottom: 0;
+    left: 0;
+    overflow: auto;
+    position: fixed;
+    right: 0;
+    top: 0;
+    z-index: 1;
+}
+
+.modalContainer {
+    background: var(--darker);
+    border-radius: 5px;
+    max-width: 100%;
+    margin: 50px auto;
+    padding: 15px;
+    width: 960px;
+}
+
+.modalTitle {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 25px;
+}
