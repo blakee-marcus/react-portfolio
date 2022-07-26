@@ -1,7 +1,9 @@
 import React from "react";
 
-function Works() {
-    
-}
+const works = [
+    {
+        
+    }
+]
 
 export default Works;
