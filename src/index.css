@@ -1,10 +1,15 @@
 @import url(//fonts.googleapis.com/css?family=Vibur);
-@import url('https://fonts.googleapis.com/css2?family=Overpass:wght@100&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Overpass:wght@100&display=swap");
 
 :root {
     --spacing-one: calc(1rem * 0.5);
     --spacing-two: calc(1rem);
     --spacing-five: calc(2.5rem);
+    --font: "Overpass";
+    --fs-800: 6.25rem;
+    --fs-700: 3.5rem;
+    --fs-600: 2rem;
+    --fs-400: 1.125rem;
 }
 
 html,
@@ -19,6 +24,17 @@ main {
 }
 
 body {
+    font-family: var(--font);
+    font-size: var(--fs-400);
+    color: white;
+    background-color: #000;
+    line-height: 1.5;
+    min-height: 100vh;
+
+    display: grid;
+    grid-template-rows: min-content 1fr;
+
+    overflow-x: hidden;
     background: #112 url(./assets/images/backgroud.png) center no-repeat;
     background-size: cover;
     margin: 0;
@@ -28,35 +44,124 @@ li {
     list-style: none;
 }
 
+header {
+    align-items: center;
+    justify-content: space-between;
+}
+
 header a {
     text-decoration: none;
     color: rgba(255, 255, 255, 0.75);
 }
 
 nav {
-    font: 400 1.5rem "Overpass";
-    display: flex;
-    flex-wrap: wrap;
-    text-align: right;
     float: right;
-    justify-content: right;
-    background-color: rgba(38, 38, 38, 0.65);
 }
+
+/* ------------------------- */
+/* Utility Classes */
+/* ------------------------- */
+
+.flex-row {
+    display: flex;
+    gap: var(--gap, 1rem);
+    flex-wrap: wrap;
+}
+
+.px-1 {
+    padding-right: var(--spacing-one);
+    padding-left: var(--spacing-one);
+}
+
+.mx-2 {
+    margin-right: var(--spacing-two);
+    margin-left: var(--spacing-two);
+}
+
+/* ------------------------- */
+/* End of Utility Classes */
+/* ------------------------- */
+
+.nav-toggle {
+    display: none;
+}
+.navigation {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    background: hsl(0, 0%, 100% / 0.1);
+    font: 400 1.5rem "Overpass";
+}
+
+@supports (backdrop-filter: blur(1rem)) {
+    .navigation {
+        background: hsl(0 0% 100% / 0.1);
+        backdrop-filter: blur(1rem);
+    }
+}
+
+.navigation a {
+    text-decoration: none;
+}
+
+.navigation li {
+    cursor: pointer;
+}
+
+@media (max-width: 35em) {
+    .navigation {
+        --gap: 2em;
+
+        position: fixed;
+        z-index: 1000;
+        inset: 0 0 0 30%;
+
+        flex-direction: column;
+        padding: min(30vh, 10rem) 2rem;
+
+        transform: translateX(100%);
+        transition: transform 350ms ease-out;
+    }
+
+    .navigation[data-visible="true"] {
+        transform: translateX(0%);
+    }
+
+    .nav-toggle {
+        display: block;
+        position: absolute;
+        z-index: 9999;
+        background-color: transparent;
+        background-image: url(./assets/images/icons/hamburger-icon.svg);
+        background-repeat: no-repeat;
+        width: 2rem;
+        border: 0;
+        aspect-ratio: 1;
+        top: 2rem;
+        right: 2rem;
+    }
+
+    .nav-toggle[aria-expanded="true"] {
+        background-image: url(./assets/images/icons/x-symbol-svgrepo-com.svg);
+    }
+}
+
+@media (min-width: 35em) {
+    .navigation {
+        --gap: clamp(1.5rem, 5vw, 3rem);
+        padding-block: 2rem;
+        padding-inline: clamp(3rem, 8vw, 10rem);
+    }
+}
+
 /*  Neon Sign Effect from https://codepen.io/nodws/pen/WNjXbr */
 .name {
-    font: 400 5.5rem "Vibur";
     color: rgba(255, 255, 255, 0.75);
-    /* width: 65%; */
-    height: 2.5rem;
-    user-select: none;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
 }
 
 .name b {
-    font: 600 7.5rem "Vibur";
+    /* font: 600 7.5rem "Vibur"; */
     color: rgba(255, 255, 255, 0.75);
     text-shadow: 0 -40em 100em, 0 0 2em, 0 0 1em #ca5cdd, 0 0 0.5em #ca5cdd,
         0 0 0.1em #ca5cdd, 0 10em 3em #000;
@@ -104,9 +209,6 @@ nav {
 }
 /* End of Neon Sign Effect Found @ https://codepen.io/nodws/pen/WNjXbr */
 
-.nav-item {
-}
-
 .name a {
     text-decoration: none;
     color: rgba(255, 255, 255, 0.75);
@@ -151,4 +253,14 @@ nav {
     font-size: 18px;
     font-weight: 600;
     margin-bottom: 25px;
+}
+
+.sr-only:not(:focus):not(:active) {
+    clip: rect(0 0 0 0);
+    clip-path: inset(50%);
+    height: 1px;
+    overflow: hidden;
+    position: absolute;
+    white-space: nowrap;
+    width: 1px;
 }
