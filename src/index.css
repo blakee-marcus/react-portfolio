@@ -1,41 +1,56 @@
-@import url(//fonts.googleapis.com/css?family=Vibur);
-@import url("https://fonts.googleapis.com/css2?family=Overpass:wght@100&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap");
+@import url("http://fonts.cdnfonts.com/css/helvetica-neue-9");
 
 :root {
     --spacing-one: calc(1rem * 0.5);
     --spacing-two: calc(1rem);
     --spacing-five: calc(2.5rem);
-    --font: "Overpass";
+
+    --font-base: "Inter", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    --font-size-1: 5.4rem;
+    --font-size-5: 1.4rem;
+    --font-size-6: 1.3rem;
+
+    --font-weight-bold: 700;
+    --font-weight-semibold: 600;
+
+    --line-height-heading: 1.2;
     --fs-800: 6.25rem;
     --fs-700: 3.5rem;
     --fs-600: 2rem;
     --fs-400: 1.125rem;
+
+    --color-background-body: hsl(240, 7%, 6%);
+    --color-background-base: hsl(240, 6%, 10%);
+
+    --color-text-base: hsl(240, 7%, 94%);
 }
 
 html,
 body {
     height: 100%;
+    line-height: 1.5rem;
 }
 
 main {
-    margin: 0 auto;
+    margin: auto;
     max-width: 90%;
     padding: 50px 30px;
 }
 
 body {
-    font-family: var(--font);
-    font-size: var(--fs-400);
-    color: white;
-    background-color: #000;
-    line-height: 1.5;
+    font-family: var(--font-base);
+    font-size: 1.3rem;
+    color: var(--color-text-base);
+    background-color: var(--color-background-body);
+    line-height: 1rem;
     min-height: 100vh;
 
     display: grid;
     grid-template-rows: min-content 1fr;
 
     overflow-x: hidden;
-    background: #112 url(./assets/images/backgroud.png) center no-repeat;
+    background: hsl(240, 7%, 6%);
     background-size: cover;
     margin: 0;
 }
@@ -47,6 +62,11 @@ li {
 header {
     align-items: center;
     justify-content: space-between;
+    font-family: var(--font-display);
+    text-align: center;
+    white-space: nowrap;
+    height: 100%;
+    width: 100%;
 }
 
 header a {
@@ -55,9 +75,50 @@ header a {
 }
 
 nav {
-    float: right;
+    background-color: var(--color-background-base);
+    height: 3.3rem;
+    box-shadow: 0px 1px 1px black;
+    z-index: 2;
+    display: flex;
+    width: 100%;
+    color: var(--color-text-base);
+    padding: 0.5rem;
 }
 
+nav ul {
+    display: flex;
+    align-items: center;
+    padding-left: 10px;
+}
+
+nav ul li {
+    margin: 0 1.25rem;
+    height: 100%;
+    display: flex;
+    align-items: center;
+
+    line-height: var(--line-height-heading);
+    font-size: var(--font-size-5);
+    font-weight: 400;
+}
+
+nav ul li a:hover {
+    color: hsl(264, 100%, 72%);
+    cursor: pointer;
+}
+
+main {
+    padding: 0;
+}
+/* nav ul li[data-active='true'] {
+    color: hsl(264, 100%, 72%);
+    border-bottom: 0.125rem solid hsl(264, 100%, 72%);
+} */
+
+.active-nav {
+    color: hsl(264, 100%, 72%);
+    border-bottom: 0.125rem solid hsl(264, 100%, 72%);
+}
 /* ------------------------- */
 /* Utility Classes */
 /* ------------------------- */
@@ -78,6 +139,11 @@ nav {
     margin-left: var(--spacing-two);
 }
 
+.flex-row {
+    display: flex;
+    flex-wrap: wrap;
+}
+
 /* ------------------------- */
 /* End of Utility Classes */
 /* ------------------------- */
@@ -85,7 +151,7 @@ nav {
 .nav-toggle {
     display: none;
 }
-.navigation {
+/* .navigation {
     list-style: none;
     padding: 0;
     margin: 0;
@@ -107,7 +173,7 @@ nav {
 
 .navigation li {
     cursor: pointer;
-}
+} */
 
 @media (max-width: 35em) {
     .navigation {
@@ -147,87 +213,106 @@ nav {
     }
 }
 
-@media (min-width: 35em) {
+/* @media (min-width: 35em) {
     .navigation {
         --gap: clamp(1.5rem, 5vw, 3rem);
         padding-block: 2rem;
         padding-inline: clamp(3rem, 8vw, 10rem);
     }
+} */
+
+/* ------------------------- */
+/* Works Card */
+/* ------------------------- */
+.title {
+    font-family: var(--font-display);
+    line-height: var(--line-height-heading);
+    font-size: var(--font-size-1);
+    font-weight: var(--font-weight-bold);
+}
+.card-carousel {
+    max-width: 100%;
+    display: grid;
+    height: auto;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1rem));
+    grid-gap: 140px;
+}
+.card-carousel .card .card-img {
+    transition: transform 0.1s ease;
 }
 
-/*  Neon Sign Effect from https://codepen.io/nodws/pen/WNjXbr */
-.name {
-    color: rgba(255, 255, 255, 0.75);
+.card-carousel .card .card-img:hover {
+    transform: translate(8px, -8px);
+    cursor: pointer;
 }
 
-.name b {
-    /* font: 600 7.5rem "Vibur"; */
-    color: rgba(255, 255, 255, 0.75);
-    text-shadow: 0 -40em 100em, 0 0 2em, 0 0 1em #ca5cdd, 0 0 0.5em #ca5cdd,
-        0 0 0.1em #ca5cdd, 0 10em 3em #000;
+.card .card-img img {
+    height: 333px;
+    width: 250px;
 }
 
-.name b span {
-    animation: blink linear infinite 2s;
+.card-carousel .card .card-img:hover img {
+    box-shadow: 0 1px hsl(264, 100%, 72%), -1px 0 hsl(264, 100%, 72%),
+        -2px 1px hsl(264, 100%, 72%), -3px 2px hsl(264, 100%, 72%),
+        -3px 4px hsl(264, 100%, 72%), -4px 3px hsl(264, 100%, 72%),
+        -4px 5px hsl(264, 100%, 72%), -5px 4px hsl(264, 100%, 72%),
+        -5px 6px hsl(264, 100%, 72%), -6px 5px hsl(264, 100%, 72%),
+        -6px 7px hsl(264, 100%, 72%), -7px 6px hsl(264, 100%, 72%),
+        -7px 8px hsl(264, 100%, 72%), -8px 7px hsl(264, 100%, 72%);
 }
 
-.name b span:nth-of-type(2) {
-    animation: blink linear infinite 3s;
+.card-carousel .card .card-body .card-title {
+    /* overflow: hidden; */
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    font-weight: 800;
+    font-size: 0.938rem;
+    margin-top: 0.625rem;
+    margin-bottom: 0.313rem;
 }
 
-@keyframes blink {
-    78% {
-        color: inherit;
-        text-shadow: inherit;
-    }
-    79% {
-        color: #333;
-    }
-    80% {
-        text-shadow: none;
-    }
-    81% {
-        color: inherit;
-        text-shadow: inherit;
-    }
-    82% {
-        color: #333;
-        text-shadow: none;
-    }
-    83% {
-        color: inherit;
-        text-shadow: inherit;
-    }
-    92% {
-        color: #333;
-        text-shadow: none;
-    }
-    92.5% {
-        color: inherit;
-        text-shadow: inherit;
-    }
+.card-body {
+    font-size: 0.875rem;
+    margin-top: 0;
+    margin-bottom: 0.313;
+    color: var(--color-text-base);
 }
-/* End of Neon Sign Effect Found @ https://codepen.io/nodws/pen/WNjXbr */
 
-.name a {
+.card-body a {
     text-decoration: none;
-    color: rgba(255, 255, 255, 0.75);
+    color: var(--color-text-base);
+}
+.card-body a:hover {
+    color: hsl(264, 100%, 72%);
+    cursor: pointer;
 }
 
-.flex-row {
-    display: flex;
-    flex-wrap: wrap;
+.card-subtext a {
+    text-decoration: none;
+    color: hsl(240, 7%, 70%);
+    font-size: 1rem;
+    font-weight: 300;
+    line-height: 2;
 }
 
-.px-1 {
-    padding-right: var(--spacing-one);
-    padding-left: var(--spacing-one);
+.card-subtext a:hover {
+    color: hsl(264, 100%, 72%);
+    cursor: pointer;
 }
 
-.mx-2 {
-    margin-right: var(--spacing-two);
-    margin-left: var(--spacing-two);
+.languages span {
+    background: hsl(240, 2%, 20%);
+    padding: 0.2rem 0.8rem;
+    margin: 0.125rem;
+    color: hsl(211, 14%, 71%);
+    border-radius: 6.25rem;
+    font-size: 0.75rem;
+    font-weight: 800;
 }
+
+/* ------------------------- */
+/* End of Works Card */
+/* ------------------------- */
 
 .modalBackdrop {
     background: rgba(0, 0, 0, 0.65);

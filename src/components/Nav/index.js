@@ -1,6 +1,6 @@
 import React from "react";
 
-const navButton = () => {
+const mobileNavButton = () => {
     const nav = document.querySelector(".navigation");
     const navToggle = document.querySelector(".nav-toggle");
 
@@ -17,6 +17,20 @@ const navButton = () => {
     });
 };
 
+const setActive = () => {
+    const navItem = document.querySelector(".nav-status");
+
+    navItem.addEventListener("click", () => {
+        const active = navItem.getAttribute("data-active");
+
+        if (active === "false") {
+            navItem.setAttribute("data-active", true);
+        } else if (active === "true") {
+            navItem.setAttribute("data-active", false);
+        }
+    });
+};
+
 function Nav() {
     return (
         <header className='flex-row px-1'>
@@ -24,7 +38,7 @@ function Nav() {
                 className='nav-toggle'
                 aria-controls='navigation'
                 aria-expanded='false'
-                onClick={navButton}
+                onClick={mobileNavButton}
             >
                 <span className='sr-only'>Menu</span>
             </button>
@@ -34,22 +48,21 @@ function Nav() {
                     data-visible='false'
                     className='flex-row navigation'
                 >
-                    <li className='mx-2'>
-                        <a href='/'>
-                            <div className='name'>
-                                <b>
-                                    {" "}
-                                    Bla<span>ke</span>Ma<span>rc</span>us
-                                </b>
-                            </div>
+                    <li data-active='false' className='mx-2 nav-status' onClick={setActive}>
+                        <a href='/' >
+                            About
                         </a>
                     </li>
-                    <li className='mx-2'>
-                        <a href='/works'>Work</a>
+                    <li data-active='false' className='mx-2 nav-status' onClick={setActive}>
+                        <a href='/works'>
+                            Work
+                        </a>
                     </li>
 
-                    <li className='mx-2'>
-                        <a href='/contact'>Contact Me</a>
+                    <li data-active='false' className='mx-2 nav-status' onClick={setActive}>
+                        <a href='/contact'>
+                            Contact Me
+                        </a>
                     </li>
                 </ul>
             </nav>
