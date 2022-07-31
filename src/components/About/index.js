@@ -72,7 +72,7 @@ function About() {
                     mobile-first applications. Completed UCLA’s coding boot camp
                     and earned a certificate in full-stack web development. My
                     experience in management has allowed me to gain strengths in
-                    leadership, teamwork, and communication.
+                    leadership, teamwork, and communication..
                 </p>
                 <p className='headliner intro-text'>
                     {" "}
