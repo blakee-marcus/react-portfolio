@@ -1,16 +1,23 @@
 {
-  "main.css": "/react-portfolio/static/css/main.468e63ab.chunk.css",
-  "main.js": "/react-portfolio/static/js/main.85848ead.chunk.js",
-  "main.js.map": "/react-portfolio/static/js/main.85848ead.chunk.js.map",
-  "static/js/1.7ab2393a.chunk.js": "/react-portfolio/static/js/1.7ab2393a.chunk.js",
-  "static/js/1.7ab2393a.chunk.js.map": "/react-portfolio/static/js/1.7ab2393a.chunk.js.map",
-  "static/js/2.d867c84d.chunk.js": "/react-portfolio/static/js/2.d867c84d.chunk.js",
-  "static/js/2.d867c84d.chunk.js.map": "/react-portfolio/static/js/2.d867c84d.chunk.js.map",
-  "runtime~main.js": "/react-portfolio/static/js/runtime~main.47d92448.js",
-  "runtime~main.js.map": "/react-portfolio/static/js/runtime~main.47d92448.js.map",
-  "static/media/index.css": "/react-portfolio/static/media/x-symbol-svgrepo-com.f59bcdf4.svg",
-  "static/css/main.468e63ab.chunk.css.map": "/react-portfolio/static/css/main.468e63ab.chunk.css.map",
-  "index.html": "/react-portfolio/index.html",
-  "precache-manifest.28a5ceaab84a8e715b477026b3dc7521.js": "/react-portfolio/precache-manifest.28a5ceaab84a8e715b477026b3dc7521.js",
-  "service-worker.js": "/react-portfolio/service-worker.js"
+  "files": {
+    "main.css": "/react-portfolio/static/css/main.ae852703.css",
+    "main.js": "/react-portfolio/static/js/main.c84c3bdb.js",
+    "static/js/787.a2cb61a6.chunk.js": "/react-portfolio/static/js/787.a2cb61a6.chunk.js",
+    "static/media/pizza-hunt-thumbnail.PNG": "/react-portfolio/static/media/pizza-hunt-thumbnail.f14dce8a3e38bf16d6ba.PNG",
+    "static/media/taskinator-thumbnail.PNG": "/react-portfolio/static/media/taskinator-thumbnail.7f41580a79aa998ae10b.PNG",
+    "static/media/tech-blog-thumbnail.PNG": "/react-portfolio/static/media/tech-blog-thumbnail.d3a2a69a8c2ccab988b0.PNG",
+    "static/media/weather-dashboard-thumbnail.PNG": "/react-portfolio/static/media/weather-dashboard-thumbnail.22ccf94fe13d96f743c2.PNG",
+    "static/media/zoo-keepr-thumbnail.PNG": "/react-portfolio/static/media/zoo-keepr-thumbnail.47bdc12cf42f6021f39d.PNG",
+    "static/media/self-illustration.png": "/react-portfolio/static/media/self-illustration.74881a7a638f1b4f181b.png",
+    "index.html": "/react-portfolio/index.html",
+    "static/media/x-symbol-svgrepo-com.svg": "/react-portfolio/static/media/x-symbol-svgrepo-com.b06a8a10dd70ae0fd2a6.svg",
+    "static/media/hamburger-icon.svg": "/react-portfolio/static/media/hamburger-icon.6e6f8ab825b463707aa5.svg",
+    "main.ae852703.css.map": "/react-portfolio/static/css/main.ae852703.css.map",
+    "main.c84c3bdb.js.map": "/react-portfolio/static/js/main.c84c3bdb.js.map",
+    "787.a2cb61a6.chunk.js.map": "/react-portfolio/static/js/787.a2cb61a6.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.ae852703.css",
+    "static/js/main.c84c3bdb.js"
+  ]
 }
