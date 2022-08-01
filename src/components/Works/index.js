@@ -11,7 +11,7 @@ function Works() {
                 <article className='card'>
                     <div className='card-img'>
                         <a href="https://blakee-marcus.github.io/weather-dashboard/" target="_blank" rel="noopener noreferrer">
-                            <img src='/assets/images/weather-dashboard-thumbnail.png' alt="screenshot of weather dashboard app"></img>
+                            <img src={require('../../assets/images/weather-dashboard-thumbnail.PNG')} alt="screenshot of weather dashboard app"></img>
                         </a>
                     </div>
                     <div className='card-body'>
@@ -33,7 +33,7 @@ function Works() {
                 <article className='card'>
                     <div className='card-img'>
                         <a href="https://protected-coast-66126.herokuapp.com/" target="_blank" rel="noopener noreferrer">
-                            <img src='/assets/images/tech-blog-thumbnail.png' alt="screenshot of tech blog app"></img>
+                            <img src={require('../../assets/images/tech-blog-thumbnail.PNG')} alt="screenshot of tech blog app"></img>
                         </a>
                     </div>
                     <div className='card-body'>
@@ -54,7 +54,7 @@ function Works() {
                 <article className='card'>
                     <div className='card-img'>
                         <a href="https://lit-earth-22007.herokuapp.com/" target="_blank" rel="noopener noreferrer">
-                            <img src='/assets/images/pizza-hunt-thumbnail.png' alt="screenshot of pizza hunt app"></img>
+                            <img src={require('../../assets/images/pizza-hunt-thumbnail.PNG')} alt="screenshot of pizza hunt app"></img>
                         </a>
                     </div>
                     <div className='card-body'>
@@ -75,7 +75,7 @@ function Works() {
                 <article className='card'>
                     <div className='card-img'>
                         <a href="https://blakee-marcus.github.io/taskinator/" target="_blank" rel="noopener noreferrer">
-                            <img src='/assets/images/taskinator-thumbnail.png' alt="screenshot of taskinator app"></img>
+                            <img src={require('../../assets/images/taskinator-thumbnail.PNG')} alt="screenshot of taskinator app"></img>
                         </a>
                     </div>
                     <div className='card-body'>
@@ -97,7 +97,7 @@ function Works() {
                 <article className='card'>
                     <div className='card-img'>
                         <a  href="https://thawing-sierra-93359.herokuapp.com/" target="_blank" rel="noopener noreferrer">
-                            <img src='/assets/images/zoo-keepr-thumbnail.png' alt="screenshot of zoo keeper app"></img>
+                            <img src={require('../../assets/images/zoo-keepr-thumbnail.PNG')} alt="screenshot of zoo keeper app"></img>
                         </a>
                     </div>
                     <div className='card-body'>

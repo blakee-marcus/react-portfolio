@@ -7,7 +7,7 @@ function About() {
                 <div className='ah-left'>
                     <div className='selfie'>
                         <img
-                            src='/assets/images/self-illustration.png'
+                            src={require('../../assets/images/self-illustration.png')}
                             alt='digital art of Blake'
                         ></img>
                     </div>
@@ -27,7 +27,7 @@ function About() {
                     >
                         <div className='btn-items'>
                             <img
-                                src='/assets/images/github-icon.png'
+                                src={require('../../assets/images/github-icon.png')}
                                 alt='github logo'
                             />
                             <div>GitHub</div>
@@ -41,7 +41,7 @@ function About() {
                     >
                         <div className='btn-items'>
                             <img
-                                src='/assets/images/linkedin-icon.png'
+                                src={require('../../assets/images/linkedin-icon.png')}
                                 alt='linkedin logo'
                             />
                             <div>LinkedIn</div>

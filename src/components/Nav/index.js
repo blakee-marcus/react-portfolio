@@ -48,25 +48,30 @@ function Nav() {
                     data-visible='false'
                     className='flex-row navigation'
                 >
-                    <li data-active='false' className='mx-2 nav-status' onClick={setActive}>
-                        <a href='/' >
-                            About
-                        </a>
+                    <li
+                        data-active='false'
+                        className='mx-2 nav-status'
+                        onClick={setActive}
+                    >
+                        <a href='/'>About</a>
                     </li>
-                    <li data-active='false' className='mx-2 nav-status' onClick={setActive}>
-                        <a href='/works'>
-                            Work
-                        </a>
+                    <li
+                        data-active='false'
+                        className='mx-2 nav-status'
+                        onClick={setActive}
+                    >
+                        <a href='/works'>Work</a>
                     </li>
 
-                    <li data-active='false' className='mx-2 nav-status' onClick={setActive}>
-                        <a href='/contact'>
-                            Contact Me
-                        </a>
+                    <li
+                        data-active='false'
+                        className='mx-2 nav-status'
+                        onClick={setActive}
+                    >
+                        <a href='/contact'>Contact Me</a>
                     </li>
                 </ul>
             </nav>
-            <script></script>
         </header>
     );
 }
