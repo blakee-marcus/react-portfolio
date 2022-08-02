@@ -17,21 +17,9 @@ const mobileNavButton = () => {
     });
 };
 
-const setActive = () => {
-    const navItem = document.querySelector(".nav-status");
 
-    navItem.addEventListener("click", () => {
-        const active = navItem.getAttribute("data-active");
-
-        if (active === "false") {
-            navItem.setAttribute("data-active", true);
-        } else if (active === "true") {
-            navItem.setAttribute("data-active", false);
-        }
-    });
-};
-
-function Nav() {
+function Nav(props) {
+    
     return (
         <header className='flex-row px-1'>
             <button
@@ -48,28 +36,28 @@ function Nav() {
                     data-visible='false'
                     className='flex-row navigation'
                 >
+                    <li data-active='false' className='mx-2 nav-status'>
+                        <span
+                            onClick={() => props.setCurrentPage("About")}
+                        >
+                            About
+                        </span>
+                    </li>
+            
                     <li
                         data-active='false'
                         className='mx-2 nav-status'
-                        onClick={setActive}
                     >
-                        <a href='/'>About</a>
+                        <span onClick={() => props.setCurrentPage("Works")}>Work</span>
                     </li>
                     <li
                         data-active='false'
                         className='mx-2 nav-status'
-                        onClick={setActive}
+            
                     >
-                        <a href='/works'>Work</a>
+                        <span onClick={() => props.setCurrentPage("Contact")}>Contact</span>
                     </li>
 
-                    <li
-                        data-active='false'
-                        className='mx-2 nav-status'
-                        onClick={setActive}
-                    >
-                        <a href='/contact'>Contact Me</a>
-                    </li>
                 </ul>
             </nav>
         </header>

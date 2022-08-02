@@ -78,7 +78,7 @@ header {
     width: 100%;
 }
 
-header a {
+header span {
     text-decoration: none;
     color: rgba(255, 255, 255, 0.75);
 }
@@ -111,7 +111,7 @@ nav ul li {
     font-weight: 400;
 }
 
-nav ul li a:hover {
+nav ul li span:hover {
     color: hsl(264, 100%, 72%);
     cursor: pointer;
 }
@@ -517,12 +517,12 @@ textarea {
     padding-bottom: 1rem;
     padding-left: 4rem;
     padding-right: 4rem;
-    max-width: 200rem;
+    max-width: 150rem;
     /* min-height: 60vh; */
     margin-left: auto;
     margin-right: auto;
     margin-top: 2rem;
-    width: 90%;
+    width: 85%;
     position: flex;
     flex-direction: column;
     display: flex;
