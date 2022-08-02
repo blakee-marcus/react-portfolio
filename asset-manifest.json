@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/react-portfolio/static/css/main.ae852703.css",
-    "main.js": "/react-portfolio/static/js/main.8bff9452.js",
+    "main.css": "/react-portfolio/static/css/main.faa6a94d.css",
+    "main.js": "/react-portfolio/static/js/main.937bb600.js",
     "static/js/787.a2cb61a6.chunk.js": "/react-portfolio/static/js/787.a2cb61a6.chunk.js",
     "static/media/pizza-hunt-thumbnail.PNG": "/react-portfolio/static/media/pizza-hunt-thumbnail.f14dce8a3e38bf16d6ba.PNG",
     "static/media/taskinator-thumbnail.PNG": "/react-portfolio/static/media/taskinator-thumbnail.7f41580a79aa998ae10b.PNG",
@@ -12,12 +12,12 @@
     "index.html": "/react-portfolio/index.html",
     "static/media/x-symbol-svgrepo-com.svg": "/react-portfolio/static/media/x-symbol-svgrepo-com.b06a8a10dd70ae0fd2a6.svg",
     "static/media/hamburger-icon.svg": "/react-portfolio/static/media/hamburger-icon.6e6f8ab825b463707aa5.svg",
-    "main.ae852703.css.map": "/react-portfolio/static/css/main.ae852703.css.map",
-    "main.8bff9452.js.map": "/react-portfolio/static/js/main.8bff9452.js.map",
+    "main.faa6a94d.css.map": "/react-portfolio/static/css/main.faa6a94d.css.map",
+    "main.937bb600.js.map": "/react-portfolio/static/js/main.937bb600.js.map",
     "787.a2cb61a6.chunk.js.map": "/react-portfolio/static/js/787.a2cb61a6.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.ae852703.css",
-    "static/js/main.8bff9452.js"
+    "static/css/main.faa6a94d.css",
+    "static/js/main.937bb600.js"
   ]
 }
