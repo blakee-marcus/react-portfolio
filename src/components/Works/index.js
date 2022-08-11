@@ -115,6 +115,30 @@ function Works() {
                         <span>Express</span>
                     </div>
                 </article>
+                <article className='card'>
+                    <div className='card-img'>
+                        <a  href="https://ever-after-bakery.herokuapp.com/" target="_blank" rel="noopener noreferrer">
+                            <img src={require('../../assets/images/ever-after-thumbnail.PNG')} alt="screenshot of ever after bakery app"></img>
+                        </a>
+                    </div>
+                    <div className='card-body'>
+                        <a href="https://ever-after-bakery.herokuapp.com/" target="_blank" rel="noopener noreferrer">
+                            <p className='card-title'>Every After Bakery</p>
+                        </a>
+                    </div>
+                    <div className="card-subtext">
+                        <a href="https://github.com/Azurene/ever-after-bakery" target="_blank" rel="noopener noreferrer">
+                            View Repo
+                        </a>
+                    </div>
+                    <div className='languages'>
+                        <span>MongoDB</span>
+                        <span>Express</span>
+                        <span>React</span> <br/><br/>
+                        <span>Node.js</span>
+                        <span>GraphQL</span>
+                    </div>
+                </article>
             </div>
         </section>
     );
