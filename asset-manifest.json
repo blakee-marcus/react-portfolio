@@ -1,8 +1,9 @@
 {
   "files": {
     "main.css": "/react-portfolio/static/css/main.faa6a94d.css",
-    "main.js": "/react-portfolio/static/js/main.bf9a4b5a.js",
+    "main.js": "/react-portfolio/static/js/main.c91e36d5.js",
     "static/js/787.a2cb61a6.chunk.js": "/react-portfolio/static/js/787.a2cb61a6.chunk.js",
+    "static/media/ever-after-thumbnail.PNG": "/react-portfolio/static/media/ever-after-thumbnail.f973ccb007015e291a94.PNG",
     "static/media/pizza-hunt-thumbnail.PNG": "/react-portfolio/static/media/pizza-hunt-thumbnail.f14dce8a3e38bf16d6ba.PNG",
     "static/media/taskinator-thumbnail.PNG": "/react-portfolio/static/media/taskinator-thumbnail.7f41580a79aa998ae10b.PNG",
     "static/media/tech-blog-thumbnail.PNG": "/react-portfolio/static/media/tech-blog-thumbnail.d3a2a69a8c2ccab988b0.PNG",
@@ -13,11 +14,11 @@
     "static/media/x-symbol-svgrepo-com.svg": "/react-portfolio/static/media/x-symbol-svgrepo-com.b06a8a10dd70ae0fd2a6.svg",
     "static/media/hamburger-icon.svg": "/react-portfolio/static/media/hamburger-icon.6e6f8ab825b463707aa5.svg",
     "main.faa6a94d.css.map": "/react-portfolio/static/css/main.faa6a94d.css.map",
-    "main.bf9a4b5a.js.map": "/react-portfolio/static/js/main.bf9a4b5a.js.map",
+    "main.c91e36d5.js.map": "/react-portfolio/static/js/main.c91e36d5.js.map",
     "787.a2cb61a6.chunk.js.map": "/react-portfolio/static/js/787.a2cb61a6.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.faa6a94d.css",
-    "static/js/main.bf9a4b5a.js"
+    "static/js/main.c91e36d5.js"
   ]
 }
