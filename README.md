@@ -5,8 +5,6 @@
 [![MIT License][license-shield]][license-url]
 [![LinkedIn][linkedin-shield]][linkedin-url]
 
-
-
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
@@ -25,8 +23,6 @@
     <a href="https://github.com/blakee-marcus/react-portfolio/issues">Request Feature</a>
   </p>
 </div>
-
-
 
 <!-- TABLE OF CONTENTS -->
 <details>
@@ -49,9 +45,8 @@
   </ol>
 </details>
 
-
-
 <!-- ABOUT THE PROJECT -->
+
 ## About The Project
 
 Being a web developer means being part of a community. You’ll need a place to share your projects not only if you're applying for jobs or working as a freelancer but also so that you can share your work with fellow developers and collaborate on future projects.
@@ -62,18 +57,15 @@ Just as you did in the module project, you’ll need to deploy this application 
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
-
-
 ### Built With
 
-* [Node.js](https://nodejs.org/en/)
-* [React.js](https://reactjs.org/)
+-   [Node.js](https://nodejs.org/en/)
+-   [React.js](https://reactjs.org/)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
-
-
 <!-- GETTING STARTED -->
+
 ## Getting Started
 
 To get a local copy up and running follow these steps.
@@ -81,17 +73,18 @@ To get a local copy up and running follow these steps.
 ### Installation
 
 1. Clone the repo
-   ```sh
-   git clone https://github.com/blakee-marcus/react-portfolio.git
-   ```
+    ```sh
+    git clone https://github.com/blakee-marcus/react-portfolio.git
+    ```
 2. Install NPM packages
-   ```sh
-   npm install
+    ```sh
+    npm install
+    ```
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
-
 <!-- CONTACT -->
+
 ## Contact
 
 Blake M - marcusb733@gmail.com
@@ -101,10 +94,9 @@ Live Project: [https://blakee-marcus.github.io/react-portfolio/](https://blakee-
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
-
-
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
+
 [contributors-shield]: https://img.shields.io/github/contributors/blakee-marcus/react-portfolio.svg?style=for-the-badge
 [contributors-url]: https://github.com/blakee-marcus/react-portfolio/graphs/contributors
 [forks-shield]: https://img.shields.io/github/forks/blakee-marcus/react-portfolio.svg?style=for-the-badge
@@ -118,4 +110,3 @@ Live Project: [https://blakee-marcus.github.io/react-portfolio/](https://blakee-
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/blake-marcus
 [product-screenshot]: images/screenshot.png
-

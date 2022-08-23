@@ -7,7 +7,7 @@ function About() {
                 <div className='ah-left'>
                     <div className='selfie'>
                         <img
-                            src={require('../../assets/images/self-illustration.png')}
+                            src={require("../../assets/images/self-illustration.png")}
                             alt='digital art of Blake'
                         ></img>
                     </div>
@@ -27,7 +27,7 @@ function About() {
                     >
                         <div className='btn-items'>
                             <img
-                                src={require('../../assets/images/github-icon.png')}
+                                src={require("../../assets/images/github-icon.png")}
                                 alt='github logo'
                             />
                             <div>GitHub</div>
@@ -41,7 +41,7 @@ function About() {
                     >
                         <div className='btn-items'>
                             <img
-                                src={require('../../assets/images/linkedin-icon.png')}
+                                src={require("../../assets/images/linkedin-icon.png")}
                                 alt='linkedin logo'
                             />
                             <div>LinkedIn</div>
@@ -50,21 +50,7 @@ function About() {
                 </div>
             </div>
 
-            {/* <div className='secondary-nav'>
-                <ul className='sn-ul'>
-                    <li>
-                        <a href='/' className="nav-link">
-                            <div className="nav-text">About</div>
-                            <div className="active-indicator"></div>
-                        </a>
-                    </li>
-                    <li>
-                        <a href='/about/skills' className="nav-link">Skills</a>
-                    </li>
-                </ul>
-            </div> */}
-
-            <div className='intro-container'>
+            <article className='intro-container'>
                 <div className='name intro'> About Me</div>
                 <p className='headliner intro-text'>
                     {" "}
@@ -84,6 +70,87 @@ function About() {
                     It's also why you'll notice a heavy twitch influence on the
                     design of my portfolio.
                 </p>
+            </article>
+
+            <div className='skill-container'>
+                <div className='section-header'>
+                    {" "}
+                    Blake Marcus has these front-end skills
+                </div>
+                <div className='carousel-container'>
+                    <div className='carousel-item'>
+                        <div className='carousel-img'>
+                            <img
+                                src={require("../../assets/images/skill-icons/html5-icon.png")}
+                                alt=''
+                            ></img>
+                        </div>
+                        <div className="carousel-subtitle">HTML5</div>
+                    </div>
+                    <div className='carousel-item'>
+                        <div className='carousel-img'>
+                            <img
+                                src={require("../../assets/images/skill-icons/css-icon.png")}
+                                alt=''
+                            ></img>
+                        </div>
+                        <div className="carousel-subtitle">CSS</div>
+                    </div>
+                    <div className='carousel-item'>
+                        <div className='carousel-img'>
+                            <img
+                                src={require("../../assets/images/skill-icons/js-icon.png")}
+                                alt=''
+                            ></img>
+                        </div>
+                        <div className="carousel-subtitle">JavaScript</div>
+                    </div>
+                    <div className='carousel-item'>
+                        <div className='carousel-img'>
+                            <img
+                                src={require("../../assets/images/skill-icons/jquery-icon.jpg")}
+                                alt=''
+                            ></img>
+                        </div>
+                        <div className="carousel-subtitle">jQuery</div>
+                    </div>
+                    <div className='carousel-item'>
+                        <div className='carousel-img'>
+                            <img
+                                src={require("../../assets/images/skill-icons/bootstrap-icon.png")}
+                                alt=''
+                            ></img>
+                        </div>
+                        <div className="carousel-subtitle">BootStrap</div>
+                    </div>
+                    <div className='carousel-item'>
+                        <div className='carousel-img'>
+                            <img
+                                src={require("../../assets/images/skill-icons/react-icon.png")}
+                                alt=''
+                            ></img>
+                        </div>
+                        <div className="carousel-subtitle">React</div>
+                    </div>
+                    <div className='carousel-item'>
+                        <div className='carousel-img'>
+                            <img
+                                src={require("../../assets/images/skill-icons/pwa-icon.png")}
+                                alt=''
+                            ></img>
+                        </div>
+                        <div className="carousel-subtitle">PWA</div>
+                    </div>
+                    <div className='carousel-item'>
+                        <div className='carousel-img'>
+                            <img
+                                src={require("../../assets/images/skill-icons/webpack-icon.png")}
+                                alt=''
+                            ></img>
+                        </div>
+                        <div className="carousel-subtitle">WebPack</div>
+                    </div>
+                </div>
             </div>
         </section>
     );

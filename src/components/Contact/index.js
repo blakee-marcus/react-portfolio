@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import { validateEmail } from '../../utils/helpers';
+import { validateEmail } from "../../utils/helpers";
 
 function Contact() {
     const [formState, setFormState] = useState({
@@ -39,7 +39,6 @@ function Contact() {
             console.log("Handle Form", formState);
         }
     };
-
 
     return (
         <section>
@@ -90,9 +89,11 @@ function Contact() {
                 </div>
             </div>
             <div>
-                <div data-testid='h1tag' className="title">Contact</div>
+                <div data-testid='h1tag' className='title'>
+                    Contact
+                </div>
                 <form id='contact-form' onSubmit={handleSubmit}>
-                    <div className="form-item">
+                    <div className='form-item'>
                         <label htmlFor='name'>Name:</label>
                         <input
                             type='text'
@@ -101,7 +102,7 @@ function Contact() {
                             onBlur={handleChange}
                         />
                     </div>
-                    <div className="form-item">
+                    <div className='form-item'>
                         <label htmlFor='email'>Email address:</label>
                         <input
                             type='email'
@@ -110,7 +111,7 @@ function Contact() {
                             onBlur={handleChange}
                         />
                     </div>
-                    <div className="form-item">
+                    <div className='form-item'>
                         <label htmlFor='message'>Message:</label>
                         <textarea
                             name='message'
@@ -124,7 +125,11 @@ function Contact() {
                             <p className='error-text'>{errorMessage}</p>
                         </div>
                     )}
-                    <button className='social-btn btn' data-testid='button' type='submit'>
+                    <button
+                        className='social-btn btn'
+                        data-testid='button'
+                        type='submit'
+                    >
                         Submit
                     </button>
                 </form>

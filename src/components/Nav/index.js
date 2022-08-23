@@ -17,9 +17,7 @@ const mobileNavButton = () => {
     });
 };
 
-
 function Nav(props) {
-    
     return (
         <header className='flex-row px-1'>
             <button
@@ -37,27 +35,21 @@ function Nav(props) {
                     className='flex-row navigation'
                 >
                     <li data-active='false' className='mx-2 nav-status'>
-                        <span
-                            onClick={() => props.setCurrentPage("About")}
-                        >
+                        <span onClick={() => props.setCurrentPage("About")}>
                             About
                         </span>
                     </li>
-            
-                    <li
-                        data-active='false'
-                        className='mx-2 nav-status'
-                    >
-                        <span onClick={() => props.setCurrentPage("Works")}>Work</span>
-                    </li>
-                    <li
-                        data-active='false'
-                        className='mx-2 nav-status'
-            
-                    >
-                        <span onClick={() => props.setCurrentPage("Contact")}>Contact</span>
-                    </li>
 
+                    <li data-active='false' className='mx-2 nav-status'>
+                        <span onClick={() => props.setCurrentPage("Works")}>
+                            Work
+                        </span>
+                    </li>
+                    <li data-active='false' className='mx-2 nav-status'>
+                        <span onClick={() => props.setCurrentPage("Contact")}>
+                            Contact
+                        </span>
+                    </li>
                 </ul>
             </nav>
         </header>
