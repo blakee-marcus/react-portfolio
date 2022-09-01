@@ -223,7 +223,7 @@ function Works() {
                     <div className='languages'>
                         <span>MongoDB</span>
                         <span>Express</span>
-                        <span>React</span> <br />
+                        <span>React</span>
                         <br />
                         <span>Node.js</span>
                         <span>GraphQL</span>

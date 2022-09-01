@@ -27,7 +27,7 @@ function App() {
     }
 
     return (
-        <div>
+        <div className="main">
             <Nav setCurrentPage={setCurrentPage} />
             {pageChange(currentPage)}
             {/* <Footer /> */}
