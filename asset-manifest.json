@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/react-portfolio/static/css/main.faa6a94d.css",
-    "main.js": "/react-portfolio/static/js/main.c91e36d5.js",
+    "main.css": "/react-portfolio/static/css/main.d672de62.css",
+    "main.js": "/react-portfolio/static/js/main.65feabdf.js",
     "static/js/787.a2cb61a6.chunk.js": "/react-portfolio/static/js/787.a2cb61a6.chunk.js",
     "static/media/ever-after-thumbnail.PNG": "/react-portfolio/static/media/ever-after-thumbnail.f973ccb007015e291a94.PNG",
     "static/media/pizza-hunt-thumbnail.PNG": "/react-portfolio/static/media/pizza-hunt-thumbnail.f14dce8a3e38bf16d6ba.PNG",
@@ -11,14 +11,12 @@
     "static/media/zoo-keepr-thumbnail.PNG": "/react-portfolio/static/media/zoo-keepr-thumbnail.47bdc12cf42f6021f39d.PNG",
     "static/media/self-illustration.png": "/react-portfolio/static/media/self-illustration.74881a7a638f1b4f181b.png",
     "index.html": "/react-portfolio/index.html",
-    "static/media/x-symbol-svgrepo-com.svg": "/react-portfolio/static/media/x-symbol-svgrepo-com.b06a8a10dd70ae0fd2a6.svg",
-    "static/media/hamburger-icon.svg": "/react-portfolio/static/media/hamburger-icon.6e6f8ab825b463707aa5.svg",
-    "main.faa6a94d.css.map": "/react-portfolio/static/css/main.faa6a94d.css.map",
-    "main.c91e36d5.js.map": "/react-portfolio/static/js/main.c91e36d5.js.map",
+    "main.d672de62.css.map": "/react-portfolio/static/css/main.d672de62.css.map",
+    "main.65feabdf.js.map": "/react-portfolio/static/js/main.65feabdf.js.map",
     "787.a2cb61a6.chunk.js.map": "/react-portfolio/static/js/787.a2cb61a6.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.faa6a94d.css",
-    "static/js/main.c91e36d5.js"
+    "static/css/main.d672de62.css",
+    "static/js/main.65feabdf.js"
   ]
 }
