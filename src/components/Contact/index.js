@@ -88,7 +88,7 @@ function Contact() {
                     </a>
                 </div>
             </div>
-            <div>
+            <div className="contact">
                 <div data-testid='h1tag' className='title'>
                     Contact
                 </div>

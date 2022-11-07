@@ -58,6 +58,7 @@ body {
     position: relative;
     width: 100%;
     line-height: 1.5;
+    background-color: #0e0e10;
 }
 
 body {
@@ -598,6 +599,10 @@ textarea {
 /* ------------------------- */
 /* Contact Section */
 /* ------------------------- */
+.contact {
+    margin: 1rem;
+}
+
 .btn {
     background-color: hsl(264, 100%, 64%);
     border: none;
