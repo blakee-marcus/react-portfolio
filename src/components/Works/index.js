@@ -47,6 +47,79 @@ function Works() {
                 <article className='card'>
                     <div className='card-img'>
                         <a
+                            href='https://blakee-marcus.github.io/work-day/'
+                            target='_blank'
+                            rel='noopener noreferrer'
+                        >
+                            <img
+                                src={require("../../assets/images/works-thumbnails/work-day-thumbnail.PNG")}
+                                alt='screenshot of deep thoughts app'
+                            ></img>
+                        </a>
+                    </div>
+                    <div className='card-body'>
+                        <a
+                            href='https://blakee-marcus.github.io/work-day/'
+                            target='_blank'
+                            rel='noopener noreferrer'
+                        >
+                            <p className='card-title'>Work Day Scheduler</p>
+                        </a>
+                    </div>
+                    <div className='card-subtext'>
+                        <a
+                            href='https://github.com/blakee-marcus/work-day'
+                            target='_blank'
+                            rel='noopener noreferrer'
+                        >
+                            View Repo
+                        </a>
+                    </div>
+                    <div className='languages'>
+                        <span>React</span>
+                        <span>Node.js</span>
+                    </div>
+                </article>
+                <article className='card'>
+                    <div className='card-img'>
+                        <a
+                            href='https://blakee-marcus.github.io/taskinator/'
+                            target='_blank'
+                            rel='noopener noreferrer'
+                        >
+                            <img
+                                src={require("../../assets/images/works-thumbnails/taskinator-thumbnail.PNG")}
+                                alt='screenshot of taskinator app'
+                            ></img>
+                        </a>
+                    </div>
+                    <div className='card-body'>
+                        <a
+                            href='https://blakee-marcus.github.io/taskinator/'
+                            target='_blank'
+                            rel='noopener noreferrer'
+                        >
+                            <p className='card-title'>Taskinator</p>
+                        </a>
+                    </div>
+                    <div className='card-subtext'>
+                        <a
+                            href='https://github.com/blakee-marcus/taskinator'
+                            target='_blank'
+                            rel='noopener noreferrer'
+                        >
+                            View Repo
+                        </a>
+                    </div>
+                    <div className='languages'>
+                        <span>JS</span>
+                        <span>HTML</span>
+                        <span>CSS</span>
+                    </div>
+                </article>
+                <article className='card'>
+                    <div className='card-img'>
+                        <a
                             href='https://protected-coast-66126.herokuapp.com/'
                             target='_blank'
                             rel='noopener noreferrer'
@@ -114,43 +187,6 @@ function Works() {
                     <div className='languages'>
                         <span>Mongoose</span>
                         <span>Express</span>
-                    </div>
-                </article>
-                <article className='card'>
-                    <div className='card-img'>
-                        <a
-                            href='https://blakee-marcus.github.io/taskinator/'
-                            target='_blank'
-                            rel='noopener noreferrer'
-                        >
-                            <img
-                                src={require("../../assets/images/works-thumbnails/taskinator-thumbnail.PNG")}
-                                alt='screenshot of taskinator app'
-                            ></img>
-                        </a>
-                    </div>
-                    <div className='card-body'>
-                        <a
-                            href='https://blakee-marcus.github.io/taskinator/'
-                            target='_blank'
-                            rel='noopener noreferrer'
-                        >
-                            <p className='card-title'>Taskinator</p>
-                        </a>
-                    </div>
-                    <div className='card-subtext'>
-                        <a
-                            href='https://github.com/blakee-marcus/taskinator'
-                            target='_blank'
-                            rel='noopener noreferrer'
-                        >
-                            View Repo
-                        </a>
-                    </div>
-                    <div className='languages'>
-                        <span>JS</span>
-                        <span>HTML</span>
-                        <span>CSS</span>
                     </div>
                 </article>
                 <article className='card'>
@@ -229,6 +265,83 @@ function Works() {
                         <span>GraphQL</span>
                     </div>
                 </article>
+                <article className='card'>
+                    <div className='card-img'>
+                        <a
+                            href='https://peaceful-depths-18416.herokuapp.com/'
+                            target='_blank'
+                            rel='noopener noreferrer'
+                        >
+                            <img
+                                src={require("../../assets/images/works-thumbnails/deep-thoughts-thumbnail.PNG")}
+                                alt='screenshot of deep thoughts app'
+                            ></img>
+                        </a>
+                    </div>
+                    <div className='card-body'>
+                        <a
+                            href='https://peaceful-depths-18416.herokuapp.com/'
+                            target='_blank'
+                            rel='noopener noreferrer'
+                        >
+                            <p className='card-title'>Deep Thoughts</p>
+                        </a>
+                    </div>
+                    <div className='card-subtext'>
+                        <a
+                            href='https://github.com/blakee-marcus/deep-thoughts'
+                            target='_blank'
+                            rel='noopener noreferrer'
+                        >
+                            View Repo
+                        </a>
+                    </div>
+                    <div className='languages'>
+                        <span>MongoDB</span>
+                        <span>Express</span>
+                        <span>React</span>
+                        <br />
+                        <span>Node.js</span>
+                        <span>GraphQL</span>
+                    </div>
+                </article>
+                <article className='card'>
+                    <div className='card-img'>
+                        <a
+                            href='https://blakee-marcus.github.io/oh-snap/'
+                            target='_blank'
+                            rel='noopener noreferrer'
+                        >
+                            <img
+                                src={require("../../assets/images/works-thumbnails/oh-snap-thumbnail.PNG")}
+                                alt='screenshot of deep thoughts app'
+                            ></img>
+                        </a>
+                    </div>
+                    <div className='card-body'>
+                        <a
+                            href='https://blakee-marcus.github.io/oh-snap/'
+                            target='_blank'
+                            rel='noopener noreferrer'
+                        >
+                            <p className='card-title'>Oh Snap!</p>
+                        </a>
+                    </div>
+                    <div className='card-subtext'>
+                        <a
+                            href='https://github.com/blakee-marcus/oh-snap'
+                            target='_blank'
+                            rel='noopener noreferrer'
+                        >
+                            View Repo
+                        </a>
+                    </div>
+                    <div className='languages'>
+                        <span>React</span>
+                        <span>Node.js</span>
+                    </div>
+                </article>
+                
             </div>
         </section>
     );

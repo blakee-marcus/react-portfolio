@@ -50,6 +50,9 @@ function Nav(props) {
                             Contact
                         </span>
                     </li>
+                    <li  data-active='false' className='mx-2 nav-status'>
+                        <a href="">Resume</a>
+                    </li>
                 </ul>
             </nav>
         </header>

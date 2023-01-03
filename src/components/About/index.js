@@ -14,7 +14,7 @@ function About() {
                     <div className='about-title'>
                         <h1 className='name'>Blake Marcus</h1>
                         <div className='headliner'>
-                            Full-Stack Web Developer
+                            Full-Stack Engineer
                         </div>
                     </div>
                 </div>
