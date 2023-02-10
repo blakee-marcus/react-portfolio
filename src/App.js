@@ -5,15 +5,8 @@ import Works from "./components/Works";
 import Contact from "./components/Contact";
 
 function App() {
-    // const [categories] = useState([
-    //     { name: "About",},
-    //     { name: "Works" },
-    //     { name: "Contact" },
-    // ]);
     const [currentPage, setCurrentPage] = useState("About");
-
-    // const [contactSelected, setContactSelected] = useState(false);
-
+    document.title = `${currentPage} | Blake Marcus Portfolio`
     function pageChange(page) {
         if (page === "About") {
             return <About />;
@@ -30,7 +23,6 @@ function App() {
         <div className="main">
             <Nav setCurrentPage={setCurrentPage} />
             {pageChange(currentPage)}
-            {/* <Footer /> */}
         </div>
     );
 }

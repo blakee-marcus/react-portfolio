@@ -13,9 +13,7 @@ function About() {
                     </div>
                     <div className='about-title'>
                         <h1 className='name'>Blake Marcus</h1>
-                        <div className='headliner'>
-                            Full-Stack Engineer
-                        </div>
+                        <div className='headliner'>Full-Stack Engineer</div>
                     </div>
                 </div>
                 <div className='ah-right'>
@@ -54,11 +52,16 @@ function About() {
                 <div className='name intro'> About Me</div>
                 <p className='headliner intro-text'>
                     {" "}
-                    Full-Stack Web Developer with a passion for creating
-                    mobile-first applications. Completed UCLA’s coding boot camp
-                    and earned a certificate in full-stack web development. My
-                    experience in management has allowed me to gain strengths in
-                    leadership, teamwork, and communication..
+                    A skilled full-stack developer with experience in both
+                    front-end and back-end technologies. Proficient in version
+                    control using Git and testing with Jest. Strong design
+                    skills with Adobe Photoshop. A proven track record of
+                    successfully completing full-stack development projects,
+                    including a weather dashboard, social media application, and
+                    a recipe app. Experienced teaching assistant and supervisor
+                    with a strong ability to facilitate learning and contribute
+                    to an outstanding educational experience. Recently obtained
+                    a Full Stack Development certification from UCLA.
                 </p>
                 <p className='headliner intro-text'>
                     {" "}
@@ -71,8 +74,6 @@ function About() {
                     design of my portfolio.
                 </p>
             </article>
-
-            
         </section>
     );
 }

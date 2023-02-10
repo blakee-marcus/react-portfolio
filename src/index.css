@@ -188,6 +188,25 @@ textarea {
     border-radius: 0.6rem;
 }
 
+a {
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.75);
+}
+
+a:hover {
+    color: hsl(264, 100%, 72%);
+    cursor: pointer;
+}
+
+a:visited {
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.75);
+
+}
+a:visited:hover {
+    color: hsl(264, 100%, 72%);
+    cursor: pointer;
+}
 .active-nav {
     color: hsl(264, 100%, 72%);
     border-bottom: 0.125rem solid hsl(264, 100%, 72%);
