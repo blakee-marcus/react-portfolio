@@ -65,13 +65,7 @@ function About() {
                 </p>
                 <p className='headliner intro-text'>
                     {" "}
-                    One of my hobbies, aside from playing Apex, is working on
-                    streaming and stream production. I love helping friends make
-                    their stream look as pretty as possible. I'm always testing
-                    out new setups, settings, and art. Working on all of that
-                    has also allowed me to get proficient with Adobe Photoshop.
-                    It's also why you'll notice a heavy twitch influence on the
-                    design of my portfolio.
+                    In my free time, I've been learning C# and Blender to create a First Person Shooter Survival Game. Through this project, I've developed a strong understanding of game development concepts and gained hands-on experience with C# programming, game physics, and 3D modeling. Learning new technologies has always been a passion of mine, and I'm excited to apply the problem-solving and creative skills I've developed to new challenges.
                 </p>
             </article>
         </section>

@@ -2,7 +2,7 @@ import React from "react";
 
 function Works() {
     return (
-        <section className='works'>
+        <section className='works w-85 align-center just'>
             <div>
                 <h2 className='title'>Work</h2>
             </div>

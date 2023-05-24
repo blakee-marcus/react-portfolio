@@ -19,7 +19,7 @@ const mobileNavButton = () => {
 
 function Nav(props) {
     return (
-        <header className='flex-row px-1'>
+        <header className='flex-row'>
             <button
                 className='nav-toggle'
                 aria-controls='navigation'
