@@ -1,25 +1,25 @@
 {
   "files": {
-    "main.css": "/react-portfolio/static/css/main.e4286811.css",
-    "main.js": "/react-portfolio/static/js/main.18c78721.js",
+    "main.css": "/react-portfolio/static/css/main.304f541b.css",
+    "main.js": "/react-portfolio/static/js/main.f99fc0d1.js",
     "static/js/787.a2cb61a6.chunk.js": "/react-portfolio/static/js/787.a2cb61a6.chunk.js",
-    "static/media/ever-after-thumbnail.PNG": "/react-portfolio/static/media/ever-after-thumbnail.f973ccb007015e291a94.PNG",
-    "static/media/pizza-hunt-thumbnail.PNG": "/react-portfolio/static/media/pizza-hunt-thumbnail.f14dce8a3e38bf16d6ba.PNG",
-    "static/media/taskinator-thumbnail.PNG": "/react-portfolio/static/media/taskinator-thumbnail.7f41580a79aa998ae10b.PNG",
-    "static/media/tech-blog-thumbnail.PNG": "/react-portfolio/static/media/tech-blog-thumbnail.d3a2a69a8c2ccab988b0.PNG",
-    "static/media/weather-dashboard-thumbnail.PNG": "/react-portfolio/static/media/weather-dashboard-thumbnail.22ccf94fe13d96f743c2.PNG",
-    "static/media/zoo-keepr-thumbnail.PNG": "/react-portfolio/static/media/zoo-keepr-thumbnail.47bdc12cf42f6021f39d.PNG",
-    "static/media/self-illustration.png": "/react-portfolio/static/media/self-illustration.74881a7a638f1b4f181b.png",
-    "static/media/oh-snap-thumbnail.PNG": "/react-portfolio/static/media/oh-snap-thumbnail.c95a65c7ce9793a7567f.PNG",
-    "static/media/work-day-thumbnail.PNG": "/react-portfolio/static/media/work-day-thumbnail.447bd2ac8e2e48e4d1c9.PNG",
-    "static/media/deep-thoughts-thumbnail.PNG": "/react-portfolio/static/media/deep-thoughts-thumbnail.cd8987f7a1fae3d71944.PNG",
+    "static/media/pizza-hunt-thumbnail.PNG": "/react-portfolio/static/media/pizza-hunt-thumbnail.fc09ec62622b1bcebf52.PNG",
+    "static/media/ever-after-thumbnail.PNG": "/react-portfolio/static/media/ever-after-thumbnail.56649fb1b95296e68791.PNG",
+    "static/media/oh-snap-thumbnail.PNG": "/react-portfolio/static/media/oh-snap-thumbnail.45d5293c08f155612ddf.PNG",
+    "static/media/self-illustration.png": "/react-portfolio/static/media/self-illustration.0d39b7951af92feca9c7.png",
+    "static/media/weather-dashboard-thumbnail.PNG": "/react-portfolio/static/media/weather-dashboard-thumbnail.049c849bd5bd70f70eb4.PNG",
+    "static/media/zoo-keepr-thumbnail.PNG": "/react-portfolio/static/media/zoo-keepr-thumbnail.73b0139118384c56d6e9.PNG",
+    "static/media/taskinator-thumbnail.PNG": "/react-portfolio/static/media/taskinator-thumbnail.9716c968d2b9c0f6bcc5.PNG",
+    "static/media/tech-blog-thumbnail.PNG": "/react-portfolio/static/media/tech-blog-thumbnail.beaf28d68351257b5734.PNG",
+    "static/media/work-day-thumbnail.PNG": "/react-portfolio/static/media/work-day-thumbnail.cfb73a9ecdb2ef82fc62.PNG",
+    "static/media/deep-thoughts-thumbnail.PNG": "/react-portfolio/static/media/deep-thoughts-thumbnail.3037c971fc791681769a.PNG",
     "index.html": "/react-portfolio/index.html",
-    "main.e4286811.css.map": "/react-portfolio/static/css/main.e4286811.css.map",
-    "main.18c78721.js.map": "/react-portfolio/static/js/main.18c78721.js.map",
+    "main.304f541b.css.map": "/react-portfolio/static/css/main.304f541b.css.map",
+    "main.f99fc0d1.js.map": "/react-portfolio/static/js/main.f99fc0d1.js.map",
     "787.a2cb61a6.chunk.js.map": "/react-portfolio/static/js/787.a2cb61a6.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.e4286811.css",
-    "static/js/main.18c78721.js"
+    "static/css/main.304f541b.css",
+    "static/js/main.f99fc0d1.js"
   ]
 }
