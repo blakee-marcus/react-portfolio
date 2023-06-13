@@ -1,25 +1,25 @@
 {
   "files": {
-    "main.css": "/react-portfolio/static/css/main.304f541b.css",
-    "main.js": "/react-portfolio/static/js/main.ca184511.js",
-    "static/js/787.a2cb61a6.chunk.js": "/react-portfolio/static/js/787.a2cb61a6.chunk.js",
-    "static/media/pizza-hunt-thumbnail.PNG": "/react-portfolio/static/media/pizza-hunt-thumbnail.fc09ec62622b1bcebf52.PNG",
-    "static/media/ever-after-thumbnail.PNG": "/react-portfolio/static/media/ever-after-thumbnail.56649fb1b95296e68791.PNG",
-    "static/media/oh-snap-thumbnail.PNG": "/react-portfolio/static/media/oh-snap-thumbnail.45d5293c08f155612ddf.PNG",
-    "static/media/self-illustration.png": "/react-portfolio/static/media/self-illustration.0d39b7951af92feca9c7.png",
-    "static/media/weather-dashboard-thumbnail.PNG": "/react-portfolio/static/media/weather-dashboard-thumbnail.049c849bd5bd70f70eb4.PNG",
-    "static/media/zoo-keepr-thumbnail.PNG": "/react-portfolio/static/media/zoo-keepr-thumbnail.73b0139118384c56d6e9.PNG",
-    "static/media/taskinator-thumbnail.PNG": "/react-portfolio/static/media/taskinator-thumbnail.9716c968d2b9c0f6bcc5.PNG",
-    "static/media/tech-blog-thumbnail.PNG": "/react-portfolio/static/media/tech-blog-thumbnail.beaf28d68351257b5734.PNG",
-    "static/media/work-day-thumbnail.PNG": "/react-portfolio/static/media/work-day-thumbnail.cfb73a9ecdb2ef82fc62.PNG",
-    "static/media/deep-thoughts-thumbnail.PNG": "/react-portfolio/static/media/deep-thoughts-thumbnail.3037c971fc791681769a.PNG",
-    "index.html": "/react-portfolio/index.html",
-    "main.304f541b.css.map": "/react-portfolio/static/css/main.304f541b.css.map",
-    "main.ca184511.js.map": "/react-portfolio/static/js/main.ca184511.js.map",
-    "787.a2cb61a6.chunk.js.map": "/react-portfolio/static/js/787.a2cb61a6.chunk.js.map"
+    "main.css": "/static/css/main.304f541b.css",
+    "main.js": "/static/js/main.4f7d7ab8.js",
+    "static/js/787.a2cb61a6.chunk.js": "/static/js/787.a2cb61a6.chunk.js",
+    "static/media/pizza-hunt-thumbnail.PNG": "/static/media/pizza-hunt-thumbnail.fc09ec62622b1bcebf52.PNG",
+    "static/media/ever-after-thumbnail.PNG": "/static/media/ever-after-thumbnail.56649fb1b95296e68791.PNG",
+    "static/media/oh-snap-thumbnail.PNG": "/static/media/oh-snap-thumbnail.45d5293c08f155612ddf.PNG",
+    "static/media/self-illustration.png": "/static/media/self-illustration.0d39b7951af92feca9c7.png",
+    "static/media/weather-dashboard-thumbnail.PNG": "/static/media/weather-dashboard-thumbnail.049c849bd5bd70f70eb4.PNG",
+    "static/media/zoo-keepr-thumbnail.PNG": "/static/media/zoo-keepr-thumbnail.73b0139118384c56d6e9.PNG",
+    "static/media/taskinator-thumbnail.PNG": "/static/media/taskinator-thumbnail.9716c968d2b9c0f6bcc5.PNG",
+    "static/media/tech-blog-thumbnail.PNG": "/static/media/tech-blog-thumbnail.beaf28d68351257b5734.PNG",
+    "static/media/work-day-thumbnail.PNG": "/static/media/work-day-thumbnail.cfb73a9ecdb2ef82fc62.PNG",
+    "static/media/deep-thoughts-thumbnail.PNG": "/static/media/deep-thoughts-thumbnail.3037c971fc791681769a.PNG",
+    "index.html": "/index.html",
+    "main.304f541b.css.map": "/static/css/main.304f541b.css.map",
+    "main.4f7d7ab8.js.map": "/static/js/main.4f7d7ab8.js.map",
+    "787.a2cb61a6.chunk.js.map": "/static/js/787.a2cb61a6.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.304f541b.css",
-    "static/js/main.ca184511.js"
+    "static/js/main.4f7d7ab8.js"
   ]
 }
