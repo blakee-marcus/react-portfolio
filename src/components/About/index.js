@@ -12,7 +12,7 @@ function About() {
           </div>
           <div className='about-title'>
             <h1 className='name'>Blake Marcus</h1>
-            <div className='headliner'>Full-Stack Engineer</div>
+            <div className='headliner'>Front-End Engineer</div>
           </div>
         </div>
         <div className='ah-right'>
@@ -49,8 +49,8 @@ function About() {
         <div className='name intro'> About Me</div>
         <p className='headliner intro-text'>
           {' '}
-          A skilled full-stack developer with experience in both front-end and
-          back-end technologies. Proficient in version control using Git and
+          A skilled front-end developer with experience in back-end technologies.
+          Proficient in version control using Git and
           testing with Jest. Strong design skills with Adobe Photoshop. A proven
           track record of successfully completing full-stack development
           projects, including a weather dashboard, social media application, and

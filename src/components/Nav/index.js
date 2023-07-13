@@ -51,7 +51,7 @@ function Nav(props) {
                         </span>
                     </li>
                     <li  data-active='false' className='mx-2 nav-status'>
-                        <a href="https://drive.google.com/file/d/1ByGJaafn-WjYEGqCG_eHFap-SynyLe2_/view?usp=sharing" target='_blank' rel='noopener noreferrer'>Resume</a>
+                        <a href="https://drive.google.com/file/d/1_am-ntB25E45zvs3b3prP9r3l2eUPy9x/view?usp=sharing" target='_blank' rel='noopener noreferrer'>Resume</a>
                     </li>
                 </ul>
             </nav>
