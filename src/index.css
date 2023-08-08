@@ -4,6 +4,7 @@
 :root {
   --spacing-one: calc(1rem * 0.5);
   --spacing-two: calc(1rem);
+  --spacing-three: calc(1rem * 1.5);
   --spacing-five: calc(2.5rem);
 
   --font-base: 'Inter', 'Helvetica Neue', Helvetica, Arial, sans-serif;
@@ -215,6 +216,12 @@ a:visited:hover {
   flex-wrap: wrap;
 }
 
+.flex-column {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap, 1rem);
+}
+
 .center-container {
   display: flex;
   justify-content: center;
@@ -229,6 +236,14 @@ a:visited:hover {
 .mx-2 {
   margin-right: var(--spacing-two);
   margin-left: var(--spacing-two);
+}
+
+.ml-3 {
+  margin-left: var(--spacing-three);
+}
+
+.ml-5 {
+  margin-left: var(--spacing-five);
 }
 
 .w-85 {

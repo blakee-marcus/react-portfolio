@@ -1,47 +1,17 @@
 import React, { useState } from 'react';
 
-import { validateEmail } from '../../utils/helpers';
-
 function Contact() {
-  const [formState, setFormState] = useState({
-    name: '',
-    email: '',
-    message: '',
-  });
-
-  const [errorMessage, setErrorMessage] = useState('');
-  const { name, email, message } = formState;
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (!errorMessage) {
-      console.log('Submit Form', formState);
-    }
-  };
-
-  const handleChange = (e) => {
-    if (e.target.name === 'email') {
-      const isValid = validateEmail(e.target.value);
-      if (!isValid) {
-        setErrorMessage('Your email is invalid.');
-      } else {
-        setErrorMessage('');
-      }
-    } else {
-      if (!e.target.value.length) {
-        setErrorMessage(`${e.target.name} is required.`);
-      } else {
-        setErrorMessage('');
-      }
-    }
-    if (!errorMessage) {
-      setFormState({ ...formState, [e.target.name]: e.target.value });
-      console.log('Handle Form', formState);
-    }
-  };
 
   return (
     <section>
+      <div className='center-container'>
+        <div className='contact w-100'>
+          <div className='title'>
+            Contact
+          </div>
+
+        </div>
+      </div>
       <div className='about-header'>
         <div className='ah-left'>
           <div className='selfie'>
@@ -52,7 +22,7 @@ function Contact() {
           </div>
           <div className='about-title'>
             <div className='name'>Blake Marcus</div>
-            <div className='headliner'>Full-Stack Web Developer</div>
+            <div className='headliner'>Front-End Developer</div>
           </div>
         </div>
         <div className='ah-right'>
@@ -80,53 +50,16 @@ function Contact() {
           </a>
         </div>
       </div>
-      <div className='center-container'>
-        <div className='contact w-100'>
-          <div data-testid='h1tag' className='title'>
-            Contact
-          </div>
-          <form id='contact-form' onSubmit={handleSubmit}>
-            <div className='form-item'>
-              <label htmlFor='name'>Name:</label>
-              <input
-                type='text'
-                name='name'
-                defaultValue={name}
-                onBlur={handleChange}
-              />
-            </div>
-            <div className='form-item'>
-              <label htmlFor='email'>Email address:</label>
-              <input
-                type='email'
-                name='email'
-                defaultValue={email}
-                onBlur={handleChange}
-              />
-            </div>
-            <div className='form-item'>
-              <label htmlFor='message'>Message:</label>
-              <textarea
-                name='message'
-                rows='5'
-                defaultValue={message}
-                onBlur={handleChange}
-              />
-            </div>
-            {errorMessage && (
-              <div>
-                <p className='error-text'>{errorMessage}</p>
-              </div>
-            )}
-            <button
-              className='social-btn btn'
-              data-testid='button'
-              type='submit'
-            >
-              Submit
-            </button>
-          </form>
+      <div className='flex-column ml-5'>
+        <div className='flex-column'>
+          <h2>Phone Number</h2>
+          <p>310-908-7309</p>
         </div>
+        <div className='flex-column'>
+          <h2>Email</h2>
+          <p>marcusb733@gmail.com</p>
+        </div>
+
       </div>
     </section>
   );
