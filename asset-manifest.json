@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.304f541b.css",
-    "main.js": "/static/js/main.c3c6d940.js",
+    "main.css": "/static/css/main.2eb02bd3.css",
+    "main.js": "/static/js/main.063ac706.js",
     "static/js/787.a2cb61a6.chunk.js": "/static/js/787.a2cb61a6.chunk.js",
     "static/media/pizza-hunt-thumbnail.PNG": "/static/media/pizza-hunt-thumbnail.fc09ec62622b1bcebf52.PNG",
     "static/media/ever-after-thumbnail.PNG": "/static/media/ever-after-thumbnail.56649fb1b95296e68791.PNG",
@@ -14,12 +14,12 @@
     "static/media/work-day-thumbnail.PNG": "/static/media/work-day-thumbnail.cfb73a9ecdb2ef82fc62.PNG",
     "static/media/deep-thoughts-thumbnail.PNG": "/static/media/deep-thoughts-thumbnail.3037c971fc791681769a.PNG",
     "index.html": "/index.html",
-    "main.304f541b.css.map": "/static/css/main.304f541b.css.map",
-    "main.c3c6d940.js.map": "/static/js/main.c3c6d940.js.map",
+    "main.2eb02bd3.css.map": "/static/css/main.2eb02bd3.css.map",
+    "main.063ac706.js.map": "/static/js/main.063ac706.js.map",
     "787.a2cb61a6.chunk.js.map": "/static/js/787.a2cb61a6.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.304f541b.css",
-    "static/js/main.c3c6d940.js"
+    "static/css/main.2eb02bd3.css",
+    "static/js/main.063ac706.js"
   ]
 }
