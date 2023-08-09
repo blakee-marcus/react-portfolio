@@ -268,7 +268,7 @@ function Works() {
                 <article className='card'>
                     <div className='card-img'>
                         <a
-                            href='https://peaceful-depths-18416.herokuapp.com/'
+                            href='https://bm-deepthoughts-1492b9add94c.herokuapp.com/'
                             target='_blank'
                             rel='noopener noreferrer'
                         >
@@ -280,7 +280,7 @@ function Works() {
                     </div>
                     <div className='card-body'>
                         <a
-                            href='https://peaceful-depths-18416.herokuapp.com/'
+                            href='https://bm-deepthoughts-1492b9add94c.herokuapp.com/'
                             target='_blank'
                             rel='noopener noreferrer'
                         >
