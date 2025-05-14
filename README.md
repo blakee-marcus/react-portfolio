@@ -59,8 +59,8 @@ Just as you did in the module project, you’ll need to deploy this application 
 
 ### Built With
 
--   [Node.js](https://nodejs.org/en/)
--   [React.js](https://reactjs.org/)
+- [Node.js](https://nodejs.org/en/)
+- [React.js](https://reactjs.org/)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -73,13 +73,13 @@ To get a local copy up and running follow these steps.
 ### Installation
 
 1. Clone the repo
-    ```sh
-    git clone https://github.com/blakee-marcus/react-portfolio.git
-    ```
+   ```sh
+   git clone https://github.com/blakee-marcus/react-portfolio.git
+   ```
 2. Install NPM packages
-    ```sh
-    npm install
-    ```
+   ```sh
+   npm install
+   ```
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
