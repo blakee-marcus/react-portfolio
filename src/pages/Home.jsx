@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 function Home() {
   return (
-    <main className='min-h-screen bg-white text-black font-mono flex items-center justify-center border-b-8 border-black px-6'>
+    <main className='min-h-screen bg-white text-black font-mono flex items-center justify-center border-b-8 border-black px-6 pb-4'>
       <section className='max-w-5xl w-full'>
         <h1 className='text-5xl md:text-7xl font-extrabold uppercase border-b-8 border-black pb-6 mb-10 leading-tight tracking-tight'>
           Full-Stack Developer
