@@ -4,17 +4,20 @@ import React from 'react';
 
 import Home from './pages/Home.jsx';
 import About from './pages/About.jsx';
-import Portfolio from './pages/Portfolio.jsx'; // renamed Projects.jsx → Portfolio.jsx
-import Clients from './pages/Clients.jsx'; // new page for real-world projects
+import Portfolio from './pages/Portfolio.jsx';
+import Clients from './pages/Clients.jsx';
 import Contact from './pages/Contact.jsx';
+import NotFound from './pages/NotFound.jsx';
+import LandingPages from './pages/LandingPages.jsx';
 import NavBar from './components/NavBar.jsx';
 import Footer from './components/Footer.jsx';
-import LandingPages from './pages/LandingPages.jsx';
+import ScrollToTop from './components/ScrollToTop.jsx';
 
 function App() {
   return (
     <HelmetProvider>
       <Router>
+        <ScrollToTop />
         <NavBar />
         <Routes>
           <Route path='/' element={<Home />} />
@@ -23,6 +26,7 @@ function App() {
           <Route path='/clients' element={<Clients />} />
           <Route path='/contact' element={<Contact />} />
           <Route path='/landing-pages' element={<LandingPages />} />
+          <Route path='*' element={<NotFound />} />
         </Routes>
         <Footer />
       </Router>

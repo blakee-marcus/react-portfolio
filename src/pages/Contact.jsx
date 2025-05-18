@@ -3,6 +3,8 @@ import { Helmet } from 'react-helmet-async';
 
 function Contact() {
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -10,18 +12,30 @@ function Contact() {
     const form = e.target;
     const data = new FormData(form);
 
+    setLoading(true);
+    setError(null);
+
+    if (window.umami && typeof window.umami.track === 'function') {
+      window.umami.track('form_submit_started');
+    }
+
     fetch('https://formspree.io/f/mrbqowkn', {
       method: 'POST',
       body: data,
-      headers: {
-        Accept: 'application/json',
-      },
+      headers: { Accept: 'application/json' },
     }).then((res) => {
+      setLoading(false);
       if (res.ok) {
         setSubmitted(true);
         form.reset();
+        if (window.umami && typeof window.umami.track === 'function') {
+          window.umami.track('form_submit_contact');
+        }
       } else {
-        alert('Something went wrong. Please try again.');
+        setError('Something went wrong. Please try again later.');
+        if (window.umami && typeof window.umami.track === 'function') {
+          window.umami.track('form_submit_error');
+        }
       }
     });
   };
@@ -66,50 +80,100 @@ function Contact() {
               </div>
             ) : (
               <form onSubmit={handleSubmit} className='space-y-8 border-t-4 border-black pt-8'>
-                <input
-                  type='text'
-                  name='name'
-                  placeholder='Your Name'
-                  className={inputStyles}
-                  required
-                />
-                <input
-                  type='email'
-                  name='email'
-                  placeholder='Your Email'
-                  className={inputStyles}
-                  required
-                />
-                <input
-                  type='text'
-                  name='business'
-                  placeholder='Business Name (Optional)'
-                  className={inputStyles}
-                />
-                <input
-                  type='text'
-                  name='industry'
-                  placeholder='Business Type (e.g. Gym, Florist, Barber)'
-                  className={inputStyles}
-                  required
-                />
-                <input
-                  type='text'
-                  name='timeline'
-                  placeholder='Preferred Timeline (e.g. 1-2 weeks)'
-                  className={inputStyles}
-                />
-                <textarea
-                  name='message'
-                  placeholder='Tell me what you’re looking for! Services, style, colors, must-haves, etc.'
-                  rows='8'
-                  className={inputStyles}
-                  required></textarea>
+                <div>
+                  <label htmlFor='name' className='block text-xl font-bold mb-2'>
+                    Name
+                  </label>
+                  <input
+                    id='name'
+                    type='text'
+                    name='name'
+                    placeholder='Your Name'
+                    className={inputStyles}
+                    required
+                  />
+                </div>
+
+                <div>
+                  <label htmlFor='email' className='block text-xl font-bold mb-2'>
+                    Email
+                  </label>
+                  <input
+                    id='email'
+                    type='email'
+                    name='email'
+                    placeholder='Your Email'
+                    className={inputStyles}
+                    required
+                  />
+                </div>
+
+                <div>
+                  <label htmlFor='business' className='block text-xl font-bold mb-2'>
+                    Business Name (Optional)
+                  </label>
+                  <input
+                    id='business'
+                    type='text'
+                    name='business'
+                    placeholder='Business Name (Optional)'
+                    className={inputStyles}
+                  />
+                </div>
+
+                <div>
+                  <label htmlFor='industry' className='block text-xl font-bold mb-2'>
+                    Business Type
+                  </label>
+                  <input
+                    id='industry'
+                    type='text'
+                    name='industry'
+                    placeholder='Business Type (e.g. Gym, Florist, Barber)'
+                    className={inputStyles}
+                    required
+                  />
+                </div>
+
+                <div>
+                  <label htmlFor='timeline' className='block text-xl font-bold mb-2'>
+                    Preferred Timeline
+                  </label>
+                  <input
+                    id='timeline'
+                    type='text'
+                    name='timeline'
+                    placeholder='Preferred Timeline (e.g. 1-2 weeks)'
+                    className={inputStyles}
+                  />
+                </div>
+
+                <div>
+                  <label htmlFor='message' className='block text-xl font-bold mb-2'>
+                    Message
+                  </label>
+                  <textarea
+                    id='message'
+                    name='message'
+                    placeholder='Tell me what you’re looking for! Services, style, colors, must-haves, etc.'
+                    rows='8'
+                    className={inputStyles}
+                    required
+                  />
+                </div>
+
                 <input type='hidden' name='ref' value='landing-pages' />
+                <input type='hidden' name='subject' value='Landing Page Inquiry' />
+                {error && <div className='text-red-500 text-xl font-bold mb-4'>{error}</div>}
                 <button
                   type='submit'
-                  className='w-full bg-black text-white border-4 border-black p-4 text-xl font-bold uppercase tracking-wider hover:bg-white hover:text-black transition-colors'>
-                  Send Message
+                  disabled={loading}
+                  className={`w-full border-4 border-black p-4 text-xl font-bold uppercase tracking-wider transition-colors ${
+                    loading
+                      ? 'bg-gray-400 text-white'
+                      : 'bg-black text-white hover:bg-white hover:text-black'
+                  }`}>
+                  {loading ? 'Sending...' : 'Send Message'}
                 </button>
               </form>
             )}
