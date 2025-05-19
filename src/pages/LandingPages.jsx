@@ -41,6 +41,7 @@ function LandingPages() {
 
           <Link
             to='/contact'
+            aria-label='Get a free quote for landing page development'
             className='border-4 border-black px-8 py-4 text-center font-bold hover:bg-black hover:text-white transition-colors block w-max'>
             Get a Free Quote
           </Link>

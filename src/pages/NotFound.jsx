@@ -5,16 +5,20 @@ function NotFound() {
   return (
     <>
       <Helmet>
-        <title>Page Not Found – Blake Marcus</title>
-        <meta name='description' content='This page does not exist.' />
+        <title>404 – Page Not Found | Blake Marcus</title>
+        <meta name='description' content="Sorry, that page doesn't exist." />
       </Helmet>
-      <div className='flex flex-col items-center justify-center h-screen text-center bg-gray-100 px-4'>
-        <h1 className='text-6xl font-bold text-gray-800 mb-4'>404</h1>
-        <p className='text-xl text-gray-600 mb-6'>Oops! That page doesn't exist.</p>
+      <div className='flex flex-col items-center justify-center min-h-screen bg-white px-6 border-t-8 border-l-8 border-black'>
+        <h1 className='text-[10rem] font-extrabold uppercase leading-none tracking-tight border-b-8 border-r-8 border-black mb-8 p-4'>
+          404
+        </h1>
+        <p className='text-2xl font-bold uppercase mb-12 border-b-4 border-black pb-2 w-full max-w-md text-left'>
+          OOPS! THAT PAGE DOESN'T EXIST.
+        </p>
         <Link
           to='/'
-          className='text-white bg-[#385b4f] hover:bg-[#2f4a42] px-6 py-3 rounded-xl text-lg transition'>
-          Go Home
+          className='border-8 border-black px-10 py-5 uppercase font-extrabold text-black hover:bg-black hover:text-white transition-all duration-300 max-w-max'>
+          GO HOME
         </Link>
       </div>
     </>

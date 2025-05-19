@@ -38,12 +38,12 @@ function Home() {
 
           <div className='flex flex-col md:flex-row gap-6 text-lg uppercase'>
             <Link
-              to='/projects'
+              to='/portfolio'
               className='border-4 border-black px-8 py-4 text-center font-bold hover:bg-black hover:text-white transition-colors'>
               See What I've Built
             </Link>
             <Link
-              to='/contact'
+              to='/hire'
               className='border-4 border-black px-8 py-4 text-center font-bold hover:bg-black hover:text-white transition-colors'>
               Let's Build Something Together
             </Link>

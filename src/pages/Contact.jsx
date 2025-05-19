@@ -1,10 +1,15 @@
 import React, { useState } from 'react';
 import { Helmet } from 'react-helmet-async';
+import { useLocation } from 'react-router-dom';
 
 function Contact() {
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+
+  const location = useLocation();
+  const params = new URLSearchParams(location.search);
+  const tier = params.get('tier') || '';
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -23,21 +28,29 @@ function Contact() {
       method: 'POST',
       body: data,
       headers: { Accept: 'application/json' },
-    }).then((res) => {
-      setLoading(false);
-      if (res.ok) {
-        setSubmitted(true);
-        form.reset();
-        if (window.umami && typeof window.umami.track === 'function') {
-          window.umami.track('form_submit_contact');
+    })
+      .then((res) => {
+        setLoading(false);
+        if (res.ok) {
+          setSubmitted(true);
+          form.reset();
+          if (window.umami && typeof window.umami.track === 'function') {
+            window.umami.track('form_submit_contact');
+          }
+        } else {
+          setError('Something went wrong. Please try again later.');
+          if (window.umami && typeof window.umami.track === 'function') {
+            window.umami.track('form_submit_error');
+          }
         }
-      } else {
-        setError('Something went wrong. Please try again later.');
+      })
+      .catch(() => {
+        setLoading(false);
+        setError('Network error. Please try again later.');
         if (window.umami && typeof window.umami.track === 'function') {
-          window.umami.track('form_submit_error');
+          window.umami.track('form_submit_network_error');
         }
-      }
-    });
+      });
   };
 
   const inputStyles =
@@ -147,6 +160,14 @@ function Contact() {
                     className={inputStyles}
                   />
                 </div>
+                <input
+                  id='package'
+                  type='hidden'
+                  name='package'
+                  placeholder='Selected Package'
+                  defaultValue={tier}
+                  className={inputStyles}
+                />
 
                 <div>
                   <label htmlFor='message' className='block text-xl font-bold mb-2'>
@@ -179,6 +200,14 @@ function Contact() {
             )}
           </div>
         </section>
+        <div className='text-center mt-12'>
+          <p className='text-xl mb-4'>Ready to start your project?</p>
+          <a
+            href='/hire'
+            className='inline-block bg-black text-white border-4 border-black px-6 py-3 font-bold uppercase hover:bg-white hover:text-black transition-colors'>
+            View Service Tiers
+          </a>
+        </div>
       </main>
     </>
   );
