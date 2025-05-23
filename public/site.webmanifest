@@ -1,6 +1,12 @@
 {
-  "name": "Blake Marcus | Developer Portfolio",
+  "name": "Blake Marcus | Freelance Web Developer",
   "short_name": "Blake Marcus",
+  "description": "Portfolio of Blake Marcus – freelance full-stack developer building custom websites and web apps using React, Flask, and Tailwind CSS.",
+  "start_url": "/?source=pwa",
+  "display": "standalone",
+  "theme_color": "#ffffff",
+  "background_color": "#ffffff",
+  "orientation": "portrait",
   "icons": [
     {
       "src": "/web-app-icon-192x192.png",
@@ -15,10 +21,6 @@
       "purpose": "maskable any"
     }
   ],
-  "start_url": "/",
-  "display": "standalone",
-  "theme_color": "#ffffff",
-  "background_color": "#ffffff",
-  "orientation": "portrait",
-  "description": "The developer portfolio of Blake Marcus. Explore full-stack projects using React, Flask, and Tailwind."
+  "categories": ["business", "portfolio", "technology"],
+  "lang": "en"
 }

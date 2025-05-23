@@ -2,68 +2,78 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" href="/favicon.ico" />
-    <link rel="preconnect" href="https://cloud.umami.is" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title>Blake Marcus | Front-End Developer</title>
+    <title>Blake Marcus | Freelance Web Developer – React, Flask, Tailwind</title>
     <meta
       name="description"
-      content="Blake Marcus - Full-Stack Developer, specializing in React, Flask, and clean design for scalable applications." />
+      content="Freelance full-stack developer in Long Beach, CA. I build custom websites and web apps using React, Flask, and Tailwind CSS for small businesses and startups." />
     <meta
       name="keywords"
-      content="Blake Marcus, Front-End Developer, React Developer, Portfolio, Full-Stack, Tailwind, Flask" />
+      content="Blake Marcus, freelance web developer, React developer, Tailwind CSS, Flask, full-stack development, Long Beach, small business websites, web apps" />
     <meta name="author" content="Blake Marcus" />
-
-    <!-- Canonical Link -->
     <link rel="canonical" href="https://blakemarcus.com" />
 
+    <!-- Performance -->
+    <link rel="preconnect" href="https://cloud.umami.is" />
+    <link rel="preload" as="image" href="/og-preview.png" />
+
+    <!-- Favicon & App Icons -->
+    <link rel="icon" href="/favicon.ico" />
+    <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <meta name="theme-color" content="#ffffff" />
+
     <!-- Open Graph -->
-    <meta property="og:title" content="Blake Marcus | Front-End Developer" />
+    <meta property="og:title" content="Blake Marcus | Freelance Web Developer" />
     <meta
       property="og:description"
-      content="Explore the work and projects of Blake Marcus, a skilled developer specializing in React and Flask." />
+      content="Custom websites and full-stack apps using React, Flask, and Tailwind CSS. Based in Long Beach, CA." />
     <meta property="og:image" content="/og-preview.png" />
     <meta property="og:url" content="https://blakemarcus.com" />
     <meta property="og:type" content="website" />
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Blake Marcus | Front-End Developer" />
+    <meta name="twitter:title" content="Blake Marcus | Freelance Web Developer" />
     <meta
       name="twitter:description"
-      content="Portfolio of Blake Marcus, a full-stack developer focused on React, Tailwind, and Flask." />
+      content="Freelance full-stack developer for small businesses and startups. I build custom websites using React and Flask." />
     <meta name="twitter:image" content="/og-preview.png" />
 
-    <!-- Theme -->
-    <meta name="theme-color" content="#ffffff" />
-    <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="shortcut icon" href="/favicon.ico" />
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-    <link rel="manifest" href="/site.webmanifest" />
-    <!-- Structured Data -->
+    <!-- Structured Data (JSON-LD) -->
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
         "@type": "Person",
         "name": "Blake Marcus",
         "url": "https://blakemarcus.com",
-        "sameAs": ["https://www.linkedin.com/in/blakemarcus", "https://github.com/blakee-marcus"],
+        "image": "https://blakemarcus.com/og-preview.png",
         "jobTitle": "Full-Stack Developer",
         "worksFor": {
           "@type": "Organization",
           "name": "GoBasile"
         },
-        "image": "https://blakemarcus.com/og-preview.png",
-        "inLanguage": "en"
+        "sameAs": ["https://www.linkedin.com/in/blake-marcus", "https://github.com/blakee-marcus"],
+        "description": "Freelance web developer building responsive, scalable applications using React, Flask, and Tailwind CSS. Based in Long Beach, CA.",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Long Beach",
+          "addressRegion": "CA",
+          "addressCountry": "US"
+        }
       }
     </script>
+
+    <!-- Analytics -->
     <script
       defer
       src="https://cloud.umami.is/script.js"
       data-website-id="a2f5ea4f-a9d7-4eea-bdd3-10a70e674459"></script>
   </head>
+
   <body class="bg-white text-black" style="font-family: 'Inter', system-ui, sans-serif">
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
