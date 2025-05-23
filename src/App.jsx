@@ -1,6 +1,7 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { useLocation, BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
 import React from 'react';
+import { AnimatePresence } from 'framer-motion';
 
 import Home from './pages/Home.jsx';
 import About from './pages/About.jsx';
@@ -19,15 +20,19 @@ function App() {
       <Router>
         <ScrollToTop />
         <NavBar />
-        <Routes>
-          <Route path='/' element={<Home />} />
-          <Route path='/about' element={<About />} />
-          <Route path='/portfolio' element={<Portfolio />} />
-          <Route path='/contact' element={<Contact />} />
-          <Route path='/landing-pages' element={<LandingPages />} />
-          <Route path='/hire' element={<Hire />} />
-          <Route path='*' element={<NotFound />} />
-        </Routes>
+        <main className='min-h-screen pb-3'>
+          <AnimatePresence mode='wait'>
+            <Routes>
+              <Route path='/' element={<Home />} />
+              <Route path='/about' element={<About />} />
+              <Route path='/portfolio' element={<Portfolio />} />
+              <Route path='/contact' element={<Contact />} />
+              <Route path='/landing-pages' element={<LandingPages />} />
+              <Route path='/hire' element={<Hire />} />
+              <Route path='*' element={<NotFound />} />
+            </Routes>
+          </AnimatePresence>
+        </main>
         <Footer />
       </Router>
     </HelmetProvider>
