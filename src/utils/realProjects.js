@@ -2,14 +2,16 @@ import goBasileImg from '../assets/images/works-thumbnails/gobasile-thumbnail.we
 
 const realProjects = [
   {
-    title: 'GoBasile',
+    title: 'GoBasile – Repair Shop CRM & Marketplace Platform',
     url: 'https://gobasile.com',
     repo: '',
     img: goBasileImg,
     description:
-      'GoBasile is a custom-built marketplace platform designed for tech repair businesses. It helps local shops streamline repair ticket management, attract more leads, and scale their operations through a unified backend system.',
-    results: 'Supports 100+ repair shops with tools for ticketing, inventory, and quoting.',
+      'GoBasile is a full-stack B2B web application and marketplace platform tailored for tech repair businesses. The platform features ticket tracking, customer relationship management (CRM), inventory control, and quoting tools—all in one responsive interface.',
+    results:
+      'Now used by over 100+ repair shops to manage thousands of devices, track repair workflows, and generate new leads through the online marketplace.',
     tech: ['React', 'Flask', 'PostgreSQL', 'Tailwind CSS'],
+    type: 'Client Work',
   },
 ];
 

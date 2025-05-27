@@ -20,7 +20,7 @@ function App() {
       <Router>
         <ScrollToTop />
         <NavBar />
-        <main className='min-h-screen pb-3'>
+        <main role='main' className='min-h-screen pb-3'>
           <AnimatePresence mode='wait'>
             <Routes>
               <Route path='/' element={<Home />} />

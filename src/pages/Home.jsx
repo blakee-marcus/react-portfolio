@@ -6,32 +6,45 @@ function Home() {
   return (
     <>
       <Helmet>
-        <title>Blake Marcus – Custom Websites That Work for Your Business</title>
+        <title>Custom Websites for Small Businesses | Blake Marcus – Freelance Web Developer</title>
         <meta
           name='description'
-          content='Blake Marcus builds fast, modern websites that look bold and work seamlessly. Get a site that’s built to grow with your business.'
+          content='Need a modern website that loads fast and drives results? Blake Marcus builds responsive, mobile-friendly websites for small businesses, startups, and service providers in Long Beach and beyond.'
         />
         <meta
           name='keywords'
-          content='small business websites, custom web design, responsive websites, ecommerce sites, freelance developer, Long Beach'
+          content='freelance web developer, custom business websites, web design Long Beach, responsive web development, landing pages for small business, React developer, SEO-friendly sites'
         />
         <meta name='author' content='Blake Marcus' />
+        <link rel='canonical' href='https://blakemarcus.com/' />
+        <meta
+          property='og:title'
+          content='Blake Marcus – Freelance Web Developer for Small Businesses'
+        />
+        <meta
+          property='og:description'
+          content='Blake Marcus builds high-performance websites for small businesses. See past work or get a quote for a mobile-friendly, SEO-optimized site built to grow with your brand.'
+        />
+        <meta property='og:url' content='https://blakemarcus.com/' />
       </Helmet>
-      <main className='min-h-screen bg-white text-black font-mono flex items-center justify-center border-black px-6 pb-4'>
-        <section className='max-w-5xl w-full'>
-          <h1 className='text-5xl md:text-7xl font-extrabold uppercase border-b-8 border-black pb-6 mb-10 leading-tight tracking-tight'>
-            Custom Websites
-            <br />
-            Built to Perform
+
+      <main className='min-h-screen bg-white text-black font-mono px-4 md:px-6 pb-12 pt-16 border-black'>
+        <section className='max-w-5xl mx-auto space-y-8'>
+          <h1 className='text-4xl sm:text-5xl md:text-6xl font-extrabold uppercase border-b-8 border-black pb-4 leading-tight tracking-tight'>
+            Freelance Web Developer for Small Business Websites
           </h1>
 
-          <p className='text-2xl md:text-3xl uppercase mb-6'>
+          <h2 className='text-xl sm:text-2xl md:text-3xl font-semibold uppercase tracking-wide'>
+            Custom Websites Built to Perform
+          </h2>
+
+          <p className='text-base sm:text-lg md:text-xl uppercase leading-snug'>
             Fast. Mobile-Friendly. Easy to Manage.
-            <br />
+            <br className='hidden sm:block' />
             Designed to help you grow your business.
           </p>
 
-          <p className='text-lg md:text-xl uppercase mb-12 border-l-8 border-black pl-6'>
+          <p className='text-sm sm:text-base md:text-lg uppercase border-l-4 border-black pl-4'>
             I’m currently building a repair marketplace at{' '}
             <a
               href='https://www.gobasile.com'
@@ -43,23 +56,32 @@ function Home() {
             — and taking on new freelance clients.
           </p>
 
-          <div className='flex flex-col md:flex-row gap-6 text-lg uppercase'>
+          <div className='flex flex-col sm:flex-row gap-4 sm:gap-6 text-base sm:text-lg uppercase pt-4'>
             <Link
               to='/portfolio'
-              className='border-4 border-black px-8 py-4 text-center font-bold hover:bg-black hover:text-white transition-colors'>
+              className='border-4 border-black px-6 py-3 text-center font-bold hover:bg-black hover:text-white transition-colors'>
               See My Work
             </Link>
             <Link
               to='/hire'
-              className='border-4 border-black px-8 py-4 text-center font-bold hover:bg-black hover:text-white transition-colors'>
+              className='border-4 border-black px-6 py-3 text-center font-bold hover:bg-black hover:text-white transition-colors'>
               Get a Quote
             </Link>
             <Link
               to='/landing-pages'
-              className='border-4 border-black px-8 py-4 text-center font-bold hover:bg-black hover:text-white transition-colors'>
+              className='border-4 border-black px-6 py-3 text-center font-bold hover:bg-black hover:text-white transition-colors'>
               Need a Site for Your Business?
             </Link>
           </div>
+        </section>
+
+        <section className='mt-16 max-w-3xl mx-auto text-sm sm:text-base leading-relaxed px-1 sm:px-0'>
+          <p>
+            Based in Long Beach, CA, I specialize in building fast, responsive websites for small
+            businesses, local entrepreneurs, and startups. Whether you're launching a new brand,
+            need a landing page, or want to redesign an outdated site, I can help you create
+            something bold, scalable, and effective. Let's build a site that works for you.
+          </p>
         </section>
       </main>
     </>

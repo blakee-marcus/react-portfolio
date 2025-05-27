@@ -5,20 +5,36 @@ function NotFound() {
   return (
     <>
       <Helmet>
-        <title>404 – Page Not Found | Blake Marcus</title>
-        <meta name='description' content="Sorry, that page doesn't exist." />
+        <title>404 Page Not Found | Blake Marcus – Freelance Web Developer</title>
+        <meta
+          name='description'
+          content="Sorry, this page doesn't exist. You can return to the homepage or explore Blake Marcus's web development portfolio."
+        />
+        <meta name='robots' content='noindex, follow' />
+        <link rel='canonical' href='https://blakemarcus.com/404' />
       </Helmet>
+
       <div className='flex flex-col items-center justify-center min-h-screen bg-white px-6 border-t-8 border-l-8 border-black'>
         <h1 className='text-[10rem] font-extrabold uppercase leading-none tracking-tight border-b-8 border-r-8 border-black mb-8 p-4'>
           404
         </h1>
-        <p className='text-2xl font-bold uppercase mb-12 border-b-4 border-black pb-2 w-full max-w-md text-left'>
-          OOPS! THAT PAGE DOESN'T EXIST.
+        <p className='text-xl sm:text-2xl font-bold uppercase mb-8 border-b-4 border-black pb-2 w-full max-w-md text-left'>
+          Oops! That page doesn't exist or may have moved.
         </p>
+        <p className='text-base sm:text-lg mb-12 max-w-md text-left'>
+          You can return to the homepage or check out my portfolio of small business websites and
+          web apps.
+        </p>
+
         <Link
           to='/'
           className='border-8 border-black px-10 py-5 uppercase font-extrabold text-black hover:bg-black hover:text-white transition-all duration-300 max-w-max'>
           GO HOME
+        </Link>
+        <Link
+          to='/portfolio'
+          className='mt-4 border-4 border-black px-8 py-4 text-black font-extrabold uppercase hover:bg-black hover:text-white transition-all duration-300'>
+          View My Work
         </Link>
       </div>
     </>

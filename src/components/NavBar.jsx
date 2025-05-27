@@ -5,6 +5,14 @@ import { useReducedMotion, motion } from 'framer-motion';
 function NavBar() {
   const shouldReduce = useReducedMotion();
 
+  const seoLabels = {
+    Home: 'Home – Blake Marcus',
+    About: 'About Blake Marcus',
+    Portfolio: 'Portfolio – Projects',
+    Contact: 'Contact Blake Marcus',
+    'Hire Me': 'Hire a Web Developer',
+  };
+
   const variants = {
     hidden: { opacity: 0, y: 10 },
     show: (i) => ({
@@ -25,7 +33,10 @@ function NavBar() {
   const specialItem = { to: '/hire', label: 'Hire Me' };
 
   return (
-    <nav className='bg-white text-black border-b-8 border-black font-mono'>
+    <nav
+      className='bg-white text-black border-b-8 border-black font-mono'
+      role='navigation'
+      aria-label='Primary site navigation'>
       <ul className='flex flex-col sm:flex-row justify-center items-center text-lg uppercase tracking-wider'>
         {/* Left nav items */}
         {leftItems.map(({ to, label }, i) => (
@@ -38,8 +49,12 @@ function NavBar() {
                 variants={variants}
                 className={`px-8 py-6 border-black border-t sm:border-t-0 sm:border-r-4 transition-colors font-bold uppercase tracking-wider text-lg ${
                   isActive ? 'bg-black text-white' : 'text-black'
-                }`}>
-                {label}
+                }`}
+                aria-current={isActive ? 'page' : undefined}>
+                <span title={seoLabels[label]}>
+                  <span className='sr-only'>{seoLabels[label]}</span>
+                  <span aria-hidden='true'>{label}</span>
+                </span>
               </motion.li>
             )}
           </NavLink>
@@ -64,14 +79,18 @@ function NavBar() {
           <NavLink key={label} to={to}>
             {({ isActive }) => (
               <motion.li
-                custom={i}
+                custom={i + leftItems.length + 1} // offset index for animation timing
                 initial='hidden'
                 animate='show'
                 variants={variants}
                 className={`px-8 py-6 border-black border-t sm:border-t-0 sm:border-r-4 transition-colors font-bold uppercase tracking-wider text-lg ${
                   isActive ? 'bg-black text-white' : 'text-black'
-                } ${i === 0 ? 'sm:border-l-4' : ''}`}>
-                {label}
+                } ${i === 0 ? 'sm:border-l-4' : ''}`}
+                aria-current={isActive ? 'page' : undefined}>
+                <span title={seoLabels[label]}>
+                  <span className='sr-only'>{seoLabels[label]}</span>
+                  <span aria-hidden='true'>{label}</span>
+                </span>
               </motion.li>
             )}
           </NavLink>
