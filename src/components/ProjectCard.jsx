@@ -1,6 +1,7 @@
-import React from 'react';
+'use client';
+import Image from 'next/image';
 
-function ProjectCard({ project }) {
+export default function ProjectCard({ project }) {
   return (
     <article
       itemScope
@@ -15,9 +16,11 @@ function ProjectCard({ project }) {
           itemProp='url'
           aria-label={`Visit live site for ${project.title}`}>
           <meta itemProp='mainEntityOfPage' content={project.url} />
-          <img
+          <Image
             src={project.img}
             alt={`Screenshot of ${project.title} website or app`}
+            width={800}
+            height={400}
             className='w-full h-56 object-cover'
             itemProp='image'
           />
@@ -76,5 +79,3 @@ function ProjectCard({ project }) {
     </article>
   );
 }
-
-export default ProjectCard;

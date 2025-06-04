@@ -1,40 +1,45 @@
+'use client'
 import React from 'react';
+import Link from 'next/link';
 
 function Footer() {
   return (
     <footer
-      className='bg-white text-black border-t-8 border-black font-mono py-12 px-6'
+      className='bg-[#fefefe] text-black border-t-8 border-black font-mono py-12 px-6'
       role='contentinfo'>
       <div className='max-w-screen-xl mx-auto flex flex-col items-center space-y-6'>
+
         {/* CTA */}
-        <p className='text-base text-center uppercase font-bold tracking-wider max-w-xl'>
+        <p className='text-base text-center uppercase font-black tracking-wider max-w-xl leading-snug'>
           Ready to launch your new website?{' '}
-          <a href='/hire' className='underline hover:text-[#d88a59]'>
+          <Link
+            href='/hire'
+            className='underline decoration-4 underline-offset-4 hover:bg-black hover:text-white px-1 transition-colors'>
             Hire freelance web developer Blake Marcus
-          </a>
+          </Link>
           .
         </p>
 
         {/* Copyright */}
-        <p className='text-lg uppercase font-extrabold border-l-8 border-black pl-6 tracking-wide w-full max-w-xl'>
+        <p className='text-lg uppercase font-extrabold border-l-8 border-black pl-6 tracking-widest w-full max-w-xl'>
           <small>&copy; 2025 Blake Marcus. All Rights Reserved.</small>
         </p>
 
         {/* Tech stack - SEO friendly */}
-        <ul className='text-xs uppercase font-bold tracking-widest border-t-4 border-black pt-2 w-full max-w-xl text-center flex flex-wrap justify-center gap-2'>
-          <li>React</li>
-          <li>Flask</li>
-          <li>PostgreSQL</li>
-          <li>Tailwind CSS</li>
+        <ul className='text-xs uppercase font-extrabold tracking-widest border-t-4 border-black pt-4 w-full max-w-xl text-center flex flex-wrap justify-center gap-x-4 gap-y-2'>
+          <li className='bg-black text-white px-2 py-1'>React</li>
+          <li className='bg-black text-white px-2 py-1'>Flask</li>
+          <li className='bg-black text-white px-2 py-1'>PostgreSQL</li>
+          <li className='bg-black text-white px-2 py-1'>Tailwind CSS</li>
         </ul>
 
         {/* Location - Local SEO */}
-        <p className='text-xs tracking-wide text-center'>
+        <p className='text-xs tracking-wider text-center font-medium uppercase'>
           Serving Long Beach, CA and remote clients across the U.S.
         </p>
 
         {/* Contact Links */}
-        <div className='flex space-x-8 mt-4 uppercase font-bold text-sm'>
+        <div className='flex flex-wrap justify-center gap-6 mt-6 text-sm uppercase font-bold'>
           {[
             { href: 'mailto:marcusb733@gmail.com', label: 'Email', aria: 'Email Blake Marcus' },
             {
@@ -55,8 +60,7 @@ function Footer() {
               href={href}
               target={external ? '_blank' : undefined}
               rel={external ? `noopener noreferrer${rel ? ` ${rel}` : ''}` : rel}
-              /*  */
-              className='border-b-4 border-black pb-1 hover:text-[#d88a59] transition-colors'
+              className='border-2 border-black px-4 py-1 hover:bg-black hover:text-white transition-colors'
               aria-label={aria || label}>
               {label}
             </a>
