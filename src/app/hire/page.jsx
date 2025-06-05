@@ -48,7 +48,12 @@ export default function Hire() {
           property='og:description'
           content='Looking to launch or redesign a website? Hire Blake Marcus — a freelance web developer offering affordable packages for small businesses and startups.'
         />
-        <meta property='og:url' content='https://blakemarcus.com/hire' />
+        <meta property='og:url' content='https://blakemarcus.com/hire' /><meta
+          property='og:image'
+          content='https://blakemarcus.com/api/og?title=Hire+Blake+Marcus'
+        />
+        <meta property='og:image:width' content='1200' />
+        <meta property='og:image:height' content='630' />
 
         {/* Structured Data: Product Offers */}
         <script

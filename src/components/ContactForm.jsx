@@ -70,6 +70,13 @@ export default function ContactContent() {
           content='Have a project in mind? Fill out this form to contact Blake Marcus — a web developer focused on building clean, high-converting websites and landing pages for businesses.'
         />
         <meta property='og:url' content='https://blakemarcus.com/contact' />
+        <meta
+          property='og:image'
+          content='https://blakemarcus.com/api/og?title=Contact+Blake+Marcus'
+        />
+        <meta property='og:image:width' content='1200' />
+        <meta property='og:image:height' content='630' />
+
         <script
           type='application/ld+json'
           dangerouslySetInnerHTML={{

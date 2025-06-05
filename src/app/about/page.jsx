@@ -22,6 +22,12 @@ export default function About() {
           content='Need a new website for your business? Hire Blake Marcus, a freelance web developer in Long Beach, CA, specializing in custom websites, landing pages, and SEO-focused redesigns.'
         />
         <meta property='og:url' content='https://blakemarcus.com/about' />
+        <meta
+          property='og:image'
+          content='https://blakemarcus.com/api/og?title=About+Blake+Marcus'
+        />
+        <meta property='og:image:width' content='1200' />
+        <meta property='og:image:height' content='630' />
       </Head>
 
       <main className='min-h-screen bg-black text-white font-mono'>

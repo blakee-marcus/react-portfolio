@@ -14,6 +14,13 @@ export const metadata = {
     description:
       'Explore the work of Blake Marcus — web developer specializing in responsive websites and custom applications for small businesses.',
     url: 'https://blakemarcus.com/portfolio',
+    images: [
+      {
+        url: 'https://blakemarcus.com/api/og?title=Web+Developer+Portfolio',
+        width: 1200,
+        height: 630,
+      },
+    ],
   },
 };
 
