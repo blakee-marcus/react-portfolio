@@ -15,16 +15,16 @@ export default function About() {
           content='web developer Long Beach, website redesign for small business, freelance web developer, hire web developer near me, custom business websites, React developer, Tailwind CSS, local web designer, full stack developer Long Beach'
         />
         <meta name='author' content='Blake Marcus' />
-        <link rel='canonical' href='https://blakemarcus.com/about' />
+        <link rel='canonical' href='https://www.blakemarcus.com/about' />
         <meta property='og:title' content='Freelance Web Developer in Long Beach – Blake Marcus' />
         <meta
           property='og:description'
           content='Need a new website for your business? Hire Blake Marcus, a freelance web developer in Long Beach, CA, specializing in custom websites, landing pages, and SEO-focused redesigns.'
         />
-        <meta property='og:url' content='https://blakemarcus.com/about' />
+        <meta property='og:url' content='https://www.blakemarcus.com/about' />
         <meta
           property='og:image'
-          content='https://blakemarcus.com/api/og?title=About+Blake+Marcus'
+          content='https://www.blakemarcus.com/api/og?title=About+Blake+Marcus'
         />
         <meta property='og:image:width' content='1200' />
         <meta property='og:image:height' content='630' />

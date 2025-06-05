@@ -13,10 +13,10 @@ export const metadata = {
     title: 'Blake Marcus | Freelance Web Developer Portfolio',
     description:
       'Explore the work of Blake Marcus — web developer specializing in responsive websites and custom applications for small businesses.',
-    url: 'https://blakemarcus.com/portfolio',
+    url: 'https://www.blakemarcus.com/portfolio',
     images: [
       {
-        url: 'https://blakemarcus.com/api/og?title=Web+Developer+Portfolio',
+        url: 'https://www.blakemarcus.com/api/og?title=Web+Developer+Portfolio',
         width: 1200,
         height: 630,
       },

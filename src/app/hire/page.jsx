@@ -39,7 +39,7 @@ export default function Hire() {
           name='keywords'
           content='hire web developer, freelance web design pricing, landing page cost, business website packages, full-stack development, web app developer, React developer Long Beach'
         />
-        <link rel='canonical' href='https://blakemarcus.com/hire' />
+        <link rel='canonical' href='https://www.blakemarcus.com/hire' />
         <meta
           property='og:title'
           content='Hire Blake Marcus | Web Development Packages & Pricing'
@@ -48,9 +48,10 @@ export default function Hire() {
           property='og:description'
           content='Looking to launch or redesign a website? Hire Blake Marcus — a freelance web developer offering affordable packages for small businesses and startups.'
         />
-        <meta property='og:url' content='https://blakemarcus.com/hire' /><meta
+        <meta property='og:url' content='https://www.blakemarcus.com/hire' />
+        <meta
           property='og:image'
-          content='https://blakemarcus.com/api/og?title=Hire+Blake+Marcus'
+          content='https://www.blakemarcus.com/api/og?title=Hire+Blake+Marcus'
         />
         <meta property='og:image:width' content='1200' />
         <meta property='og:image:height' content='630' />
@@ -64,14 +65,14 @@ export default function Hire() {
               '@type': 'Product',
               name: 'Web Development Packages',
               brand: 'Blake Marcus',
-              url: 'https://blakemarcus.com/hire',
+              url: 'https://www.blakemarcus.com/hire',
               offers: [
                 {
                   '@type': 'Offer',
                   name: 'Starter Landing Page',
                   priceCurrency: 'USD',
                   price: '500',
-                  url: 'https://blakemarcus.com/contact?tier=starter',
+                  url: 'https://www.blakemarcus.com/contact?tier=starter',
                   availability: 'https://schema.org/InStock',
                 },
                 {
@@ -79,7 +80,7 @@ export default function Hire() {
                   name: 'Professional Website',
                   priceCurrency: 'USD',
                   price: '1500',
-                  url: 'https://blakemarcus.com/contact?tier=professional',
+                  url: 'https://www.blakemarcus.com/contact?tier=professional',
                   availability: 'https://schema.org/InStock',
                 },
                 {
@@ -87,7 +88,7 @@ export default function Hire() {
                   name: 'Premium Web App',
                   priceCurrency: 'USD',
                   price: '3000',
-                  url: 'https://blakemarcus.com/contact?tier=premium',
+                  url: 'https://www.blakemarcus.com/contact?tier=premium',
                   availability: 'https://schema.org/InStock',
                 },
               ],
@@ -141,7 +142,7 @@ export default function Hire() {
               provider: {
                 '@type': 'Person',
                 name: 'Blake Marcus',
-                url: 'https://blakemarcus.com',
+                url: 'https://www.blakemarcus.com',
                 address: {
                   '@type': 'PostalAddress',
                   addressLocality: 'Long Beach',

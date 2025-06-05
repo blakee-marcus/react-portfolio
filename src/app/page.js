@@ -17,7 +17,7 @@ function Home() {
           content='freelance web developer, custom business websites, web design Long Beach, responsive web development, landing pages for small business, React developer, SEO-friendly sites'
         />
         <meta name='author' content='Blake Marcus' />
-        <link rel='canonical' href='https://blakemarcus.com/' />
+        <link rel='canonical' href='https://www.blakemarcus.com/' />
         <meta
           property='og:title'
           content='Blake Marcus – Freelance Web Developer for Small Businesses'
@@ -26,10 +26,10 @@ function Home() {
           property='og:description'
           content='Blake Marcus builds high-performance websites for small businesses. See past work or get a quote for a mobile-friendly, SEO-optimized site built to grow with your brand.'
         />
-        <meta property='og:url' content='https://blakemarcus.com/' />
+        <meta property='og:url' content='https://www.blakemarcus.com/' />
         <meta
           property='og:image'
-          content='https://blakemarcus.com/api/og?title=Blake+Marcus+Web+Developer'
+          content='https://www.blakemarcus.com/api/og?title=Blake+Marcus+Web+Developer'
         />
         <meta property='og:image:width' content='1200' />
         <meta property='og:image:height' content='630' />

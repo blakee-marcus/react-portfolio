@@ -13,7 +13,7 @@ export default function NotFound() {
           content="Sorry, this page doesn't exist. You can return to the homepage or explore Blake Marcus's web development portfolio."
         />
         <meta name='robots' content='noindex, follow' />
-        <link rel='canonical' href='https://blakemarcus.com/404' />
+        <link rel='canonical' href='https://www.blakemarcus.com/404' />
       </Head>
 
       <div className='flex flex-col items-center justify-center min-h-screen bg-white px-6 border-t-8 border-l-8 border-black'>
