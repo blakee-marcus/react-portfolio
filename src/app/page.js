@@ -27,6 +27,12 @@ function Home() {
           content='Blake Marcus builds high-performance websites for small businesses. See past work or get a quote for a mobile-friendly, SEO-optimized site built to grow with your brand.'
         />
         <meta property='og:url' content='https://blakemarcus.com/' />
+        <meta
+          property='og:image'
+          content='https://blakemarcus.com/api/og?title=Blake+Marcus+Web+Developer'
+        />
+        <meta property='og:image:width' content='1200' />
+        <meta property='og:image:height' content='630' />
       </Head>
 
       <main className='min-h-screen bg-white text-black font-mono px-4 md:px-6 pb-12 pt-16 border-black'>
