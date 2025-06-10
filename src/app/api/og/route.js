@@ -4,7 +4,7 @@ export const runtime = 'edge';
 
 export async function GET(req) {
   const { searchParams } = new URL(req.url);
-  const title = searchParams.get('title') || 'My Default Title';
+  const title = searchParams.get('title') || 'Blake Marcus';
 
   return new ImageResponse(
     (
