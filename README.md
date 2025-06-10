@@ -5,96 +5,62 @@
 [![MIT License][license-shield]][license-url]
 [![LinkedIn][linkedin-shield]][linkedin-url]
 
-<!-- PROJECT LOGO -->
 <br />
 <div align="center">
 
-<h3 align="center">React Portfolio</h3>
-
+  <h1 align="center">Blake Marcus – React Portfolio</h1>
   <p align="center">
+    My personal developer portfolio built with React + Tailwind + Vite.
     <br />
-    <a href="https://github.com/blakee-marcus/react-portfolio"><strong>Explore the docs »</strong></a>
+    <a href="https://blakemarcus.com"><strong>🧪 View Live Site »</strong></a>
     <br />
     <br />
-    <a href="https://blakee-marcus.github.io/react-portfolio/">View Demo</a>
-    ·
     <a href="https://github.com/blakee-marcus/react-portfolio/issues">Report Bug</a>
     ·
     <a href="https://github.com/blakee-marcus/react-portfolio/issues">Request Feature</a>
   </p>
 </div>
 
-<!-- TABLE OF CONTENTS -->
-<details>
-  <summary>Table of Contents</summary>
-  <ol>
-    <li>
-      <a href="#about-the-project">About The Project</a>
-      <ul>
-        <li><a href="#built-with">Built With</a></li>
-      </ul>
-    </li>
-    <li>
-      <a href="#getting-started">Getting Started</a>
-      <ul>
-        <li><a href="#installation">Installation</a></li>
-      </ul>
-    </li>
-    <li><a href="#contact">Contact</a></li>
-    
-  </ol>
-</details>
+---
 
-<!-- ABOUT THE PROJECT -->
+## 🧩 About This Project
 
-## About The Project
+This is the source code for [blakemarcus.com](https://blakemarcus.com), a personal portfolio built to showcase my work as a full-stack developer. It includes client projects, startup contributions, and personal game development.
 
-Being a web developer means being part of a community. You’ll need a place to share your projects not only if you're applying for jobs or working as a freelancer but also so that you can share your work with fellow developers and collaborate on future projects.
+Originally built in React with Vite, this project has since been upgraded to **Next.js** for better performance, SEO, and routing capabilities. The layout embraces a minimal, high-contrast style with quick load times and responsive design.
 
-Now that you’ve completed multiple projects, your task is to create a portfolio, using your new React skills to help set you apart from other developers whose portfolios don’t use the latest technologies.
+---
 
-Just as you did in the module project, you’ll need to deploy this application to GitHub Pages. Follow the same instructions that you did for the project to create a build that you can deploy.
+## ⚙️ Built With
 
-<p align="right">(<a href="#top">back to top</a>)</p>
+- [React](https://reactjs.org/)
+- [Vite](https://vitejs.dev/)
+- [Tailwind CSS](https://tailwindcss.com/)
+- [Framer Motion](https://www.framer.com/motion/)
+- [Lucide Icons](https://lucide.dev/)
 
-### Built With
+---
 
-- [Node.js](https://nodejs.org/en/)
-- [React.js](https://reactjs.org/)
+## 🚀 Getting Started
 
-<p align="right">(<a href="#top">back to top</a>)</p>
+To run locally:
 
-<!-- GETTING STARTED -->
+```bash
+git clone https://github.com/blakee-marcus/react-portfolio.git
+cd react-portfolio
+npm install
+npm run dev
 
-## Getting Started
+```
 
-To get a local copy up and running follow these steps.
+## 📬 Contact
 
-### Installation
+Blake Marcus  
+📧 marcusb733@gmail.com  
+🌐 blakemarcus.com  
+🔗 linkedin.com/in/blake-marcus  
 
-1. Clone the repo
-   ```sh
-   git clone https://github.com/blakee-marcus/react-portfolio.git
-   ```
-2. Install NPM packages
-   ```sh
-   npm install
-   ```
-
-<p align="right">(<a href="#top">back to top</a>)</p>
-
-<!-- CONTACT -->
-
-## Contact
-
-Blake M - marcusb733@gmail.com
-
-Project Link: [https://github.com/blakee-marcus/react-portfolio](https://github.com/blakee-marcus/react-portfolio)
-Live Project: [https://blakee-marcus.github.io/react-portfolio/](https://blakee-marcus.github.io/react-portfolio/)
-
-<p align="right">(<a href="#top">back to top</a>)</p>
-
-<!-- MARKDOWN LINKS & IMAGES -->
+<p align="right"><a href="#top">Back to top ↑</a></p> <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 
 [contributors-shield]: https://img.shields.io/github/contributors/blakee-marcus/react-portfolio.svg?style=for-the-badge
