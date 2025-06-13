@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { useSearchParams } from 'next/navigation';
 import Head from 'next/head';
+import { Mail, Loader, Send, CheckCircle, Boxes } from 'lucide-react';
 
 export default function ContactContent() {
   const [submitted, setSubmitted] = useState(false);
@@ -45,7 +46,7 @@ export default function ContactContent() {
   };
 
   const inputStyles =
-    'w-full border-4 border-black p-4 text-xl bg-transparent placeholder-black font-mono focus:outline-none focus:bg-black focus:text-white focus:invert transition-colors';
+    'w-full border-4 border-primary p-4 text-xl bg-transparent placeholder-primary font-base focus:outline-none focus:bg-primary focus:text-secondary transition-colors duration-200';
 
   return (
     <>
@@ -53,13 +54,8 @@ export default function ContactContent() {
         <title>Contact Blake Marcus | Hire a Web Developer for Your Business Website</title>
         <meta
           name='description'
-          content='Looking to hire a freelance web developer? Reach out to Blake Marcus to get a fast, mobile-friendly website or landing page tailored for your business. Serving Long Beach and remote clients.'
+          content='Looking to hire a freelance web developer? Reach out to Blake Marcus to get a fast, mobile-friendly website or landing page tailored for your business.'
         />
-        <meta
-          name='keywords'
-          content='hire web developer, business website contact form, landing page developer, freelance React developer, Long Beach web design, custom websites for small business, contact Blake Marcus'
-        />
-        <meta name='author' content='Blake Marcus' />
         <link rel='canonical' href='https://blakemarcus.com/contact' />
         <meta
           property='og:title'
@@ -76,70 +72,33 @@ export default function ContactContent() {
         />
         <meta property='og:image:width' content='1200' />
         <meta property='og:image:height' content='630' />
-
-        <script
-          type='application/ld+json'
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              '@context': 'https://schema.org',
-              '@type': 'Person',
-              name: 'Blake Marcus',
-              jobTitle: 'Freelance Web Developer',
-              url: 'https://blakemarcus.com',
-              worksFor: { '@type': 'Organization', name: 'Self-Employed' },
-              sameAs: [
-                'https://www.linkedin.com/in/blake-marcus/',
-                'https://github.com/blakee-marcus',
-              ],
-              knowsAbout: [
-                'React',
-                'Tailwind CSS',
-                'Flask',
-                'JavaScript',
-                'Landing Page Design',
-                'Small Business Web Development',
-              ],
-              address: {
-                '@type': 'PostalAddress',
-                addressLocality: 'Long Beach',
-                addressRegion: 'CA',
-                addressCountry: 'US',
-              },
-              contactPoint: {
-                '@type': 'ContactPoint',
-                contactType: 'Customer Support',
-                email: 'marcusb733@gmail.com',
-                url: 'https://blakemarcus.com/contact',
-              },
-            }),
-          }}
-        />
       </Head>
 
-      <main className='min-h-screen bg-white text-black font-mono'>
-        <header className='w-full bg-black text-white p-6 text-center text-4xl font-extrabold uppercase tracking-tight border-b-8 border-black'>
-          GET IN TOUCH
+      <main className='min-h-screen bg-secondary text-primary font-base px-6 sm:px-12 py-16 border-4 border-primary shadow-brutal'>
+        <header className='text-center bg-primary text-secondary py-6 px-4 text-4xl font-extrabold uppercase tracking-wide border-b-4 border-primary flex justify-center items-center gap-3'>
+          <Mail size={28} />
+          Get in Touch
         </header>
 
-        <section className='max-w-screen-lg mx-auto border-8 border-black mt-16'>
-          <div className='p-12'>
-            <h1 className='text-4xl md:text-5xl font-extrabold uppercase tracking-wide border-b-4 border-black pb-4 mb-8 text-left'>
-              Hire a Web Developer for Your Business Website
+        <section className='max-w-5xl mx-auto mt-16 border-4 border-primary'>
+          <div className='px-6 sm:px-12 py-12'>
+            <h1 className='text-3xl sm:text-5xl font-extrabold uppercase border-b-4 border-primary pb-4 mb-8'>
+              Hire a Web Developer for Your Business
             </h1>
 
-            <p className='text-lg md:text-xl mb-10 text-left'>
-              Whether you’re launching a new business or refreshing your online presence, I
-              specialize in building custom websites and landing pages for small businesses. From
-              barbershops and gyms to service-based pros, I work with you to create something fast,
-              mobile-friendly, and built to convert.
+            <p className='text-lg sm:text-xl mb-10 border-l-4 border-primary pl-4'>
+              I specialize in building bold, mobile-friendly websites and landing pages for small
+              businesses. From gyms and salons to startups and consultants — I’ll help you launch
+              something that performs.
             </p>
 
             {submitted ? (
-              <div className='text-2xl text-center font-bold text-black border-t-4 border-black pt-12'>
-                Thank you for reaching out! I’ll get back to you soon.
+              <div className='text-center text-2xl font-bold text-primary pt-12 border-t-4 border-primary flex flex-col items-center gap-4'>
+                <CheckCircle size={40} className='text-highlight' />
+                Thank you for reaching out! I’ll be in touch shortly.
               </div>
             ) : (
-              <form onSubmit={handleSubmit} className='space-y-8 border-t-4 border-black pt-8'>
+              <form onSubmit={handleSubmit} className='space-y-8 border-t-4 border-primary pt-8'>
                 {[
                   { id: 'name', label: 'Name', type: 'text', required: true },
                   { id: 'email', label: 'Email', type: 'email', required: true },
@@ -149,21 +108,11 @@ export default function ContactContent() {
                     type: 'text',
                     required: false,
                   },
-                  {
-                    id: 'industry',
-                    label: 'Business Type',
-                    type: 'text',
-                    required: true,
-                  },
-                  {
-                    id: 'timeline',
-                    label: 'Preferred Timeline',
-                    type: 'text',
-                    required: false,
-                  },
+                  { id: 'industry', label: 'Business Type', type: 'text', required: true },
+                  { id: 'timeline', label: 'Preferred Timeline', type: 'text', required: false },
                 ].map(({ id, label, type, required }) => (
                   <div key={id}>
-                    <label htmlFor={id} className='block text-xl font-bold mb-2'>
+                    <label htmlFor={id} className='block text-xl font-bold mb-2 uppercase'>
                       {label}
                     </label>
                     <input
@@ -177,47 +126,58 @@ export default function ContactContent() {
                   </div>
                 ))}
 
-                <input type='hidden' name='package' value={tier} className={inputStyles} />
+                <input type='hidden' name='package' value={tier} />
                 <input type='hidden' name='ref' value='landing-pages' />
                 <input type='hidden' name='subject' value='Landing Page Inquiry' />
 
                 <div>
-                  <label htmlFor='message' className='block text-xl font-bold mb-2'>
+                  <label htmlFor='message' className='block text-xl font-bold mb-2 uppercase'>
                     Message
                   </label>
                   <textarea
                     id='message'
                     name='message'
-                    rows='8'
-                    placeholder='Tell me what you’re looking for! Services, style, colors, must-haves, etc.'
-                    className={inputStyles}
+                    rows='6'
+                    placeholder='Tell me what you need — project goals, style, features, etc.'
                     required
+                    className={inputStyles}
                   />
                 </div>
 
-                {error && <div className='text-red-500 text-xl font-bold mb-4'>{error}</div>}
+                {error && <div className='text-accent text-xl font-bold'>{error}</div>}
 
                 <button
                   type='submit'
                   disabled={loading}
-                  className={`w-full border-4 border-black p-4 text-xl font-bold uppercase tracking-wider transition-colors ${
+                  className={`w-full border-4 border-primary p-4 text-xl font-bold uppercase tracking-wider transition-colors inline-flex items-center justify-center gap-3 ${
                     loading
-                      ? 'bg-gray-400 text-white'
-                      : 'bg-black text-white hover:bg-white hover:text-black'
+                      ? 'bg-muted text-white cursor-not-allowed'
+                      : 'bg-primary text-secondary hover:bg-highlight hover:text-primary'
                   }`}>
-                  {loading ? 'Sending...' : 'Send Message'}
+                  {loading ? (
+                    <>
+                      <Loader className='animate-spin' size={20} />
+                      Sending...
+                    </>
+                  ) : (
+                    <>
+                      <Send size={20} />
+                      Send Message
+                    </>
+                  )}
                 </button>
               </form>
             )}
           </div>
         </section>
 
-        <div className='text-center mt-12'>
-          <p className='text-xl mb-4'>Ready to start your project?</p>
+        <div className='text-center mt-16 mb-24'>
+          <p className='text-xl mb-4'>Want to explore service tiers first?</p>
           <a
             href='/hire'
-            className='inline-block bg-black text-white border-4 border-black px-6 py-3 font-bold uppercase hover:bg-white hover:text-black transition-colors'>
-            View Service Tiers
+            className='inline-flex items-center gap-2 border-4 border-primary bg-primary text-secondary px-6 py-3 font-bold uppercase hover:bg-accent hover:text-secondary transition-colors'>
+            <Boxes size={18} />
+            View Packages
           </a>
         </div>
       </main>

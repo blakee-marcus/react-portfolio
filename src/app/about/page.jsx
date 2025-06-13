@@ -1,5 +1,6 @@
 'use client';
 import Head from 'next/head';
+import { User, Settings, Code2, FolderOpen, GraduationCap, Handshake } from 'lucide-react';
 
 export default function About() {
   return (
@@ -30,153 +31,170 @@ export default function About() {
         <meta property='og:image:height' content='630' />
       </Head>
 
-      <main className='min-h-screen bg-black text-white font-mono'>
-        <header className='w-full bg-black px-4 py-6 text-center text-3xl md:text-4xl font-extrabold uppercase tracking-tight'>
-          <h1>About Blake Marcus</h1>
+      <main className='min-h-screen bg-secondary text-primary font-base px-6 sm:px-12 py-16 border-4 border-primary shadow-brutal'>
+        <header className='w-full px-4 py-10 text-center border-b-4 border-primary'>
+          <h1 className='text-[2.5rem] sm:text-6xl font-headings uppercase tracking-[var(--letter-spacing-wide)] flex flex-col sm:flex-row gap-3 items-center justify-center sm:justify-start text-center sm:text-left'>
+            <User size={32} />
+            About Blake Marcus
+          </h1>
         </header>
 
-        <section className='max-w-screen-lg mx-auto px-4 md:px-8 py-12 md:py-16'>
-          <h2 className='text-3xl md:text-5xl font-extrabold uppercase text-white border-b-2 border-white pb-4 md:pb-6 mb-8 md:mb-12 tracking-widest'>
-            Custom Website Development for Local Businesses
-          </h2>
+        <section className='max-w-6xl mx-auto px-6 sm:px-12 py-16 space-y-[var(--component-gap)]'>
+          <div>
+            <h2 className='text-3xl sm:text-5xl font-headings uppercase border-l-4 border-primary pl-4 tracking-tight inline-flex items-center gap-2'>
+              <Settings size={28} />
+              Custom Website Development for Local Businesses
+            </h2>
 
-          <p className='text-base md:text-lg mb-6'>
-            I’m Blake Marcus — a <strong>freelance web developer in Long Beach, CA</strong> focused
-            on helping local businesses and entrepreneurs <strong>redo their websites</strong> to
-            boost credibility, performance, and search visibility.
-          </p>
-
-          <p className='text-base md:text-lg mb-6'>
-            Whether you need a <strong>modern redesign</strong>, a <strong>landing page</strong> to
-            drive leads, or a custom web app to streamline operations, I’ll help you build a
-            solution that’s <strong>fast-loading</strong>, <strong>SEO-friendly</strong>, and{' '}
-            <strong>easy to maintain</strong>.
-          </p>
-
-          <p className='text-base md:text-lg mb-10'>
-            I currently work at <strong>GoBasile</strong>, where I build a marketplace for tech
-            repair shops — but I also partner with small business owners like you to launch
-            professional websites that stand out.
-          </p>
-
-          <h3 className='text-2xl md:text-3xl font-extrabold uppercase tracking-wide mb-4 md:mb-6'>
-            Services I Offer
-          </h3>
-          <ul className='text-base md:text-xl mb-10 space-y-3 md:space-y-4 list-disc list-inside'>
-            <li>Redesigns for outdated business websites</li>
-            <li>Custom landing pages optimized for conversions</li>
-            <li>SEO-ready websites with contact forms and social proof</li>
-            <li>Web apps with dashboards, accounts, and backend logic</li>
-          </ul>
-
-          <h3 className='text-2xl md:text-3xl font-extrabold uppercase tracking-wide mb-4 md:mb-6'>
-            Tech Stack
-          </h3>
-          <ul className='text-base md:text-xl mb-10 space-y-2'>
-            <li>
-              <strong>Front-End:</strong> React, Tailwind CSS, JavaScript
-            </li>
-            <li>
-              <strong>Back-End:</strong> Flask, Node.js, Express, GraphQL
-            </li>
-            <li>
-              <strong>Databases:</strong> PostgreSQL, MongoDB
-            </li>
-            <li>
-              <strong>Tools:</strong> Git, GitHub, Vercel, Heroku, AWS
-            </li>
-          </ul>
-
-          <h3 className='text-2xl md:text-3xl font-extrabold uppercase tracking-wide mb-4 md:mb-6'>
-            Sample Projects
-          </h3>
-          <ul className='text-base md:text-xl mb-10 space-y-6'>
-            <li>
-              <strong>Customer Central CRM:</strong> A React + GraphQL app for managing client
-              relationships, custom-built for a service-based team.
-              <br />
-              <a
-                href='https://github.com/blakee-marcus/customer-central'
-                className='text-neon hover:text-white'
-                target='_blank'
-                rel='noopener noreferrer'>
-                View Project
-              </a>
-            </li>
-            <li>
-              <strong>Tesla Check-In Tool:</strong> A check-in kiosk tool that improved delivery
-              speed by 75%. Developed while working at Tesla.
-              <br />
-              <a
-                href='https://github.com/blakee-marcus/Check-In-Tool'
-                className='text-neon hover:text-white'
-                target='_blank'
-                rel='noopener noreferrer'>
-                View Project
-              </a>
-            </li>
-            <li>
-              <strong>Deep Thoughts:</strong> A lightweight social app built with React and Node.js.
-              <br />
-              <a
-                href='https://github.com/blakee-marcus/deep-thoughts'
-                className='text-neon hover:text-white'
-                target='_blank'
-                rel='noopener noreferrer'>
-                View Project
-              </a>
-            </li>
-          </ul>
-
-          <h3 className='text-2xl md:text-3xl font-extrabold uppercase tracking-wide mb-4 md:mb-6'>
-            Experience & Teaching
-          </h3>
-          <div className='mb-6'>
-            <h4 className='text-xl md:text-2xl font-semibold'>
-              Teaching Assistant – edX (2022–Present)
-            </h4>
-            <p className='text-base md:text-lg'>
-              Helping students learn full-stack web development, including React, Node.js, and
-              responsive design.
+            <p className='mt-4 text-lg leading-relaxed border-l-4 border-primary pl-4'>
+              I’m Blake Marcus — a <strong>freelance web developer</strong> in Long Beach, CA
+              helping small businesses <strong>rebuild their websites</strong> to boost trust,
+              speed, and SEO.
             </p>
-          </div>
-          <div className='mb-10'>
-            <h4 className='text-xl md:text-2xl font-semibold'>Tesla Advisor (2023–2024)</h4>
-            <p className='text-base md:text-lg'>
-              Delivered a custom check-in tool to improve delivery workflow. Gained hands-on
-              experience blending tech with real-world operations.
+            <p className='text-lg leading-relaxed border-l-4 border-primary pl-4'>
+              Whether you need a <strong>modern redesign</strong>, <strong>landing page</strong>, or
+              fully custom app, I’ll help you ship something{' '}
+              <strong>fast, clean, and easy to manage</strong>.
+            </p>
+            <p className='text-lg leading-relaxed border-l-4 border-primary pl-4'>
+              I work at <strong>GoBasile</strong>, building a device marketplace — and I partner
+              with small business owners like you to ship professional websites that{' '}
+              <em>stand out</em>.
             </p>
           </div>
 
-          <h3 className='text-2xl md:text-3xl font-extrabold uppercase tracking-wide mb-4 md:mb-6'>
-            Let’s Work Together
-          </h3>
-          <p className='text-base md:text-lg mb-4'>
-            Ready to <strong>rebuild your business website</strong>?{' '}
-            <a href='mailto:marcusb733@gmail.com' className='text-neon hover:text-white'>
-              Email me
-            </a>{' '}
-            or connect on{' '}
-            <a
-              href='https://www.linkedin.com/in/blake-marcus/'
-              className='text-neon hover:text-white'
-              target='_blank'
-              rel='noopener noreferrer'>
-              LinkedIn
-            </a>
-            .
-          </p>
-          <p className='text-base md:text-lg'>
-            You can also check out more of my work on{' '}
-            <a
-              href='https://github.com/blakee-marcus'
-              className='text-neon hover:text-white'
-              target='_blank'
-              rel='noopener noreferrer'>
-              GitHub
-            </a>
-            .
-          </p>
+          <div>
+            <h3 className='text-2xl sm:text-3xl font-headings uppercase border-b-4 border-primary pb-2'>
+              Services I Offer
+            </h3>
+            <ul className='list-disc list-inside text-lg space-y-3 pt-4'>
+              <li>Website redesigns with bold, mobile-first layouts</li>
+              <li>Custom landing pages optimized for conversions</li>
+              <li>SEO-ready sites with forms, reviews, and integrations</li>
+              <li>Web apps with dashboards, logins, and backend logic</li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 className='text-2xl sm:text-3xl font-headings uppercase border-b-4 border-primary pb-2'>
+              <Code2 />
+              Tech Stack
+            </h3>
+            <ul className='text-lg space-y-1 pt-4'>
+              <li>
+                <strong>Front-End:</strong> React, Tailwind CSS, JavaScript
+              </li>
+              <li>
+                <strong>Back-End:</strong> Flask, Node.js, Express, GraphQL
+              </li>
+              <li>
+                <strong>Databases:</strong> PostgreSQL, MongoDB
+              </li>
+              <li>
+                <strong>Tools:</strong> Git, GitHub, Vercel, Heroku, AWS
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 className='text-2xl sm:text-3xl font-headings uppercase border-b-4 border-primary pb-2 inline-flex items-center gap-2'>
+              <FolderOpen />
+              <span>Sample Projects</span>
+            </h3>
+            <ul className='text-lg space-y-6 pt-4'>
+              {[
+                {
+                  name: 'Tesla Check-In Tool',
+                  desc: 'Internal kiosk app to streamline vehicle delivery workflows and improve customer handoffs.',
+                  link: 'https://github.com/blakee-marcus/Check-In-Tool',
+                },
+                {
+                  name: 'Every After Bakery',
+                  desc: 'Full-stack eCommerce platform with login, cart, checkout, admin features, and Stripe payments.',
+                  link: 'https://github.com/Azurene/ever-after-bakery',
+                },
+                {
+                  name: 'Tech Blog',
+                  desc: 'A CMS-style blog where users can sign up, write posts, and comment. Built with Express and MySQL.',
+                  link: 'https://github.com/blakee-marcus/tech-blog',
+                },
+              ].map(({ name, desc, link }) => (
+                <li key={name}>
+                  <strong>{name}:</strong> {desc}
+                  <br />
+                  <a
+                    href={link}
+                    target='_blank'
+                    rel='noopener noreferrer'
+                    className='text-accent underline hover:bg-accent hover:text-secondary transition-colors'>
+                    View Project
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div>
+            <h3 className='text-2xl sm:text-3xl font-headings uppercase border-b-4 border-primary pb-2'>
+              <GraduationCap />
+              Experience & Teaching
+            </h3>
+            <div className='pt-4 space-y-6'>
+              <div>
+                <h4 className='text-xl sm:text-2xl font-bold uppercase tracking-wide'>
+                  Teaching Assistant – edX (2022–Present)
+                </h4>
+                <p className='text-lg'>
+                  I help students master full-stack development — from React and APIs to responsive
+                  design.
+                </p>
+              </div>
+              <div>
+                <h4 className='text-xl sm:text-2xl font-bold uppercase tracking-wide'>
+                  Tesla Advisor (2023–2024)
+                </h4>
+                <p className='text-lg'>
+                  Built a kiosk tool to improve delivery workflows. Bridged tech with real-world
+                  ops.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <h3 className='text-2xl sm:text-3xl font-headings uppercase border-b-4 border-primary pb-2'>
+              <Handshake />
+              Let’s Work Together
+            </h3>
+            <p className='text-lg mt-4 border-l-4 border-primary pl-4'>
+              Ready to <strong>rebuild your website</strong>?{' '}
+              <a
+                href='mailto:marcusb733@gmail.com'
+                className='text-highlight underline hover:bg-highlight hover:text-primary transition-colors'>
+                Email me
+              </a>{' '}
+              or connect on{' '}
+              <a
+                href='https://www.linkedin.com/in/blake-marcus/'
+                className='text-highlight underline hover:bg-highlight hover:text-primary transition-colors'
+                target='_blank'
+                rel='noopener noreferrer'>
+                LinkedIn
+              </a>
+              .
+            </p>
+            <p className='text-lg mt-2 border-l-4 border-primary pl-4'>
+              You can also find more work on{' '}
+              <a
+                href='https://github.com/blakee-marcus'
+                className='text-accent underline hover:bg-accent hover:text-secondary transition-colors'
+                target='_blank'
+                rel='noopener noreferrer'>
+                GitHub
+              </a>
+              .
+            </p>
+          </div>
         </section>
       </main>
     </>

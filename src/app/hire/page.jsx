@@ -1,6 +1,7 @@
 'use client';
 import Head from 'next/head';
 import Link from 'next/link';
+import { Wrench, Sparkles, Rocket, HelpCircle } from 'lucide-react';
 
 export default function Hire() {
   const tiers = [
@@ -37,7 +38,7 @@ export default function Hire() {
         />
         <meta
           name='keywords'
-          content='hire web developer, freelance web design pricing, landing page cost, business website packages, full-stack development, web app developer, React developer Long Beach'
+          content='hire web developer, freelance web design pricing, business website packages, full-stack development'
         />
         <link rel='canonical' href='https://www.blakemarcus.com/hire' />
         <meta
@@ -46,7 +47,7 @@ export default function Hire() {
         />
         <meta
           property='og:description'
-          content='Looking to launch or redesign a website? Hire Blake Marcus — a freelance web developer offering affordable packages for small businesses and startups.'
+          content='Hire Blake Marcus — a freelance web developer offering affordable packages for small businesses and startups.'
         />
         <meta property='og:url' content='https://www.blakemarcus.com/hire' />
         <meta
@@ -55,182 +56,74 @@ export default function Hire() {
         />
         <meta property='og:image:width' content='1200' />
         <meta property='og:image:height' content='630' />
-
-        {/* Structured Data: Product Offers */}
-        <script
-          type='application/ld+json'
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              '@context': 'https://schema.org',
-              '@type': 'Product',
-              name: 'Web Development Packages',
-              brand: 'Blake Marcus',
-              url: 'https://www.blakemarcus.com/hire',
-              offers: [
-                {
-                  '@type': 'Offer',
-                  name: 'Starter Landing Page',
-                  priceCurrency: 'USD',
-                  price: '500',
-                  url: 'https://www.blakemarcus.com/contact?tier=starter',
-                  availability: 'https://schema.org/InStock',
-                },
-                {
-                  '@type': 'Offer',
-                  name: 'Professional Website',
-                  priceCurrency: 'USD',
-                  price: '1500',
-                  url: 'https://www.blakemarcus.com/contact?tier=professional',
-                  availability: 'https://schema.org/InStock',
-                },
-                {
-                  '@type': 'Offer',
-                  name: 'Premium Web App',
-                  priceCurrency: 'USD',
-                  price: '3000',
-                  url: 'https://www.blakemarcus.com/contact?tier=premium',
-                  availability: 'https://schema.org/InStock',
-                },
-              ],
-            }),
-          }}
-        />
-        {/* Structured Data: FAQ */}
-        <script
-          type='application/ld+json'
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              '@context': 'https://schema.org',
-              '@type': 'FAQPage',
-              mainEntity: [
-                {
-                  '@type': 'Question',
-                  name: 'How long does it take to launch a site?',
-                  acceptedAnswer: {
-                    '@type': 'Answer',
-                    text: 'Landing pages are typically delivered in 1–2 weeks. Multi-page sites and full-stack apps take longer depending on scope.',
-                  },
-                },
-                {
-                  '@type': 'Question',
-                  name: 'Do you offer hosting or domain setup?',
-                  acceptedAnswer: {
-                    '@type': 'Answer',
-                    text: 'I can assist with setup and connect your site to platforms like Vercel, Netlify, or traditional hosts like GoDaddy.',
-                  },
-                },
-                {
-                  '@type': 'Question',
-                  name: 'Can I request changes later?',
-                  acceptedAnswer: {
-                    '@type': 'Answer',
-                    text: 'Yes — returning clients receive a discounted hourly rate for ongoing edits and support.',
-                  },
-                },
-              ],
-            }),
-          }}
-        />
-        {/* Structured Data: Service */}
-        <script
-          type='application/ld+json'
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              '@context': 'https://schema.org',
-              '@type': 'Service',
-              serviceType: 'Freelance Web Development',
-              provider: {
-                '@type': 'Person',
-                name: 'Blake Marcus',
-                url: 'https://www.blakemarcus.com',
-                address: {
-                  '@type': 'PostalAddress',
-                  addressLocality: 'Long Beach',
-                  addressRegion: 'CA',
-                  addressCountry: 'US',
-                },
-              },
-              areaServed: {
-                '@type': 'Place',
-                address: {
-                  '@type': 'PostalAddress',
-                  addressLocality: 'Long Beach',
-                  addressRegion: 'CA',
-                  addressCountry: 'US',
-                },
-              },
-              offers: {
-                '@type': 'AggregateOffer',
-                lowPrice: '500',
-                highPrice: '3000',
-                priceCurrency: 'USD',
-              },
-            }),
-          }}
-        />
       </Head>
 
-      <main className='min-h-screen bg-white text-black font-mono px-6 py-16 border-black'>
-        <section className='max-w-3xl mx-auto text-center mb-16'>
-          <h1 className='text-4xl md:text-6xl uppercase font-extrabold border-b-8 border-black pb-6 mb-10 tracking-tight leading-tight'>
-            Hire a Web Developer – Website Packages & Pricing
+      <main className='min-h-screen bg-secondary text-primary font-base px-6 sm:px-12 py-16 border-4 border-primary shadow-brutal'>
+        <section className='max-w-4xl mx-auto text-center mb-20'>
+          <h1 className='text-[2.75rem] sm:text-6xl font-headings uppercase border-b-4 border-primary pb-6 mb-10 tracking-[var(--letter-spacing-wide)] leading-[var(--line-height-tight)] inline-flex items-center justify-center gap-3'>
+            <Wrench size={36} />
+            Hire a Web Developer
           </h1>
-
-          <p className='text-xl md:text-2xl uppercase border-l-8 border-black pl-6 mb-12'>
-            Clear pricing. Fast delivery. Scalable solutions.
+          <p className='text-xl sm:text-2xl uppercase border-l-4 border-primary pl-6 mb-6'>
+            Clear Pricing. Fast Delivery. Scalable Solutions.
           </p>
         </section>
 
-        <section className='max-w-5xl mx-auto grid gap-8 md:grid-cols-3'>
-          <h2 className='sr-only'>Web Design and Development Pricing Tiers</h2>
+        <section className='max-w-6xl mx-auto grid gap-[var(--component-gap)] md:grid-cols-3'>
+          <h2 className='sr-only'>Web Development Tiers</h2>
           {tiers.map(({ title, price, description, aftercare, link }) => (
             <div
               key={title}
-              className='border-4 border-black p-8 flex flex-col justify-between transition-transform hover:scale-[1.02]'
+              className='border-4 border-primary p-[var(--component-padding)] flex flex-col justify-between transition-transform hover:scale-[1.02] bg-secondary shadow-brutal'
               aria-labelledby={`${title.toLowerCase()}-tier`}>
               <div>
                 <h3
                   id={`${title.toLowerCase()}-tier`}
-                  className='text-3xl font-extrabold uppercase mb-4'>
+                  className='text-2xl font-headings uppercase mb-4 tracking-[0.04em] inline-flex items-center gap-2'>
+                  <Sparkles size={18} />
                   {title}
                 </h3>
-                <p className='mb-6'>{description}</p>
-                <p className='text-2xl font-bold mb-4'>{price}</p>
-                <p className='border-t-4 border-black pt-4 font-semibold text-sm'>{aftercare}</p>
+                <p className='mb-4'>{description}</p>
+                <p className='text-2xl font-bold mb-4 text-accent'>{price}</p>
+                <p className='text-sm font-medium border-t-4 border-primary pt-4'>{aftercare}</p>
               </div>
-
               <Link
                 href={link}
-                aria-label={`Start with the ${title} tier`}
-                className='mt-8 block bg-black text-white uppercase font-bold text-center py-3 hover:bg-gray-900 transition-colors'>
+                className='mt-6 block border-4 border-primary text-center uppercase font-bold py-3 bg-accent text-white hover:bg-primary hover:text-secondary transition-colors duration-200 shadow-brutal inline-flex items-center justify-center gap-2'>
+                <Rocket size={18} />
                 Start with {title}
               </Link>
             </div>
           ))}
         </section>
 
-        <section className='max-w-3xl mx-auto mt-20'>
-          <h2 className='text-2xl md:text-3xl font-bold mb-6'>Frequently Asked Questions</h2>
-          <div className='space-y-4 text-left'>
+        <section className='max-w-4xl mx-auto mt-24'>
+          <h2 className='text-3xl sm:text-4xl font-headings uppercase border-b-4 border-primary pb-3 mb-8 inline-flex items-center gap-2'>
+            <HelpCircle size={28} />
+            Frequently Asked Questions
+          </h2>
+          <div className='space-y-6 text-base sm:text-lg leading-relaxed'>
             <div>
-              <h3 className='font-semibold'>How long does it take to launch a site?</h3>
-              <p>
-                Landing pages are typically delivered in 1–2 weeks. Multi-page sites and full-stack
-                apps take longer depending on scope.
+              <h3 className='font-semibold text-primary'>
+                How long does it take to launch a site?
+              </h3>
+              <p className='border-l-4 border-primary pl-4'>
+                Landing pages usually launch in 1–2 weeks. More complex sites take longer depending
+                on scope and features.
               </p>
             </div>
             <div>
-              <h3 className='font-semibold'>Do you offer hosting or domain setup?</h3>
-              <p>
-                I can assist with setup and connect your site to platforms like Vercel, Netlify, or
-                traditional hosts like GoDaddy.
+              <h3 className='font-semibold text-primary'>Do you offer hosting or domain setup?</h3>
+              <p className='border-l-4 border-primary pl-4'>
+                Yes. I’ll help connect your domain and deploy to Vercel, Netlify, or other
+                platforms.
               </p>
             </div>
             <div>
-              <h3 className='font-semibold'>Can I request changes later?</h3>
-              <p>
-                Yes — returning clients receive a discounted hourly rate for ongoing edits and
-                support.
+              <h3 className='font-semibold text-primary'>Can I request changes later?</h3>
+              <p className='border-l-4 border-primary pl-4'>
+                Absolutely. Returning clients get discounted hourly support for future tweaks and
+                improvements.
               </p>
             </div>
           </div>

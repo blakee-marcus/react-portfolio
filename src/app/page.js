@@ -2,8 +2,15 @@
 import React from 'react';
 import Link from 'next/link';
 import Head from 'next/head';
+import { motion } from 'framer-motion';
+import { ArrowRightCircle, Briefcase, FolderOpen, ExternalLink } from 'lucide-react';
 
-function Home() {
+const fadeInUp = {
+  initial: { opacity: 0, y: 24 },
+  animate: { opacity: 1, y: 0, transition: { duration: 0.6, ease: 'easeOut' } },
+};
+
+export default function Home() {
   return (
     <>
       <Head>
@@ -12,16 +19,10 @@ function Home() {
           name='description'
           content='Need a modern website that loads fast and drives results? Blake Marcus builds responsive, mobile-friendly websites for small businesses, startups, and service providers in Long Beach and beyond.'
         />
-        <meta
-          name='keywords'
-          content='freelance web developer, custom business websites, web design Long Beach, responsive web development, landing pages for small business, React developer, SEO-friendly sites'
-        />
+        <meta name='keywords' content='freelance web developer, web design Long Beach, SEO sites' />
         <meta name='author' content='Blake Marcus' />
         <link rel='canonical' href='https://www.blakemarcus.com/' />
-        <meta
-          property='og:title'
-          content='Blake Marcus – Freelance Web Developer for Small Businesses'
-        />
+        <meta property='og:title' content='Blake Marcus – Freelance Web Developer' />
         <meta
           property='og:description'
           content='Blake Marcus builds high-performance websites for small businesses. See past work or get a quote for a mobile-friendly, SEO-optimized site built to grow with your brand.'
@@ -35,64 +36,76 @@ function Home() {
         <meta property='og:image:height' content='630' />
       </Head>
 
-      <main className='min-h-screen bg-white text-black font-mono px-4 md:px-6 pb-12 pt-16 border-black'>
-        <section className='max-w-5xl mx-auto space-y-8'>
-          <h1 className='text-4xl sm:text-5xl md:text-6xl font-extrabold uppercase border-b-8 border-black pb-4 leading-tight tracking-tight'>
-            Freelance Web Developer for Small Business Websites
+      <main className='min-h-screen bg-secondary text-primary font-base px-6 sm:px-12 py-16 border-4 border-primary shadow-brutal'>
+        <motion.section
+          className='max-w-6xl mx-auto flex flex-col gap-[var(--component-gap)]'
+          initial='initial'
+          animate='animate'
+          variants={fadeInUp}>
+          <h1 className='text-[2.75rem] sm:text-6xl md:text-7xl font-headings uppercase leading-[var(--line-height-tight)] tracking-[var(--letter-spacing-wide)] border-b-4 border-primary pb-4'>
+            Freelance Web Developer
+            <br />
+            for Small Business Websites
           </h1>
 
-          <h2 className='text-xl sm:text-2xl md:text-3xl font-semibold uppercase tracking-wide'>
+          <h2 className='text-2xl sm:text-3xl font-headings uppercase tracking-[0.04em] border-l-4 border-primary pl-4 inline-flex items-center gap-2'>
+            
             Custom Websites Built to Perform
           </h2>
 
-          <p className='text-base sm:text-lg md:text-xl uppercase leading-snug'>
+          <p className='text-lg sm:text-xl uppercase tracking-wide'>
             Fast. Mobile-Friendly. Easy to Manage.
-            <br className='hidden sm:block' />
-            Designed to help you grow your business.
+            <br />
+            Designed to grow with your business.
           </p>
 
-          <p className='text-sm sm:text-base md:text-lg uppercase border-l-4 border-black pl-4'>
-            I’m currently building a repair marketplace at{' '}
+          <p className='text-base sm:text-lg uppercase border-l-4 border-primary pl-4'>
+            Currently building a marketplace at{' '}
             <a
               href='https://www.gobasile.com'
               target='_blank'
               rel='noopener noreferrer'
-              className='underline'>
-              GoBasile
+              className='underline hover:text-highlight transition-colors inline-flex items-center gap-1'>
+              GoBasile <ExternalLink size={16} />
             </a>{' '}
-            — and taking on new freelance clients.
+            — and open to new freelance clients.
           </p>
 
-          <div className='flex flex-col sm:flex-row gap-4 sm:gap-6 text-base sm:text-lg uppercase pt-4'>
-            <Link
-              href='/portfolio'
-              className='border-4 border-black px-6 py-3 text-center font-bold hover:bg-black hover:text-white transition-colors'>
-              See My Work
-            </Link>
-            <Link
-              href='/hire'
-              className='border-4 border-black px-6 py-3 text-center font-bold hover:bg-black hover:text-white transition-colors'>
-              Get a Quote
-            </Link>
-            <Link
-              href='/landing-pages'
-              className='border-4 border-black px-6 py-3 text-center font-bold hover:bg-black hover:text-white transition-colors'>
-              Need a Site for Your Business?
-            </Link>
+          <div className='flex flex-col sm:flex-row flex-wrap gap-4 text-base sm:text-lg uppercase pt-2'>
+            {[
+              {
+                href: '/portfolio',
+                label: 'See My Work',
+                icon: <FolderOpen className='inline-block ml-2' size={20} />,
+              },
+              {
+                href: '/hire',
+                label: 'Get a Quote',
+                icon: <Briefcase className='inline-block ml-2' size={20} />,
+              },
+            ].map(({ href, label, icon }) => (
+              <Link
+                key={label}
+                href={href}
+                className='bg-accent text-white border-4 border-primary shadow-brutal px-4 py-3 font-extrabold hover:bg-highlight hover:text-black transition-colors flex items-center justify-center gap-2'>
+                {label} {icon}
+              </Link>
+            ))}
           </div>
-        </section>
+        </motion.section>
 
-        <section className='mt-16 max-w-3xl mx-auto text-sm sm:text-base leading-relaxed px-1 sm:px-0 font-semibold tracking-wide'>
+        <motion.section
+          className='mt-24 max-w-3xl mx-auto text-base sm:text-lg font-medium tracking-wide leading-relaxed border-t-4 border-primary pt-6'
+          initial='initial'
+          animate='animate'
+          variants={fadeInUp}>
           <p>
-            Based in Long Beach, CA, I specialize in building fast, responsive websites for small
-            businesses, local entrepreneurs, and startups. Whether you&rsquo;re launching a new
-            brand, need a landing page, or want to redesign an outdated site, I can help you create
-            something bold, scalable, and effective. Let&rsquo;s build a site that works for you.
+            Based in Long Beach, CA, I specialize in crafting bold, responsive websites for small
+            businesses, local entrepreneurs, and startups. Whether you need a landing page or a full
+            redesign, I’ll help you launch something loud, scalable, and designed to convert.
           </p>
-        </section>
+        </motion.section>
       </main>
     </>
   );
 }
-
-export default Home;
