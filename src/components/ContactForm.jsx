@@ -75,15 +75,15 @@ export default function ContactContent() {
       </Head>
 
       <main className='min-h-screen bg-secondary text-primary font-base px-6 sm:px-12 py-16 border-4 border-primary shadow-brutal'>
-        <header className='text-center bg-primary text-secondary py-6 px-4 text-4xl font-extrabold uppercase tracking-wide border-b-4 border-primary flex justify-center items-center gap-3'>
-          <Mail size={28} />
-          Get in Touch
+        <header className='text-center bg-primary text-secondary py-8 px-4 text-[clamp(2rem,5vw,3rem)] font-headings uppercase tracking-wide border-b-4 border-primary flex justify-center items-center gap-4'>
+          <Mail size={32} />
+          Contact Blake Marcus
         </header>
 
         <section className='max-w-5xl mx-auto mt-16 border-4 border-primary'>
           <div className='px-6 sm:px-12 py-12'>
-            <h1 className='text-3xl sm:text-5xl font-extrabold uppercase border-b-4 border-primary pb-4 mb-8'>
-              Hire a Web Developer for Your Business
+            <h1 className='text-[clamp(1.75rem,5vw,3rem)] font-headings uppercase border-b-4 border-primary pb-4 mb-8 leading-tight'>
+              Let’s build something for your business
             </h1>
 
             <p className='text-lg sm:text-xl mb-10 border-l-4 border-primary pl-4'>
@@ -93,9 +93,9 @@ export default function ContactContent() {
             </p>
 
             {submitted ? (
-              <div className='text-center text-2xl font-bold text-primary pt-12 border-t-4 border-primary flex flex-col items-center gap-4'>
-                <CheckCircle size={40} className='text-highlight' />
-                Thank you for reaching out! I’ll be in touch shortly.
+              <div className='text-center text-2xl font-headings text-primary pt-12 border-t-4 border-primary flex flex-col items-center gap-6'>
+                <CheckCircle size={48} className='text-accent' />
+                Thanks for reaching out — I’ll reply within 1–2 business days.
               </div>
             ) : (
               <form onSubmit={handleSubmit} className='space-y-8 border-t-4 border-primary pt-8'>
@@ -144,12 +144,16 @@ export default function ContactContent() {
                   />
                 </div>
 
-                {error && <div className='text-accent text-xl font-bold'>{error}</div>}
+                {error && (
+                  <div className='text-accent text-xl font-bold border-l-4 border-accent pl-4'>
+                    {error}
+                  </div>
+                )}
 
                 <button
                   type='submit'
                   disabled={loading}
-                  className={`w-full border-4 border-primary p-4 text-xl font-bold uppercase tracking-wider transition-colors inline-flex items-center justify-center gap-3 ${
+                  className={`w-full border-4 border-primary p-4 text-xl font-headings uppercase tracking-wide transition-colors flex items-center justify-center gap-3 shadow-brutal ${
                     loading
                       ? 'bg-muted text-white cursor-not-allowed'
                       : 'bg-primary text-secondary hover:bg-highlight hover:text-primary'

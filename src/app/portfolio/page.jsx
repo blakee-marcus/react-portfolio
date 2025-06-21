@@ -30,11 +30,9 @@ export default function Portfolio() {
     <main className='min-h-screen bg-secondary text-primary font-base px-6 sm:px-12 py-16 border-4 border-primary shadow-brutal'>
       <div className='max-w-7xl mx-auto px-6 sm:px-12'>
         <header className='mb-20'>
-          <h1 className='text-[clamp(2.25rem,6vw,3.5rem)] font-headings uppercase border-b-4 border-primary pb-6 mb-8 tracking-wider leading-tight flex flex-col sm:flex-row sm:items-center gap-3 text-center sm:text-left'>
-            <span className='inline-flex justify-center sm:justify-start'>
-              <FolderOpen size={32} className='shrink-0' />
-            </span>
-            <span className='break-words'>Web Development Portfolio</span>
+          <h1 className='text-[clamp(2.25rem,6vw,3.5rem)] font-headings uppercase border-b-4 border-primary pb-6 mb-8 tracking-wider leading-tight flex items-center gap-3 text-center sm:text-left justify-center sm:justify-start flex-wrap'>
+            <FolderOpen size={32} className='shrink-0' />
+            <span>Web Development Portfolio</span>
           </h1>
 
           <p className='text-lg sm:text-xl max-w-3xl border-l-4 border-primary pl-4'>

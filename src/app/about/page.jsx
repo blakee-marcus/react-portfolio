@@ -170,13 +170,13 @@ export default function About() {
               Ready to <strong>rebuild your website</strong>?{' '}
               <a
                 href='mailto:marcusb733@gmail.com'
-                className='text-highlight underline hover:bg-highlight hover:text-primary transition-colors'>
+                className='text-accent underline hover:bg-accent hover:text-primary transition-colors'>
                 Email me
               </a>{' '}
               or connect on{' '}
               <a
                 href='https://www.linkedin.com/in/blake-marcus/'
-                className='text-highlight underline hover:bg-highlight hover:text-primary transition-colors'
+                className='text-accent underline hover:bg-accent hover:text-primary transition-colors'
                 target='_blank'
                 rel='noopener noreferrer'>
                 LinkedIn
