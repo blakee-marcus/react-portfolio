@@ -3,9 +3,7 @@ import ProjectCard from '@/components/ProjectCard';
 import projects from '@/utils/projects';
 import realProjects from '@/utils/realProjects';
 
-// --- Static generation hints (fast TTFB, stable HTML for bots) ---
 export const dynamic = 'force-static';
-export const revalidate = 3600 * 24; // 24h
 
 const siteUrl = 'https://www.blakemarcus.com';
 const pageUrl = `${siteUrl}/portfolio`;

@@ -1,5 +1,4 @@
 export const dynamic = "force-static";
-export const revalidate = 3600 * 24; // 24h
 
 const siteUrl = "https://www.blakemarcus.com";
 const pageUrl = `${siteUrl}/about`;

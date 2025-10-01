@@ -1,11 +1,10 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import Script from 'next/script';
-import MotionReveal from '@/components/MotionReveal'; // tiny client wrapper for fade-in (optional)
+import MotionReveal from '@/components/MotionReveal';
 
-// --- Static generation hints (fast TTFB for bots) ---
+
 export const dynamic = 'force-static';
-export const revalidate = 3600; // 1 hour
 
 // --- Page-level metadata (overrides layout template) ---
 export const metadata = {

@@ -2,7 +2,6 @@ import Link from 'next/link';
 
 // Fast, static HTML for crawlers
 export const dynamic = 'force-static';
-export const revalidate = 3600; // 1 hour
 
 const siteUrl = 'https://www.blakemarcus.com';
 const pageUrl = `${siteUrl}/hire`;

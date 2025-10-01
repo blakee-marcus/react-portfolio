@@ -1,8 +1,6 @@
 import dynamicImport from 'next/dynamic';
 
-// --- Static generation: fast TTFB for bots, form hydrates client-side ---
 export const dynamic = 'force-static';
-export const revalidate = 3600 * 24; // 24h
 
 const siteUrl = 'https://www.blakemarcus.com';
 const pageUrl = `${siteUrl}/contact`;
