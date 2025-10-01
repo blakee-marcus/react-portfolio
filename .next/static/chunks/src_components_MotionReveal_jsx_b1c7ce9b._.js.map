@@ -1,0 +1,6 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 7, "column": 0}, "map": {"version":3,"sources":["file:///Users/blakemarcus/Desktop/projects/react-portfolio/src/components/MotionReveal.jsx"],"sourcesContent":["\"use client\";\r\n\r\nimport { motion } from \"framer-motion\";\r\n\r\nconst fadeInUp = {\r\n  initial: { opacity: 0, y: 24 },\r\n  animate: { opacity: 1, y: 0, transition: { duration: 0.6, ease: \"easeOut\" } },\r\n};\r\n\r\nexport default function MotionReveal({ children }) {\r\n  return (\r\n    <motion.div initial=\"initial\" whileInView=\"animate\" viewport={{ once: true, amount: 0.2 }} variants={fadeInUp}>\r\n      {children}\r\n    </motion.div>\r\n  );\r\n}\r\n"],"names":[],"mappings":";;;;AAEA;AAFA;;;AAIA,MAAM,WAAW;IACf,SAAS;QAAE,SAAS;QAAG,GAAG;IAAG;IAC7B,SAAS;QAAE,SAAS;QAAG,GAAG;QAAG,YAAY;YAAE,UAAU;YAAK,MAAM;QAAU;IAAE;AAC9E;AAEe,SAAS,aAAa,EAAE,QAAQ,EAAE;IAC/C,qBACE,6LAAC,6LAAA,CAAA,SAAM,CAAC,GAAG;QAAC,SAAQ;QAAU,aAAY;QAAU,UAAU;YAAE,MAAM;YAAM,QAAQ;QAAI;QAAG,UAAU;kBAClG;;;;;;AAGP;KANwB","debugId":null}}]
+}
