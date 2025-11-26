@@ -160,14 +160,14 @@ export default function StartPage() {
                   ))}
                 </ul>
 
-                <div className='mt-4 flex items-center justify-between gap-3'>
+                <div className='mt-4 flex flex-col gap-1.5'>
                   <Link
                     href={path.href}
                     className='inline-flex items-center gap-2 rounded-full border border-emerald-400/80 bg-emerald-500 px-4 py-2 text-[12px] font-medium text-slate-950 shadow-md shadow-emerald-900/50 transition hover:border-emerald-300 hover:bg-emerald-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-300 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950'>
-                    <span>{path.ctaLabel}</span>
+                    <span className='whitespace-nowrap'>{path.ctaLabel}</span>
                     <ArrowRight className='h-3.5 w-3.5' />
                   </Link>
-                  <p className='hidden text-[11px] text-slate-400 sm:block'>
+                  <p className='text-[10px] text-slate-500/80'>
                     No obligation beyond the deposit until we confirm scope together.
                   </p>
                 </div>
