@@ -1,491 +1,378 @@
-'use client';
+import { CtaBand, PrimaryLink, SecondaryLink, SectionIntro } from '@/components/site/marketing';
+import { PackageCard } from '@/components/site/package-card';
+import {
+  audienceGroups,
+  everyPackageIncludes,
+  faqs,
+  packageOffers,
+  processSteps,
+  proofStories,
+  studioPrinciples,
+} from '@/lib/site-content';
+import { buildMetadata } from '@/lib/seo';
 
-import { motion } from 'framer-motion';
-import Link from 'next/link';
-import { ArrowRight, Calendar, LineChart, PenTool, ShieldCheck } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+export const metadata = buildMetadata({
+  title: 'Las Vegas Web Design for Founder-Led Service Businesses',
+  description:
+    'Blake Marcus Studio builds calm, premium websites for founder-led service businesses in Las Vegas, Nevada and nationwide.',
+  path: '/',
+  keywords: [
+    'Las Vegas web design studio',
+    'Las Vegas website designer',
+    'Nevada website designer',
+    'founder-led service business web design',
+  ],
+});
 
-const fadeInUp = {
-  initial: { opacity: 0, y: 24 },
-  whileInView: { opacity: 1, y: 0 },
-  viewport: { once: true, amount: 0.25 },
-  transition: { duration: 0.6, ease: [0.2, 0.8, 0.2, 1] as any },
-};
+const heroSignals = [
+  'Las Vegas based, serving founder-led service businesses in Nevada and nationwide.',
+  'Most projects land between $2,000 and $8,000.',
+  'Three fixed packages instead of a vague proposal cycle.',
+];
 
-const smallFade = {
-  initial: { opacity: 0, y: 8 },
-  whileInView: { opacity: 1, y: 0 },
-  viewport: { once: true, amount: 0.3 },
-  transition: { duration: 0.4, ease: [0.25, 0.8, 0.25, 1] as any },
-};
+const buyingSteps = [
+  'Choose the package that matches the business now.',
+  'Place the deposit to reserve your production slot.',
+  'Move into intake, kickoff, and a structured build.',
+];
 
 export default function HomePage() {
+  const featuredPackage = packageOffers.find((offer) => offer.featured) ?? packageOffers[1];
+
   return (
-    <div className='relative z-10'>
-      {/* Hero */}
-      <section className='px-0 pb-20 pt-24 sm:px-6 lg:px-8'>
-        <div className='mx-auto max-w-6xl'>
-          <motion.div
-            {...fadeInUp}
-            className='inline-flex items-center gap-2 rounded-full border border-white/10 bg-slate-900/40 px-3 py-1 text-xs font-medium text-slate-200 backdrop-blur'>
-            <span className='h-1.5 w-1.5 rounded-full bg-emerald-400' />
-            Boutique web studio for founder led brands
-          </motion.div>
-
-          <motion.div
-            {...fadeInUp}
-            transition={{ ...fadeInUp.transition, delay: 0.05 }}
-            className='mt-8 grid gap-10 lg:grid-cols-[minmax(0,3fr)_minmax(0,2fr)] lg:items-center'>
-            <div>
-              <h1 className='text-balance text-4xl font-semibold tracking-tight sm:text-5xl md:text-6xl'>
-                Quietly excellent business websites
-                <span className='block text-slate-300'>without agency complexity.</span>
-              </h1>
-
-              <p className='mt-6 max-w-xl text-balance text-sm leading-relaxed text-slate-300/90 sm:text-base'>
-                I design and build high converting, brand aligned websites for service based
-                businesses that want a calm, premium experience instead of a crowded DIY site or an
-                overpriced agency project.
-              </p>
-
-              <div className='mt-8 flex flex-wrap items-center gap-4'>
-                <Button
-                  asChild
-                  size='lg'
-                  className='group h-11 rounded-full bg-emerald-400 px-6 text-sm font-medium text-slate-900 shadow-lg shadow-emerald-500/25 transition hover:bg-emerald-300'>
-                  <Link href='/start'>
-                    Start with a $150 deposit
-                    <ArrowRight className='ml-2 h-4 w-4 transition-transform group-hover:translate-x-0.5' />
-                  </Link>
-                </Button>
-
-                <Button
-                  asChild
-                  variant='outline'
-                  size='lg'
-                  className='h-11 rounded-full border-slate-600/70 bg-slate-900/50 px-5 text-sm text-slate-100 hover:bg-slate-900'>
-                  <Link href='#packages'>See packages and pricing</Link>
-                </Button>
+    <>
+      <section className='px-4 pb-12 pt-6 sm:px-6 lg:px-8'>
+        <div className='mx-auto grid max-w-6xl gap-6 xl:grid-cols-[minmax(0,1.45fr)_minmax(20rem,26rem)]'>
+          <div className='overflow-hidden rounded-[2.8rem] border border-[var(--card-border-strong)] bg-[linear-gradient(150deg,rgba(255,255,255,0.98)_0%,rgba(248,250,251,0.94)_45%,rgba(231,238,234,0.9)_100%)] p-8 shadow-[var(--shadow-lg)] sm:p-10 lg:p-12'>
+            <div className='space-y-8'>
+              <div className='flex flex-wrap gap-3'>
+                <p className='fade-up inline-flex items-center gap-3 rounded-full border border-[var(--line-soft)] bg-[rgba(255,255,255,0.8)] px-4 py-2 text-[10px] font-semibold uppercase tracking-[0.3em] text-[var(--muted-strong)] shadow-[var(--shadow-sm)] [--delay:40ms]'>
+                  <span className='inline-flex h-2 w-2 rounded-full bg-[var(--primary)]' />
+                  For founder-led service businesses
+                </p>
+                <p className='fade-up inline-flex items-center rounded-full border border-[var(--line-soft)] bg-[rgba(255,255,255,0.7)] px-4 py-2 text-[10px] font-semibold uppercase tracking-[0.28em] text-[var(--muted-strong)] shadow-[var(--shadow-sm)] [--delay:120ms]'>
+                  Calm positioning. Clear next steps.
+                </p>
               </div>
 
-              <div className='mt-6 flex flex-wrap gap-4 text-xs text-slate-400'>
-                <div className='flex items-center gap-2'>
-                  <ShieldCheck className='h-4 w-4 text-emerald-400' />
-                  <span>Structured process and clear timelines</span>
-                </div>
-                <div className='flex items-center gap-2'>
-                  <LineChart className='h-4 w-4 text-emerald-400' />
-                  <span>Built for leads, bookings, and growth</span>
-                </div>
+              <div className='space-y-6'>
+                <h1 className='fade-up max-w-4xl text-balance text-5xl leading-[0.88] text-[var(--ink)] sm:text-6xl lg:text-7xl [--delay:160ms]'>
+                  Websites that make service businesses feel established before the first call ever
+                  happens.
+                </h1>
+                <p className='fade-up max-w-2xl text-lg leading-8 text-[var(--ink-muted)] [--delay:220ms]'>
+                  Blake Marcus Studio builds editorial, trust-heavy websites for Las Vegas service
+                  businesses and founders who need a sharper first impression, clearer positioning,
+                  and a site that helps qualified inquiries feel easier to earn.
+                </p>
               </div>
-            </div>
 
-            <div className='lg:justify-self-end'>
-              <motion.div
-                {...smallFade}
-                transition={{ ...smallFade.transition, delay: 0.1 }}
-                className='relative overflow-hidden rounded-3xl border border-white/10 bg-slate-900/70 p-5 shadow-[0_18px_60px_rgba(15,23,42,0.75)] backdrop-blur'>
-                <div className='absolute inset-x-10 top-0 h-20 bg-gradient-to-b from-emerald-500/20 to-transparent blur-2xl' />
+              <div className='fade-up flex flex-wrap items-center gap-4 [--delay:280ms]'>
+                <PrimaryLink href='/start'>Choose Your Package</PrimaryLink>
+                <SecondaryLink href='/process'>See How It Works</SecondaryLink>
+              </div>
 
-                <header className='relative flex items-center justify-between gap-3'>
-                  <div>
-                    <p className='text-xs uppercase tracking-[0.22em] text-emerald-300/80'>
-                      Client Journey
-                    </p>
-                    <h2 className='mt-1 text-sm font-medium text-slate-100'>
-                      From unsure to confident in one guided build
-                    </h2>
+              <div className='grid gap-3 sm:grid-cols-3'>
+                {heroSignals.map((item, index) => (
+                  <div
+                    key={item}
+                    className='fade-up rounded-[1.7rem] border border-[var(--line-soft)] bg-[rgba(255,255,255,0.72)] px-5 py-5 text-sm leading-6 text-[var(--ink-muted)] shadow-[var(--shadow-sm)]'
+                    style={{ ['--delay' as string]: `${340 + index * 70}ms` }}>
+                    {item}
                   </div>
-                  <span className='inline-flex items-center gap-1 rounded-full bg-slate-800/80 px-3 py-1 text-[10px] font-medium text-slate-200'>
-                    Production calendar
-                    <span className='h-1.5 w-1.5 rounded-full bg-emerald-400' />
-                  </span>
-                </header>
-
-                <div className='relative mt-5 space-y-3 text-xs'>
-                  {[
-                    {
-                      label: 'Step 1',
-                      title: 'Discovery and intake',
-                      body: 'You tell me about your business, audience, and goals. I turn that into a clear plan.',
-                    },
-                    {
-                      label: 'Step 2',
-                      title: 'Architecture and design',
-                      body: 'We lock in the sitemap, wireframes, and visual direction so the build stays focused.',
-                    },
-                    {
-                      label: 'Step 3',
-                      title: 'Build, refine, launch',
-                      body: 'You get check ins, a guided review, and a calm launch instead of a scramble.',
-                    },
-                  ].map((step, idx) => (
-                    <div
-                      key={step.title}
-                      className='group relative flex gap-3 rounded-2xl border border-slate-800/80 bg-slate-900/60 p-3 transition-colors hover:border-emerald-400/60'>
-                      <div className='mt-0.5 flex h-7 w-7 flex-none items-center justify-center rounded-full bg-slate-900 text-[10px] font-semibold text-emerald-300 ring-1 ring-slate-700/80 group-hover:ring-emerald-400/70'>
-                        {idx + 1}
-                      </div>
-                      <div className='space-y-0.5'>
-                        <p className='text-[11px] uppercase tracking-[0.26em] text-slate-400'>
-                          {step.label}
-                        </p>
-                        <p className='text-xs font-medium text-slate-100'>{step.title}</p>
-                        <p className='text-[11px] leading-relaxed text-slate-400'>{step.body}</p>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-
-                <footer className='relative mt-4 flex items-center justify-between border-t border-slate-800/80 pt-4 text-[11px] text-slate-400'>
-                  <span>Average build: 5 to 10 business days</span>
-                  <span className='inline-flex items-center gap-1 rounded-full bg-slate-800/80 px-2.5 py-1 text-[10px] text-emerald-200'>
-                    <Calendar className='h-3 w-3' />
-                    Limited monthly slots
-                  </span>
-                </footer>
-              </motion.div>
+                ))}
+              </div>
             </div>
-          </motion.div>
+          </div>
+
+          <aside className='grid gap-5'>
+            <div className='chrome-panel rounded-[2.2rem] border border-[var(--card-border)] bg-[color:var(--card-bg)] p-6 shadow-[var(--shadow-md)]'>
+              <p className='inline-flex items-center gap-3 rounded-full border border-[var(--line-soft)] bg-[rgba(255,255,255,0.8)] px-4 py-2 text-[10px] font-semibold uppercase tracking-[0.3em] text-[var(--muted-strong)]'>
+                <span className='inline-flex h-2 w-2 rounded-full bg-[var(--accent)]' />
+                Studio snapshot
+              </p>
+
+              <div className='mt-6 grid gap-4'>
+                {[
+                  ['Typical investment', '$2K to $8K'],
+                  ['Typical timeline', '1 to 4 weeks'],
+                  ['Best-fit package', 'Growth'],
+                ].map(([label, value]) => (
+                  <div
+                    key={label}
+                    className='rounded-[1.5rem] border border-[var(--line-soft)] bg-[rgba(255,255,255,0.7)] px-5 py-4'>
+                    <p className='text-[10px] font-semibold uppercase tracking-[0.28em] text-[var(--muted-strong)]'>
+                      {label}
+                    </p>
+                    <p className='mt-2 text-xl text-[var(--ink)]'>{value}</p>
+                  </div>
+                ))}
+              </div>
+
+              <div className='mt-6 rounded-[1.7rem] border border-[var(--line)] bg-[var(--panel-strong)] p-5'>
+                <p className='text-sm leading-7 text-[var(--ink-muted)]'>
+                  Best for businesses that already do strong work, but need the website to feel more
+                  composed, premium, and easy to trust.
+                </p>
+              </div>
+            </div>
+
+            <div className='rounded-[2.2rem] border border-[var(--card-border-strong)] bg-[linear-gradient(155deg,rgba(255,255,255,0.96)_0%,rgba(231,238,234,0.94)_100%)] p-6 shadow-[var(--shadow-md)]'>
+              <p className='text-[10px] font-semibold uppercase tracking-[0.3em] text-[var(--muted-strong)]'>
+                Best fit for most clients
+              </p>
+              <h2 className='mt-4 text-4xl leading-none text-[var(--ink)]'>{featuredPackage.name}</h2>
+              <p className='mt-2 text-sm font-medium text-[var(--accent)]'>
+                {featuredPackage.startingPrice}
+              </p>
+              <p className='mt-4 text-sm leading-7 text-[var(--ink-muted)]'>
+                {featuredPackage.summary}
+              </p>
+
+              <ul className='mt-5 space-y-3'>
+                {featuredPackage.includes.slice(0, 3).map((item) => (
+                  <li key={item} className='flex gap-3 text-sm leading-6 text-[var(--ink-muted)]'>
+                    <span className='mt-2 inline-flex h-6 w-6 flex-none items-center justify-center rounded-full bg-[var(--primary-soft)] text-[var(--primary)]'>
+                      <span className='h-1.5 w-1.5 rounded-full bg-current' />
+                    </span>
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+
+              <div className='mt-6 flex flex-wrap gap-3'>
+                <PrimaryLink href={`/deposit?package=${featuredPackage.slug}`} className='w-full justify-between sm:w-auto'>
+                  Reserve Growth
+                </PrimaryLink>
+                <SecondaryLink href='/services' className='w-full sm:w-auto'>
+                  Compare Packages
+                </SecondaryLink>
+              </div>
+            </div>
+          </aside>
         </div>
       </section>
 
-      {/* Conversion paths */}
-      <section
-        id='paths'
-        className='border-y border-slate-800/70 bg-slate-950/70 px-4 py-16 sm:px-6 lg:px-8'>
-        <div className='mx-auto max-w-6xl space-y-8'>
-          <motion.div {...fadeInUp} className='max-w-2xl space-y-3'>
-            <p className='text-xs font-medium uppercase tracking-[0.3em] text-emerald-300'>
-              Start here
-            </p>
-            <h2 className='text-2xl font-semibold tracking-tight sm:text-3xl'>
-              Three clear ways to work together
-            </h2>
-            <p className='text-sm text-slate-300'>
-              Choose the path that matches your situation. Each one ends with a single decision: pay
-              a small deposit and get a clear plan.
-            </p>
-          </motion.div>
-
-          <motion.div
-            {...smallFade}
-            transition={{ ...smallFade.transition, delay: 0.05 }}
-            className='grid gap-5 md:grid-cols-3'>
-            <CardPath
-              label='Website build'
-              title='I need a new site or a rebuild'
-              icon={<PenTool className='h-4 w-4' />}
-              bullets={[
-                'Pick an Essentials, Growth, or Full Brand package',
-                'Place a $150 project initiation deposit',
-                'Complete a guided intake',
-                'Book your kickoff call',
-              ]}
-              cta='Start with a $150 deposit'
+      <section className='px-4 pb-20 sm:px-6 lg:px-8'>
+        <div className='mx-auto grid max-w-6xl gap-6 lg:grid-cols-[minmax(0,0.92fr)_minmax(0,1.08fr)]'>
+          <div className='chrome-panel rounded-[2.4rem] border border-[var(--card-border)] bg-[color:var(--card-bg)] p-8 shadow-[var(--shadow-md)] sm:p-10'>
+            <SectionIntro
+              eyebrow='Who it is for'
+              title='Built for businesses that already do credible work and need the website to catch up.'
+              copy='This studio works best when the business is solid but the digital first impression still feels pieced together, undersells the offer, or makes people work too hard to understand the value.'
             />
 
-            <CardPath
-              label='Custom project'
-              title='I have a specific idea or app'
-              icon={<Calendar className='h-4 w-4' />}
-              bullets={[
-                'Describe the idea and constraints',
-                'Receive a tailored plan and price range',
-                'Approve the scope',
-                'Lock it in with a $150 scoping deposit',
-              ]}
-              cta='Begin custom scoping'
-            />
+            <div className='mt-8 rounded-[1.8rem] border border-[var(--line)] bg-[var(--panel-strong)] p-6'>
+              <p className='text-[10px] font-semibold uppercase tracking-[0.28em] text-[var(--muted-strong)]'>
+                The standard
+              </p>
+              <p className='mt-3 text-sm leading-7 text-[var(--ink-muted)]'>
+                Calm design, stronger hierarchy, and messaging that feels considered instead of
+                improvised. The result should make the business feel more established, not louder.
+              </p>
+            </div>
+          </div>
 
-            <CardPath
-              label='Ongoing support'
-              title='I want a trusted partner each month'
-              icon={<LineChart className='h-4 w-4' />}
-              bullets={[
-                'Choose a maintenance or improvement tier',
-                'Set up subscription billing',
-                'Receive onboarding checklist',
-                'Send your first request',
-              ]}
-              cta='Set up a care plan'
-            />
-          </motion.div>
+          <div className='grid gap-4 sm:grid-cols-2'>
+            {audienceGroups.map((group, index) => (
+              <div
+                key={group}
+                className='rounded-[1.8rem] border border-[var(--line-soft)] bg-[rgba(255,255,255,0.78)] px-5 py-5 text-sm leading-6 text-[var(--ink-muted)] shadow-[var(--shadow-sm)] sm:min-h-[8.75rem]'>
+                <p className='text-[10px] font-semibold uppercase tracking-[0.28em] text-[var(--muted-strong)]'>
+                  0{index + 1}
+                </p>
+                <p className='mt-3 max-w-[16rem]'>{group}</p>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
-      {/* Packages */}
-      <section id='packages' className='px-4 py-20 sm:px-6 lg:px-8'>
+      <section className='border-y border-[var(--line)] bg-[rgba(255,255,255,0.34)] px-4 py-20 sm:px-6 lg:px-8'>
+        <div className='mx-auto max-w-6xl space-y-10'>
+          <div className='grid gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(18rem,22rem)] lg:items-end'>
+            <SectionIntro
+              eyebrow='Packages'
+              title='Three ways to work together, with one very clear starting point for most businesses.'
+              copy='The offer is intentionally structured. You should be able to understand the scope, investment, and next step without a long sales call or a custom quote cycle.'
+            />
+
+            <div className='rounded-[2rem] border border-[var(--card-border)] bg-[color:var(--card-bg)] p-6 shadow-[var(--shadow-sm)]'>
+              <p className='text-[10px] font-semibold uppercase tracking-[0.3em] text-[var(--muted-strong)]'>
+                Buying flow
+              </p>
+              <ol className='mt-5 space-y-4'>
+                {buyingSteps.map((step, index) => (
+                  <li key={step} className='flex items-start gap-4'>
+                    <span className='inline-flex h-9 w-9 flex-none items-center justify-center rounded-full border border-[var(--line)] bg-[var(--primary-soft)] text-sm font-medium text-[var(--ink)]'>
+                      {index + 1}
+                    </span>
+                    <p className='pt-1 text-sm leading-6 text-[var(--ink-muted)]'>{step}</p>
+                  </li>
+                ))}
+              </ol>
+            </div>
+          </div>
+
+          <div className='grid gap-6 xl:grid-cols-[minmax(0,1.5fr)_minmax(18rem,22rem)]'>
+            <div className='grid gap-6 lg:grid-cols-3'>
+              {packageOffers.map((offer) => (
+                <PackageCard key={offer.slug} offer={offer} compact />
+              ))}
+            </div>
+
+            <aside className='rounded-[2.2rem] border border-[var(--card-border)] bg-[color:var(--card-bg)] p-6 shadow-[var(--shadow-md)]'>
+              <p className='text-[10px] font-semibold uppercase tracking-[0.3em] text-[var(--muted-strong)]'>
+                Every package includes
+              </p>
+              <ul className='mt-5 space-y-4'>
+                {everyPackageIncludes.map((item) => (
+                  <li key={item} className='flex gap-3 text-sm leading-6 text-[var(--ink-muted)]'>
+                    <span className='mt-2 h-2 w-2 flex-none rounded-full bg-[var(--accent)]' />
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+              <div className='mt-6'>
+                <PrimaryLink href='/services'>See Packages</PrimaryLink>
+              </div>
+            </aside>
+          </div>
+        </div>
+      </section>
+
+      <section className='px-4 py-20 sm:px-6 lg:px-8'>
         <div className='mx-auto max-w-6xl'>
-          <motion.div {...fadeInUp} className='max-w-2xl space-y-3'>
-            <p className='text-xs font-medium uppercase tracking-[0.3em] text-emerald-300'>
-              Packages
-            </p>
-            <h2 className='text-2xl font-semibold tracking-tight sm:text-3xl'>
-              Simple tiers, handcrafted execution
-            </h2>
-            <p className='text-sm text-slate-300'>
-              Every project uses the same disciplined design system and production workflow. The
-              only difference is scope and depth.
-            </p>
-          </motion.div>
-
-          <motion.div
-            {...smallFade}
-            transition={{ ...smallFade.transition, delay: 0.05 }}
-            className='mt-10 grid gap-5 md:grid-cols-3'>
-            <TierCard
-              name='Essentials'
-              summary='A focused one page site that puts your offer, proof, and contact in one clear place.'
-              ideal='Perfect when you need a credible, conversion ready home base quickly.'
-              details={[
-                'Single scrolling page',
-                'Light copy editing for clarity',
-                'Mobile first layout',
-                'Contact or booking integration',
-              ]}
-              timeline='About 5 days'
+          <div className='grid gap-8 lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)] lg:items-end'>
+            <SectionIntro
+              eyebrow='Process'
+              title='A project flow that keeps momentum high without making the client chase clarity.'
+              copy='The structure is simple on purpose: deposit, intake, kickoff, build, launch. Each step exists to remove guesswork and move the work forward cleanly.'
             />
 
-            <TierCard
-              name='Growth'
-              summary='A multi page build with custom visuals and a light CMS so your site can grow with you.'
-              ideal='Ideal for studios, practices, and small teams ready to level up their presence.'
-              details={[
-                'Thoughtful sitemap and content strategy',
-                'Custom visual treatments and interactions',
-                'CMS for repeatable content',
-                'Blog or resources section optional',
-              ]}
-              timeline='Around 10 days'
-              highlighted
-            />
+            <div className='rounded-[2rem] border border-[var(--card-border)] bg-[color:var(--card-bg)] p-6 shadow-[var(--shadow-sm)]'>
+              <p className='text-sm leading-7 text-[var(--ink-muted)]'>
+                The process is built to feel calm, but not passive. Every checkpoint should make the
+                next decision easier.
+              </p>
+            </div>
+          </div>
 
-            <TierCard
-              name='Full Brand Build'
-              summary='A fully custom, cinematic experience with deeper strategy, motion, and systems.'
-              ideal='Best when your site is central to sales, launches, or positioning.'
-              details={[
-                'Brand aligned art direction',
-                'Advanced motion and micro interactions',
-                'Richer content systems and templates',
-                'Launch support and documentation',
-              ]}
-              timeline='About 3 weeks'
-            />
-          </motion.div>
+          <div className='mt-10 grid gap-5 lg:grid-cols-5'>
+            {processSteps.map((step) => (
+              <article
+                key={step.number}
+                className='rounded-[2rem] border border-[var(--line-soft)] bg-[rgba(255,255,255,0.8)] p-5 shadow-[var(--shadow-sm)]'>
+                <span className='inline-flex h-11 w-11 items-center justify-center rounded-2xl bg-[var(--primary-soft)] text-sm font-medium text-[var(--primary)]'>
+                  {step.number}
+                </span>
+                <h3 className='mt-5 text-2xl leading-tight text-[var(--ink)]'>{step.title}</h3>
+                <p className='mt-3 text-sm leading-6 text-[var(--ink-muted)]'>{step.body}</p>
+              </article>
+            ))}
+          </div>
 
-          <motion.div
-            {...smallFade}
-            transition={{ ...smallFade.transition, delay: 0.1 }}
-            className='mt-8 flex flex-wrap items-center justify-between gap-4 text-xs text-slate-400'>
-            <p>
-              Most projects land between $2,000 and $8,000 depending on scope and integrations.
-              Maintenance plans are available for ongoing support.
-            </p>
-            <Button
-              asChild
-              size='sm'
-              className='rounded-full bg-slate-100 px-4 text-[11px] font-medium text-slate-900 hover:bg-white'>
-              <Link href='/start'>Get a tailored range before you commit</Link>
-            </Button>
-          </motion.div>
+          <div className='mt-8'>
+            <PrimaryLink href='/process'>See The Process</PrimaryLink>
+          </div>
         </div>
       </section>
 
-      {/* Why this studio */}
-      <section
-        id='why'
-        className='border-t border-slate-800/70 bg-slate-950/80 px-4 py-16 sm:px-6 lg:px-8'>
-        <div className='mx-auto grid max-w-6xl gap-10 lg:grid-cols-[minmax(0,3fr)_minmax(0,2fr)] lg:items-center'>
-          <motion.div {...fadeInUp} className='space-y-4'>
-            <p className='text-xs font-medium uppercase tracking-[0.3em] text-emerald-300'>
-              Why founders book
-            </p>
-            <h2 className='text-2xl font-semibold tracking-tight sm:text-3xl'>
-              Calm, opinionated, and built for long term reputation
-            </h2>
-            <p className='text-sm text-slate-300'>
-              The studio is intentionally small so your project never gets lost in a big agency
-              pipeline. You get a clear partner who cares about the details as much as you do:
-              structure, typography, page speed, and how the experience feels on a real phone in a
-              real hand.
-            </p>
-            <div className='grid gap-4 text-sm text-slate-300 sm:grid-cols-2'>
-              <div className='space-y-1.5'>
-                <h3 className='flex items-center gap-2 text-sm font-medium text-slate-100'>
-                  <span className='inline-flex h-6 w-6 items-center justify-center rounded-full bg-emerald-500/15 text-[11px] text-emerald-300'>
-                    1
-                  </span>
-                  Premium yet efficient
-                </h3>
-                <p className='text-xs leading-relaxed text-slate-400'>
-                  Templates, component libraries, and internal systems keep timelines short while
-                  the surface stays custom and considered.
-                </p>
-              </div>
-              <div className='space-y-1.5'>
-                <h3 className='flex items-center gap-2 text-sm font-medium text-slate-100'>
-                  <span className='inline-flex h-6 w-6 items-center justify-center rounded-full bg-emerald-500/15 text-[11px] text-emerald-300'>
-                    2
-                  </span>
-                  Built on strategy
-                </h3>
-                <p className='text-xs leading-relaxed text-slate-400'>
-                  Every layout reflects your offer, audience, and business model so the site is more
-                  than just a new coat of paint.
-                </p>
-              </div>
-              <div className='space-y-1.5'>
-                <h3 className='flex items-center gap-2 text-sm font-medium text-slate-100'>
-                  <span className='inline-flex h-6 w-6 items-center justify-center rounded-full bg-emerald-500/15 text-[11px] text-emerald-300'>
-                    3
-                  </span>
-                  Clear from first click
-                </h3>
-                <p className='text-xs leading-relaxed text-slate-400'>
-                  The site itself models the experience your clients can expect: simple paths,
-                  confident copy, and no mystery steps.
-                </p>
-              </div>
-              <div className='space-y-1.5'>
-                <h3 className='flex items-center gap-2 text-sm font-medium text-slate-100'>
-                  <span className='inline-flex h-6 w-6 items-center justify-center rounded-full bg-emerald-500/15 text-[11px] text-emerald-300'>
-                    4
-                  </span>
-                  Designed for loyalty
-                </h3>
-                <p className='text-xs leading-relaxed text-slate-400'>
-                  A launch is the beginning, not the end. Care plans, tune ups, and data informed
-                  tweaks keep the site improving.
-                </p>
-              </div>
-            </div>
-          </motion.div>
+      <section className='border-y border-[var(--line)] bg-[rgba(255,255,255,0.36)] px-4 py-20 sm:px-6 lg:px-8'>
+        <div className='mx-auto max-w-6xl space-y-12'>
+          <SectionIntro
+            eyebrow='Proof'
+            title='The work is built to make a business feel easier to trust, easier to understand, and easier to choose.'
+            copy='A strong site should create clarity before it creates volume. These proof stories show the kind of shift the studio is built to produce.'
+          />
 
-          <motion.div
-            {...smallFade}
-            transition={{ ...smallFade.transition, delay: 0.05 }}
-            className='lg:justify-self-end'>
-            <div className='relative overflow-hidden rounded-3xl border border-white/10 bg-slate-900/80 p-5 shadow-[0_18px_60px_rgba(15,23,42,0.9)] backdrop-blur'>
-              <p className='text-xs font-medium uppercase tracking-[0.3em] text-emerald-300'>
-                Next step
-              </p>
-              <h3 className='mt-3 text-sm font-semibold text-slate-100'>
-                Ready for a site that actually reflects your business?
-              </h3>
-              <p className='mt-2 text-xs leading-relaxed text-slate-400'>
-                Place a small deposit to reserve a spot on the calendar. You will receive a
-                confirmation, a structured intake, and a clear kickoff call that turns your ideas
-                into a plan.
-              </p>
-              <div className='mt-4 flex flex-col gap-2 text-xs text-slate-300'>
-                <div className='flex items-center gap-2'>
-                  <span className='h-1.5 w-1.5 rounded-full bg-emerald-400' />
-                  <span>$150 applied to your project total</span>
-                </div>
-                <div className='flex items-center gap-2'>
-                  <span className='h-1.5 w-1.5 rounded-full bg-emerald-400' />
-                  <span>No obligation proposal after intake if the fit is not right</span>
-                </div>
-              </div>
-              <Button
-                asChild
-                size='sm'
-                className='mt-5 inline-flex w-full items-center justify-center rounded-full bg-emerald-400 text-xs font-medium text-slate-900 hover:bg-emerald-300'>
-                <Link href='/start'>
-                  Start with a $150 deposit
-                  <ArrowRight className='ml-1.5 h-3.5 w-3.5' />
-                </Link>
-              </Button>
-            </div>
-          </motion.div>
+          <div className='grid gap-6 lg:grid-cols-3'>
+            {proofStories.map((story, index) => (
+              <article
+                key={story.title}
+                className='rounded-[2.1rem] border border-[var(--card-border)] bg-[color:var(--card-bg)] p-6 shadow-[var(--shadow-md)]'>
+                <p className='text-[10px] font-semibold uppercase tracking-[0.3em] text-[var(--muted-strong)]'>
+                  {story.label}
+                </p>
+                <h3 className='mt-4 text-3xl leading-[0.96] text-[var(--ink)]'>
+                  {story.title}
+                </h3>
+                <p className='mt-4 text-sm leading-7 text-[var(--ink-muted)]'>{story.summary}</p>
+
+                <ul className='mt-5 space-y-3'>
+                  {story.bullets.map((bullet) => (
+                    <li key={bullet} className='flex gap-3 text-sm leading-6 text-[var(--ink-muted)]'>
+                      <span
+                        className={`mt-2 h-2 w-2 flex-none rounded-full ${
+                          index === 1 ? 'bg-[var(--primary)]' : 'bg-[var(--accent)]'
+                        }`}
+                      />
+                      <span>{bullet}</span>
+                    </li>
+                  ))}
+                </ul>
+              </article>
+            ))}
+          </div>
+
+          <div>
+            <PrimaryLink href='/work'>See Proof</PrimaryLink>
+          </div>
         </div>
       </section>
-    </div>
-  );
-}
 
-type CardPathProps = {
-  label: string;
-  title: string;
-  icon: React.ReactNode;
-  bullets: string[];
-  cta: string;
-};
+      <section className='px-4 py-20 sm:px-6 lg:px-8'>
+        <div className='mx-auto grid max-w-6xl gap-10 lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)] lg:items-start'>
+          <div className='space-y-6'>
+            <SectionIntro
+              eyebrow='Studio'
+              title='One partner, one point of view, and a process designed to stay cohesive from strategy through launch.'
+              copy='You work directly with the person shaping the message, the structure, and the build. That keeps communication tighter and the final result more resolved.'
+            />
 
-function CardPath({ label, title, icon, bullets, cta }: CardPathProps) {
-  return (
-    <div className='group flex h-full flex-col rounded-3xl border border-slate-800/80 bg-slate-900/60 p-5 shadow-sm shadow-black/40 transition hover:border-emerald-400/70 hover:shadow-[0_20px_55px_rgba(0,0,0,0.85)]'>
-      <div className='flex items-center justify-between gap-3'>
-        <p className='text-[11px] font-medium uppercase tracking-[0.26em] text-slate-400'>
-          {label}
-        </p>
-        <span className='inline-flex h-7 w-7 items-center justify-center rounded-full bg-emerald-500/15 text-emerald-300'>
-          {icon}
-        </span>
-      </div>
-      <h3 className='mt-3 text-sm font-medium text-slate-100'>{title}</h3>
-      <ul className='mt-3 flex-1 space-y-1.5 text-[11px] leading-relaxed text-slate-400'>
-        {bullets.map((item) => (
-          <li key={item} className='flex gap-2'>
-            <span className='mt-[6px] h-1 w-1 flex-none rounded-full bg-emerald-300' />
-            <span>{item}</span>
-          </li>
-        ))}
-      </ul>
-      <Button
-        asChild
-        size='sm'
-        className='mt-4 inline-flex items-center justify-between rounded-full bg-slate-900 text-[11px] font-medium text-slate-100 transition-colors group-hover:bg-slate-800 group-hover:text-slate-900'>
-        <Link href='/start'>
-          <span>{cta}</span>
-          <ArrowRight className='ml-1.5 h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5' />
-        </Link>
-      </Button>
-    </div>
-  );
-}
+            <div className='grid gap-4'>
+              {studioPrinciples.map((principle) => (
+                <article
+                  key={principle.title}
+                  className='rounded-[1.8rem] border border-[var(--card-border)] bg-[color:var(--card-bg)] p-5 shadow-[var(--shadow-sm)]'>
+                  <h3 className='text-2xl text-[var(--ink)]'>{principle.title}</h3>
+                  <p className='mt-3 text-sm leading-6 text-[var(--ink-muted)]'>{principle.body}</p>
+                </article>
+              ))}
+            </div>
 
-type TierCardProps = {
-  name: string;
-  summary: string;
-  ideal: string;
-  details: string[];
-  timeline: string;
-  highlighted?: boolean;
-};
+            <PrimaryLink href='/studio'>Meet The Studio</PrimaryLink>
+          </div>
 
-function TierCard({ name, summary, ideal, details, timeline, highlighted }: TierCardProps) {
-  return (
-    <div
-      className={[
-        'flex h-full flex-col rounded-3xl border bg-slate-900/60 p-5 text-sm shadow-sm shadow-black/40 transition',
-        highlighted
-          ? 'border-emerald-400/80 bg-slate-900/80 shadow-[0_24px_65px_rgba(0,0,0,0.9)]'
-          : 'border-slate-800/80 hover:border-emerald-400/60 hover:shadow-[0_20px_55px_rgba(0,0,0,0.85)]',
-      ].join(' ')}>
-      <div className='flex items-center justify-between gap-3'>
-        <h3 className='text-sm font-semibold text-slate-100'>{name}</h3>
-        {highlighted && (
-          <span className='inline-flex items-center rounded-full bg-emerald-500/15 px-2.5 py-1 text-[10px] font-medium text-emerald-200'>
-            Most booked
-          </span>
-        )}
-      </div>
-      <p className='mt-3 text-xs leading-relaxed text-slate-300'>{summary}</p>
-      <p className='mt-2 text-[11px] leading-relaxed text-slate-400'>{ideal}</p>
-      <ul className='mt-4 space-y-1.5 text-[11px] leading-relaxed text-slate-400'>
-        {details.map((item) => (
-          <li key={item} className='flex gap-2'>
-            <span className='mt-[6px] h-1 w-1 flex-none rounded-full bg-emerald-300' />
-            <span>{item}</span>
-          </li>
-        ))}
-      </ul>
-      <div className='mt-4 flex items-center justify-between text-[11px] text-slate-400'>
-        <span>Typical timeline: {timeline}</span>
-      </div>
-    </div>
+          <div className='rounded-[2.4rem] border border-[var(--card-border)] bg-[color:var(--card-bg)] p-8 shadow-[var(--shadow-md)] sm:p-10'>
+            <SectionIntro
+              eyebrow='FAQ'
+              title='The common questions are answered before the project starts.'
+              copy='The aim here is to remove hesitation, not create more of it. A good-fit client should know exactly how this works.'
+              className='max-w-none'
+            />
+
+            <div className='mt-8 grid gap-4'>
+              {faqs.slice(0, 4).map((faq) => (
+                <article
+                  key={faq.question}
+                  className='rounded-[1.6rem] border border-[var(--line-soft)] bg-[rgba(255,255,255,0.74)] p-5'>
+                  <h3 className='text-2xl leading-tight text-[var(--ink)]'>{faq.question}</h3>
+                  <p className='mt-3 text-sm leading-6 text-[var(--ink-muted)]'>{faq.answer}</p>
+                </article>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <CtaBand
+        eyebrow='Start'
+        title='If the business is ready for a stronger online presence, the next step should feel obvious.'
+        copy='Choose the package that fits, place the $150 deposit, and move into a guided project flow that keeps the work clear from the first step.'
+        href='/start'
+        ctaLabel='Start With The Deposit'
+      />
+    </>
   );
 }
