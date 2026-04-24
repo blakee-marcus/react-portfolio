@@ -6,9 +6,9 @@ import { packageOffers, processSteps } from '@/lib/site-content';
 import { buildNoIndexMetadata } from '@/lib/seo';
 
 export const metadata: Metadata = buildNoIndexMetadata({
-  title: 'Start',
+  title: 'Start Your Website Project',
   description:
-    'Choose your website package, place the $150 deposit, and move into intake and kickoff.',
+    'Choose your website package, place the $150 project deposit, and move into a guided intake and kickoff process.',
   path: '/start',
 });
 
@@ -28,13 +28,13 @@ export default function StartPage() {
 
           <div className='rounded-[2rem] border border-[var(--line)] bg-[color:var(--panel)/0.82] p-6 shadow-[var(--shadow-md)]'>
             <p className='text-[11px] font-semibold uppercase tracking-[0.28em] text-[var(--muted)]'>
-              How the deposit works
+              Your project deposit
             </p>
             <ul className='mt-5 space-y-4'>
               {[
-                'The $150 deposit reserves your spot in the project schedule.',
-                'It is applied to your total project cost, not added as an extra fee.',
-                'Once it is paid, you move into intake, kickoff scheduling, and onboarding.',
+                'The $150 deposit reserves your place in the production schedule.',
+                'It is credited toward your total project cost, not added as a separate fee.',
+                'After payment, you will receive the intake steps, kickoff details, and next actions.',
               ].map((item, index) => (
                 <li key={item} className='flex gap-3 text-sm leading-6 text-[var(--ink-muted)]'>
                   <SiteListMark icon={depositDetailIcons[index]} tone='accent' />
@@ -44,9 +44,10 @@ export default function StartPage() {
             </ul>
 
             <div className='mt-6 rounded-[1.4rem] border border-[var(--line)] bg-[var(--panel)] px-5 py-4 text-sm leading-6 text-[var(--ink-muted)]'>
-              Not sure which package to choose? Start with{' '}
+              Not sure where to begin? Choose{' '}
               <span className='font-medium text-[var(--ink)]'>Growth</span>. It is the best fit for
-              most service businesses, and final scope gets confirmed before production begins.
+              most service businesses that need a complete, polished website without
+              overcomplicating the process.
             </div>
           </div>
         </div>
@@ -68,9 +69,9 @@ export default function StartPage() {
       <section className='border-y border-[var(--line)] bg-[color:var(--panel)/0.55] px-4 py-20 sm:px-6 lg:px-8'>
         <div className='mx-auto grid max-w-6xl gap-10 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:items-start'>
           <SectionIntro
-            eyebrow='What happens next'
-            title='Once your deposit is in, the next steps are simple.'
-            copy='You should not be left wondering what happens after payment. The process is designed to keep momentum high and make each next step easy to follow.'
+            eyebrow='After your deposit'
+            title='The process stays guided from here.'
+            copy='Once your deposit is placed, you will not be left guessing. You will receive a clear intake, a structured kickoff, and a simple path from first decision to finished website.'
           />
 
           <div className='grid gap-6 sm:grid-cols-2'>
@@ -102,12 +103,13 @@ export default function StartPage() {
       <section className='px-4 py-20 sm:px-6 lg:px-8'>
         <div className='mx-auto max-w-6xl rounded-[2rem] border border-[var(--line)] bg-[color:var(--panel)/0.82] p-8 shadow-[var(--shadow-md)] sm:p-10'>
           <SectionIntro
-            eyebrow='Decision'
-            title='At this point, you only need to choose the package that fits and move forward.'
-            copy='You have already seen who this is for, what is included, and how the process works. This page is here to help you make a confident choice and get the project started.'
+            as='h1'
+            eyebrow='Start your project'
+            title='Choose your website package and reserve your place in the build schedule.'
+            copy='This is the first step toward a clearer, stronger website for your business. Select the package that fits where you are now, place the $150 project deposit, and move into a guided intake process.'
           />
           <div className='mt-8'>
-            <PrimaryLink href='/services'>Compare Packages Again</PrimaryLink>
+            <PrimaryLink href='/services'>Review the Packages</PrimaryLink>
           </div>
         </div>
       </section>

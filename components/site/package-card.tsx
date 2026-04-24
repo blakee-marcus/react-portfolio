@@ -61,7 +61,7 @@ export function PackageCard({
 
           {offer.featured ? (
             <span className='shrink-0 rounded-full border border-[var(--line)] bg-[var(--primary-soft)] px-3 py-1 text-[11px] font-medium text-[var(--badge-primary-text)]'>
-              Recommended
+              Best fit
             </span>
           ) : null}
         </div>
@@ -70,7 +70,7 @@ export function PackageCard({
 
         <div className='rounded-[1.4rem] border border-[var(--line-soft)] bg-[rgba(255,255,255,0.74)] px-4 py-4'>
           <p className='text-[10px] font-semibold uppercase tracking-[0.28em] text-[var(--muted-strong)]'>
-            Best for
+            Right fit
           </p>
           <p className='mt-2 text-sm leading-6 text-[var(--ink-muted)]'>{offer.idealFor}</p>
         </div>
@@ -87,7 +87,9 @@ export function PackageCard({
 
       <div className='mt-7 border-t border-[var(--line-soft)] pt-5'>
         <div className='flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between'>
-          <p className='text-sm text-[var(--muted-strong)]'>{offer.timeline}</p>
+          <p className='text-sm text-[var(--muted-strong)]'>
+            Typical timeline: <span className='text-[var(--ink-muted)]'>{offer.timeline}</span>
+          </p>
 
           {href && ctaLabel ? (
             <Link href={href} className={`${actionClasses} hover:bg-[var(--panel-strong)]`}>
