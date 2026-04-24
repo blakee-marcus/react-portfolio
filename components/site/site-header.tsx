@@ -15,15 +15,12 @@ const navLinks = [
 
 export function SiteHeader() {
   const pathname = usePathname();
-  const [menuOpen, setMenuOpen] = useState(false);
-
-  useEffect(() => {
-    setMenuOpen(false);
-  }, [pathname]);
+  const [openMenuPathname, setOpenMenuPathname] = useState<string | null>(null);
+  const menuOpen = openMenuPathname === pathname;
 
   useEffect(() => {
     function handleEscape(event: KeyboardEvent) {
-      if (event.key === 'Escape') setMenuOpen(false);
+      if (event.key === 'Escape') setOpenMenuPathname(null);
     }
 
     window.addEventListener('keydown', handleEscape);
@@ -83,7 +80,9 @@ export function SiteHeader() {
               aria-label={menuOpen ? 'Close navigation menu' : 'Open navigation menu'}
               aria-expanded={menuOpen}
               aria-controls='mobile-site-nav'
-              onClick={() => setMenuOpen((current) => !current)}
+              onClick={() =>
+                setOpenMenuPathname((current) => (current === pathname ? null : pathname))
+              }
               className='action-surface inline-flex min-h-11 items-center gap-2 rounded-full border border-[var(--line)] bg-[rgba(255,255,255,0.76)] px-3 text-[14px] font-semibold text-[var(--ink)] shadow-[var(--shadow-sm)] sm:hidden'>
               <SiteIcon icon={menuOpen ? 'x' : 'menu'} className='h-4 w-4' />
               <span className='hidden min-[390px]:inline'>{menuOpen ? 'Close' : 'Menu'}</span>

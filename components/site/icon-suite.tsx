@@ -22,6 +22,7 @@ import {
   Rocket,
   Sparkles,
   TrendingUp,
+  X,
   type LucideIcon,
   type LucideProps,
 } from 'lucide-react';
@@ -32,6 +33,7 @@ export type SiteIconSize = 'xs' | 'sm' | 'md' | 'lg';
 export type SiteIconName =
   | 'arrow-right'
   | 'menu'
+  | 'x'
   | 'spark'
   | 'essentials'
   | 'growth'
@@ -59,6 +61,7 @@ export type SiteIconName =
 const iconMap: Record<SiteIconName, LucideIcon> = {
   'arrow-right': ArrowRight,
   menu: Menu,
+  x: X,
   spark: Sparkles,
   essentials: FileText,
   growth: Layers3,

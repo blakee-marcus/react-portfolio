@@ -9,6 +9,7 @@ export type PackageOffer = {
   summary: string;
   idealFor: string;
   includes: string[];
+  scopeBoundaries: string[];
   depositLabel: string;
   featured?: boolean;
 };
@@ -31,6 +32,11 @@ export const packageOffers: PackageOffer[] = [
       'Responsive design for mobile, tablet, and desktop',
       'Launch support and simple handoff',
     ],
+    scopeBoundaries: [
+      'Full brand identity system',
+      'Complex CMS or content migration',
+      'Advanced booking, e-commerce, or custom app logic',
+    ],
     depositLabel: 'Reserve Essentials',
   },
   {
@@ -50,12 +56,17 @@ export const packageOffers: PackageOffer[] = [
       'Light CMS support for repeatable content',
       'Launch QA, handoff, and post-launch polish',
     ],
+    scopeBoundaries: [
+      'Complex custom applications',
+      'Advanced e-commerce or deep API integrations',
+      'Large content migrations or full brand strategy engagements',
+    ],
     depositLabel: 'Reserve Growth',
     featured: true,
   },
   {
     slug: 'full-brand',
-    name: 'Signature',
+    name: 'Full Brand Build',
     eyebrow: 'Premium build',
     startingPrice: 'Starting at $7,500',
     timeline: '3 to 4 weeks',
@@ -70,7 +81,12 @@ export const packageOffers: PackageOffer[] = [
       'Motion, polish, and premium interaction details',
       'Launch checklist, handoff walkthrough, and 14-day tuneup',
     ],
-    depositLabel: 'Reserve Signature',
+    scopeBoundaries: [
+      'Enterprise brand strategy or procurement-heavy work',
+      'Large-scale content production',
+      'Complex software products or advanced automation systems',
+    ],
+    depositLabel: 'Reserve Full Brand Build',
   },
 ];
 

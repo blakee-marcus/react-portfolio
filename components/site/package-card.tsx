@@ -13,11 +13,13 @@ export function PackageCard({
   href,
   ctaLabel,
   compact = false,
+  showScopeBoundaries = false,
 }: {
   offer: PackageOffer;
   href?: string;
   ctaLabel?: string;
   compact?: boolean;
+  showScopeBoundaries?: boolean;
 }) {
   const actionClasses =
     'action-surface inline-flex min-h-11 items-center justify-center gap-2 rounded-full border border-[var(--line)] bg-[rgba(255,255,255,0.84)] px-4 py-2.5 text-[15px] font-semibold tracking-[0.01em] text-[var(--button-secondary-text)]';
@@ -83,6 +85,22 @@ export function PackageCard({
             </li>
           ))}
         </ul>
+
+        {showScopeBoundaries ? (
+          <div className='rounded-[1.4rem] border border-[var(--line-soft)] bg-[rgba(255,255,255,0.62)] px-4 py-4'>
+            <p className='text-[10px] font-semibold uppercase tracking-[0.28em] text-[var(--muted-strong)]'>
+              Not built for
+            </p>
+            <ul className='mt-3 space-y-2.5 pl-0 text-sm leading-6 text-[var(--ink-muted)]'>
+              {offer.scopeBoundaries.map((item) => (
+                <li key={item} className='flex items-start gap-3'>
+                  <SiteListMark icon='clarity' tone={offer.featured ? 'primary' : 'accent'} />
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ) : null}
       </div>
 
       <div className='mt-7 border-t border-[var(--line-soft)] pt-5'>

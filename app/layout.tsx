@@ -1,19 +1,12 @@
 import Link from 'next/link';
 import React from 'react';
-import { SiteChipMark, SiteIcon } from '@/components/site/icon-suite';
+import { SiteChipMark } from '@/components/site/icon-suite';
 import { SiteHeader } from '@/components/site/site-header';
 import { StructuredData } from '@/components/site/structured-data';
 import { rootMetadata, siteSchema } from '@/lib/seo';
 import './globals.css';
 
 export const metadata = rootMetadata;
-
-const navLinks = [
-  { href: '/services', label: 'Packages' },
-  { href: '/process', label: 'Process' },
-  { href: '/work', label: 'Proof' },
-  { href: '/studio', label: 'Studio' },
-];
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
