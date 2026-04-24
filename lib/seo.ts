@@ -3,7 +3,7 @@ import type { Metadata } from 'next';
 export const siteConfig = {
   name: 'Blake Marcus Studio',
   creator: 'Blake Marcus',
-  url: 'https://blakemarcus.com',
+  url: 'https://www.blakemarcus.com',
   defaultTitle: 'Las Vegas Web Design for Service Businesses',
   description:
     'Blake Marcus Studio creates calm, premium websites for founder-led service businesses in Las Vegas, Nevada and nationwide.',
