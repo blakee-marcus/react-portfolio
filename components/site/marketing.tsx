@@ -1,6 +1,6 @@
 import Link from 'next/link';
-import { ArrowRight } from 'lucide-react';
 import type { ReactNode } from 'react';
+import { SiteChipMark, SiteIcon } from '@/components/site/icon-suite';
 import { cn } from '@/lib/utils';
 
 const eyebrowClasses =
@@ -27,7 +27,7 @@ export function SectionIntro({
   return (
     <div className={cn('max-w-3xl space-y-5', className)}>
       <p className={eyebrowClasses}>
-        <span className='inline-flex h-2 w-2 rounded-full bg-[var(--primary)]' />
+        <SiteChipMark icon='spark' tone='primary' />
         {eyebrow}
       </p>
       <Heading className='text-balance text-4xl leading-[0.92] text-[var(--ink)] sm:text-5xl md:text-6xl'>
@@ -55,7 +55,7 @@ export function PrimaryLink({
         className
       )}>
       {children}
-      <ArrowRight className='h-4 w-4' />
+      <SiteIcon icon='arrow-right' className='h-4 w-4' />
     </Link>
   );
 }
@@ -104,7 +104,7 @@ export function CtaBand({
         <div className='relative grid gap-8 lg:grid-cols-[minmax(0,1.55fr)_minmax(18rem,22rem)] lg:items-end'>
           <div className='space-y-5'>
             <p className={eyebrowClasses}>
-              <span className='inline-flex h-2 w-2 rounded-full bg-[var(--accent)]' />
+              <SiteChipMark icon='spark' tone='accent' />
               {eyebrow}
             </p>
             <h2 className='max-w-3xl text-balance text-4xl leading-[0.92] text-[var(--ink)] sm:text-5xl'>

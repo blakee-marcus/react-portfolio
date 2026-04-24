@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { SiteIconBadge, SiteListMark } from '@/components/site/icon-suite';
 import { CtaBand, SectionIntro } from '@/components/site/marketing';
 import { PackageCard } from '@/components/site/package-card';
 import { carePlan, everyPackageIncludes, packageOffers } from '@/lib/site-content';
@@ -15,6 +16,9 @@ export const metadata: Metadata = buildMetadata({
     'Nevada service business websites',
   ],
 });
+
+const packageStandardIcons = ['scope', 'communication', 'business', 'launch'] as const;
+const carePlanIcons = ['care', 'trust', 'momentum', 'onboarding'] as const;
 
 export default function ServicesPage() {
   return (
@@ -58,11 +62,16 @@ export default function ServicesPage() {
           />
 
           <div className='grid gap-4'>
-            {everyPackageIncludes.map((item) => (
+            {everyPackageIncludes.map((item, index) => (
               <div
                 key={item}
                 className='rounded-[1.6rem] border border-[var(--line)] bg-[var(--panel)] px-5 py-5 text-sm leading-6 text-[var(--ink-muted)]'>
-                {item}
+                <SiteIconBadge
+                  icon={packageStandardIcons[index]}
+                  tone={index === 1 ? 'accent' : 'primary'}
+                  size='sm'
+                />
+                <p className='mt-4'>{item}</p>
               </div>
             ))}
           </div>
@@ -75,9 +84,9 @@ export default function ServicesPage() {
 
           <div className='rounded-[2rem] border border-[var(--line)] bg-[color:var(--panel)/0.82] p-6 shadow-[var(--shadow-md)]'>
             <ul className='space-y-4'>
-              {carePlan.details.map((detail) => (
+              {carePlan.details.map((detail, index) => (
                 <li key={detail} className='flex gap-3 text-sm leading-6 text-[var(--ink-muted)]'>
-                  <span className='mt-2 h-1.5 w-1.5 flex-none rounded-full bg-[var(--accent-strong)]' />
+                  <SiteListMark icon={carePlanIcons[index]} tone='accent' />
                   <span>{detail}</span>
                 </li>
               ))}

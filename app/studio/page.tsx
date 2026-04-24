@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { SiteIconBadge, studioIconsByTitle } from '@/components/site/icon-suite';
 import { CtaBand, PrimaryLink, SectionIntro } from '@/components/site/marketing';
 import { fitNotes, studioPrinciples } from '@/lib/site-content';
 import { buildMetadata } from '@/lib/seo';
@@ -14,6 +15,8 @@ export const metadata: Metadata = buildMetadata({
     'Nevada web design studio',
   ],
 });
+
+const fitNoteIcons = ['fit', 'clarity'] as const;
 
 export default function StudioPage() {
   return (
@@ -46,7 +49,11 @@ export default function StudioPage() {
             <article
               key={principle.title}
               className='rounded-[1.9rem] border border-[var(--line)] bg-[color:var(--panel)/0.82] p-6 shadow-[var(--shadow-md)]'>
-              <h2 className='text-3xl leading-[1.02] text-[var(--ink)]'>{principle.title}</h2>
+              <SiteIconBadge
+                icon={studioIconsByTitle[principle.title]}
+                tone={principle.title === 'Built for trust' ? 'accent' : 'primary'}
+              />
+              <h2 className='mt-4 text-3xl leading-[1.02] text-[var(--ink)]'>{principle.title}</h2>
               <p className='mt-4 text-sm leading-6 text-[var(--ink-muted)]'>{principle.body}</p>
             </article>
           ))}
@@ -62,11 +69,16 @@ export default function StudioPage() {
           />
 
           <div className='space-y-4'>
-            {fitNotes.map((note) => (
+            {fitNotes.map((note, index) => (
               <div
                 key={note}
                 className='rounded-[1.6rem] border border-[var(--line)] bg-[var(--panel)] px-5 py-5 text-sm leading-6 text-[var(--ink-muted)]'>
-                {note}
+                <SiteIconBadge
+                  icon={fitNoteIcons[index]}
+                  tone={index === 0 ? 'primary' : 'accent'}
+                  size='sm'
+                />
+                <p className='mt-4'>{note}</p>
               </div>
             ))}
             <PrimaryLink href='/start'>Start A Project</PrimaryLink>

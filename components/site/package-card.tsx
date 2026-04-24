@@ -1,5 +1,10 @@
 import Link from 'next/link';
-import { ArrowRight } from 'lucide-react';
+import {
+  packageIconsBySlug,
+  SiteIcon,
+  SiteIconBadge,
+  SiteListMark,
+} from '@/components/site/icon-suite';
 import { cn } from '@/lib/utils';
 import type { PackageOffer } from '@/lib/site-content';
 
@@ -36,14 +41,22 @@ export function PackageCard({
       />
 
       <div className='flex items-start justify-between gap-4'>
-        <div className='space-y-3'>
-          <p className='text-[10px] font-semibold uppercase tracking-[0.3em] text-[var(--muted-strong)]'>
-            {offer.eyebrow}
-          </p>
+        <div className='flex items-start gap-4'>
+          <SiteIconBadge
+            icon={packageIconsBySlug[offer.slug]}
+            tone={offer.featured ? 'primary' : 'accent'}
+            className='mt-1'
+          />
 
-          <div className='space-y-2'>
-            <h3 className='text-3xl leading-none text-[var(--ink)]'>{offer.name}</h3>
-            <p className='text-sm font-medium text-[var(--accent)]'>{offer.startingPrice}</p>
+          <div className='space-y-3'>
+            <p className='text-[10px] font-semibold uppercase tracking-[0.3em] text-[var(--muted-strong)]'>
+              {offer.eyebrow}
+            </p>
+
+            <div className='space-y-2'>
+              <h3 className='text-3xl leading-none text-[var(--ink)]'>{offer.name}</h3>
+              <p className='text-sm font-medium text-[var(--accent)]'>{offer.startingPrice}</p>
+            </div>
           </div>
         </div>
 
@@ -66,9 +79,7 @@ export function PackageCard({
       <ul className='mt-6 space-y-3 pl-0 text-sm text-[var(--ink-muted)]'>
         {offer.includes.slice(0, compact ? 3 : offer.includes.length).map((item) => (
           <li key={item} className='flex gap-3'>
-            <span className='mt-2 inline-flex h-6 w-6 flex-none items-center justify-center rounded-full bg-[var(--primary-soft)] text-[var(--primary)]'>
-              <span className='h-1.5 w-1.5 rounded-full bg-current' />
-            </span>
+            <SiteListMark icon='spark' tone={offer.featured ? 'primary' : 'accent'} />
             <span>{item}</span>
           </li>
         ))}
@@ -83,7 +94,7 @@ export function PackageCard({
               href={href}
               className={`${actionClasses} hover:bg-[var(--panel-strong)]`}>
               {ctaLabel}
-              <ArrowRight className='h-4 w-4' />
+              <SiteIcon icon='arrow-right' className='h-4 w-4' />
             </Link>
           ) : null}
         </div>

@@ -1,4 +1,6 @@
 import type { Metadata } from 'next';
+import { SiteIconBadge, SiteListMark } from '@/components/site/icon-suite';
+import { requirePaidDepositAccess } from '@/lib/deposit/server';
 import { PrimaryLink, SectionIntro } from '@/components/site/marketing';
 import { getPackageBySlug, packageOffers } from '@/lib/site-content';
 import { buildNoIndexMetadata } from '@/lib/seo';
@@ -8,18 +10,13 @@ export const metadata: Metadata = buildNoIndexMetadata({
   description: 'Kickoff planning for scope, priorities, timeline, and project readiness.',
   path: '/start/kickoff',
 });
+export const dynamic = 'force-dynamic';
 
-type FlowSearchParams = Promise<{
-  package?: string | string[];
-  mode?: string | string[];
-}>;
+const kickoffIcons = ['scope', 'momentum', 'pages', 'launch'] as const;
 
-export default async function KickoffPage({ searchParams }: { searchParams: FlowSearchParams }) {
-  const params = await searchParams;
-  const packageParam = Array.isArray(params.package) ? params.package[0] : params.package;
-  const mode = Array.isArray(params.mode) ? params.mode[0] : params.mode;
-  const selectedPackage = getPackageBySlug(packageParam) ?? packageOffers[1];
-  const suffix = `?package=${selectedPackage.slug}${mode === 'demo' ? '&mode=demo' : ''}`;
+export default async function KickoffPage() {
+  const deposit = await requirePaidDepositAccess();
+  const selectedPackage = getPackageBySlug(deposit.packageSlug) ?? packageOffers[1];
 
   return (
     <section className='px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24'>
@@ -42,9 +39,9 @@ export default async function KickoffPage({ searchParams }: { searchParams: Flow
                 'Timeline, pacing, and review checkpoints',
                 'Any remaining content, assets, or open questions',
                 'The remaining project fee and launch expectations',
-              ].map((item) => (
+              ].map((item, index) => (
                 <li key={item} className='flex gap-3 text-sm leading-6 text-[var(--ink-muted)]'>
-                  <span className='mt-2 h-1.5 w-1.5 flex-none rounded-full bg-[var(--accent-strong)]' />
+                  <SiteListMark icon={kickoffIcons[index]} tone='accent' />
                   <span>{item}</span>
                 </li>
               ))}
@@ -52,7 +49,8 @@ export default async function KickoffPage({ searchParams }: { searchParams: Flow
           </div>
 
           <div className='rounded-[2rem] border border-[var(--line)] bg-[var(--panel)] p-6'>
-            <p className='text-[11px] font-semibold uppercase tracking-[0.28em] text-[var(--muted)]'>
+            <SiteIconBadge icon='kickoff' tone='primary' />
+            <p className='mt-4 text-[11px] font-semibold uppercase tracking-[0.28em] text-[var(--muted)]'>
               Next step
             </p>
             <h2 className='mt-4 text-3xl leading-tight text-[var(--ink)]'>Book kickoff</h2>
@@ -62,7 +60,7 @@ export default async function KickoffPage({ searchParams }: { searchParams: Flow
             </p>
 
             <div className='mt-6'>
-              <PrimaryLink href={`/start/onboarding${suffix}`}>Continue To Onboarding</PrimaryLink>
+              <PrimaryLink href='/start/onboarding'>Continue To Onboarding</PrimaryLink>
             </div>
           </div>
         </div>

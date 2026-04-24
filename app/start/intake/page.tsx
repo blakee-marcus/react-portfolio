@@ -1,4 +1,6 @@
 import type { Metadata } from 'next';
+import { SiteIconBadge } from '@/components/site/icon-suite';
+import { requirePaidDepositAccess } from '@/lib/deposit/server';
 import { PrimaryLink, SectionIntro } from '@/components/site/marketing';
 import { getPackageBySlug, packageOffers } from '@/lib/site-content';
 import { buildNoIndexMetadata } from '@/lib/seo';
@@ -8,18 +10,13 @@ export const metadata: Metadata = buildNoIndexMetadata({
   description: 'Project intake details for goals, content, brand direction, and logistics.',
   path: '/start/intake',
 });
+export const dynamic = 'force-dynamic';
 
-type FlowSearchParams = Promise<{
-  package?: string | string[];
-  mode?: string | string[];
-}>;
+const intakeIcons = ['business', 'pages', 'brand', 'logistics'] as const;
 
-export default async function IntakePage({ searchParams }: { searchParams: FlowSearchParams }) {
-  const params = await searchParams;
-  const packageParam = Array.isArray(params.package) ? params.package[0] : params.package;
-  const mode = Array.isArray(params.mode) ? params.mode[0] : params.mode;
-  const selectedPackage = getPackageBySlug(packageParam) ?? packageOffers[1];
-  const suffix = `?package=${selectedPackage.slug}${mode === 'demo' ? '&mode=demo' : ''}`;
+export default async function IntakePage() {
+  const deposit = await requirePaidDepositAccess();
+  const selectedPackage = getPackageBySlug(deposit.packageSlug) ?? packageOffers[1];
 
   return (
     <section className='px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24'>
@@ -49,11 +46,16 @@ export default async function IntakePage({ searchParams }: { searchParams: FlowS
               'Logistics',
               'Your target timing, needed integrations, and anything that could affect scope or pacing.',
             ],
-          ].map(([title, body]) => (
+          ].map(([title, body], index) => (
             <article
               key={title}
               className='rounded-[1.7rem] border border-[var(--line)] bg-[color:var(--panel)/0.82] p-5 shadow-[var(--shadow-md)]'>
-              <h2 className='text-2xl leading-tight text-[var(--ink)]'>{title}</h2>
+              <SiteIconBadge
+                icon={intakeIcons[index]}
+                tone={index === 2 ? 'accent' : 'primary'}
+                size='sm'
+              />
+              <h2 className='mt-4 text-2xl leading-tight text-[var(--ink)]'>{title}</h2>
               <p className='mt-3 text-sm leading-6 text-[var(--ink-muted)]'>{body}</p>
             </article>
           ))}
@@ -65,7 +67,7 @@ export default async function IntakePage({ searchParams }: { searchParams: FlowS
             kickoff is productive and the project starts with clarity.
           </p>
           <div className='mt-6'>
-            <PrimaryLink href={`/start/kickoff${suffix}`}>Continue To Kickoff</PrimaryLink>
+            <PrimaryLink href='/start/kickoff'>Continue To Kickoff</PrimaryLink>
           </div>
         </div>
       </div>

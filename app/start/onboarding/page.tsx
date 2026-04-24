@@ -1,4 +1,6 @@
 import type { Metadata } from 'next';
+import { SiteIconBadge } from '@/components/site/icon-suite';
+import { requirePaidDepositAccess } from '@/lib/deposit/server';
 import { PrimaryLink, SecondaryLink, SectionIntro } from '@/components/site/marketing';
 import { getPackageBySlug, packageOffers } from '@/lib/site-content';
 import { buildNoIndexMetadata } from '@/lib/seo';
@@ -8,15 +10,13 @@ export const metadata: Metadata = buildNoIndexMetadata({
   description: 'Onboarding details for the first week of the project and communication expectations.',
   path: '/start/onboarding',
 });
+export const dynamic = 'force-dynamic';
 
-type FlowSearchParams = Promise<{
-  package?: string | string[];
-}>;
+const onboardingIcons = ['week-one', 'communication', 'launch'] as const;
 
-export default async function OnboardingPage({ searchParams }: { searchParams: FlowSearchParams }) {
-  const params = await searchParams;
-  const packageParam = Array.isArray(params.package) ? params.package[0] : params.package;
-  const selectedPackage = getPackageBySlug(packageParam) ?? packageOffers[1];
+export default async function OnboardingPage() {
+  const deposit = await requirePaidDepositAccess();
+  const selectedPackage = getPackageBySlug(deposit.packageSlug) ?? packageOffers[1];
 
   return (
     <section className='px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24'>
@@ -42,11 +42,15 @@ export default async function OnboardingPage({ searchParams }: { searchParams: F
               'Build phase',
               'The project moves into design and development with a defined sequence and a clear launch target.',
             ],
-          ].map(([title, body]) => (
+          ].map(([title, body], index) => (
             <article
               key={title}
               className='rounded-[1.8rem] border border-[var(--line)] bg-[color:var(--panel)/0.82] p-6 shadow-[var(--shadow-md)]'>
-              <h2 className='text-3xl leading-tight text-[var(--ink)]'>{title}</h2>
+              <SiteIconBadge
+                icon={onboardingIcons[index]}
+                tone={index === 1 ? 'accent' : 'primary'}
+              />
+              <h2 className='mt-4 text-3xl leading-tight text-[var(--ink)]'>{title}</h2>
               <p className='mt-4 text-sm leading-6 text-[var(--ink-muted)]'>{body}</p>
             </article>
           ))}

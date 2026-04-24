@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { proofIconsByLabel, SiteIconBadge, SiteListMark } from '@/components/site/icon-suite';
 import { CtaBand, PrimaryLink, SectionIntro } from '@/components/site/marketing';
 import { proofStories } from '@/lib/site-content';
 import { buildMetadata } from '@/lib/seo';
@@ -41,7 +42,11 @@ export default function WorkPage() {
             <article
               key={story.title}
               className='rounded-[2rem] border border-[var(--line)] bg-[color:var(--panel)/0.84] p-6 shadow-[var(--shadow-md)]'>
-              <p className='text-[11px] font-semibold uppercase tracking-[0.28em] text-[var(--muted)]'>
+              <SiteIconBadge
+                icon={proofIconsByLabel[story.label]}
+                tone={story.label === 'Creative studio' ? 'primary' : 'accent'}
+              />
+              <p className='mt-4 text-[11px] font-semibold uppercase tracking-[0.28em] text-[var(--muted)]'>
                 {story.label}
               </p>
               <h2 className='mt-4 text-3xl leading-[1.02] text-[var(--ink)]'>{story.title}</h2>
@@ -49,7 +54,10 @@ export default function WorkPage() {
               <ul className='mt-5 space-y-3'>
                 {story.bullets.map((bullet) => (
                   <li key={bullet} className='flex gap-3 text-sm leading-6 text-[var(--ink-muted)]'>
-                    <span className='mt-2 h-1.5 w-1.5 flex-none rounded-full bg-[var(--accent-strong)]' />
+                    <SiteListMark
+                      icon='spark'
+                      tone={story.label === 'Creative studio' ? 'primary' : 'accent'}
+                    />
                     <span>{bullet}</span>
                   </li>
                 ))}

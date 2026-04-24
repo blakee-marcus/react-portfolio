@@ -1,6 +1,15 @@
 import { CtaBand, PrimaryLink, SecondaryLink, SectionIntro } from '@/components/site/marketing';
 import { PackageCard } from '@/components/site/package-card';
 import {
+  packageIconsBySlug,
+  processIconsByNumber,
+  proofIconsByLabel,
+  SiteChipMark,
+  SiteIconBadge,
+  SiteListMark,
+  studioIconsByTitle,
+} from '@/components/site/icon-suite';
+import {
   audienceGroups,
   everyPackageIncludes,
   faqs,
@@ -25,16 +34,52 @@ export const metadata = buildMetadata({
 });
 
 const heroSignals = [
-  'Las Vegas based, serving founder-led service businesses in Nevada and nationwide.',
-  'Most projects land between $2,000 and $8,000.',
-  'Three fixed packages instead of a vague proposal cycle.',
-];
+  {
+    icon: 'compass',
+    text: 'Las Vegas based, serving founder-led service businesses in Nevada and nationwide.',
+  },
+  {
+    icon: 'deposit',
+    text: 'Most projects land between $2,000 and $8,000.',
+  },
+  {
+    icon: 'growth',
+    text: 'Three fixed packages instead of a vague proposal cycle.',
+  },
+] as const;
 
 const buyingSteps = [
-  'Choose the package that matches the business now.',
-  'Place the deposit to reserve your production slot.',
-  'Move into intake, kickoff, and a structured build.',
-];
+  {
+    icon: 'growth',
+    label: 'Choose the package that matches the business now.',
+  },
+  {
+    icon: 'deposit',
+    label: 'Place the deposit to reserve your production slot.',
+  },
+  {
+    icon: 'launch',
+    label: 'Move into intake, kickoff, and a structured build.',
+  },
+] as const;
+
+const studioSnapshot = [
+  {
+    icon: 'deposit',
+    label: 'Typical investment',
+    value: '$2K to $8K',
+  },
+  {
+    icon: 'kickoff',
+    label: 'Typical timeline',
+    value: '1 to 4 weeks',
+  },
+  {
+    icon: 'growth',
+    label: 'Best-fit package',
+    value: 'Growth',
+  },
+] as const;
 
 export default function HomePage() {
   const featuredPackage = packageOffers.find((offer) => offer.featured) ?? packageOffers[1];
@@ -47,7 +92,7 @@ export default function HomePage() {
             <div className='space-y-8'>
               <div className='flex flex-wrap gap-3'>
                 <p className='fade-up inline-flex items-center gap-3 rounded-full border border-[var(--line-soft)] bg-[rgba(255,255,255,0.8)] px-4 py-2 text-[10px] font-semibold uppercase tracking-[0.3em] text-[var(--muted-strong)] shadow-[var(--shadow-sm)] [--delay:40ms]'>
-                  <span className='inline-flex h-2 w-2 rounded-full bg-[var(--primary)]' />
+                  <SiteChipMark icon='spark' tone='primary' />
                   For founder-led service businesses
                 </p>
                 <p className='fade-up inline-flex items-center rounded-full border border-[var(--line-soft)] bg-[rgba(255,255,255,0.7)] px-4 py-2 text-[10px] font-semibold uppercase tracking-[0.28em] text-[var(--muted-strong)] shadow-[var(--shadow-sm)] [--delay:120ms]'>
@@ -75,10 +120,15 @@ export default function HomePage() {
               <div className='grid gap-3 sm:grid-cols-3'>
                 {heroSignals.map((item, index) => (
                   <div
-                    key={item}
+                    key={item.text}
                     className='fade-up rounded-[1.7rem] border border-[var(--line-soft)] bg-[rgba(255,255,255,0.72)] px-5 py-5 text-sm leading-6 text-[var(--ink-muted)] shadow-[var(--shadow-sm)]'
                     style={{ ['--delay' as string]: `${340 + index * 70}ms` }}>
-                    {item}
+                    <SiteIconBadge
+                      icon={item.icon}
+                      size='sm'
+                      tone={index === 1 ? 'accent' : 'primary'}
+                    />
+                    <p className='mt-4'>{item.text}</p>
                   </div>
                 ))}
               </div>
@@ -88,23 +138,24 @@ export default function HomePage() {
           <aside className='grid gap-5'>
             <div className='chrome-panel rounded-[2.2rem] border border-[var(--card-border)] bg-[color:var(--card-bg)] p-6 shadow-[var(--shadow-md)]'>
               <p className='inline-flex items-center gap-3 rounded-full border border-[var(--line-soft)] bg-[rgba(255,255,255,0.8)] px-4 py-2 text-[10px] font-semibold uppercase tracking-[0.3em] text-[var(--muted-strong)]'>
-                <span className='inline-flex h-2 w-2 rounded-full bg-[var(--accent)]' />
+                <SiteChipMark icon='spark' tone='accent' />
                 Studio snapshot
               </p>
 
               <div className='mt-6 grid gap-4'>
-                {[
-                  ['Typical investment', '$2K to $8K'],
-                  ['Typical timeline', '1 to 4 weeks'],
-                  ['Best-fit package', 'Growth'],
-                ].map(([label, value]) => (
+                {studioSnapshot.map(({ icon, label, value }) => (
                   <div
                     key={label}
                     className='rounded-[1.5rem] border border-[var(--line-soft)] bg-[rgba(255,255,255,0.7)] px-5 py-4'>
-                    <p className='text-[10px] font-semibold uppercase tracking-[0.28em] text-[var(--muted-strong)]'>
-                      {label}
-                    </p>
-                    <p className='mt-2 text-xl text-[var(--ink)]'>{value}</p>
+                    <div className='flex items-start gap-4'>
+                      <SiteIconBadge icon={icon} tone='accent' size='sm' />
+                      <div>
+                        <p className='text-[10px] font-semibold uppercase tracking-[0.28em] text-[var(--muted-strong)]'>
+                          {label}
+                        </p>
+                        <p className='mt-2 text-xl text-[var(--ink)]'>{value}</p>
+                      </div>
+                    </div>
                   </div>
                 ))}
               </div>
@@ -121,10 +172,15 @@ export default function HomePage() {
               <p className='text-[10px] font-semibold uppercase tracking-[0.3em] text-[var(--muted-strong)]'>
                 Best fit for most clients
               </p>
-              <h2 className='mt-4 text-4xl leading-none text-[var(--ink)]'>{featuredPackage.name}</h2>
-              <p className='mt-2 text-sm font-medium text-[var(--accent)]'>
-                {featuredPackage.startingPrice}
-              </p>
+              <div className='mt-4 flex items-start gap-4'>
+                <SiteIconBadge icon={packageIconsBySlug[featuredPackage.slug]} tone='primary' />
+                <div>
+                  <h2 className='text-4xl leading-none text-[var(--ink)]'>{featuredPackage.name}</h2>
+                  <p className='mt-2 text-sm font-medium text-[var(--accent)]'>
+                    {featuredPackage.startingPrice}
+                  </p>
+                </div>
+              </div>
               <p className='mt-4 text-sm leading-7 text-[var(--ink-muted)]'>
                 {featuredPackage.summary}
               </p>
@@ -132,9 +188,7 @@ export default function HomePage() {
               <ul className='mt-5 space-y-3'>
                 {featuredPackage.includes.slice(0, 3).map((item) => (
                   <li key={item} className='flex gap-3 text-sm leading-6 text-[var(--ink-muted)]'>
-                    <span className='mt-2 inline-flex h-6 w-6 flex-none items-center justify-center rounded-full bg-[var(--primary-soft)] text-[var(--primary)]'>
-                      <span className='h-1.5 w-1.5 rounded-full bg-current' />
-                    </span>
+                    <SiteListMark icon='spark' tone='primary' />
                     <span>{item}</span>
                   </li>
                 ))}
@@ -203,11 +257,14 @@ export default function HomePage() {
               </p>
               <ol className='mt-5 space-y-4'>
                 {buyingSteps.map((step, index) => (
-                  <li key={step} className='flex items-start gap-4'>
-                    <span className='inline-flex h-9 w-9 flex-none items-center justify-center rounded-full border border-[var(--line)] bg-[var(--primary-soft)] text-sm font-medium text-[var(--ink)]'>
-                      {index + 1}
-                    </span>
-                    <p className='pt-1 text-sm leading-6 text-[var(--ink-muted)]'>{step}</p>
+                  <li key={step.label} className='flex items-start gap-4'>
+                    <SiteIconBadge icon={step.icon} size='sm' tone='primary' />
+                    <div className='pt-0.5'>
+                      <p className='text-[10px] font-semibold uppercase tracking-[0.24em] text-[var(--muted-strong)]'>
+                        0{index + 1}
+                      </p>
+                      <p className='mt-1 text-sm leading-6 text-[var(--ink-muted)]'>{step.label}</p>
+                    </div>
                   </li>
                 ))}
               </ol>
@@ -228,7 +285,7 @@ export default function HomePage() {
               <ul className='mt-5 space-y-4'>
                 {everyPackageIncludes.map((item) => (
                   <li key={item} className='flex gap-3 text-sm leading-6 text-[var(--ink-muted)]'>
-                    <span className='mt-2 h-2 w-2 flex-none rounded-full bg-[var(--accent)]' />
+                    <SiteListMark icon='care' tone='accent' />
                     <span>{item}</span>
                   </li>
                 ))}
@@ -263,9 +320,12 @@ export default function HomePage() {
               <article
                 key={step.number}
                 className='rounded-[2rem] border border-[var(--line-soft)] bg-[rgba(255,255,255,0.8)] p-5 shadow-[var(--shadow-sm)]'>
-                <span className='inline-flex h-11 w-11 items-center justify-center rounded-2xl bg-[var(--primary-soft)] text-sm font-medium text-[var(--primary)]'>
-                  {step.number}
-                </span>
+                <div className='flex items-start justify-between gap-4'>
+                  <SiteIconBadge icon={processIconsByNumber[step.number]} tone='primary' />
+                  <span className='text-[10px] font-semibold uppercase tracking-[0.24em] text-[var(--muted-strong)]'>
+                    Step {step.number}
+                  </span>
+                </div>
                 <h3 className='mt-5 text-2xl leading-tight text-[var(--ink)]'>{step.title}</h3>
                 <p className='mt-3 text-sm leading-6 text-[var(--ink-muted)]'>{step.body}</p>
               </article>
@@ -291,7 +351,11 @@ export default function HomePage() {
               <article
                 key={story.title}
                 className='rounded-[2.1rem] border border-[var(--card-border)] bg-[color:var(--card-bg)] p-6 shadow-[var(--shadow-md)]'>
-                <p className='text-[10px] font-semibold uppercase tracking-[0.3em] text-[var(--muted-strong)]'>
+                <SiteIconBadge
+                  icon={proofIconsByLabel[story.label]}
+                  tone={index === 1 ? 'primary' : 'accent'}
+                />
+                <p className='mt-4 text-[10px] font-semibold uppercase tracking-[0.3em] text-[var(--muted-strong)]'>
                   {story.label}
                 </p>
                 <h3 className='mt-4 text-3xl leading-[0.96] text-[var(--ink)]'>
@@ -302,11 +366,7 @@ export default function HomePage() {
                 <ul className='mt-5 space-y-3'>
                   {story.bullets.map((bullet) => (
                     <li key={bullet} className='flex gap-3 text-sm leading-6 text-[var(--ink-muted)]'>
-                      <span
-                        className={`mt-2 h-2 w-2 flex-none rounded-full ${
-                          index === 1 ? 'bg-[var(--primary)]' : 'bg-[var(--accent)]'
-                        }`}
-                      />
+                      <SiteListMark icon='spark' tone={index === 1 ? 'primary' : 'accent'} />
                       <span>{bullet}</span>
                     </li>
                   ))}
@@ -335,7 +395,12 @@ export default function HomePage() {
                 <article
                   key={principle.title}
                   className='rounded-[1.8rem] border border-[var(--card-border)] bg-[color:var(--card-bg)] p-5 shadow-[var(--shadow-sm)]'>
-                  <h3 className='text-2xl text-[var(--ink)]'>{principle.title}</h3>
+                  <SiteIconBadge
+                    icon={studioIconsByTitle[principle.title]}
+                    tone={principle.title === 'Built for trust' ? 'accent' : 'primary'}
+                    size='sm'
+                  />
+                  <h3 className='mt-4 text-2xl text-[var(--ink)]'>{principle.title}</h3>
                   <p className='mt-3 text-sm leading-6 text-[var(--ink-muted)]'>{principle.body}</p>
                 </article>
               ))}

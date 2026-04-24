@@ -1,6 +1,6 @@
 import Link from 'next/link';
-import { Menu } from 'lucide-react';
 import React from 'react';
+import { SiteChipMark, SiteIcon } from '@/components/site/icon-suite';
 import { StructuredData } from '@/components/site/structured-data';
 import { rootMetadata, siteSchema } from '@/lib/seo';
 import './globals.css';
@@ -39,7 +39,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               <nav className='relative flex items-center gap-2 text-sm text-[var(--ink-muted)] sm:gap-5'>
                 <details className='group relative sm:hidden'>
                   <summary className='menu-summary action-surface inline-flex items-center gap-2 rounded-full border border-[var(--line)] bg-[rgba(255,255,255,0.76)] px-3 py-2.5 text-[14px] font-semibold text-[var(--ink)] shadow-[var(--shadow-sm)]'>
-                    <Menu className='h-4 w-4' />
+                    <SiteIcon icon='menu' className='h-4 w-4' />
                     Menu
                   </summary>
 
@@ -81,7 +81,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <div className='chrome-panel mx-auto grid max-w-6xl gap-8 rounded-[2.2rem] border border-[var(--card-border)] bg-[color:var(--card-bg)] px-6 py-8 shadow-[var(--shadow-md)] sm:px-8 lg:grid-cols-[minmax(0,1.4fr)_minmax(0,0.8fr)] lg:items-end'>
               <div className='space-y-4'>
                 <p className='inline-flex items-center gap-3 rounded-full border border-[var(--line-soft)] bg-[rgba(255,255,255,0.78)] px-4 py-2 text-[10px] font-semibold uppercase tracking-[0.3em] text-[var(--muted-strong)]'>
-                  <span className='inline-flex h-2 w-2 rounded-full bg-[var(--accent)]' />
+                  <SiteChipMark icon='spark' tone='accent' />
                   Blake Marcus Studio
                 </p>
                 <p className='max-w-xl text-sm leading-7 text-[var(--ink-muted)]'>

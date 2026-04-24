@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { processIconsByNumber, SiteIconBadge, SiteListMark } from '@/components/site/icon-suite';
 import { PrimaryLink, SectionIntro } from '@/components/site/marketing';
 import { PackageCard } from '@/components/site/package-card';
 import { packageOffers, processSteps } from '@/lib/site-content';
@@ -10,6 +11,8 @@ export const metadata: Metadata = buildNoIndexMetadata({
     'Choose your website package, place the $150 deposit, and move into intake and kickoff.',
   path: '/start',
 });
+
+const depositDetailIcons = ['deposit', 'trust', 'onboarding'] as const;
 
 export default function StartPage() {
   return (
@@ -32,9 +35,9 @@ export default function StartPage() {
                 'The $150 deposit reserves your spot in the project schedule.',
                 'It is applied to your total project cost, not added as an extra fee.',
                 'Once it is paid, you move into intake, kickoff scheduling, and onboarding.',
-              ].map((item) => (
+              ].map((item, index) => (
                 <li key={item} className='flex gap-3 text-sm leading-6 text-[var(--ink-muted)]'>
-                  <span className='mt-2 h-1.5 w-1.5 flex-none rounded-full bg-[var(--accent-strong)]' />
+                  <SiteListMark icon={depositDetailIcons[index]} tone='accent' />
                   <span>{item}</span>
                 </li>
               ))}
@@ -75,9 +78,12 @@ export default function StartPage() {
               <article
                 key={step.number}
                 className='rounded-[1.6rem] border border-[var(--line)] bg-[var(--panel)] p-5'>
-                <p className='text-[11px] font-semibold uppercase tracking-[0.24em] text-[var(--muted)]'>
-                  Step {step.number}
-                </p>
+                <div className='flex items-start justify-between gap-4'>
+                  <SiteIconBadge icon={processIconsByNumber[step.number]} tone='primary' size='sm' />
+                  <p className='text-[11px] font-semibold uppercase tracking-[0.24em] text-[var(--muted)]'>
+                    Step {step.number}
+                  </p>
+                </div>
                 <h2 className='mt-3 text-2xl leading-tight text-[var(--ink)]'>{step.title}</h2>
                 <p className='mt-3 text-sm leading-6 text-[var(--ink-muted)]'>{step.body}</p>
               </article>
