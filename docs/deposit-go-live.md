@@ -1,6 +1,7 @@
 # Deposit Go-Live Runbook
 
-This project uses hosted Stripe Checkout, Drizzle, and Postgres for the production deposit flow.
+This project uses hosted Stripe Checkout, Drizzle, Postgres, and best-effort Resend
+transactional email for the production deposit flow.
 
 ## 1. Vercel Project Setup
 
@@ -11,15 +12,27 @@ This project uses hosted Stripe Checkout, Drizzle, and Postgres for the producti
 vercel integration add stripe
 ```
 
+1. Install the Resend integration for the Vercel project:
+
+```bash
+vercel integration add resend
+```
+
 1. Confirm Vercel has the server-side secrets needed by the app:
    - `STRIPE_SECRET_KEY`
    - `STRIPE_WEBHOOK_SECRET`
+   - `RESEND_API_KEY`
 1. Add the repo-specific env vars Vercel does not create for you:
    - `DATABASE_URL`
    - `STRIPE_DEPOSIT_PRICE_ID_ESSENTIALS`
    - `STRIPE_DEPOSIT_PRICE_ID_GROWTH`
    - `STRIPE_DEPOSIT_PRICE_ID_FULL_BRAND`
    - `STRIPE_DEPOSIT_AUTOMATIC_TAX=false`
+   - `INTAKE_FORM_URL`
+   - `KICKOFF_BOOKING_URL`
+   - `STUDIO_SUPPORT_EMAIL`
+   - `STUDIO_EMAIL_FROM=Blake Marcus Studio <hello@send.blakemarcus.com>`
+   - `STUDIO_EMAIL_REPLY_TO=hello@blakemarcus.com`
 
 ## 2. Database
 
@@ -49,7 +62,14 @@ npm run db:push
 1. Enable customer email receipts.
 1. Confirm the live-mode business profile, payout bank, and statement descriptor are complete before switching to live mode.
 
-## 4. Launch Verification
+## 4. Email Setup
+
+1. Use Google Workspace for the human inboxes, including `hello@blakemarcus.com`.
+1. In Resend, verify `send.blakemarcus.com` as the sending domain.
+1. Add the Resend DNS records for that subdomain only. Keep root-domain MX records pointed at Google Workspace.
+1. Send a test email from Resend before relying on production deposit notifications.
+
+## 5. Launch Verification
 
 Run the repo-side readiness check once env vars are present:
 
@@ -63,11 +83,12 @@ Then verify the hosted flow in Stripe test mode:
 1. Confirm Checkout opens with the expected package price.
 1. Complete payment with a test card.
 1. Confirm the return path goes through `/start/access/[publicId]` and lands on `/start/confirmation`.
+1. Confirm Resend records a client confirmation email and a studio notification email when `RESEND_API_KEY` is present.
 1. Confirm `/start/intake`, `/start/kickoff`, and `/start/onboarding` require the signed access cookie.
 1. Replay the same webhook event and confirm fulfillment is still idempotent.
 1. Cancel Checkout and confirm the app returns to `/deposit` with the expected message.
 
-## 5. Live Smoke Test
+## 6. Live Smoke Test
 
 After all test-mode checks pass:
 
@@ -76,6 +97,7 @@ After all test-mode checks pass:
 1. Confirm:
    - the deposit record is created in Postgres
    - Stripe sends the receipt
+   - Resend sends the studio confirmation and internal notification
    - webhook delivery succeeds
    - the gated onboarding pages unlock correctly
 1. Review Stripe event logs for successful delivery of:

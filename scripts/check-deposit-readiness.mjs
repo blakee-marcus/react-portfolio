@@ -38,6 +38,21 @@ const requiredEnvChecks = [
     description: 'Stripe Price ID for the Full Brand Build deposit',
     validate: (value) => value.startsWith('price_'),
   },
+  {
+    key: 'INTAKE_FORM_URL',
+    description: 'External intake form URL',
+    validate: (value) => isHttpUrl(value),
+  },
+  {
+    key: 'KICKOFF_BOOKING_URL',
+    description: 'External kickoff booking URL',
+    validate: (value) => isHttpUrl(value),
+  },
+  {
+    key: 'STUDIO_SUPPORT_EMAIL',
+    description: 'Studio support inbox',
+    validate: (value) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value),
+  },
 ];
 
 function getConfiguredValue(key) {
@@ -48,6 +63,15 @@ function getConfiguredValue(key) {
   }
 
   return value;
+}
+
+function isHttpUrl(value) {
+  try {
+    const url = new URL(value);
+    return url.protocol === 'https:' || url.protocol === 'http:';
+  } catch {
+    return false;
+  }
 }
 
 function getSiteUrl() {
@@ -121,6 +145,25 @@ printLine(
   process.env.STRIPE_DEPOSIT_AUTOMATIC_TAX === 'true' ? 'enabled' : 'disabled',
 );
 
+const resendApiKey = getConfiguredValue('RESEND_API_KEY');
+
+printLine(
+  'RESEND_API_KEY',
+  resendApiKey
+    ? resendApiKey.startsWith('re_')
+      ? 'configured'
+      : 'invalid optional key'
+    : 'optional missing, deposit flow still works',
+);
+printLine(
+  'STUDIO_EMAIL_FROM',
+  getConfiguredValue('STUDIO_EMAIL_FROM') ?? 'Blake Marcus Studio <hello@send.blakemarcus.com>',
+);
+printLine(
+  'STUDIO_EMAIL_REPLY_TO',
+  getConfiguredValue('STUDIO_EMAIL_REPLY_TO') ?? 'hello@blakemarcus.com',
+);
+
 console.log('');
 
 const databaseUrl = getConfiguredValue('DATABASE_URL');
@@ -171,6 +214,9 @@ if (siteUrl) {
 }
 
 printLine('Vercel Stripe integration', 'confirm installed for the target project');
+printLine('Vercel Resend integration', 'confirm installed or set RESEND_API_KEY manually');
+printLine('Google Workspace MX', 'keep root-domain email hosted by Google Workspace');
+printLine('Resend sending domain', 'verify send.blakemarcus.com, not the root inbox domain');
 printLine('Stripe live prices', 'confirm all three deposit prices exist at $150');
 printLine('Stripe receipts', 'confirm customer email receipts are enabled');
 printLine('Business profile & payouts', 'confirm statement descriptor, payout bank, and live-mode business profile');

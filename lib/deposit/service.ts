@@ -26,6 +26,7 @@ import {
   updateDepositRecord,
   type StoredDeposit,
 } from '@/lib/deposit/repository';
+import { sendPaidDepositEmails } from '@/lib/email/deposit';
 import { getStripeClient } from '@/lib/stripe';
 
 export type CreateDepositCheckoutResult =
@@ -45,6 +46,8 @@ export type FinalizeDepositResult =
   | { kind: 'expired'; deposit: StoredDeposit }
   | { kind: 'pending'; deposit: StoredDeposit }
   | { kind: 'unverified' };
+
+type PaidDepositEmailSender = (deposit: StoredDeposit) => Promise<boolean | void>;
 
 function buildAccessUrl(
   origin: string,
@@ -76,6 +79,24 @@ function getSessionCustomerId(customer: Stripe.Checkout.Session['customer']) {
   }
 
   return typeof customer === 'string' ? customer : customer.id;
+}
+
+export async function notifyPaidDepositEmailTransition(
+  previousDeposit: StoredDeposit,
+  updatedDeposit: StoredDeposit,
+  sendEmails: PaidDepositEmailSender = sendPaidDepositEmails,
+) {
+  if (previousDeposit.status === 'paid' || updatedDeposit.status !== 'paid') {
+    return false;
+  }
+
+  try {
+    const sent = await sendEmails(updatedDeposit);
+    return sent !== false;
+  } catch (error) {
+    console.error('Failed to send paid deposit emails.', error);
+    return false;
+  }
 }
 
 async function findReusableHostedCheckoutUrl(
@@ -331,6 +352,8 @@ export async function finalizeDepositFromCheckoutSession(
     if (!updatedDeposit) {
       return { kind: 'unverified' };
     }
+
+    await notifyPaidDepositEmailTransition(existingDeposit, updatedDeposit);
 
     return {
       kind: nextStatus,
