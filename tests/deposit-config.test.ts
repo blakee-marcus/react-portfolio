@@ -70,12 +70,34 @@ test('requires external handoff configuration before the deposit flow is launch-
   assert.equal(depositConfig.getStripeSecretKey(), 'sk_test_123');
   assert.equal(depositConfig.getStripeWebhookSecret(), 'whsec_123');
   assert.equal(depositConfig.getDepositPriceId('essentials'), 'price_essentials');
+  assert.equal(depositConfig.isDepositCheckoutConfigured('growth'), true);
+  assert.deepEqual(depositConfig.getMissingDepositCheckoutEnvVars('growth'), []);
   assert.equal(depositConfig.isDepositSystemConfigured(), false);
   assert.deepEqual(depositConfig.getMissingDepositEnvVars(), [
     'INTAKE_FORM_URL',
     'KICKOFF_BOOKING_URL',
     'STUDIO_SUPPORT_EMAIL',
   ]);
+});
+
+test('checks checkout readiness against the selected package only', () => {
+  process.env.DATABASE_URL = 'postgres://postgres:postgres@localhost:5432/react_portfolio';
+  process.env.STRIPE_SECRET_KEY = 'sk_live_123';
+  delete process.env.STRIPE_WEBHOOK_SECRET;
+  delete process.env.STRIPE_DEPOSIT_PRICE_ID_ESSENTIALS;
+  process.env.STRIPE_DEPOSIT_PRICE_ID_GROWTH = 'price_live_growth';
+  delete process.env.STRIPE_DEPOSIT_PRICE_ID_FULL_BRAND;
+  delete process.env.INTAKE_FORM_URL;
+  delete process.env.KICKOFF_BOOKING_URL;
+  delete process.env.STUDIO_SUPPORT_EMAIL;
+
+  assert.equal(depositConfig.isDepositCheckoutConfigured('growth'), true);
+  assert.deepEqual(depositConfig.getMissingDepositCheckoutEnvVars('growth'), []);
+  assert.equal(depositConfig.isDepositCheckoutConfigured('essentials'), false);
+  assert.deepEqual(depositConfig.getMissingDepositCheckoutEnvVars('essentials'), [
+    'STRIPE_DEPOSIT_PRICE_ID_ESSENTIALS',
+  ]);
+  assert.equal(depositConfig.isDepositSystemConfigured(), false);
 });
 
 test('marks the deposit flow configured only when all required launch envs are present', () => {

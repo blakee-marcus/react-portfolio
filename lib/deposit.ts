@@ -16,6 +16,7 @@ export const requiredDepositEnvKeys = [
   'STUDIO_SUPPORT_EMAIL',
 ] as const;
 
+type DepositPackageSlug = 'essentials' | 'growth' | 'full-brand';
 type RequiredDepositEnvKey = (typeof requiredDepositEnvKeys)[number];
 const supportEmailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -78,7 +79,7 @@ export function getDatabaseUrl() {
   return getConfiguredEnvValue('DATABASE_URL');
 }
 
-export function getDepositPriceId(packageSlug: 'essentials' | 'growth' | 'full-brand') {
+export function getDepositPriceId(packageSlug: DepositPackageSlug) {
   const priceMap = {
     essentials: getConfiguredEnvValue('STRIPE_DEPOSIT_PRICE_ID_ESSENTIALS'),
     growth: getConfiguredEnvValue('STRIPE_DEPOSIT_PRICE_ID_GROWTH'),
@@ -162,6 +163,34 @@ export function getMissingDepositEnvVars() {
   }
 
   return missing;
+}
+
+export function getMissingDepositCheckoutEnvVars(packageSlug: DepositPackageSlug) {
+  const missing: RequiredDepositEnvKey[] = [];
+
+  if (!getDatabaseUrl()) {
+    missing.push('DATABASE_URL');
+  }
+
+  if (!getStripeSecretKey()) {
+    missing.push('STRIPE_SECRET_KEY');
+  }
+
+  if (!getDepositPriceId(packageSlug)) {
+    const priceKeyByPackage = {
+      essentials: 'STRIPE_DEPOSIT_PRICE_ID_ESSENTIALS',
+      growth: 'STRIPE_DEPOSIT_PRICE_ID_GROWTH',
+      'full-brand': 'STRIPE_DEPOSIT_PRICE_ID_FULL_BRAND',
+    } as const;
+
+    missing.push(priceKeyByPackage[packageSlug]);
+  }
+
+  return missing;
+}
+
+export function isDepositCheckoutConfigured(packageSlug: DepositPackageSlug) {
+  return getMissingDepositCheckoutEnvVars(packageSlug).length === 0;
 }
 
 export function isDepositSystemConfigured() {

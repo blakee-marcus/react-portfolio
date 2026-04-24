@@ -5,7 +5,7 @@ import {
   depositAutomaticTaxEnabled,
   depositCurrency,
   getDepositPriceId,
-  isDepositSystemConfigured,
+  isDepositCheckoutConfigured,
 } from '@/lib/deposit';
 import {
   createDepositAccessToken,
@@ -144,7 +144,13 @@ export async function createDepositCheckout(
   const selectedPackage = getPackageBySlug(input.packageSlug);
   const priceId = getDepositPriceId(input.packageSlug);
 
-  if (!stripe || !selectedPackage || !priceId || !isDatabaseConfigured() || !isDepositSystemConfigured()) {
+  if (
+    !stripe ||
+    !selectedPackage ||
+    !priceId ||
+    !isDatabaseConfigured() ||
+    !isDepositCheckoutConfigured(input.packageSlug)
+  ) {
     return { kind: 'unavailable' };
   }
 

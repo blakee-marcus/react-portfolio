@@ -5,7 +5,7 @@ import {
   SiteIconBadge,
   SiteListMark,
 } from '@/components/site/icon-suite';
-import { depositAmountLabel, isDepositSystemConfigured } from '@/lib/deposit';
+import { depositAmountLabel, isDepositCheckoutConfigured } from '@/lib/deposit';
 import { SectionIntro } from '@/components/site/marketing';
 import { buildNoIndexMetadata } from '@/lib/seo';
 import { getPackageBySlug, packageOffers } from '@/lib/site-content';
@@ -61,7 +61,7 @@ export default async function DepositPage({ searchParams }: { searchParams: Depo
   const packageParam = Array.isArray(params.package) ? params.package[0] : params.package;
   const checkoutParam = Array.isArray(params.checkout) ? params.checkout[0] : params.checkout;
   const selectedPackage = getPackageBySlug(packageParam) ?? packageOffers[1];
-  const checkoutAvailable = isDepositSystemConfigured();
+  const checkoutAvailable = isDepositCheckoutConfigured(selectedPackage.slug);
   const checkoutMessage =
     checkoutParam && checkoutParam in checkoutMessages
       ? checkoutMessages[checkoutParam as keyof typeof checkoutMessages]
