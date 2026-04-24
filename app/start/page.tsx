@@ -52,8 +52,8 @@ export default function StartPage() {
         </div>
       </section>
 
-      <section className='px-4 pb-20 sm:px-6 lg:px-8'>
-        <div className='mx-auto grid max-w-6xl gap-6 lg:grid-cols-3'>
+      <section className='px-4 pb-24 sm:px-6 lg:px-8'>
+        <div className='mx-auto grid max-w-6xl items-stretch gap-8 md:gap-10 lg:grid-cols-3'>
           {packageOffers.map((offer) => (
             <PackageCard
               key={offer.slug}
@@ -73,19 +73,26 @@ export default function StartPage() {
             copy='You should not be left wondering what happens after payment. The process is designed to keep momentum high and make each next step easy to follow.'
           />
 
-          <div className='grid gap-4 sm:grid-cols-2'>
+          <div className='grid gap-6 sm:grid-cols-2'>
             {processSteps.slice(1).map((step) => (
               <article
                 key={step.number}
-                className='rounded-[1.6rem] border border-[var(--line)] bg-[var(--panel)] p-5'>
-                <div className='flex items-start justify-between gap-4'>
-                  <SiteIconBadge icon={processIconsByNumber[step.number]} tone='primary' size='sm' />
+                className='flex min-h-[17rem] flex-col rounded-[1.8rem] border border-[var(--line)] bg-[var(--panel)] p-6 shadow-[var(--shadow-sm)] sm:p-7'>
+                <div className='flex items-start justify-between gap-5'>
+                  <SiteIconBadge
+                    icon={processIconsByNumber[step.number]}
+                    tone='primary'
+                    size='sm'
+                  />
                   <p className='text-[11px] font-semibold uppercase tracking-[0.24em] text-[var(--muted)]'>
                     Step {step.number}
                   </p>
                 </div>
-                <h2 className='mt-3 text-2xl leading-tight text-[var(--ink)]'>{step.title}</h2>
-                <p className='mt-3 text-sm leading-6 text-[var(--ink-muted)]'>{step.body}</p>
+
+                <div className='mt-6 space-y-4'>
+                  <h2 className='text-2xl leading-tight text-[var(--ink)]'>{step.title}</h2>
+                  <p className='text-sm leading-7 text-[var(--ink-muted)]'>{step.body}</p>
+                </div>
               </article>
             ))}
           </div>
