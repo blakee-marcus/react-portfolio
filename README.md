@@ -14,7 +14,7 @@ Production website for Blake Marcus Studio, a Las Vegas based web design studio 
 - **Data:** Postgres, Drizzle ORM, `postgres`
 - **Payments:** Stripe Checkout, Stripe webhooks
 - **Email:** Resend transactional email, React Email templates, Google Workspace inboxes
-- **Quality:** ESLint 9, Next.js lint config, Node.js test runner with `tsx`
+- **Quality:** ESLint 9, TypeScript typecheck, Node.js test runner with `tsx`, coverage reporting, GitHub Actions CI
 - **Deployment:** Vercel
 
 ## Key Features
@@ -143,22 +143,35 @@ For production launch details, use the [deposit go-live runbook](docs/deposit-go
 | `npm run start` | Start the built production server. |
 | `npm run lint` | Run ESLint. |
 | `npm run test` | Run the Node.js test suite. |
+| `npm run test:watch` | Re-run the Node.js test suite while developing. |
+| `npm run test:coverage` | Run the test suite with Node coverage reporting. |
+| `npm run typecheck` | Run TypeScript in no-emit mode. |
+| `npm run check` | Run lint, typecheck, and tests as the default local quality gate. |
 | `npm run check:deposit` | Validate deposit launch configuration and database readiness. |
 | `npm run db:generate` | Generate Drizzle migrations from schema changes. |
 | `npm run db:push` | Push the Drizzle schema to the configured database. |
 
 ## Verification
 
-Run automated tests before shipping changes:
+Use the TDD loop in [tests/README.md](tests/README.md): write or update the failing test first, make the smallest useful change, then refactor while the suite stays green.
+
+Run the default local quality gate before handing off code:
+
+```bash
+npm run check
+```
+
+Run automated tests directly while developing:
 
 ```bash
 npm run test
 ```
 
-Run linting for code changes:
+Run the suite in watch or coverage mode when useful:
 
 ```bash
-npm run lint
+npm run test:watch
+npm run test:coverage
 ```
 
 Use the deposit readiness check only after real environment values and a reachable database are configured:

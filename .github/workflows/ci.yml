@@ -1,0 +1,56 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  quality:
+    name: Lint, Test, Build
+    runs-on: ubuntu-latest
+    env:
+      DATABASE_URL: ${{ secrets.DATABASE_URL }}
+      STRIPE_SECRET_KEY: ${{ secrets.STRIPE_SECRET_KEY }}
+      STRIPE_WEBHOOK_SECRET: ${{ secrets.STRIPE_WEBHOOK_SECRET }}
+      STRIPE_DEPOSIT_PRICE_ID_ESSENTIALS: ${{ secrets.STRIPE_DEPOSIT_PRICE_ID_ESSENTIALS }}
+      STRIPE_DEPOSIT_PRICE_ID_GROWTH: ${{ secrets.STRIPE_DEPOSIT_PRICE_ID_GROWTH }}
+      STRIPE_DEPOSIT_PRICE_ID_FULL_BRAND: ${{ secrets.STRIPE_DEPOSIT_PRICE_ID_FULL_BRAND }}
+      INTAKE_FORM_URL: ${{ secrets.INTAKE_FORM_URL }}
+      KICKOFF_BOOKING_URL: ${{ secrets.KICKOFF_BOOKING_URL }}
+      STUDIO_SUPPORT_EMAIL: ${{ secrets.STUDIO_SUPPORT_EMAIL }}
+      NEXT_PUBLIC_SITE_URL: ${{ secrets.NEXT_PUBLIC_SITE_URL }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Typecheck
+        run: npm run typecheck
+
+      - name: Test
+        run: npm run test
+
+      - name: Build
+        run: npm run build
+
+      - name: Check deposit readiness
+        if: ${{ env.DATABASE_URL != '' && env.STRIPE_SECRET_KEY != '' && env.STRIPE_WEBHOOK_SECRET != '' && env.STRIPE_DEPOSIT_PRICE_ID_ESSENTIALS != '' && env.STRIPE_DEPOSIT_PRICE_ID_GROWTH != '' && env.STRIPE_DEPOSIT_PRICE_ID_FULL_BRAND != '' && env.INTAKE_FORM_URL != '' && env.KICKOFF_BOOKING_URL != '' && env.STUDIO_SUPPORT_EMAIL != '' }}
+        run: npm run check:deposit
+
+      - name: Skip deposit readiness
+        if: ${{ env.DATABASE_URL == '' || env.STRIPE_SECRET_KEY == '' || env.STRIPE_WEBHOOK_SECRET == '' || env.STRIPE_DEPOSIT_PRICE_ID_ESSENTIALS == '' || env.STRIPE_DEPOSIT_PRICE_ID_GROWTH == '' || env.STRIPE_DEPOSIT_PRICE_ID_FULL_BRAND == '' || env.INTAKE_FORM_URL == '' || env.KICKOFF_BOOKING_URL == '' || env.STUDIO_SUPPORT_EMAIL == '' }}
+        run: echo "Skipped npm run check:deposit because one or more protected deposit secrets are not configured for this workflow run."
