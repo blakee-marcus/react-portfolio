@@ -19,6 +19,11 @@ const supportedEventTypes = new Set<StripeDepositEventType>([
   'checkout.session.expired',
 ]);
 
+const paidEventTypes = new Set<StripeDepositEventType>([
+  'checkout.session.completed',
+  'checkout.session.async_payment_succeeded',
+]);
+
 export async function POST(request: Request) {
   const stripe = getStripeClient();
   const webhookSecret = getStripeWebhookSecret();
@@ -34,6 +39,7 @@ export async function POST(request: Request) {
   }
 
   const payload = await request.text();
+
   let event: Stripe.Event;
 
   try {
@@ -43,7 +49,9 @@ export async function POST(request: Request) {
     return new NextResponse('Invalid webhook signature.', { status: 400 });
   }
 
-  if (!supportedEventTypes.has(event.type as StripeDepositEventType)) {
+  const eventType = event.type as StripeDepositEventType;
+
+  if (!supportedEventTypes.has(eventType)) {
     return NextResponse.json({ received: true });
   }
 
@@ -56,7 +64,7 @@ export async function POST(request: Request) {
   try {
     const shouldProcess = await recordStripeWebhookEvent({
       eventId: event.id,
-      eventType: event.type,
+      eventType,
       checkoutSessionId: checkoutSession.id,
       livemode: event.livemode,
     });
@@ -65,9 +73,12 @@ export async function POST(request: Request) {
       return NextResponse.json({ received: true });
     }
 
-    await finalizeDepositFromCheckoutSession(checkoutSession.id, {
-      eventType: event.type as StripeDepositEventType,
-    });
+    if (paidEventTypes.has(eventType) && checkoutSession.payment_status === 'paid') {
+      await finalizeDepositFromCheckoutSession(checkoutSession.id, {
+        eventType,
+      });
+    }
+
     await markStripeWebhookEventProcessed(event.id);
 
     return NextResponse.json({ received: true });

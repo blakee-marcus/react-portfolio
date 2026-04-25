@@ -1,0 +1,30 @@
+<svg width="512" height="512" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title">
+  <title>Blake Marcus Studio</title>
+  <defs>
+    <linearGradient id="mark-bg" x1="104" y1="78" x2="420" y2="446" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#FFFFFF"/>
+      <stop offset="0.56" stop-color="#F1F4F6"/>
+      <stop offset="1" stop-color="#E7EEEA"/>
+    </linearGradient>
+    <linearGradient id="mark-edge" x1="112" y1="86" x2="406" y2="426" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#FFFFFF" stop-opacity="0.92"/>
+      <stop offset="0.42" stop-color="#D7DEE4"/>
+      <stop offset="1" stop-color="#50675A" stop-opacity="0.34"/>
+    </linearGradient>
+  </defs>
+  <rect width="512" height="512" rx="98" fill="#F5F7F8"/>
+  <rect x="32" y="32" width="448" height="448" rx="94" fill="url(#mark-bg)" stroke="url(#mark-edge)" stroke-width="20"/>
+  <rect x="58" y="58" width="396" height="396" rx="78" fill="none" stroke="#FFFFFF" stroke-opacity="0.72" stroke-width="9"/>
+  <text
+    x="256"
+    y="268"
+    text-anchor="middle"
+    dominant-baseline="middle"
+    fill="#1B2229"
+    font-family="Avenir Next, Arial, Helvetica, sans-serif"
+    font-size="232"
+    font-weight="800"
+    letter-spacing="-16">BM</text>
+  <rect x="164" y="372" width="184" height="16" rx="8" fill="#50675A"/>
+  <rect x="226" y="400" width="60" height="10" rx="5" fill="#8A6A52" opacity="0.92"/>
+</svg>

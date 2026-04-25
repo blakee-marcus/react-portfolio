@@ -49,6 +49,11 @@ export type FinalizeDepositResult =
 
 type PaidDepositEmailSender = (deposit: StoredDeposit) => Promise<boolean | void>;
 
+const stripeCheckoutSessionIdPlaceholder = '{CHECKOUT_SESSION_ID}';
+const encodedStripeCheckoutSessionIdPlaceholder = encodeURIComponent(
+  stripeCheckoutSessionIdPlaceholder,
+);
+
 function buildAccessUrl(
   origin: string,
   publicId: string,
@@ -63,6 +68,15 @@ function buildAccessUrl(
   }
 
   return url.toString();
+}
+
+export function buildCheckoutSuccessUrl(origin: string, publicId: string, token: string) {
+  const url = buildAccessUrl(origin, publicId, token, stripeCheckoutSessionIdPlaceholder);
+
+  return url.replace(
+    `session_id=${encodedStripeCheckoutSessionIdPlaceholder}`,
+    `session_id=${stripeCheckoutSessionIdPlaceholder}`,
+  );
 }
 
 function getSessionPaymentIntentId(paymentIntent: Stripe.Checkout.Session['payment_intent']) {
@@ -239,12 +253,7 @@ export async function createDepositCheckout(
     return reusableCheckoutUrl;
   }
 
-  const successUrl = buildAccessUrl(
-    origin,
-    workingDeposit.publicId,
-    accessToken,
-    '{CHECKOUT_SESSION_ID}',
-  );
+  const successUrl = buildCheckoutSuccessUrl(origin, workingDeposit.publicId, accessToken);
   const cancelUrl = new URL('/deposit', origin);
   cancelUrl.searchParams.set('package', selectedPackage.slug);
   cancelUrl.searchParams.set('checkout', 'cancelled');

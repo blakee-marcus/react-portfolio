@@ -7,6 +7,18 @@ import { getPackageBySlug } from '@/lib/site-content';
 export const runtime = 'nodejs';
 export const maxDuration = 15;
 
+function getPackageSlug(formData: FormData) {
+  const value = formData.get('package');
+
+  if (typeof value !== 'string') {
+    return undefined;
+  }
+
+  const slug = value.trim();
+
+  return slug.length > 0 ? slug : undefined;
+}
+
 function buildDepositRedirect(request: NextRequest, packageSlug?: string, checkout?: string) {
   const url = new URL('/deposit', request.nextUrl.origin);
 
@@ -22,21 +34,20 @@ function buildDepositRedirect(request: NextRequest, packageSlug?: string, checko
 }
 
 export async function POST(request: NextRequest) {
-  const formData = await request.formData();
-  const packageParam = formData.get('package');
-  const packageSlug = typeof packageParam === 'string' ? packageParam : undefined;
-  const selectedPackage = getPackageBySlug(packageSlug);
-  const validation = buildCheckoutInputFromFormData(formData);
-
-  if (!selectedPackage || (validation.success === false && validation.errors.package)) {
-    return buildDepositRedirect(request, undefined, 'invalid');
-  }
-
-  if (!validation.success) {
-    return buildDepositRedirect(request, selectedPackage.slug, 'validation');
-  }
-
   try {
+    const formData = await request.formData();
+    const packageSlug = getPackageSlug(formData);
+    const selectedPackage = getPackageBySlug(packageSlug);
+    const validation = buildCheckoutInputFromFormData(formData);
+
+    if (!selectedPackage || (validation.success === false && validation.errors.package)) {
+      return buildDepositRedirect(request, undefined, 'invalid');
+    }
+
+    if (!validation.success) {
+      return buildDepositRedirect(request, selectedPackage.slug, 'validation');
+    }
+
     const result = await createDepositCheckout(validation.data, request.nextUrl.origin);
 
     if (result.kind === 'unavailable') {
@@ -50,6 +61,6 @@ export async function POST(request: NextRequest) {
     return NextResponse.redirect(result.url, { status: 303 });
   } catch (error) {
     console.error('Failed to create deposit checkout session.', error);
-    return buildDepositRedirect(request, selectedPackage.slug, 'error');
+    return buildDepositRedirect(request, undefined, 'error');
   }
 }

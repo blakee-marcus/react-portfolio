@@ -28,31 +28,31 @@ type DepositSearchParams = Promise<{
 const checkoutMessages = {
   cancelled: {
     title: 'Checkout was cancelled.',
-    body: 'No charge was made. You can restart the deposit whenever you are ready.',
+    body: 'No charge was made. Review your details below and restart the deposit when you are ready.',
   },
   unavailable: {
     title: 'Checkout is not available right now.',
-    body: 'The payment system is not fully configured for this environment yet.',
+    body: 'Payments are not fully configured yet. Use the contact page and we can handle your deposit directly.',
   },
   error: {
     title: 'Checkout could not be started.',
-    body: 'Please try again. If it keeps failing, use the support page and we can handle the next step directly.',
+    body: 'Please review your details and try again. If the issue continues, use the contact page and we will handle the next step manually.',
   },
   invalid: {
     title: 'Choose a package before paying.',
-    body: 'The selected package was not recognized, so the deposit flow reset to a valid option.',
+    body: 'The selected package was not recognized. Review the package below, then continue with the deposit.',
   },
   validation: {
     title: 'Complete the required fields first.',
-    body: 'Enter your contact details and acknowledge the deposit policy before continuing to Stripe Checkout.',
+    body: 'Enter your name, email, business name, and confirm the deposit policy before continuing.',
   },
   restricted: {
     title: 'That access link is no longer active.',
-    body: 'Use the deposit form again to continue, or reopen the most recent confirmation link after payment.',
+    body: 'Restart the deposit below to create a fresh checkout session.',
   },
   processing: {
     title: 'Payment is still processing.',
-    body: 'Stripe has the checkout session, but the deposit is not marked as paid yet. Check your receipt email and reopen the confirmation link once payment finishes.',
+    body: 'Your payment has not been marked as complete yet. Check your Stripe receipt email, then reopen your confirmation link once payment finishes.',
   },
 } as const;
 
