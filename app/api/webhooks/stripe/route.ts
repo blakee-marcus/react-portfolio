@@ -2,6 +2,7 @@ import { NextResponse } from 'next/server';
 import type Stripe from 'stripe';
 import type { StripeDepositEventType } from '@/lib/deposit/domain';
 import {
+  getStripeWebhookEvent,
   isDatabaseConfigured,
   markStripeWebhookEventProcessed,
   recordStripeWebhookEvent,
@@ -19,10 +20,9 @@ const supportedEventTypes = new Set<StripeDepositEventType>([
   'checkout.session.expired',
 ]);
 
-const paidEventTypes = new Set<StripeDepositEventType>([
-  'checkout.session.completed',
-  'checkout.session.async_payment_succeeded',
-]);
+function isProjectDepositCheckoutSession(session: Stripe.Checkout.Session) {
+  return session.metadata?.checkoutType === 'project-deposit' || Boolean(session.metadata?.publicId);
+}
 
 export async function POST(request: Request) {
   const stripe = getStripeClient();
@@ -70,13 +70,24 @@ export async function POST(request: Request) {
     });
 
     if (!shouldProcess) {
+      const existingEvent = await getStripeWebhookEvent(event.id);
+
+      if (existingEvent?.processedAt) {
+        return NextResponse.json({ received: true });
+      }
+    }
+
+    if (!isProjectDepositCheckoutSession(checkoutSession)) {
+      await markStripeWebhookEventProcessed(event.id);
       return NextResponse.json({ received: true });
     }
 
-    if (paidEventTypes.has(eventType) && checkoutSession.payment_status === 'paid') {
-      await finalizeDepositFromCheckoutSession(checkoutSession.id, {
-        eventType,
-      });
+    const finalized = await finalizeDepositFromCheckoutSession(checkoutSession.id, {
+      eventType,
+    });
+
+    if (finalized.kind === 'unverified') {
+      throw new Error(`Could not verify Stripe deposit session ${checkoutSession.id}.`);
     }
 
     await markStripeWebhookEventProcessed(event.id);

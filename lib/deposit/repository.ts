@@ -100,6 +100,17 @@ export async function recordStripeWebhookEvent(input: {
   return inserted.length > 0;
 }
 
+export async function getStripeWebhookEvent(eventId: string) {
+  const db = getDbOrThrow();
+  const [event] = await db
+    .select()
+    .from(stripeWebhookEvents)
+    .where(eq(stripeWebhookEvents.eventId, eventId))
+    .limit(1);
+
+  return event ?? null;
+}
+
 export async function markStripeWebhookEventProcessed(eventId: string) {
   const db = getDbOrThrow();
   await db

@@ -123,6 +123,28 @@ export function getStudioSupportMailtoHref(subject?: string) {
   return `mailto:${email}${query ? `?${query}` : ''}`;
 }
 
+export function getConfiguredSiteOrigin() {
+  const vercelProductionUrl = getConfiguredEnvValue('VERCEL_PROJECT_PRODUCTION_URL');
+  const value =
+    getConfiguredEnvValue('SITE_URL') ??
+    getConfiguredEnvValue('NEXT_PUBLIC_SITE_URL') ??
+    (vercelProductionUrl ? `https://${vercelProductionUrl}` : null);
+
+  if (!value) {
+    return null;
+  }
+
+  try {
+    return new URL(value).origin;
+  } catch {
+    return null;
+  }
+}
+
+export function getDepositCheckoutOrigin(requestOrigin: string) {
+  return getConfiguredSiteOrigin() ?? requestOrigin;
+}
+
 export function getMissingDepositEnvVars() {
   const missing: RequiredDepositEnvKey[] = [];
 

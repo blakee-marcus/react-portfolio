@@ -1,5 +1,6 @@
 import type { NextRequest } from 'next/server';
 import { NextResponse } from 'next/server';
+import { getDepositCheckoutOrigin } from '@/lib/deposit';
 import { buildCheckoutInputFromFormData } from '@/lib/deposit/domain';
 import { createDepositCheckout } from '@/lib/deposit/service';
 import { getPackageBySlug } from '@/lib/site-content';
@@ -48,7 +49,10 @@ export async function POST(request: NextRequest) {
       return buildDepositRedirect(request, selectedPackage.slug, 'validation');
     }
 
-    const result = await createDepositCheckout(validation.data, request.nextUrl.origin);
+    const result = await createDepositCheckout(
+      validation.data,
+      getDepositCheckoutOrigin(request.nextUrl.origin),
+    );
 
     if (result.kind === 'unavailable') {
       return buildDepositRedirect(request, selectedPackage.slug, 'unavailable');

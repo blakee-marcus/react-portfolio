@@ -2,6 +2,7 @@
 
 import nextEnv from '@next/env';
 import postgres from 'postgres';
+import Stripe from 'stripe';
 
 const { loadEnvConfig } = nextEnv;
 
@@ -203,6 +204,59 @@ if (databaseUrl) {
 }
 
 console.log('');
+
+const stripeSecretKey = getConfiguredValue('STRIPE_SECRET_KEY');
+const stripePriceChecks = [
+  ['STRIPE_DEPOSIT_PRICE_ID_ESSENTIALS', 'Essentials'],
+  ['STRIPE_DEPOSIT_PRICE_ID_GROWTH', 'Growth'],
+  ['STRIPE_DEPOSIT_PRICE_ID_FULL_BRAND', 'Full Brand Build'],
+];
+const allStripePriceIdsConfigured = stripePriceChecks.every(([key]) => getConfiguredValue(key));
+
+if (stripeSecretKey && allStripePriceIdsConfigured) {
+  const stripe = new Stripe(stripeSecretKey, {
+    apiVersion: '2026-03-25.dahlia',
+    maxNetworkRetries: 0,
+    timeout: 10000,
+  });
+  const keyMode = stripeSecretKey.startsWith('sk_live_') ? 'live' : 'test';
+
+  for (const [key, label] of stripePriceChecks) {
+    const priceId = getConfiguredValue(key);
+
+    try {
+      const price = await stripe.prices.retrieve(priceId);
+      const amountOk = price.unit_amount === 15000;
+      const currencyOk = price.currency === 'usd';
+      const activeOk = price.active === true;
+      const modeOk = keyMode === 'live' ? price.livemode === true : price.livemode === false;
+      const ready = amountOk && currencyOk && activeOk && modeOk;
+
+      printLine(
+        `Stripe ${label} price`,
+        ready
+          ? 'ok'
+          : `invalid (${[
+              amountOk ? null : `amount=${price.unit_amount ?? 'missing'}`,
+              currencyOk ? null : `currency=${price.currency}`,
+              activeOk ? null : 'inactive',
+              modeOk ? null : `mode=${price.livemode ? 'live' : 'test'} with ${keyMode} key`,
+            ]
+              .filter(Boolean)
+              .join(', ')})`,
+      );
+
+      if (!ready) {
+        hasErrors = true;
+      }
+    } catch (error) {
+      hasErrors = true;
+      printLine(`Stripe ${label} price`, `failed (${formatError(error)})`);
+    }
+  }
+}
+
+console.log('');
 console.log('Manual launch checks');
 
 const siteUrl = getSiteUrl();
@@ -217,7 +271,7 @@ printLine('Vercel Stripe integration', 'confirm installed for the target project
 printLine('Vercel Resend integration', 'confirm installed or set RESEND_API_KEY manually');
 printLine('Google Workspace MX', 'keep root-domain email hosted by Google Workspace');
 printLine('Resend sending domain', 'verify send.blakemarcus.com, not the root inbox domain');
-printLine('Stripe live prices', 'confirm all three deposit prices exist at $150');
+printLine('Stripe live prices', 'confirmed by this script when live keys are installed');
 printLine('Stripe receipts', 'confirm customer email receipts are enabled');
 printLine('Business profile & payouts', 'confirm statement descriptor, payout bank, and live-mode business profile');
 
