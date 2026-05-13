@@ -1,3 +1,4 @@
+import { Analytics } from '@vercel/analytics/react';
 import Link from 'next/link';
 import React from 'react';
 import { SiteChipMark } from '@/components/site/icon-suite';
@@ -70,6 +71,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             </div>
           </footer>
         </div>
+        <Analytics />
       </body>
     </html>
   );
