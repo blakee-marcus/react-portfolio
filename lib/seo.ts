@@ -25,6 +25,7 @@ export const siteConfig = {
     regionName: 'Nevada',
     country: 'US',
   },
+  logo: '/icon-512.png',
 } as const;
 
 type MetadataInput = {
@@ -37,6 +38,8 @@ type MetadataInput = {
   socialTitle?: string;
   socialDescription?: string;
 };
+
+type JsonLd = Record<string, unknown>;
 
 export const socialImageSize = {
   width: 1200,
@@ -88,6 +91,18 @@ function buildRobots(noIndex = false): NonNullable<Metadata['robots']> {
 
 export function absoluteUrl(path = '/') {
   return new URL(path, siteConfig.url).toString();
+}
+
+function breadcrumbList(items: Array<{ name: string; path: string }>) {
+  return {
+    '@type': 'BreadcrumbList',
+    itemListElement: items.map((item, index) => ({
+      '@type': 'ListItem',
+      position: index + 1,
+      name: item.name,
+      item: absoluteUrl(item.path),
+    })),
+  };
 }
 
 export function buildOgImageUrl({
@@ -185,6 +200,99 @@ export function buildNoIndexMetadata(input: Omit<MetadataInput, 'noIndex'>): Met
   return buildMetadata({ ...input, noIndex: true });
 }
 
+export function buildWebPageSchema({
+  title,
+  description,
+  path = '/',
+  breadcrumbs = [],
+}: {
+  title: string;
+  description: string;
+  path?: string;
+  breadcrumbs?: Array<{ name: string; path: string }>;
+}) {
+  const url = absoluteUrl(path);
+  const graph: JsonLd[] = [
+    {
+      '@type': 'WebPage',
+      '@id': `${url}#webpage`,
+      url,
+      name: title,
+      description,
+      inLanguage: 'en-US',
+      isPartOf: {
+        '@id': `${siteConfig.url}/#website`,
+      },
+      about: {
+        '@id': `${siteConfig.url}/#studio`,
+      },
+      publisher: {
+        '@id': `${siteConfig.url}/#studio`,
+      },
+    },
+  ];
+
+  if (breadcrumbs.length > 0) {
+    graph.push(breadcrumbList([{ name: 'Home', path: '/' }, ...breadcrumbs]));
+  }
+
+  return {
+    '@context': 'https://schema.org',
+    '@graph': graph,
+  };
+}
+
+export function buildFaqSchema(faqs: Array<{ question: string; answer: string }>) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faqs.map((faq) => ({
+      '@type': 'Question',
+      name: faq.question,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: faq.answer,
+      },
+    })),
+  };
+}
+
+export function buildOfferCatalogSchema(
+  offers: Array<{
+    name: string;
+    summary: string;
+    startingPrice: string;
+    slug: string;
+  }>,
+) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'OfferCatalog',
+    '@id': `${absoluteUrl('/services')}#website-packages`,
+    name: 'Website design packages',
+    url: absoluteUrl('/services'),
+    itemListElement: offers.map((offer) => ({
+      '@type': 'Offer',
+      name: offer.name,
+      description: `${offer.summary} ${offer.startingPrice}.`,
+      url: absoluteUrl(`/deposit?package=${offer.slug}`),
+      priceCurrency: 'USD',
+      availability: 'https://schema.org/InStock',
+      offeredBy: {
+        '@id': `${siteConfig.url}/#studio`,
+      },
+      itemOffered: {
+        '@type': 'Service',
+        name: `${offer.name} website package`,
+        serviceType: 'Website design and development',
+        provider: {
+          '@id': `${siteConfig.url}/#studio`,
+        },
+      },
+    })),
+  };
+}
+
 export const rootMetadata: Metadata = {
   title: {
     default: siteConfig.name,
@@ -193,6 +301,7 @@ export const rootMetadata: Metadata = {
   description: siteConfig.description,
   metadataBase: new URL(siteConfig.url),
   applicationName: siteConfig.name,
+  referrer: 'origin-when-cross-origin',
   keywords: [...siteConfig.keywords],
   authors: [{ name: siteConfig.creator, url: siteConfig.url }],
   creator: siteConfig.creator,
@@ -256,6 +365,8 @@ export const siteSchema = {
       name: siteConfig.name,
       url: siteConfig.url,
       description: siteConfig.description,
+      image: absoluteUrl(siteConfig.logo),
+      logo: absoluteUrl(siteConfig.logo),
       priceRange: '$$',
       areaServed: [
         {
@@ -281,6 +392,9 @@ export const siteSchema = {
         'Small business website design',
         'Service business website design',
       ],
+      hasOfferCatalog: {
+        '@id': `${absoluteUrl('/services')}#website-packages`,
+      },
       founder: {
         '@id': `${siteConfig.url}/#person`,
       },
@@ -290,6 +404,7 @@ export const siteSchema = {
       '@id': `${siteConfig.url}/#person`,
       name: siteConfig.creator,
       url: siteConfig.url,
+      image: absoluteUrl(siteConfig.logo),
       jobTitle: 'Web Designer and Developer',
       address: {
         '@type': 'PostalAddress',
