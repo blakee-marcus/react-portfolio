@@ -1,7 +1,8 @@
 import type { Metadata } from 'next';
 import { SiteIconBadge, SiteListMark } from '@/components/site/icon-suite';
+import { getKickoffBookingUrl } from '@/lib/deposit';
 import { requirePaidDepositAccess } from '@/lib/deposit/server';
-import { PrimaryLink, SectionIntro } from '@/components/site/marketing';
+import { PrimaryLink, SecondaryLink, SectionIntro } from '@/components/site/marketing';
 import { getPackageBySlug, packageOffers } from '@/lib/site-content';
 import { buildNoIndexMetadata } from '@/lib/seo';
 
@@ -12,15 +13,30 @@ export const metadata: Metadata = buildNoIndexMetadata({
 });
 export const dynamic = 'force-dynamic';
 
+type KickoffSearchParams = Promise<{
+  intake?: string | string[];
+}>;
+
 const kickoffIcons = ['scope', 'momentum', 'pages', 'launch'] as const;
 
-export default async function KickoffPage() {
+export default async function KickoffPage({ searchParams }: { searchParams: KickoffSearchParams }) {
   const deposit = await requirePaidDepositAccess();
   const selectedPackage = getPackageBySlug(deposit.packageSlug) ?? packageOffers[1];
+  const kickoffBookingUrl = getKickoffBookingUrl();
+  const params = await searchParams;
+  const intakeParam = Array.isArray(params.intake) ? params.intake[0] : params.intake;
+  const intakeSubmitted = intakeParam === 'submitted';
 
   return (
     <section className='px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24'>
       <div className='mx-auto max-w-5xl space-y-8'>
+        {intakeSubmitted ? (
+          <div className='rounded-[1.6rem] border border-[var(--line-strong)] bg-[var(--accent-soft)] px-5 py-4 text-sm leading-6 text-[var(--ink-muted)]'>
+            <p className='font-semibold text-[var(--ink)]'>Intake submitted.</p>
+            <p className='mt-1'>Next, book kickoff so Blake can turn those answers into the working project plan.</p>
+          </div>
+        ) : null}
+
         <SectionIntro
           as='h1'
           eyebrow='Kickoff'
@@ -59,9 +75,16 @@ export default async function KickoffPage() {
               into production with confidence.
             </p>
 
-            <div className='mt-6'>
-              <PrimaryLink href='/start/onboarding'>Continue To Onboarding</PrimaryLink>
+            <div className='mt-6 flex flex-wrap gap-3'>
+              <PrimaryLink href={kickoffBookingUrl ?? '/support'}>Book Kickoff</PrimaryLink>
+              <SecondaryLink href='/start/onboarding'>Continue To Onboarding</SecondaryLink>
             </div>
+
+            {!kickoffBookingUrl ? (
+              <p className='mt-4 text-xs leading-6 text-[var(--muted)]'>
+                The scheduler is not configured yet. Use support for now and Blake will coordinate the kickoff manually.
+              </p>
+            ) : null}
           </div>
         </div>
       </div>

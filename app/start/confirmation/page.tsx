@@ -3,9 +3,7 @@ import { SiteIconBadge, SiteListMark } from '@/components/site/icon-suite';
 import {
   depositAmountLabel,
   formatDepositAmount,
-  getIntakeFormUrl,
   getKickoffBookingUrl,
-  getStudioSupportMailtoHref,
 } from '@/lib/deposit';
 import { requirePaidDepositAccess } from '@/lib/deposit/server';
 import { PrimaryLink, SecondaryLink, SectionIntro } from '@/components/site/marketing';
@@ -26,9 +24,7 @@ export default async function ConfirmationPage() {
   const selectedPackage = getPackageBySlug(deposit.packageSlug) ?? packageOffers[1];
   const receiptAmount = formatDepositAmount(deposit.amountCents);
   const receiptEmail = deposit.email;
-  const intakeFormUrl = getIntakeFormUrl();
   const kickoffBookingUrl = getKickoffBookingUrl();
-  const supportHref = getStudioSupportMailtoHref('Paid deposit support') ?? '/support';
 
   return (
     <section className='px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24'>
@@ -80,14 +76,14 @@ export default async function ConfirmationPage() {
             </p>
 
             <div className='mt-6 flex flex-wrap gap-3'>
-              <PrimaryLink href={intakeFormUrl ?? supportHref}>Open Intake Form</PrimaryLink>
+              <PrimaryLink href='/start/intake'>Open Intake Form</PrimaryLink>
               <SecondaryLink href={kickoffBookingUrl ?? '/start/kickoff'}>
                 Book Kickoff
               </SecondaryLink>
             </div>
 
             <p className='mt-4 text-xs leading-6 text-[var(--muted)]'>
-              If either link does not open, use the support page and include the receipt email from
+              If the scheduler link does not open, use the support page and include the receipt email from
               your Stripe payment.
             </p>
           </div>

@@ -29,7 +29,7 @@ Keep this list tight. Three to five active priorities max.
 | Resolve `app/manifest.ts` intentionally | Frontend Technical Lead | Not started | Decide whether to commit app manifest/icons or remove it. |
 | Run production-style deposit QA in test mode | Deposit Operations / Launch Manager | Not started | Verify Stripe checkout, webhook, confirmation, intake/kickoff access, emails. |
 | Draft proof/case-study structure for `/work` | Conversion Copywriter | Not started | Replace placeholder proof with stronger real/project-style assets. |
-| Define intake questions + kickoff prep | Client Success / Onboarding | In progress | Onboarding system docs created; next step is wiring the real intake form and scheduler. |
+| Define intake questions + kickoff prep | Client Success / Onboarding | In progress | Native intake form implemented; next step is applying DB migration and confirming live scheduler URL. |
 | Review mobile UX for homepage → start → deposit | UX/UI Director | Not started | Make sure the core sales path feels premium and easy on mobile. |
 
 ---
@@ -106,7 +106,7 @@ Use simple labels:
 | Homepage copy/positioning | Improved | Conversion Copywriter | Mobile review |
 | Packages page | Needs review | Offer / Pricing Strategist | Confirm scope clarity |
 | Start/deposit flow | Needs QA | Deposit Operations / Launch Manager | Full test-mode run |
-| Client onboarding | System drafted | Client Success / Onboarding | Connect intake form + kickoff scheduler |
+| Client onboarding | Intake form implemented | Client Success / Onboarding | Apply `project_intakes` DB migration + confirm kickoff scheduler |
 | Work/proof page | Needs stronger proof | Conversion Copywriter | Case-study draft |
 | Studio page | Improved | Conversion Copywriter + UX/UI Director | Founder story polish |
 | SEO/schema | Improved | SEO / Analytics Strategist | Validate previews/search basics |
@@ -176,7 +176,8 @@ Run once per month:
 - [ ] Create real proof/case-study structure for `/work`.
 - [x] Create intake form questions.
 - [x] Create kickoff prep/checklist.
-- [ ] Connect the real external intake form to `INTAKE_FORM_URL`.
+- [x] Implement native paid-client intake form.
+- [ ] Apply `db/migrations/0001_project_intakes.sql` to production database.
 - [ ] Confirm `KICKOFF_BOOKING_URL` points to the live scheduler.
 - [ ] Review mobile sales path.
 

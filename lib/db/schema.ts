@@ -3,6 +3,7 @@ import {
   boolean,
   index,
   integer,
+  jsonb,
   pgEnum,
   pgTable,
   text,
@@ -54,6 +55,29 @@ export const deposits = pgTable(
   ],
 );
 
+export const projectIntakes = pgTable(
+  'project_intakes',
+  {
+    id: text('id').primaryKey(),
+    depositId: text('deposit_id')
+      .notNull()
+      .references(() => deposits.id, { onDelete: 'cascade' }),
+    depositPublicId: text('deposit_public_id').notNull(),
+    packageSlug: text('package_slug').notNull(),
+    packageName: text('package_name').notNull(),
+    fullName: text('full_name').notNull(),
+    email: text('email').notNull(),
+    businessName: text('business_name').notNull(),
+    responses: jsonb('responses').notNull(),
+    submittedAt: timestamp('submitted_at', { withTimezone: true }).notNull().defaultNow(),
+    updatedAt: timestamp('updated_at', { withTimezone: true }).notNull().defaultNow(),
+  },
+  (table) => [
+    index('project_intakes_deposit_id_idx').on(table.depositId),
+    index('project_intakes_submitted_at_idx').on(desc(table.submittedAt)),
+  ],
+);
+
 export const stripeWebhookEvents = pgTable('stripe_webhook_events', {
   eventId: text('event_id').primaryKey(),
   eventType: text('event_type').notNull(),
@@ -65,3 +89,5 @@ export const stripeWebhookEvents = pgTable('stripe_webhook_events', {
 
 export type DepositRecord = typeof deposits.$inferSelect;
 export type NewDepositRecord = typeof deposits.$inferInsert;
+export type ProjectIntakeRecord = typeof projectIntakes.$inferSelect;
+export type NewProjectIntakeRecord = typeof projectIntakes.$inferInsert;

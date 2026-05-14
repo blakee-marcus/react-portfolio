@@ -272,8 +272,8 @@ Use email template: [`client-email-templates.md`](./client-email-templates.md)
 
 ## Current Implementation Tasks
 
-- [ ] Build or connect the real external intake form using `client-intake-questionnaire.md`.
-- [ ] Confirm `INTAKE_FORM_URL` points to the live intake form.
+- [x] Build a native paid-client intake form using `client-intake-questionnaire.md`.
+- [ ] Apply `db/migrations/0001_project_intakes.sql` to the production database.
 - [ ] Confirm `KICKOFF_BOOKING_URL` points to the live scheduling page.
 - [ ] Review `/start/confirmation`, `/start/intake`, `/start/kickoff`, and `/start/onboarding` against this system.
 - [ ] Update deposit confirmation email if the intake/kickoff flow changes.
