@@ -32,7 +32,7 @@ export default function StartPage() {
             </p>
             <ul className='mt-5 space-y-4'>
               {[
-                'The $150 deposit reserves your place in the production schedule.',
+                'The $150 deposit saves your place in the production schedule.',
                 'It is credited toward your total project cost, not added as a separate fee.',
                 'After payment, you will receive the intake steps, kickoff details, and next actions.',
               ].map((item, index) => (
@@ -46,8 +46,7 @@ export default function StartPage() {
             <div className='mt-6 rounded-[1.4rem] border border-[var(--line)] bg-[var(--panel)] px-5 py-4 text-sm leading-6 text-[var(--ink-muted)]'>
               Not sure where to begin? Choose{' '}
               <span className='font-medium text-[var(--ink)]'>Growth</span>. It is the best fit for
-              most service businesses that need a complete, polished website without
-              overcomplicating the process.
+              most service businesses that need a complete, polished website without overcomplicating the process.
             </div>
           </div>
         </div>

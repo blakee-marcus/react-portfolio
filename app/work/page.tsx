@@ -1,13 +1,17 @@
 import type { Metadata } from 'next';
 import { proofIconsByLabel, SiteIconBadge, SiteListMark } from '@/components/site/icon-suite';
 import { CtaBand, PrimaryLink, SectionIntro } from '@/components/site/marketing';
+import { StructuredData } from '@/components/site/structured-data';
 import { proofStories } from '@/lib/site-content';
-import { buildMetadata } from '@/lib/seo';
+import { buildMetadata, buildWebPageSchema } from '@/lib/seo';
+
+const pageTitle = 'Las Vegas Web Design Proof';
+const pageDescription =
+  'See how Blake Marcus Studio sharpens positioning, trust, and conversion for founder-led service business websites in Las Vegas and beyond.';
 
 export const metadata: Metadata = buildMetadata({
-  title: 'Las Vegas Web Design Proof',
-  description:
-    'See how Blake Marcus Studio sharpens positioning, trust, and conversion for founder-led service business websites in Las Vegas and beyond.',
+  title: pageTitle,
+  description: pageDescription,
   path: '/work',
   keywords: [
     'Las Vegas website portfolio',
@@ -19,6 +23,14 @@ export const metadata: Metadata = buildMetadata({
 export default function WorkPage() {
   return (
     <>
+      <StructuredData
+        data={buildWebPageSchema({
+          title: pageTitle,
+          description: pageDescription,
+          path: '/work',
+          breadcrumbs: [{ name: 'Proof', path: '/work' }],
+        })}
+      />
       <section className='px-4 pb-16 pt-16 sm:px-6 sm:pt-20 lg:px-8 lg:pt-24'>
         <div className='mx-auto max-w-6xl space-y-8'>
           <SectionIntro
@@ -29,9 +41,7 @@ export default function WorkPage() {
           />
 
           <div className='rounded-[2rem] border border-[var(--line)] bg-[color:var(--panel)/0.82] p-6 text-sm leading-7 text-[var(--ink-muted)] shadow-[var(--shadow-md)]'>
-            Good proof should show more than visual taste. It should show how the work sharpens the
-            message, builds trust faster, and gives the business a clearer path to inquiry or
-            booking.
+            Good proof should show more than visual taste. It should show how the work sharpens the message, builds trust faster, and gives the business a clearer path to inquiry or booking.
           </div>
         </div>
       </section>
@@ -71,14 +81,13 @@ export default function WorkPage() {
         <div className='mx-auto grid max-w-6xl gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,0.8fr)] lg:items-start'>
           <SectionIntro
             eyebrow='What this shows'
-            title='Proof should help the client picture a better version of their own site.'
+            title='Proof should help clients picture a better version of their own site.'
             copy='A few strong examples do more than a crowded portfolio. They show what improves, what becomes clearer, and what kind of result the business can expect.'
           />
 
           <div className='rounded-[2rem] border border-[var(--line)] bg-[var(--panel)] p-6'>
             <p className='text-sm leading-7 text-[var(--ink-muted)]'>
-              This page can later expand into real case studies, client examples, or screenshots.
-              The structure already supports that without turning the site into a portfolio maze.
+              This page can later expand into real case studies, client examples, or screenshots. The structure already supports that without turning the site into a portfolio maze.
             </p>
             <div className='mt-6'>
               <PrimaryLink href='/start'>Start A Project</PrimaryLink>

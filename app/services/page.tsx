@@ -1,14 +1,18 @@
 import type { Metadata } from 'next';
 import { SiteIconBadge, SiteListMark } from '@/components/site/icon-suite';
 import { CtaBand, PrimaryLink, SecondaryLink, SectionIntro } from '@/components/site/marketing';
+import { StructuredData } from '@/components/site/structured-data';
 import { PackageCard } from '@/components/site/package-card';
 import { carePlan, everyPackageIncludes, packageOffers } from '@/lib/site-content';
-import { buildMetadata } from '@/lib/seo';
+import { buildMetadata, buildOfferCatalogSchema, buildWebPageSchema } from '@/lib/seo';
+
+const pageTitle = 'Website Packages for Founder-Led Service Businesses';
+const pageDescription =
+  'Compare Blake Marcus Studio website packages for founder-led service businesses, then start with a $150 deposit when the fit feels clear.';
 
 export const metadata: Metadata = buildMetadata({
-  title: 'Website Packages for Founder-Led Service Businesses',
-  description:
-    'Compare Blake Marcus Studio website packages for founder-led service businesses, then start with a $150 project deposit when the fit is clear.',
+  title: pageTitle,
+  description: pageDescription,
   path: '/services',
   keywords: [
     'Las Vegas web design packages',
@@ -22,24 +26,24 @@ const depositSteps = [
   {
     icon: 'deposit',
     title: 'Reserves the project slot',
-    body: 'The $150 deposit secures time in the production schedule and is applied to the total project fee.',
+    body: 'The $150 deposit saves time in the production schedule and is credited toward the total project fee.',
   },
   {
     icon: 'intake',
     title: 'Unlocks intake',
-    body: 'After payment, the project moves into intake so goals, pages, content, and priorities can be gathered in one place.',
+    body: 'After payment, the project moves into intake so goals, pages, content, and priorities can be gathered in one organized place.',
   },
   {
     icon: 'scope',
     title: 'Confirms the final scope',
-    body: 'Before production begins, the remaining balance, timeline, and exact deliverables are confirmed around the selected package.',
+    body: 'Before production begins, the remaining balance, timeline, and exact deliverables are confirmed around the package you chose.',
   },
 ] as const;
 
 const comparisonNotes = [
-  'Essentials keeps the project focused when one strong page is enough.',
-  'Growth is the best fit for most service businesses because it gives the offer, proof, process, and trust pages room to work.',
-  'Full Brand Build is for businesses that need a deeper visual system and a more elevated launch experience.',
+  'Essentials keeps the project focused when one strong, clear page is enough.',
+  'Growth is the best fit for most service businesses because it gives the offer, proof, process, and trust-building pages room to do their job.',
+  'Full Brand Build is for businesses that need a deeper visual system, sharper messaging, and a more elevated launch experience.',
 ] as const;
 
 export default function ServicesPage() {
@@ -47,14 +51,23 @@ export default function ServicesPage() {
 
   return (
     <>
+      <StructuredData
+        data={buildWebPageSchema({
+          title: pageTitle,
+          description: pageDescription,
+          path: '/services',
+          breadcrumbs: [{ name: 'Services', path: '/services' }],
+        })}
+      />
+      <StructuredData data={buildOfferCatalogSchema(packageOffers)} />
       <section className='px-4 pb-16 pt-16 sm:px-6 sm:pt-20 lg:px-8 lg:pt-24'>
         <div className='mx-auto grid max-w-6xl gap-10 lg:grid-cols-[minmax(0,1.1fr)_minmax(18rem,24rem)] lg:items-start'>
           <div className='space-y-8'>
             <SectionIntro
               as='h1'
               eyebrow='Packages'
-              title='Choose the website package that fits the business now.'
-              copy='The offer is intentionally simple: three website packages, clear starting prices, and a guided $150 deposit step once the fit is clear. This page helps you compare before you commit.'
+              title='Choose the website package that fits where the business is now.'
+              copy='The offer is intentionally simple: three website packages, clear starting prices, and a guided $150 deposit step once the fit feels right. This page helps you compare before you commit.'
             />
 
             <div className='flex flex-wrap gap-4'>
@@ -79,9 +92,7 @@ export default function ServicesPage() {
               </div>
             </div>
             <p className='mt-5 text-sm leading-7 text-[var(--ink-muted)]'>
-              Growth gives established service businesses the room to explain the offer, build
-              trust, answer objections, and guide visitors toward inquiry without creating a large
-              agency-style build.
+              Growth gives established service businesses room to explain the offer, build trust, answer objections, and guide visitors toward inquiry without turning the project into a large agency-style build.
             </p>
           </aside>
         </div>
@@ -93,7 +104,7 @@ export default function ServicesPage() {
             <SectionIntro
               eyebrow='Compare'
               title='Three packages, one guided starting point.'
-              copy='Each package is built around a different level of business need. The goal is not to oversell the largest build. The goal is to make the right next step obvious.'
+              copy='Each package is built around a different level of business need. The goal is not to push the biggest build. The goal is to make the right next step obvious.'
             />
 
             <div className='rounded-[2rem] border border-[var(--card-border)] bg-[color:var(--card-bg)] p-6 shadow-[var(--shadow-sm)]'>
@@ -129,7 +140,7 @@ export default function ServicesPage() {
         <div className='mx-auto grid max-w-6xl gap-10 lg:grid-cols-[minmax(0,0.92fr)_minmax(0,1.08fr)] lg:items-start'>
           <SectionIntro
             eyebrow='Recommendation'
-            title='Start with Growth unless the project clearly needs to be smaller or deeper.'
+            title='Start with Growth unless the project clearly needs to be smaller or more custom.'
             copy='Growth is the best-fit recommendation for most service businesses because it creates a complete customer path without overcomplicating the project.'
           />
 
@@ -161,8 +172,8 @@ export default function ServicesPage() {
         <div className='mx-auto grid max-w-6xl gap-10 lg:grid-cols-[minmax(0,0.92fr)_minmax(0,1.08fr)] lg:items-start'>
           <SectionIntro
             eyebrow='Deposit'
-            title='The $150 deposit starts the project without skipping the scope conversation.'
-            copy='The deposit is a low-friction commitment. It reserves the project slot, unlocks intake, and creates momentum, but it does not pretend the full project is scoped before kickoff.'
+            title='The $150 deposit starts the project without pretending everything is scoped yet.'
+            copy='The deposit is a low-friction commitment. It saves the project slot, unlocks intake, and creates momentum, but it does not pretend the full project is scoped before kickoff.'
           />
 
           <div className='grid gap-5'>
@@ -187,7 +198,7 @@ export default function ServicesPage() {
         <div className='mx-auto grid max-w-6xl gap-10 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:items-start'>
           <SectionIntro
             eyebrow='Care plan'
-            title='Post-launch support keeps the website protected and improving.'
+            title='Post-launch support keeps the website cared for and improving.'
             copy={carePlan.summary}
           />
 
@@ -197,9 +208,7 @@ export default function ServicesPage() {
               <div>
                 <h2 className='text-3xl leading-tight text-[var(--ink)]'>{carePlan.title}</h2>
                 <p className='mt-3 text-sm leading-7 text-[var(--ink-muted)]'>
-                  Support is positioned after launch so the main website decision stays simple.
-                  Businesses that want ongoing help can add care once the project has a real site to
-                  protect and improve.
+                  Support is positioned after launch so the main website decision stays simple. Businesses that want ongoing help can add care once there is a real site to protect, update, and improve.
                 </p>
               </div>
             </div>

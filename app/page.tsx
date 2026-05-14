@@ -1,4 +1,5 @@
 import { CtaBand, PrimaryLink, SecondaryLink, SectionIntro } from '@/components/site/marketing';
+import { StructuredData } from '@/components/site/structured-data';
 import { PackageCard } from '@/components/site/package-card';
 import {
   packageIconsBySlug,
@@ -18,12 +19,15 @@ import {
   proofStories,
   studioPrinciples,
 } from '@/lib/site-content';
-import { buildMetadata } from '@/lib/seo';
+import { buildFaqSchema, buildMetadata, buildWebPageSchema } from '@/lib/seo';
+
+const pageTitle = 'Las Vegas Web Design for Founder-Led Service Businesses';
+const pageDescription =
+  'Blake Marcus Studio builds clear, human, premium websites for founder-led service businesses in Las Vegas and nationwide.';
 
 export const metadata = buildMetadata({
-  title: 'Las Vegas Web Design for Founder-Led Service Businesses',
-  description:
-    'Blake Marcus Studio builds calm, premium websites for founder-led service businesses in Las Vegas, Nevada and nationwide.',
+  title: pageTitle,
+  description: pageDescription,
   path: '/',
   keywords: [
     'Las Vegas web design studio',
@@ -36,22 +40,22 @@ export const metadata = buildMetadata({
 const heroSignals = [
   {
     icon: 'compass',
-    text: 'Las Vegas based, serving founder-led service businesses in Nevada and nationwide.',
+    text: 'Las Vegas based, working with founder-led service businesses in Nevada and beyond.',
   },
   {
     icon: 'deposit',
-    text: 'Most projects land between $2,000 and $8,000.',
+    text: 'Most projects are scoped between $2,000 and $8,000.',
   },
   {
     icon: 'growth',
-    text: 'Three fixed packages instead of a vague proposal cycle.',
+    text: 'Three clear packages instead of a vague proposal maze.',
   },
 ] as const;
 
 const buyingSteps = [
   {
     icon: 'growth',
-    label: 'Choose the package that matches the business now.',
+    label: 'Choose the package that fits where the business is now.',
   },
   {
     icon: 'deposit',
@@ -86,6 +90,8 @@ export default function HomePage() {
 
   return (
     <>
+      <StructuredData data={buildWebPageSchema({ title: pageTitle, description: pageDescription })} />
+      <StructuredData data={buildFaqSchema(faqs.slice(0, 4))} />
       <section className='px-4 pb-12 pt-6 sm:px-6 lg:px-8'>
         <div className='mx-auto grid max-w-6xl gap-6 xl:grid-cols-[minmax(0,1.45fr)_minmax(20rem,26rem)]'>
           <div className='overflow-hidden rounded-[2.8rem] border border-[var(--card-border-strong)] bg-[linear-gradient(150deg,rgba(255,255,255,0.98)_0%,rgba(248,250,251,0.94)_45%,rgba(231,238,234,0.9)_100%)] p-8 shadow-[var(--shadow-lg)] sm:p-10 lg:p-12'>
@@ -96,19 +102,16 @@ export default function HomePage() {
                   For founder-led service businesses
                 </p>
                 <p className='fade-up inline-flex items-center rounded-full border border-[var(--line-soft)] bg-[rgba(255,255,255,0.7)] px-4 py-2 text-[10px] font-semibold uppercase tracking-[0.28em] text-[var(--muted-strong)] shadow-[var(--shadow-sm)] [--delay:120ms]'>
-                  Calm positioning. Clear next steps.
+                  Human copy. Clear next steps.
                 </p>
               </div>
 
               <div className='space-y-6'>
                 <h1 className='fade-up max-w-4xl text-balance text-5xl leading-[0.88] text-[var(--ink)] sm:text-6xl lg:text-7xl [--delay:160ms]'>
-                  Websites that make service businesses feel established before the first call ever
-                  happens.
+                  Websites that make good service businesses easier to trust, understand, and choose.
                 </h1>
                 <p className='fade-up max-w-2xl text-lg leading-8 text-[var(--ink-muted)] [--delay:220ms]'>
-                  Blake Marcus Studio builds editorial, trust-heavy websites for Las Vegas service
-                  businesses and founders who need a sharper first impression, clearer positioning,
-                  and a site that helps qualified inquiries feel easier to earn.
+                  Blake Marcus Studio helps founder-led service businesses turn scattered ideas into clear, premium websites that sound human, build trust quickly, and make the next step easy for the right clients.
                 </p>
               </div>
 
@@ -162,8 +165,7 @@ export default function HomePage() {
 
               <div className='mt-6 rounded-[1.7rem] border border-[var(--line)] bg-[var(--panel-strong)] p-5'>
                 <p className='text-sm leading-7 text-[var(--ink-muted)]'>
-                  Best for businesses that already do strong work, but need the website to feel more
-                  composed, premium, and easy to trust.
+                  Best for businesses that already do strong work, but need the website to explain that value with more clarity, warmth, and confidence.
                 </p>
               </div>
             </div>
@@ -212,8 +214,8 @@ export default function HomePage() {
           <div className='chrome-panel rounded-[2.4rem] border border-[var(--card-border)] bg-[color:var(--card-bg)] p-8 shadow-[var(--shadow-md)] sm:p-10'>
             <SectionIntro
               eyebrow='Who it is for'
-              title='Built for businesses that already do credible work and need the website to catch up.'
-              copy='This studio works best when the business is solid but the digital first impression still feels pieced together, undersells the offer, or makes people work too hard to understand the value.'
+              title='Built for businesses that already do credible work and need the website to finally reflect it.'
+              copy='This studio works best when the business is solid, but the online first impression feels pieced together, undersells the offer, or makes people work too hard to understand why it matters.'
             />
 
             <div className='mt-8 rounded-[1.8rem] border border-[var(--line)] bg-[var(--panel-strong)] p-6'>
@@ -221,8 +223,7 @@ export default function HomePage() {
                 The standard
               </p>
               <p className='mt-3 text-sm leading-7 text-[var(--ink-muted)]'>
-                Calm design, stronger hierarchy, and messaging that feels considered instead of
-                improvised. The result should make the business feel more established, not louder.
+                Calm design, stronger hierarchy, and messaging that sounds considered instead of improvised. The goal is not to make the business louder — it is to make it easier to believe.
               </p>
             </div>
           </div>
@@ -247,8 +248,8 @@ export default function HomePage() {
           <div className='grid gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(18rem,22rem)] lg:items-end'>
             <SectionIntro
               eyebrow='Packages'
-              title='Three ways to work together, with one very clear starting point for most businesses.'
-              copy='The offer is intentionally structured. You should be able to understand the scope, investment, and next step without a long sales call or a custom quote cycle.'
+              title='Three ways to work together, with one clear starting point for most businesses.'
+              copy='The offer is intentionally structured so you can understand the scope, investment, and next step without a long sales call or a foggy custom quote cycle.'
             />
 
             <div className='rounded-[2rem] border border-[var(--card-border)] bg-[color:var(--card-bg)] p-6 shadow-[var(--shadow-sm)]'>
@@ -303,14 +304,13 @@ export default function HomePage() {
           <div className='grid gap-8 lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)] lg:items-end'>
             <SectionIntro
               eyebrow='Process'
-              title='A project flow that keeps momentum high without making the client chase clarity.'
-              copy='The structure is simple on purpose: deposit, intake, kickoff, build, launch. Each step exists to remove guesswork and move the work forward cleanly.'
+              title='A project flow that keeps momentum high without making you chase clarity.'
+              copy='The structure is simple on purpose: deposit, intake, kickoff, build, launch. Each step is there to remove guesswork and keep the work moving cleanly.'
             />
 
             <div className='rounded-[2rem] border border-[var(--card-border)] bg-[color:var(--card-bg)] p-6 shadow-[var(--shadow-sm)]'>
               <p className='text-sm leading-7 text-[var(--ink-muted)]'>
-                The process is built to feel calm, but not passive. Every checkpoint should make the
-                next decision easier.
+                The process is built to feel calm, but not passive. Every checkpoint should make the next decision easier.
               </p>
             </div>
           </div>
@@ -342,8 +342,8 @@ export default function HomePage() {
         <div className='mx-auto max-w-6xl space-y-12'>
           <SectionIntro
             eyebrow='Proof'
-            title='The work is built to make a business feel easier to trust, easier to understand, and easier to choose.'
-            copy='A strong site should create clarity before it creates volume. These proof stories show the kind of shift the studio is built to produce.'
+            title='The work is built to make a business easier to trust, easier to understand, and easier to choose.'
+            copy='A strong site should create clarity before it chases volume. These proof stories show the kind of shift the studio is built to create.'
           />
 
           <div className='grid gap-6 lg:grid-cols-3'>
@@ -386,8 +386,8 @@ export default function HomePage() {
           <div className='space-y-6'>
             <SectionIntro
               eyebrow='Studio'
-              title='One partner, one point of view, and a process designed to stay cohesive from strategy through launch.'
-              copy='You work directly with the person shaping the message, the structure, and the build. That keeps communication tighter and the final result more resolved.'
+              title='One partner, one point of view, and a process designed to stay cohesive from first idea through launch.'
+              copy='You work directly with the person shaping the message, structure, design, and build. That keeps communication tighter and the final result more resolved.'
             />
 
             <div className='grid gap-4'>
@@ -412,8 +412,8 @@ export default function HomePage() {
           <div className='rounded-[2.4rem] border border-[var(--card-border)] bg-[color:var(--card-bg)] p-8 shadow-[var(--shadow-md)] sm:p-10'>
             <SectionIntro
               eyebrow='FAQ'
-              title='The common questions are answered before the project starts.'
-              copy='The aim here is to remove hesitation, not create more of it. A good-fit client should know exactly how this works.'
+              title='The common questions should be answered before the project starts.'
+              copy='The aim is to remove hesitation, not create more of it. A good-fit client should know how this works before they pay a deposit.'
               className='max-w-none'
             />
 
@@ -433,8 +433,8 @@ export default function HomePage() {
 
       <CtaBand
         eyebrow='Start'
-        title='If the business is ready for a stronger online presence, the next step should feel obvious.'
-        copy='Choose the package that fits, place the $150 deposit, and move into a guided project flow that keeps the work clear from the first step.'
+        title='If the business is ready for a website that feels clearer and more credible, the next step should be simple.'
+        copy='Choose the package that fits, place the $150 deposit, and move into a guided project flow that keeps the work clear from day one.'
         href='/start'
         ctaLabel='Start With The Deposit'
       />

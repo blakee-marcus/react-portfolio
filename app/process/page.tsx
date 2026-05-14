@@ -5,13 +5,17 @@ import {
   SiteIconBadge,
 } from '@/components/site/icon-suite';
 import { CtaBand, PrimaryLink, SectionIntro } from '@/components/site/marketing';
+import { StructuredData } from '@/components/site/structured-data';
 import { processSteps, processValues } from '@/lib/site-content';
-import { buildMetadata } from '@/lib/seo';
+import { buildMetadata, buildWebPageSchema } from '@/lib/seo';
+
+const pageTitle = 'Las Vegas Website Design Process';
+const pageDescription =
+  'See the website process for Las Vegas service businesses: package selection, deposit, intake, kickoff, build, and launch.';
 
 export const metadata: Metadata = buildMetadata({
-  title: 'Las Vegas Website Design Process',
-  description:
-    'See the website process for Las Vegas service businesses: package selection, deposit, intake, kickoff, build, and launch.',
+  title: pageTitle,
+  description: pageDescription,
   path: '/process',
   keywords: [
     'Las Vegas website process',
@@ -25,13 +29,21 @@ const processStartIcons = ['growth', 'deposit', 'intake', 'kickoff'] as const;
 export default function ProcessPage() {
   return (
     <>
+      <StructuredData
+        data={buildWebPageSchema({
+          title: pageTitle,
+          description: pageDescription,
+          path: '/process',
+          breadcrumbs: [{ name: 'Process', path: '/process' }],
+        })}
+      />
       <section className='px-4 pb-16 pt-16 sm:px-6 sm:pt-20 lg:px-8 lg:pt-24'>
         <div className='mx-auto grid max-w-6xl gap-10 lg:grid-cols-[minmax(0,1.2fr)_minmax(18rem,24rem)] lg:items-start'>
           <SectionIntro
             as='h1'
             eyebrow='Process'
             title='A clear process from package selection to launch.'
-            copy='The process is designed to keep things simple. You choose the package, place the deposit, move through intake and kickoff, and then the project moves into build and launch with a clear plan.'
+            copy='The process is designed to keep things simple and calm. You choose the package, place the deposit, move through intake and kickoff, and then the project moves into build and launch with a clear plan.'
           />
 
           <div className='rounded-[2rem] border border-[var(--line)] bg-[color:var(--panel)/0.82] p-6 shadow-[var(--shadow-md)]'>
@@ -41,7 +53,7 @@ export default function ProcessPage() {
             <ol className='mt-5 space-y-4'>
               {[
                 'Choose the package that fits your business',
-                'Pay the $150 deposit',
+                'Place the $150 deposit',
                 'Complete intake',
                 'Book kickoff',
               ].map((item, index) => (
