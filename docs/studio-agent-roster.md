@@ -190,6 +190,7 @@ Use when:
 ### Client Success / Onboarding Agent
 
 File: [`client-success-onboarding-agent.md`](./client-success-onboarding-agent.md)
+System: [`client-onboarding-system.md`](./client-onboarding-system.md)
 
 Owns:
 
