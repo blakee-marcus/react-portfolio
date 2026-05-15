@@ -1,47 +1,78 @@
 # Blake Marcus Studio
 
-Production website for Blake Marcus Studio, a Las Vegas based web design studio serving founder-led service businesses. The application combines a public marketing site, package selection, Stripe-backed deposit checkout, gated onboarding access, SEO metadata, dynamic Open Graph images, and launch operations documentation.
+Production website and client-start system for [Blake Marcus Studio](https://www.blakemarcus.com), a Las Vegas web design studio serving founder-led service businesses.
 
-## Live Site
+The app combines a public marketing site, package comparison, Stripe-backed $150 deposit checkout, gated onboarding pages, SEO metadata, dynamic Open Graph images, transactional email, and launch-readiness tooling.
 
-- Production: [blakemarcus.com](https://blakemarcus.com)
-- Local development: [http://localhost:3000](http://localhost:3000)
+## Table of Contents
+
+- [Live URLs](#live-urls)
+- [Tech Stack](#tech-stack)
+- [Features](#features)
+- [Project Structure](#project-structure)
+- [Getting Started](#getting-started)
+- [Environment Variables](#environment-variables)
+- [Database](#database)
+- [Stripe Deposit Flow](#stripe-deposit-flow)
+- [Email](#email)
+- [SEO and Analytics](#seo-and-analytics)
+- [Scripts](#scripts)
+- [Quality Gates](#quality-gates)
+- [Deployment](#deployment)
+- [Operational Runbooks](#operational-runbooks)
+- [Security Notes](#security-notes)
+
+## Live URLs
+
+- Production: <https://www.blakemarcus.com>
+- Apex redirect: <https://blakemarcus.com>
+- Local development: <http://localhost:3000>
 
 ## Tech Stack
 
 - **Framework:** Next.js 16 App Router, React 19, TypeScript
 - **Styling:** Tailwind CSS 4, Radix UI Slot, Framer Motion, Lucide icons
 - **Data:** Postgres, Drizzle ORM, `postgres`
-- **Payments:** Stripe Checkout, Stripe webhooks
-- **Email:** Resend transactional email, React Email templates, Google Workspace inboxes
-- **Quality:** ESLint 9, TypeScript typecheck, Node.js test runner with `tsx`, coverage reporting, GitHub Actions CI
+- **Payments:** Stripe Checkout and Stripe webhooks
+- **Email:** Resend, React Email templates, Google Workspace inboxes
+- **SEO:** Centralized metadata helpers, structured data, sitemap, robots, dynamic OG images
+- **Analytics:** Vercel Analytics and Speed Insights
+- **Quality:** ESLint 9, TypeScript, Node.js test runner with `tsx`, GitHub Actions CI
 - **Deployment:** Vercel
 
-## Key Features
+## Features
 
-- Marketing pages for services, process, proof, studio positioning, support, and legal content.
-- Package-driven deposit funnel for Essentials, Growth, and Full Brand Build offers.
-- Stripe Checkout integration for the $150 project deposit.
+- Marketing pages for packages, process, proof, studio positioning, support, and legal content.
+- Three package offers: Essentials, Growth, and Full Brand Build.
+- Prominent $150 project deposit path, with package-specific Stripe Checkout sessions.
+- Postgres-backed deposit records and webhook event tracking.
 - Idempotent Stripe webhook processing for completed, async, failed, and expired checkout sessions.
-- Postgres-backed deposit records and webhook event tracking through Drizzle.
-- Signed `HttpOnly` access cookie that unlocks intake, kickoff, and onboarding pages after payment.
-- Best-effort Resend emails for paid deposit confirmations and internal studio notifications.
-- Centralized SEO helpers, schema.org structured data, sitemap, robots configuration, and dynamic OG image generation.
-- Deposit launch readiness script and production go-live runbook.
+- Signed `HttpOnly` access cookie for paid onboarding pages.
+- Gated intake, kickoff, and onboarding pages after deposit completion.
+- Best-effort Resend emails for client confirmations and internal studio notifications.
+- Dynamic Open Graph image generation for share previews.
+- Search-ready sitemap, robots file, canonical URLs, and schema.org structured data.
+- Deposit launch readiness checks for production configuration.
 
-## Architecture
+## Project Structure
 
-The app uses the Next.js App Router. Public pages live in `app/`, shared site UI lives in `components/site/`, low-level UI primitives live in `components/ui/`, and business logic lives in `lib/`.
-
-The deposit system is split by responsibility:
-
-- `lib/deposit/domain.ts` validates form input, package selection, token behavior, and deposit state transitions.
-- `lib/deposit/service.ts` coordinates Stripe Checkout, deposit creation, fulfillment, and access finalization.
-- `lib/deposit/repository.ts` persists deposits and Stripe webhook events.
-- `lib/email/deposit.tsx` sends paid deposit email notifications without blocking fulfillment.
-- `lib/db/schema.ts` defines the Drizzle schema for deposits and webhook processing.
-- `app/api/checkout/deposit/route.ts` starts checkout sessions from form submissions.
-- `app/api/webhooks/stripe/route.ts` verifies Stripe signatures and processes supported webhook events.
+```text
+app/                         Next.js App Router pages, layouts, route handlers
+app/api/checkout/deposit/    Stripe Checkout session creation endpoint
+app/api/webhooks/stripe/     Stripe webhook verification and processing
+components/site/             Marketing-site components and shared site UI
+components/ui/               Low-level reusable UI primitives
+db/migrations/               SQL migrations
+emails/                      React Email templates
+lib/                         Business logic, SEO helpers, DB, email, deposit services
+lib/db/                      Drizzle schema and database client
+lib/deposit/                 Deposit domain, repository, service, and config logic
+lib/email/                   Email config and sending helpers
+public/                      Static assets and icons
+scripts/                     Operational scripts
+tests/                       Node.js test suite
+docs/                        Runbooks, studio operating docs, and specialist agent docs
+```
 
 ## Getting Started
 
@@ -50,7 +81,9 @@ The deposit system is split by responsibility:
 - Node.js `>=22.0.0 <25.0.0`
 - npm
 - Postgres database for the deposit flow
-- Stripe account and Stripe CLI for local webhook testing
+- Stripe account
+- Stripe CLI for local webhook testing
+- Resend account for transactional email testing, optional for local-only page work
 
 ### Installation
 
@@ -60,7 +93,13 @@ cp .env.example .env.local
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) to view the site.
+Open <http://localhost:3000>.
+
+For clean CI-like installs, use:
+
+```bash
+npm ci
+```
 
 ## Environment Variables
 
@@ -75,38 +114,37 @@ Copy `.env.example` to `.env.local` and replace placeholder values before testin
 | `STRIPE_DEPOSIT_PRICE_ID_GROWTH` | Yes | Stripe Price ID for the Growth deposit. |
 | `STRIPE_DEPOSIT_PRICE_ID_FULL_BRAND` | Yes | Stripe Price ID for the Full Brand Build deposit. |
 | `STRIPE_DEPOSIT_AUTOMATIC_TAX` | No | Set to `true` to enable Stripe automatic tax for deposit checkout. Defaults to disabled. |
+| `NEXT_PUBLIC_SITE_URL` | No | Public site URL used by browser-visible flows and readiness checks. |
+| `SITE_URL` | No | Server-side site URL fallback used by readiness checks. |
 | `INTAKE_FORM_URL` | Yes | External intake form opened after a paid deposit. |
 | `KICKOFF_BOOKING_URL` | Yes | External kickoff scheduler opened after intake. |
 | `STUDIO_SUPPORT_EMAIL` | Yes | Human support inbox and internal paid-deposit notification recipient. |
-| `RESEND_API_KEY` | No | Resend server-side API key used for transactional studio emails. Deposits still work if it is missing. |
+| `RESEND_API_KEY` | No | Resend API key for transactional studio emails. Deposits still complete if missing. |
 | `STUDIO_EMAIL_FROM` | No | Verified Resend sender. Defaults to `Blake Marcus Studio <hello@send.blakemarcus.com>`. |
 | `STUDIO_EMAIL_REPLY_TO` | No | Human reply-to inbox. Defaults to `hello@blakemarcus.com`. |
-| `NEXT_PUBLIC_SITE_URL` | No | Public site URL used by readiness checks when available. |
-| `SITE_URL` | No | Server-side site URL fallback used by readiness checks. |
 
-The app treats placeholder values containing `replace_me` as missing for launch readiness.
+The app treats placeholder values containing `replace_me` as missing for launch-readiness checks.
 
-Use Google Workspace for `hello@blakemarcus.com` and any personal studio inboxes. Verify
-`send.blakemarcus.com` in Resend for app-generated transactional email so Resend DNS records do
-not interfere with Google Workspace MX records on the root domain.
+Never commit `.env.local`, production secrets, Stripe keys, Resend keys, or database credentials.
 
 ## Database
 
-The Drizzle schema is defined in `lib/db/schema.ts`, and migrations are written to `db/migrations`.
+The Drizzle schema lives in `lib/db/schema.ts`. SQL migrations live in `db/migrations`.
 
-Apply the schema with Drizzle:
+Apply the current schema directly:
 
 ```bash
 npm run db:push
 ```
 
-Or apply the existing migration manually:
+Or apply migrations manually:
 
 ```bash
 psql "$DATABASE_URL" -f db/migrations/0000_deposit_system.sql
+psql "$DATABASE_URL" -f db/migrations/0001_project_intakes.sql
 ```
 
-Generate new migrations after schema changes:
+Generate a new migration after changing the Drizzle schema:
 
 ```bash
 npm run db:generate
@@ -114,25 +152,70 @@ npm run db:generate
 
 ## Stripe Deposit Flow
 
-1. Create three `$150` Stripe Prices for the package deposits.
-1. Add each `price_...` ID to `.env.local`.
-1. Apply the database schema.
-1. Start the development server:
+1. Create three `$150` Stripe Prices for package deposits.
+2. Add the `price_...` IDs to `.env.local`.
+3. Apply the database schema.
+4. Start the app:
 
 ```bash
 npm run dev
 ```
 
-1. Forward Stripe webhooks locally:
+5. Forward Stripe webhooks locally:
 
 ```bash
 stripe listen --forward-to localhost:3000/api/webhooks/stripe
 ```
 
-1. Open `/deposit?package=growth`, submit the form, and complete Checkout with a Stripe test card.
-1. Confirm Stripe returns through `/start/access/[publicId]`, finalizes the deposit, sends best-effort studio emails when Resend is configured, sets the signed access cookie, and redirects to `/start/confirmation`.
+6. Copy the local `whsec_...` value into `STRIPE_WEBHOOK_SECRET`.
+7. Visit `/deposit?package=growth`, submit the form, and complete Checkout with a Stripe test card.
+8. Confirm the user returns through `/start/access/[publicId]`, reaches `/start/confirmation`, and can access paid onboarding pages.
 
-For production launch details, use the [deposit go-live runbook](docs/deposit-go-live.md).
+Important routes:
+
+- `/start` — public package/deposit start page
+- `/deposit?package=growth` — package-specific deposit form
+- `/start/access/[publicId]` — paid access finalization route
+- `/start/confirmation` — post-payment confirmation
+- `/start/intake`, `/start/kickoff`, `/start/onboarding` — protected onboarding pages
+
+For production launch details, use [`docs/deposit-go-live.md`](docs/deposit-go-live.md).
+
+## Email
+
+Transactional email is best-effort and should not block deposit fulfillment.
+
+Recommended production setup:
+
+- Use Google Workspace for `hello@blakemarcus.com` and human inboxes.
+- Verify `send.blakemarcus.com` in Resend for application-generated email.
+- Keep Resend DNS records on the sending subdomain so they do not interfere with Google Workspace MX records on the root domain.
+
+Relevant files:
+
+- `lib/email/config.ts`
+- `lib/email/deposit.tsx`
+- `emails/deposit-confirmation.tsx`
+
+## SEO and Analytics
+
+SEO primitives are centralized so page metadata stays consistent.
+
+Relevant files:
+
+- `lib/seo.ts` — metadata, canonical URLs, structured data helpers, OG image URL helpers
+- `app/sitemap.ts` — sitemap route
+- `app/robots.ts` — robots route
+- `app/og/route.tsx` — dynamic Open Graph image generation
+- `app/layout.tsx` — global metadata, structured data, analytics providers
+
+After important URL or metadata changes:
+
+1. Deploy to production.
+2. Verify `https://www.blakemarcus.com/sitemap.xml` includes the expected URLs.
+3. Inspect priority URLs in Google Search Console.
+4. Request indexing for new or materially changed pages.
+5. Confirm old URLs such as `/about` and `/portfolio` resolve through the intended redirects.
 
 ## Scripts
 
@@ -142,36 +225,22 @@ For production launch details, use the [deposit go-live runbook](docs/deposit-go
 | `npm run build` | Build the production application. |
 | `npm run start` | Start the built production server. |
 | `npm run lint` | Run ESLint. |
-| `npm run test` | Run the Node.js test suite. |
-| `npm run test:watch` | Re-run the Node.js test suite while developing. |
-| `npm run test:coverage` | Run the test suite with Node coverage reporting. |
 | `npm run typecheck` | Run TypeScript in no-emit mode. |
-| `npm run check` | Run lint, typecheck, and tests as the default local quality gate. |
+| `npm run test` | Run the Node.js test suite. |
+| `npm run test:watch` | Re-run tests while developing. |
+| `npm run test:coverage` | Run tests with Node coverage reporting. |
+| `npm run check` | Run lint, typecheck, and tests. |
 | `npm run check:deposit` | Validate deposit launch configuration and database readiness. |
 | `npm run db:generate` | Generate Drizzle migrations from schema changes. |
 | `npm run db:push` | Push the Drizzle schema to the configured database. |
 
-## Verification
+## Quality Gates
 
-Use the TDD loop in [tests/README.md](tests/README.md): write or update the failing test first, make the smallest useful change, then refactor while the suite stays green.
-
-Run the default local quality gate before handing off code:
+Run the default local gate before handing off code:
 
 ```bash
 npm run check
-```
-
-Run automated tests directly while developing:
-
-```bash
-npm run test
-```
-
-Run the suite in watch or coverage mode when useful:
-
-```bash
-npm run test:watch
-npm run test:coverage
+npm run build
 ```
 
 Use the deposit readiness check only after real environment values and a reachable database are configured:
@@ -180,21 +249,59 @@ Use the deposit readiness check only after real environment values and a reachab
 npm run check:deposit
 ```
 
-Manual deposit checks:
+Manual checks before production deposit changes:
 
 - Invalid or incomplete form submissions redirect back to `/deposit` with the expected message.
 - Successful card payments reach `/start/confirmation`.
 - Paid deposits unlock `/start/intake`, `/start/kickoff`, and `/start/onboarding`.
-- Paid deposits send the client confirmation and studio notification when `RESEND_API_KEY` and the Resend sender domain are configured.
+- Paid deposits send the client confirmation and studio notification when Resend is configured.
 - Replayed Stripe webhook events do not duplicate fulfillment.
 - Protected `/start/*` pages redirect to `/deposit` without the signed access cookie.
 
-## Deployment Notes
+Testing guidance lives in [`tests/README.md`](tests/README.md).
 
-The app is configured for Vercel deployment. Set the required environment variables in the target Vercel environment before enabling the deposit flow. Register the Stripe webhook endpoint as:
+## Deployment
+
+Production deploys run on Vercel from `main`.
+
+Deployment checklist:
+
+1. Run local quality gates.
+2. Commit focused changes only.
+3. Push to `main`.
+4. Confirm the Vercel production deployment is `Ready`.
+5. Smoke-test the changed production routes.
+6. For deposit-related changes, run the full Stripe and webhook verification path.
+
+The production Stripe webhook endpoint should be registered as:
 
 ```text
-https://<your-domain>/api/webhooks/stripe
+https://www.blakemarcus.com/api/webhooks/stripe
 ```
 
-Security headers are configured in `vercel.json`. Production launch steps, Stripe dashboard checks, database verification, and live smoke-test guidance are documented in [docs/deposit-go-live.md](docs/deposit-go-live.md).
+Security headers and Vercel behavior are configured in `vercel.json`.
+
+## Operational Runbooks
+
+Key docs:
+
+- [`docs/deposit-go-live.md`](docs/deposit-go-live.md) — production deposit launch and smoke tests
+- [`docs/client-onboarding-system.md`](docs/client-onboarding-system.md) — guided onboarding flow
+- [`docs/client-intake-questionnaire.md`](docs/client-intake-questionnaire.md) — intake structure
+- [`docs/client-kickoff-agenda.md`](docs/client-kickoff-agenda.md) — kickoff structure
+- [`docs/client-launch-handoff-checklist.md`](docs/client-launch-handoff-checklist.md) — launch handoff
+- [`docs/seo-analytics-strategist-agent.md`](docs/seo-analytics-strategist-agent.md) — SEO and analytics direction
+- [`docs/studio-command-center.md`](docs/studio-command-center.md) — studio operating notes
+
+## Security Notes
+
+- Stripe webhooks must be verified with `STRIPE_WEBHOOK_SECRET` before processing.
+- Deposit fulfillment should remain idempotent because Stripe can retry webhook events.
+- Protected onboarding routes depend on signed `HttpOnly` access cookies.
+- Do not log payment secrets, webhook secrets, database URLs, Resend keys, or raw sensitive client intake data.
+- Keep production environment variables in Vercel project settings, not in source control.
+- Treat email delivery as best-effort; payment and access fulfillment should not depend on Resend availability.
+
+## License
+
+Private project. All rights reserved.
