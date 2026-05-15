@@ -31,6 +31,11 @@ const routes: Array<{
     changeFrequency: 'monthly',
     priority: 0.7,
   },
+  {
+    path: '/start',
+    changeFrequency: 'weekly',
+    priority: 0.85,
+  },
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {

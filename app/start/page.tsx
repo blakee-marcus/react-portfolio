@@ -2,14 +2,24 @@ import type { Metadata } from 'next';
 import { processIconsByNumber, SiteIconBadge, SiteListMark } from '@/components/site/icon-suite';
 import { PrimaryLink, SectionIntro } from '@/components/site/marketing';
 import { PackageCard } from '@/components/site/package-card';
+import { StructuredData } from '@/components/site/structured-data';
 import { packageOffers, processSteps } from '@/lib/site-content';
-import { buildNoIndexMetadata } from '@/lib/seo';
+import { buildMetadata, buildWebPageSchema } from '@/lib/seo';
 
-export const metadata: Metadata = buildNoIndexMetadata({
-  title: 'Start Your Website Project',
-  description:
-    'Choose your website package, place the $150 project deposit, and move into a guided intake and kickoff process.',
+const pageTitle = 'Start Your Website Project';
+const pageDescription =
+  'Choose a Blake Marcus Studio website package, reserve your project with a $150 deposit, and move into guided intake and kickoff.';
+
+export const metadata: Metadata = buildMetadata({
+  title: pageTitle,
+  description: pageDescription,
   path: '/start',
+  keywords: [
+    'start website project Las Vegas',
+    'website project deposit',
+    'Blake Marcus Studio deposit',
+    'Las Vegas web design project',
+  ],
 });
 
 const depositDetailIcons = ['deposit', 'trust', 'onboarding'] as const;
@@ -17,6 +27,14 @@ const depositDetailIcons = ['deposit', 'trust', 'onboarding'] as const;
 export default function StartPage() {
   return (
     <>
+      <StructuredData
+        data={buildWebPageSchema({
+          title: pageTitle,
+          description: pageDescription,
+          path: '/start',
+          breadcrumbs: [{ name: 'Start', path: '/start' }],
+        })}
+      />
       <section className='px-4 pb-16 pt-16 sm:px-6 sm:pt-20 lg:px-8 lg:pt-24'>
         <div className='mx-auto grid max-w-6xl gap-10 lg:grid-cols-[minmax(0,1.05fr)_minmax(18rem,24rem)] lg:items-start'>
           <SectionIntro

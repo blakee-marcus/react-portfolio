@@ -7,7 +7,7 @@ import { buildMetadata, buildWebPageSchema } from '@/lib/seo';
 
 const pageTitle = 'Las Vegas Web Design Studio';
 const pageDescription =
-  'Blake Marcus Studio is a Las Vegas web design studio building clear, human, premium websites for founder-led service businesses.';
+  'Blake Marcus Studio is a Las Vegas web design studio building calm, premium websites for founder-led service businesses in Nevada and nationwide.';
 
 export const metadata: Metadata = buildMetadata({
   title: pageTitle,
