@@ -18,6 +18,7 @@ The app combines a public marketing site, package comparison, Stripe-backed $150
 - [SEO and Analytics](#seo-and-analytics)
 - [Scripts](#scripts)
 - [Quality Gates](#quality-gates)
+- [CI/CD](#cicd)
 - [Deployment](#deployment)
 - [Operational Runbooks](#operational-runbooks)
 - [Security Notes](#security-notes)
@@ -259,6 +260,17 @@ Manual checks before production deposit changes:
 - Protected `/start/*` pages redirect to `/deposit` without the signed access cookie.
 
 Testing guidance lives in [`tests/README.md`](tests/README.md).
+
+## CI/CD
+
+GitHub Actions runs on pushes to `main`, pull requests targeting `main`, and manual dispatches.
+
+The workflow is intentionally split by risk:
+
+- `quality` runs without production secrets: install, production dependency audit for high/critical issues, lint, typecheck, test, and build.
+- `deposit-readiness` runs only outside pull requests after `quality` passes. It uses protected secrets to verify the production deposit configuration, database schema, Stripe prices, and launch-readiness checks.
+
+Vercel handles production deployment from `main`. GitHub Actions is the quality gate; Vercel is the deployment system.
 
 ## Deployment
 

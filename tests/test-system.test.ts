@@ -37,6 +37,7 @@ test('keeps CI wired to the required quality gates', () => {
 
   for (const command of [
     'npm ci',
+    'npm audit --omit=dev --audit-level=high',
     'npm run lint',
     'npm run typecheck',
     'npm run test',
@@ -46,9 +47,16 @@ test('keeps CI wired to the required quality gates', () => {
     assert.match(workflow, new RegExp(command.replaceAll(' ', '\\s+')));
   }
 
+  assert.match(workflow, /permissions:\s*\n\s*contents:\s*read/);
+  assert.match(workflow, /concurrency:/);
+  assert.match(workflow, /workflow_dispatch:/);
+  assert.match(workflow, /NEXT_TELEMETRY_DISABLED/);
+  assert.match(workflow, /deposit-readiness:/);
+  assert.match(workflow, /github\.event_name != 'pull_request'/);
   assert.match(workflow, /DATABASE_URL/);
   assert.match(workflow, /STRIPE_SECRET_KEY/);
   assert.match(workflow, /STRIPE_WEBHOOK_SECRET/);
+  assert.match(workflow, /RESEND_API_KEY/);
 });
 
 test('documents the expected red-green-refactor workflow', () => {
