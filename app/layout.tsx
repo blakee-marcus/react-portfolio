@@ -1,4 +1,5 @@
 import { Analytics } from '@vercel/analytics/react';
+import { SpeedInsights } from '@vercel/speed-insights/next';
 import Link from 'next/link';
 import React from 'react';
 import { SiteChipMark } from '@/components/site/icon-suite';
@@ -72,6 +73,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           </footer>
         </div>
         <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );
