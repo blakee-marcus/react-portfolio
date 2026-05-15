@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import { processIconsByNumber, SiteIconBadge, SiteListMark } from '@/components/site/icon-suite';
-import { PrimaryLink, SectionIntro } from '@/components/site/marketing';
+import { PrimaryLink, SecondaryLink, SectionIntro } from '@/components/site/marketing';
 import { PackageCard } from '@/components/site/package-card';
 import { StructuredData } from '@/components/site/structured-data';
 import { packageOffers, processSteps } from '@/lib/site-content';
@@ -25,6 +25,8 @@ export const metadata: Metadata = buildMetadata({
 const depositDetailIcons = ['deposit', 'trust', 'onboarding'] as const;
 
 export default function StartPage() {
+  const featuredPackage = packageOffers.find((offer) => offer.featured) ?? packageOffers[1];
+
   return (
     <>
       <StructuredData
@@ -37,12 +39,30 @@ export default function StartPage() {
       />
       <section className='px-4 pb-16 pt-16 sm:px-6 sm:pt-20 lg:px-8 lg:pt-24'>
         <div className='mx-auto grid max-w-6xl gap-10 lg:grid-cols-[minmax(0,1.05fr)_minmax(18rem,24rem)] lg:items-start'>
-          <SectionIntro
-            as='h1'
-            eyebrow='Start'
-            title='Choose your package and reserve your project with the $150 deposit.'
-            copy='This page is here to help you make one clear decision. Pick the package that fits, place the deposit, and move straight into intake and kickoff.'
-          />
+          <div className='space-y-8'>
+            <SectionIntro
+              as='h1'
+              eyebrow='Start'
+              title='Choose your package and reserve your project with the $150 deposit.'
+              copy='This page is here to help you make one clear decision. Pick the package that fits, place the deposit, and move straight into intake and kickoff.'
+            />
+
+            <div className='flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center'>
+              <PrimaryLink
+                href={`/deposit?package=${featuredPackage.slug}`}
+                className='min-h-14 px-7 text-base sm:text-[17px]'>
+                Reserve My Project Slot — $150 Deposit
+              </PrimaryLink>
+              <SecondaryLink href='#packages' className='min-h-14 px-6 text-base'>
+                Compare Packages First
+              </SecondaryLink>
+            </div>
+
+            <p className='max-w-xl text-sm leading-6 text-[var(--muted)]'>
+              Most service businesses start with Growth. If another package fits better, you can
+              choose it below before paying the same credited deposit.
+            </p>
+          </div>
 
           <div className='rounded-[2rem] border border-[var(--line)] bg-[color:var(--panel)/0.82] p-6 shadow-[var(--shadow-md)]'>
             <p className='text-[11px] font-semibold uppercase tracking-[0.28em] text-[var(--muted)]'>
@@ -70,7 +90,7 @@ export default function StartPage() {
         </div>
       </section>
 
-      <section className='px-4 pb-24 sm:px-6 lg:px-8'>
+      <section id='packages' className='scroll-mt-28 px-4 pb-24 sm:px-6 lg:px-8'>
         <div className='mx-auto grid max-w-6xl items-stretch gap-8 md:gap-10 lg:grid-cols-3'>
           {packageOffers.map((offer) => (
             <PackageCard
