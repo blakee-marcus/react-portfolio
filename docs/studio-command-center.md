@@ -26,11 +26,11 @@ Keep this list tight. Three to five active priorities max.
 
 | Priority | Owner Agent | Status | Notes |
 | --- | --- | --- | --- |
-| Resolve `app/manifest.ts` intentionally | Frontend Technical Lead | Not started | Decide whether to commit app manifest/icons or remove it. |
-| Run production-style deposit QA in test mode | Deposit Operations / Launch Manager | Not started | Verify Stripe checkout, webhook, confirmation, intake/kickoff access, emails. |
-| Draft proof/case-study structure for `/work` | Conversion Copywriter | Not started | Replace placeholder proof with stronger real/project-style assets. |
-| Define intake questions + kickoff prep | Client Success / Onboarding | In progress | Native intake form implemented; next step is applying DB migration and confirming live scheduler URL. |
-| Review mobile UX for homepage → start → deposit | UX/UI Director | Not started | Make sure the core sales path feels premium and easy on mobile. |
+| Run production-style deposit QA in test mode | Deposit Operations / Launch Manager | Not started | Production env keys are present; verify Stripe checkout, webhook, confirmation, intake/kickoff access, and emails without deploying. |
+| Apply intake DB migration + confirm kickoff scheduler | Client Success / Onboarding | In progress | Native intake form is live; next unblock is `project_intakes` production schema plus live scheduler URL confirmation. |
+| Review mobile UX for homepage → services → start → deposit | UX/UI Director | Not started | Public checks pass on core pages; make the buying path feel premium and easy on mobile. |
+| Draft proof/case-study structure for `/work` | Conversion Copywriter | Not started | Replace placeholder proof with stronger real/project-style assets before outreach volume increases. |
+| Resolve `app/manifest.ts` intentionally | Frontend Technical Lead | Not started | Keep as a launch-polish task after deposit/onboarding QA. |
 
 ---
 
@@ -102,15 +102,15 @@ Use simple labels:
 
 | Area | Status | Owner Agent | Next Check |
 | --- | --- | --- | --- |
-| Production deploys | Healthy | Frontend Technical Lead | After each push |
+| Production deploys | Healthy | Frontend Technical Lead | Latest production deployment is READY/PROMOTED; re-check after each push |
 | Homepage copy/positioning | Improved | Conversion Copywriter | Mobile review |
-| Packages page | Needs review | Offer / Pricing Strategist | Confirm scope clarity |
-| Start/deposit flow | Needs QA | Deposit Operations / Launch Manager | Full test-mode run |
+| Services/packages page | Live on `/services`; stale `/packages` URL 404s | Offer / Pricing Strategist | Confirm scope clarity and avoid using `/packages` in external links |
+| Start/deposit flow | Needs QA | Deposit Operations / Launch Manager | Full test-mode run; `/start` and `/deposit` return 200 |
 | Client onboarding | Intake form implemented | Client Success / Onboarding | Apply `project_intakes` DB migration + confirm kickoff scheduler |
 | Work/proof page | Needs stronger proof | Conversion Copywriter | Case-study draft |
 | Studio page | Improved | Conversion Copywriter + UX/UI Director | Founder story polish |
-| SEO/schema | Improved | SEO / Analytics Strategist | Validate previews/search basics |
-| Analytics | Needs review | SEO / Analytics Strategist | Confirm Vercel analytics setup |
+| SEO/schema | Improved | SEO / Analytics Strategist | Sitemap and robots are reachable; validate search previews next |
+| Analytics | Instrumented; traffic report unavailable in this run | SEO / Analytics Strategist | Confirm Vercel dashboard traffic, referrers, top pages, and Speed Insights |
 
 ---
 
@@ -180,6 +180,7 @@ Run once per month:
 - [ ] Apply `db/migrations/0001_project_intakes.sql` to production database.
 - [ ] Confirm `KICKOFF_BOOKING_URL` points to the live scheduler.
 - [ ] Review mobile sales path.
+- [ ] Confirm no outreach, docs, or external links use stale `/packages` URL.
 
 ### Medium Priority
 
@@ -210,6 +211,7 @@ Record decisions that affect the studio so they do not get re-litigated every we
 | 2026-05-13 | Use a role-agent roster to operate the studio system. | Keeps strategy, copy, UX, technical, growth, and onboarding work focused. | Blake + Coeus |
 | 2026-05-13 | Build the command center as the source of truth for studio setup. | Turns the agent docs into a working operating system. | Coeus |
 | 2026-05-13 | Draft the client onboarding system as docs before wiring tools. | Keeps the deposit-to-kickoff experience clear before committing to a form/scheduler platform. | Coeus |
+| 2026-06-01 | Prioritize deposit/onboarding QA over new site work this week. | Production deploy and public pages are healthy, but traffic data was unavailable and the deposit-to-kickoff path still needs proof before outreach. | Coeus |
 
 ---
 
