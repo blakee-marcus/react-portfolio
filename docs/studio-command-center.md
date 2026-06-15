@@ -18,19 +18,21 @@ Use it to keep the studio focused on the next highest-leverage work: qualified l
 
 > Visit site → understand packages → choose fit → pay $150 deposit → complete intake → book kickoff → build → launch → optional care plan
 
+**Current revenue plan:** [`revenue-game-plan.md`](./revenue-game-plan.md)
+
 ---
 
-## This Week’s Priorities
+## This Week's Priorities
 
-Keep this list tight. Three to five active priorities max.
+Keep this list tight. Three to five active priorities max. Updated 2026-06-15.
 
 | Priority | Owner Agent | Status | Notes |
 | --- | --- | --- | --- |
-| Run production-style deposit QA in test mode | Deposit Operations / Launch Manager | Not started | Production env keys are present; verify Stripe checkout, webhook, confirmation, intake/kickoff access, and emails without deploying. |
-| Apply intake DB migration + confirm kickoff scheduler | Client Success / Onboarding | In progress | Native intake form is live; next unblock is `project_intakes` production schema plus live scheduler URL confirmation. |
-| Review mobile UX for homepage → services → start → deposit | UX/UI Director | Not started | Public checks pass on core pages; make the buying path feel premium and easy on mobile. |
-| Draft proof/case-study structure for `/work` | Conversion Copywriter | Not started | Replace placeholder proof with stronger real/project-style assets before outreach volume increases. |
-| Resolve `app/manifest.ts` intentionally | Frontend Technical Lead | Not started | Keep as a launch-polish task after deposit/onboarding QA. |
+| Push pending local changes to production | Frontend Technical Lead | Not started | 13 days since last deploy; significant uncommitted work (intake, insights, CRM, SEO improvements). Ship what's ready, then verify. |
+| Run production-style deposit QA in test mode | Deposit Operations / Launch Manager | Not started | After push: verify Stripe checkout, webhook, confirmation, intake/kickoff access, and emails end-to-end. |
+| Apply intake DB migration + confirm kickoff scheduler | Client Success / Onboarding | In progress | `0001_project_intakes.sql` exists locally; needs production application + live scheduler URL confirmation. |
+| Review mobile UX for homepage → services → start → deposit | UX/UI Director | Not started | `/deposit` loads slow (~1.8 s); make the buying path feel premium and fast on mobile. |
+| Resolve Vercel Web Analytics access + get traffic baseline | SEO / Analytics Strategist | Not started | Analytics API endpoints return 404; dashboard access unknown. Need traffic/referrer/top-page signals before outreach ramps.
 
 ---
 
@@ -40,7 +42,7 @@ Use this as the simple pipeline until a CRM is needed.
 
 | Lead / Business | Source | Fit | Stage | Next Action | Owner | Last Touch |
 | --- | --- | --- | --- | --- | --- | --- |
-| Example local service business | Manual research | TBD | Research | Score fit and identify website opportunity | Local Growth / Outreach | — |
+| Example local service business | Manual research | TBD | Research | Score fit and identify website opportunity | Local Growth / Outreach | - |
 
 ### Lead Stages
 
@@ -68,7 +70,7 @@ Use simple labels:
 
 | Client / Project | Package | Stage | Next Client Action | Next Studio Action | Risk / Blocker |
 | --- | --- | --- | --- | --- | --- |
-| — | — | — | — | — | — |
+| - | - | - | - | - | - |
 
 ### Project Stages
 
@@ -90,8 +92,8 @@ Use simple labels:
 
 | Metric | Current | Target | Notes |
 | --- | ---: | ---: | --- |
-| Deposits this month | 0 | 1–3 | Early target: prove funnel. |
-| Website projects booked | 0 | 1–2 | Focus on qualified, deliverable work. |
+| Deposits this month | 0 | 1-3 | Early target: prove funnel. |
+| Website projects booked | 0 | 1-2 | Focus on qualified, deliverable work. |
 | Care plan clients | 0 | 1 | Offer after successful launches. |
 | Project revenue booked | $0 | TBD | Track signed/paid work, not wishful pipeline. |
 | Recurring monthly revenue | $0 | TBD | Care plans only after clear value. |
@@ -102,15 +104,15 @@ Use simple labels:
 
 | Area | Status | Owner Agent | Next Check |
 | --- | --- | --- | --- |
-| Production deploys | Healthy | Frontend Technical Lead | Latest production deployment is READY/PROMOTED; re-check after each push |
+| Production deploys | Healthy (stale) | Frontend Technical Lead | 19/20 deploys READY; last push June 1 (13 days ago). Many uncommitted local changes need shipping. |
 | Homepage copy/positioning | Improved | Conversion Copywriter | Mobile review |
 | Services/packages page | Live on `/services`; stale `/packages` URL 404s | Offer / Pricing Strategist | Confirm scope clarity and avoid using `/packages` in external links |
-| Start/deposit flow | Needs QA | Deposit Operations / Launch Manager | Full test-mode run; `/start` and `/deposit` return 200 |
+| Start/deposit flow | Needs QA; `/deposit` slow (~1.8 s) | Deposit Operations / Launch Manager | Full test-mode run after push; `/deposit` load time needs investigation |
 | Client onboarding | Intake form implemented | Client Success / Onboarding | Apply `project_intakes` DB migration + confirm kickoff scheduler |
 | Work/proof page | Needs stronger proof | Conversion Copywriter | Case-study draft |
 | Studio page | Improved | Conversion Copywriter + UX/UI Director | Founder story polish |
 | SEO/schema | Improved | SEO / Analytics Strategist | Sitemap and robots are reachable; validate search previews next |
-| Analytics | Instrumented; traffic report unavailable in this run | SEO / Analytics Strategist | Confirm Vercel dashboard traffic, referrers, top pages, and Speed Insights |
+| Analytics | Vercel Web Analytics API inaccessible (404) | SEO / Analytics Strategist | Confirm dashboard access; get traffic/referrer/top-page baseline before outreach |
 
 ---
 
@@ -170,7 +172,8 @@ Run once per month:
 
 ### High Priority
 
-- [ ] Resolve and commit/remove `app/manifest.ts`.
+- [ ] Resolve and commit/remove `app/manifest.ts` (before next deploy).
+- [ ] Push pending local changes (intake, CRM, insights, SEO) to production.
 - [ ] Run full deposit flow QA in test mode.
 - [ ] Confirm Resend email behavior for paid deposits.
 - [ ] Create real proof/case-study structure for `/work`.
@@ -190,7 +193,10 @@ Run once per month:
 - [x] Add care plan transition email.
 - [ ] Add lead tracker seed list.
 - [ ] Write first local outreach sequence.
-- [ ] Confirm Vercel Web Analytics / Speed Insights setup.
+- [ ] Initialize the local SQLite CRM with `npm run crm -- init`.
+- [ ] Research 50 Las Vegas prospects and score the top 15.
+- [ ] Confirm Vercel Web Analytics / Speed Insights dashboard access; get traffic baseline.
+- [ ] Investigate `/deposit` page slow load (~1.8 s) and optimize if possible.
 
 ### Later
 
@@ -212,6 +218,7 @@ Record decisions that affect the studio so they do not get re-litigated every we
 | 2026-05-13 | Build the command center as the source of truth for studio setup. | Turns the agent docs into a working operating system. | Coeus |
 | 2026-05-13 | Draft the client onboarding system as docs before wiring tools. | Keeps the deposit-to-kickoff experience clear before committing to a form/scheduler platform. | Coeus |
 | 2026-06-01 | Prioritize deposit/onboarding QA over new site work this week. | Production deploy and public pages are healthy, but traffic data was unavailable and the deposit-to-kickoff path still needs proof before outreach. | Coeus |
+| 2026-06-15 | Shift priority to pushing pending local work + analytics baseline. | Last deploy was 13 days ago with uncommitted intake/CRM/SEO work piling up. Vercel analytics API returned 404s, so dashboard access and traffic signals must be unblocked before outreach. `/deposit` load time flagged as slow. | Coeus |
 
 ---
 
