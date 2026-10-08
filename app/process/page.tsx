@@ -9,18 +9,18 @@ import { StructuredData } from '@/components/site/structured-data';
 import { processSteps, processValues } from '@/lib/site-content';
 import { buildMetadata, buildWebPageSchema } from '@/lib/seo';
 
-const pageTitle = 'Las Vegas Website Design Process';
+const pageTitle = 'Website Design Process for Service Businesses';
 const pageDescription =
-  'See the website process for Las Vegas service businesses: package selection, deposit, intake, kickoff, build, and launch.';
+  'See Blake Marcus Studio’s clear website process—from package selection and intake through design, development, launch, and support.';
 
 export const metadata: Metadata = buildMetadata({
   title: pageTitle,
   description: pageDescription,
   path: '/process',
   keywords: [
-    'Las Vegas website process',
-    'Las Vegas web design workflow',
-    'website design process Nevada',
+    'website design process',
+    'guided web design process',
+    'service business website process',
   ],
 });
 
@@ -47,7 +47,7 @@ export default function ProcessPage() {
           />
 
           <div className='rounded-[2rem] border border-[var(--line)] bg-[color:var(--panel)/0.82] p-6 shadow-[var(--shadow-md)]'>
-            <p className='text-[11px] font-semibold uppercase tracking-[0.28em] text-[var(--muted)]'>
+            <p className='text-xs font-semibold uppercase tracking-[0.28em] pb-3 text-[var(--muted)]'>
               How it starts
             </p>
             <ol className='mt-5 space-y-4'>
@@ -60,7 +60,7 @@ export default function ProcessPage() {
                 <li key={item} className='flex gap-4'>
                   <SiteIconBadge icon={processStartIcons[index]} tone='accent' size='sm' />
                   <div className='pt-0.5'>
-                    <p className='text-[10px] font-semibold uppercase tracking-[0.24em] text-[var(--muted)]'>
+                    <p className='text-xs font-semibold uppercase tracking-[0.24em] text-[var(--muted)]'>
                       0{index + 1}
                     </p>
                     <p className='mt-1 text-sm leading-6 text-[var(--ink-muted)]'>{item}</p>
@@ -80,7 +80,7 @@ export default function ProcessPage() {
               className='rounded-[1.9rem] border border-[var(--line)] bg-[color:var(--panel)/0.8] p-6 shadow-[var(--shadow-md)]'>
               <div className='flex items-start justify-between gap-4'>
                 <SiteIconBadge icon={processIconsByNumber[step.number]} tone='primary' />
-                <p className='text-[11px] font-semibold uppercase tracking-[0.28em] text-[var(--muted)]'>
+                <p className='text-xs font-semibold uppercase tracking-[0.28em] pb-3 text-[var(--muted)]'>
                   Step {step.number}
                 </p>
               </div>

@@ -90,7 +90,7 @@ Avoid over-focusing on total traffic without lead quality.
 2. Ensure sitemap, robots, canonical URLs, OG images, and schema are correct.
 3. Build real proof/case-study pages as soon as possible.
 4. Add helpful local service-business content only when it supports buyer intent.
-5. Strengthen Las Vegas web design relevance without stuffing keywords.
+5. Strengthen Honolulu web design relevance without stuffing keywords.
 6. Track the deposit funnel and package comparison path.
 7. Review analytics weekly and recommend 1 to 3 concrete actions.
 
@@ -100,7 +100,7 @@ Avoid over-focusing on total traffic without lead quality.
 
 Prioritize content that a real buyer might search or read before hiring:
 
-- Las Vegas web design for service businesses
+- Honolulu web design for service businesses
 - Website redesign checklist for small service businesses
 - How to know when your business website is costing you leads
 - What a premium service business website should include

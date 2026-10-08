@@ -78,7 +78,9 @@ export default async function DepositPage({ searchParams }: { searchParams: Depo
         <div className='mx-auto grid max-w-6xl gap-10 lg:grid-cols-[minmax(0,1.05fr)_minmax(18rem,24rem)] lg:items-start'>
           <div className='space-y-8'>
             {checkoutMessage ? (
-              <div className='rounded-[1.6rem] border border-[var(--line-strong)] bg-[var(--accent-soft)] px-5 py-4 text-sm leading-6 text-[var(--ink-muted)]'>
+              <div
+                role='alert'
+                className='rounded-[1.6rem] border border-[var(--line-strong)] bg-[var(--accent-soft)] px-5 py-4 text-sm leading-6 text-[var(--ink-muted)]'>
                 <p className='font-semibold text-[var(--ink)]'>{checkoutMessage.title}</p>
                 <p className='mt-1'>{checkoutMessage.body}</p>
               </div>
@@ -92,7 +94,7 @@ export default async function DepositPage({ searchParams }: { searchParams: Depo
             />
 
             <div className='rounded-[2rem] border border-[var(--line)] bg-[color:var(--panel)/0.82] p-6 shadow-[var(--shadow-md)]'>
-              <p className='text-[11px] font-semibold uppercase tracking-[0.28em] text-[var(--muted)]'>
+              <p className='text-xs font-semibold uppercase tracking-[0.28em] pb-3 text-[var(--muted)]'>
                 Selected package
               </p>
               <div className='mt-4 flex items-start gap-4'>
@@ -105,7 +107,7 @@ export default async function DepositPage({ searchParams }: { searchParams: Depo
 
               <div className='mt-6 grid gap-4 sm:grid-cols-2'>
                 <div className='rounded-[1.4rem] border border-[var(--line)] bg-[var(--panel)] px-5 py-4'>
-                  <p className='text-[11px] font-semibold uppercase tracking-[0.24em] text-[var(--muted)]'>
+                  <p className='text-xs font-semibold uppercase tracking-[0.24em] pb-3 text-[var(--muted)]'>
                     Starting investment
                   </p>
                   <p className='mt-2 text-sm font-medium text-[var(--ink)]'>
@@ -114,7 +116,7 @@ export default async function DepositPage({ searchParams }: { searchParams: Depo
                 </div>
 
                 <div className='rounded-[1.4rem] border border-[var(--line)] bg-[var(--panel)] px-5 py-4'>
-                  <p className='text-[11px] font-semibold uppercase tracking-[0.24em] text-[var(--muted)]'>
+                  <p className='text-xs font-semibold uppercase tracking-[0.24em] pb-3 text-[var(--muted)]'>
                     Estimated timeline
                   </p>
                   <p className='mt-2 text-sm font-medium text-[var(--ink)]'>
@@ -126,7 +128,7 @@ export default async function DepositPage({ searchParams }: { searchParams: Depo
           </div>
 
           <aside className='rounded-[2rem] border border-[var(--line)] bg-[color:var(--panel)/0.86] p-6 shadow-[var(--shadow-md)]'>
-            <p className='text-[11px] font-semibold uppercase tracking-[0.28em] text-[var(--muted)]'>
+            <p className='text-xs font-semibold uppercase tracking-[0.28em] pb-3 text-[var(--muted)]'>
               Deposit summary
             </p>
             <h2 className='mt-4 text-4xl leading-none text-[var(--ink)]'>{depositAmountLabel}</h2>
@@ -149,7 +151,10 @@ export default async function DepositPage({ searchParams }: { searchParams: Depo
             </ul>
 
             <div className='mt-8'>
-              <form action='/api/checkout/deposit' method='POST'>
+              <form
+                action='/api/checkout/deposit'
+                method='POST'
+                aria-label='Project deposit details'>
                 <input type='hidden' name='package' value={selectedPackage.slug} />
 
                 <div className='grid gap-4'>
@@ -263,7 +268,7 @@ export default async function DepositPage({ searchParams }: { searchParams: Depo
                 className='rounded-[1.6rem] border border-[var(--line)] bg-[var(--panel)] p-5'>
                 <div className='flex items-start justify-between gap-4'>
                   <SiteIconBadge icon={nextStepIcons[index]} tone='primary' size='sm' />
-                  <p className='text-[11px] font-semibold uppercase tracking-[0.24em] text-[var(--muted)]'>
+                  <p className='text-xs font-semibold uppercase tracking-[0.24em] text-[var(--muted)]'>
                     Step {number}
                   </p>
                 </div>

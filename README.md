@@ -1,33 +1,62 @@
+<div align="center">
+
+<img src="public/icon-192.png" alt="Blake Marcus Studio icon" width="72" height="72" />
+
 # Blake Marcus Studio
 
-Production website and client-start system for [Blake Marcus Studio](https://www.blakemarcus.com), a Las Vegas web design studio serving founder-led service businesses.
+**Premium websites and a streamlined client-start experience for founder-led service businesses.**
 
-The app combines a public marketing site, package comparison, Stripe-backed $150 deposit checkout, gated onboarding pages, SEO metadata, dynamic Open Graph images, transactional email, and launch-readiness tooling.
+Production website and client onboarding platform for [Blake Marcus Studio](https://www.blakemarcus.com), based in Honolulu, Hawaii.
 
-## Table of Contents
+[![Version](https://img.shields.io/badge/version-0.1.0-334155)](https://www.blakemarcus.com)
+![License](https://img.shields.io/badge/license-private-64748b)
 
-- [Live URLs](#live-urls)
-- [Tech Stack](#tech-stack)
-- [Features](#features)
-- [Project Structure](#project-structure)
-- [Getting Started](#getting-started)
-- [Environment Variables](#environment-variables)
-- [Database](#database)
-- [Stripe Deposit Flow](#stripe-deposit-flow)
-- [Email](#email)
-- [SEO and Analytics](#seo-and-analytics)
-- [Scripts](#scripts)
-- [Quality Gates](#quality-gates)
-- [CI/CD](#cicd)
-- [Deployment](#deployment)
-- [Operational Runbooks](#operational-runbooks)
-- [Security Notes](#security-notes)
+[**Live site**](https://www.blakemarcus.com) · [**Local setup**](#getting-started) · [**Deposit flow**](#stripe-deposit-flow)
+
+</div>
+
+---
+
+## Overview
+
+Built on Next.js, the platform brings together the public marketing site, package selection, Stripe-backed **$150 deposits**, secure onboarding, transactional email, SEO, analytics, and operational launch tooling.
+
+<details>
+<summary><strong>Contents</strong></summary>
+
+- [Blake Marcus Studio](#blake-marcus-studio)
+  - [Overview](#overview)
+  - [Live URLs](#live-urls)
+  - [Tech Stack](#tech-stack)
+  - [Features](#features)
+    - [Packages and checkout](#packages-and-checkout)
+    - [Payment fulfillment](#payment-fulfillment)
+    - [Secure onboarding](#secure-onboarding)
+    - [SEO and discovery](#seo-and-discovery)
+  - [Project Structure](#project-structure)
+  - [Getting Started](#getting-started)
+    - [Prerequisites](#prerequisites)
+    - [Installation](#installation)
+  - [Environment Variables](#environment-variables)
+  - [Database](#database)
+  - [Stripe Deposit Flow](#stripe-deposit-flow)
+  - [Email](#email)
+  - [SEO and Analytics](#seo-and-analytics)
+  - [Scripts](#scripts)
+  - [Quality Gates](#quality-gates)
+  - [CI/CD](#cicd)
+  - [Deployment](#deployment)
+  - [Operational Runbooks](#operational-runbooks)
+  - [Security Notes](#security-notes)
+  - [License](#license)
+
+</details>
 
 ## Live URLs
 
-- Production: <https://www.blakemarcus.com>
-- Apex redirect: <https://blakemarcus.com>
-- Local development: <http://localhost:3000>
+- **Production:** <https://www.blakemarcus.com>
+- **Apex redirect:** <https://blakemarcus.com>
+- **Local development:** <http://localhost:3000>
 
 ## Tech Stack
 
@@ -43,36 +72,62 @@ The app combines a public marketing site, package comparison, Stripe-backed $150
 
 ## Features
 
-- Marketing pages for packages, process, proof, studio positioning, support, and legal content.
-- Three package offers: Essentials, Growth, and Full Brand Build.
-- Prominent $150 project deposit path, with package-specific Stripe Checkout sessions.
-- Postgres-backed deposit records and webhook event tracking.
-- Idempotent Stripe webhook processing for completed, async, failed, and expired checkout sessions.
-- Signed `HttpOnly` access cookie for paid onboarding pages.
-- Gated intake, kickoff, and onboarding pages after deposit completion.
-- Best-effort Resend emails for client confirmations and internal studio notifications.
-- Dynamic Open Graph image generation for share previews.
-- Search-ready sitemap, robots file, canonical URLs, and schema.org structured data.
-- Deposit launch readiness checks for production configuration.
+### Packages and checkout
+
+- Three package offers: Essentials, Growth, and Full Brand Build
+- Prominent $150 project deposit path, with package-specific Stripe Checkout sessions
+- Marketing pages for packages, process, proof, studio positioning, support, and legal content
+
+### Payment fulfillment
+
+- Postgres-backed deposit records and webhook event tracking
+- Idempotent Stripe webhook processing for completed, async, failed, and expired checkout sessions
+
+### Secure onboarding
+
+- Gated intake, kickoff, and onboarding pages after deposit completion
+- Signed `HttpOnly` access cookie for paid onboarding pages
+- Best-effort Resend emails for client confirmations and internal studio notifications
+
+### SEO and discovery
+
+- Dynamic Open Graph image generation for share previews
+- Search-ready sitemap, robots file, canonical URLs, and schema.org structured data
 
 ## Project Structure
 
 ```text
+
 app/                         Next.js App Router pages, layouts, route handlers
+
 app/api/checkout/deposit/    Stripe Checkout session creation endpoint
+
 app/api/webhooks/stripe/     Stripe webhook verification and processing
+
 components/site/             Marketing-site components and shared site UI
+
 components/ui/               Low-level reusable UI primitives
+
 db/migrations/               SQL migrations
+
 emails/                      React Email templates
+
 lib/                         Business logic, SEO helpers, DB, email, deposit services
+
 lib/db/                      Drizzle schema and database client
+
 lib/deposit/                 Deposit domain, repository, service, and config logic
+
 lib/email/                   Email config and sending helpers
+
 public/                      Static assets and icons
+
 scripts/                     Operational scripts
+
 tests/                       Node.js test suite
+
 docs/                        Runbooks, studio operating docs, and specialist agent docs
+
 ```
 
 ## Getting Started
@@ -89,9 +144,13 @@ docs/                        Runbooks, studio operating docs, and specialist age
 ### Installation
 
 ```bash
+
 npm install
+
 cp .env.example .env.local
+
 npm run dev
+
 ```
 
 Open <http://localhost:3000>.
@@ -99,7 +158,9 @@ Open <http://localhost:3000>.
 For clean CI-like installs, use:
 
 ```bash
+
 npm ci
+
 ```
 
 ## Environment Variables
@@ -135,20 +196,27 @@ The Drizzle schema lives in `lib/db/schema.ts`. SQL migrations live in `db/migra
 Apply the current schema directly:
 
 ```bash
+
 npm run db:push
+
 ```
 
 Or apply migrations manually:
 
 ```bash
+
 psql "$DATABASE_URL" -f db/migrations/0000_deposit_system.sql
+
 psql "$DATABASE_URL" -f db/migrations/0001_project_intakes.sql
+
 ```
 
 Generate a new migration after changing the Drizzle schema:
 
 ```bash
+
 npm run db:generate
+
 ```
 
 ## Stripe Deposit Flow
@@ -159,13 +227,17 @@ npm run db:generate
 4. Start the app:
 
 ```bash
+
 npm run dev
+
 ```
 
 5. Forward Stripe webhooks locally:
 
 ```bash
+
 stripe listen --forward-to localhost:3000/api/webhooks/stripe
+
 ```
 
 6. Copy the local `whsec_...` value into `STRIPE_WEBHOOK_SECRET`.
@@ -240,14 +312,19 @@ After important URL or metadata changes:
 Run the default local gate before handing off code:
 
 ```bash
+
 npm run check
+
 npm run build
+
 ```
 
 Use the deposit readiness check only after real environment values and a reachable database are configured:
 
 ```bash
+
 npm run check:deposit
+
 ```
 
 Manual checks before production deposit changes:
@@ -288,7 +365,9 @@ Deployment checklist:
 The production Stripe webhook endpoint should be registered as:
 
 ```text
+
 https://www.blakemarcus.com/api/webhooks/stripe
+
 ```
 
 Security headers and Vercel behavior are configured in `vercel.json`.

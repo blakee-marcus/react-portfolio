@@ -50,7 +50,7 @@ export function PackageCard({
             />
 
             <div className='min-w-0 space-y-3'>
-              <p className='text-[10px] font-semibold uppercase tracking-[0.3em] text-[var(--muted-strong)]'>
+              <p className='text-xs font-semibold uppercase tracking-[0.3em] pb-3 text-[var(--muted-strong)]'>
                 {offer.eyebrow}
               </p>
 
@@ -62,7 +62,7 @@ export function PackageCard({
           </div>
 
           {offer.featured ? (
-            <span className='shrink-0 rounded-full border border-[var(--line)] bg-[var(--primary-soft)] px-3 py-1 text-[11px] font-medium text-[var(--badge-primary-text)]'>
+            <span className='shrink-0 rounded-full border border-[var(--line)] bg-[var(--primary-soft)] px-3 py-1 text-xs font-medium text-[var(--badge-primary-text)]'>
               Best fit
             </span>
           ) : null}
@@ -71,7 +71,7 @@ export function PackageCard({
         <p className='text-base leading-7 text-[var(--ink-muted)]'>{offer.summary}</p>
 
         <div className='rounded-[1.4rem] border border-[var(--line-soft)] bg-[rgba(255,255,255,0.74)] px-4 py-4'>
-          <p className='text-[10px] font-semibold uppercase tracking-[0.28em] text-[var(--muted-strong)]'>
+          <p className='text-xs font-semibold uppercase tracking-[0.28em] pb-3 text-[var(--muted-strong)]'>
             Right fit
           </p>
           <p className='mt-2 text-sm leading-6 text-[var(--ink-muted)]'>{offer.idealFor}</p>
@@ -88,7 +88,7 @@ export function PackageCard({
 
         {showScopeBoundaries ? (
           <div className='rounded-[1.4rem] border border-[var(--line-soft)] bg-[rgba(255,255,255,0.62)] px-4 py-4'>
-            <p className='text-[10px] font-semibold uppercase tracking-[0.28em] text-[var(--muted-strong)]'>
+            <p className='text-xs font-semibold uppercase tracking-[0.28em] pb-3 text-[var(--muted-strong)]'>
               Not built for
             </p>
             <ul className='mt-3 space-y-2.5 pl-0 text-sm leading-6 text-[var(--ink-muted)]'>

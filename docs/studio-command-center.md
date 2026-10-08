@@ -194,7 +194,7 @@ Run once per month:
 - [ ] Add lead tracker seed list.
 - [ ] Write first local outreach sequence.
 - [ ] Initialize the local SQLite CRM with `npm run crm -- init`.
-- [ ] Research 50 Las Vegas prospects and score the top 15.
+- [ ] Research 50 Honolulu prospects and score the top 15.
 - [ ] Confirm Vercel Web Analytics / Speed Insights dashboard access; get traffic baseline.
 - [ ] Investigate `/deposit` page slow load (~1.8 s) and optimize if possible.
 

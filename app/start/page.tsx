@@ -8,17 +8,16 @@ import { buildMetadata, buildWebPageSchema } from '@/lib/seo';
 
 const pageTitle = 'Start Your Website Project';
 const pageDescription =
-  'Choose a Blake Marcus Studio website package, reserve your project with a $150 deposit, and move into guided intake and kickoff.';
+  'Choose a website package, place a credited $150 deposit, and begin a guided intake and kickoff with Blake Marcus Studio.';
 
 export const metadata: Metadata = buildMetadata({
   title: pageTitle,
   description: pageDescription,
   path: '/start',
   keywords: [
-    'start website project Las Vegas',
     'website project deposit',
-    'Blake Marcus Studio deposit',
-    'Las Vegas web design project',
+    'start a website project',
+    'website design intake',
   ],
 });
 
@@ -65,7 +64,7 @@ export default function StartPage() {
           </div>
 
           <div className='rounded-[2rem] border border-[var(--line)] bg-[color:var(--panel)/0.82] p-6 shadow-[var(--shadow-md)]'>
-            <p className='text-[11px] font-semibold uppercase tracking-[0.28em] text-[var(--muted)]'>
+            <p className='text-xs font-semibold uppercase tracking-[0.28em] pb-3 text-[var(--muted)]'>
               Your project deposit
             </p>
             <ul className='mt-5 space-y-4'>
@@ -122,7 +121,7 @@ export default function StartPage() {
                     tone='primary'
                     size='sm'
                   />
-                  <p className='text-[11px] font-semibold uppercase tracking-[0.24em] text-[var(--muted)]'>
+                  <p className='text-xs font-semibold uppercase tracking-[0.24em] pb-3 text-[var(--muted)]'>
                     Step {step.number}
                   </p>
                 </div>

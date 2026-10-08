@@ -29,7 +29,9 @@ export default async function ConfirmationPage() {
   return (
     <section className='px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24'>
       <div className='mx-auto max-w-5xl space-y-8'>
-        <div className='rounded-[1.6rem] border border-[var(--line-strong)] bg-[var(--accent-soft)] px-5 py-4 text-sm leading-6 text-[var(--ink-muted)]'>
+        <div
+          role='status'
+          className='rounded-[1.6rem] border border-[var(--line-strong)] bg-[var(--accent-soft)] px-5 py-4 text-sm leading-6 text-[var(--ink-muted)]'>
           <p className='font-semibold text-[var(--ink)]'>Payment confirmed for {receiptAmount}.</p>
           <p className='mt-1'>
             {receiptEmail
@@ -47,7 +49,7 @@ export default async function ConfirmationPage() {
 
         <div className='grid gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(18rem,22rem)]'>
           <div className='rounded-[2rem] border border-[var(--line)] bg-[color:var(--panel)/0.82] p-6 shadow-[var(--shadow-md)]'>
-            <p className='text-[11px] font-semibold uppercase tracking-[0.28em] text-[var(--muted)]'>
+            <p className='text-xs font-semibold uppercase tracking-[0.28em] pb-3 text-[var(--muted)]'>
               What happens next
             </p>
             <ul className='mt-5 space-y-4'>
@@ -66,7 +68,7 @@ export default async function ConfirmationPage() {
 
           <div className='rounded-[2rem] border border-[var(--line)] bg-[var(--panel)] p-6'>
             <SiteIconBadge icon='intake' tone='primary' />
-            <p className='mt-4 text-[11px] font-semibold uppercase tracking-[0.28em] text-[var(--muted)]'>
+            <p className='mt-4 text-xs font-semibold uppercase tracking-[0.28em] pb-3 text-[var(--muted)]'>
               Next step
             </p>
             <h2 className='mt-4 text-3xl leading-tight text-[var(--ink)]'>Complete intake</h2>

@@ -204,7 +204,7 @@ export function OgImageCard({ title, description, eyebrow, path }: OgImageCardPr
             {[
               'Premium websites',
               'Founder-led service businesses',
-              'Las Vegas, Nevada',
+              'Honolulu, Hawaii',
             ].map((item, index) => (
               <div
                 key={item}

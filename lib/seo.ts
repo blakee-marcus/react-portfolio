@@ -4,28 +4,28 @@ export const siteConfig = {
   name: 'Blake Marcus Studio',
   creator: 'Blake Marcus',
   url: 'https://www.blakemarcus.com',
-  defaultTitle: 'Las Vegas Web Design for Service Businesses',
+  defaultTitle: 'Honolulu Web Design for Service Businesses',
   description:
-    'Blake Marcus Studio creates calm, premium websites for founder-led service businesses in Las Vegas, Nevada and nationwide.',
+    'Blake Marcus Studio builds clear, premium websites for founder-led service businesses in Honolulu and nationwide.',
   locale: 'en_US',
   keywords: [
-    'Las Vegas web design',
-    'Las Vegas web designer',
-    'Las Vegas website designer',
-    'Las Vegas website development',
-    'Nevada web design',
-    'Nevada web designer',
-    'small business web design Las Vegas',
     'service business web design',
     'founder-led service business websites',
+    'boutique web design studio',
   ],
   location: {
-    city: 'Las Vegas',
-    region: 'NV',
-    regionName: 'Nevada',
+    city: 'Honolulu',
+    region: 'HI',
+    regionName: 'Hawaii',
     country: 'US',
   },
   logo: '/icon-512.png',
+} as const;
+
+const honoluluServiceArea = {
+  '@type': 'City',
+  name: 'Honolulu',
+  sameAs: 'https://en.wikipedia.org/wiki/Honolulu',
 } as const;
 
 type MetadataInput = {
@@ -271,6 +271,11 @@ export function buildOfferCatalogSchema(
     '@id': `${absoluteUrl('/services')}#website-packages`,
     name: 'Website design packages',
     url: absoluteUrl('/services'),
+    areaServed: [
+      honoluluServiceArea,
+      { '@type': 'AdministrativeArea', name: 'Hawaii' },
+      { '@type': 'Country', name: 'United States' },
+    ],
     itemListElement: offers.map((offer) => ({
       '@type': 'Offer',
       name: offer.name,
@@ -285,6 +290,11 @@ export function buildOfferCatalogSchema(
         '@type': 'Service',
         name: `${offer.name} website package`,
         serviceType: 'Website design and development',
+        areaServed: [
+          honoluluServiceArea,
+          { '@type': 'AdministrativeArea', name: 'Hawaii' },
+          { '@type': 'Country', name: 'United States' },
+        ],
         provider: {
           '@id': `${siteConfig.url}/#studio`,
         },
@@ -360,36 +370,31 @@ export const siteSchema = {
   '@context': 'https://schema.org',
   '@graph': [
     {
-      '@type': 'ProfessionalService',
+      '@type': 'Organization',
       '@id': `${siteConfig.url}/#studio`,
       name: siteConfig.name,
       url: siteConfig.url,
       description: siteConfig.description,
       image: absoluteUrl(siteConfig.logo),
       logo: absoluteUrl(siteConfig.logo),
-      priceRange: '$$',
       areaServed: [
         {
-          '@type': 'City',
-          name: siteConfig.location.city,
+          ...honoluluServiceArea,
         },
         {
-          '@type': 'State',
+          '@type': 'AdministrativeArea',
           name: siteConfig.location.regionName,
         },
+        {
+          '@type': 'Country',
+          name: 'United States',
+        },
       ],
-      address: {
-        '@type': 'PostalAddress',
-        addressLocality: siteConfig.location.city,
-        addressRegion: siteConfig.location.region,
-        addressCountry: siteConfig.location.country,
-      },
-      availableLanguage: ['en'],
-      serviceType: [
+      knowsAbout: [
         'Web design',
         'Website development',
         'Website strategy',
-        'Small business website design',
+        'Conversion-focused website design',
         'Service business website design',
       ],
       hasOfferCatalog: {
@@ -406,12 +411,6 @@ export const siteSchema = {
       url: siteConfig.url,
       image: absoluteUrl(siteConfig.logo),
       jobTitle: 'Web Designer and Developer',
-      address: {
-        '@type': 'PostalAddress',
-        addressLocality: siteConfig.location.city,
-        addressRegion: siteConfig.location.region,
-        addressCountry: siteConfig.location.country,
-      },
       worksFor: {
         '@id': `${siteConfig.url}/#studio`,
       },

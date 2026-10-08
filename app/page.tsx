@@ -1,443 +1,475 @@
-import { CtaBand, PrimaryLink, SecondaryLink, SectionIntro } from '@/components/site/marketing';
-import { StructuredData } from '@/components/site/structured-data';
-import { PackageCard } from '@/components/site/package-card';
-import {
-  packageIconsBySlug,
-  processIconsByNumber,
-  proofIconsByLabel,
-  SiteChipMark,
-  SiteIconBadge,
-  SiteListMark,
-  studioIconsByTitle,
-} from '@/components/site/icon-suite';
-import {
-  audienceGroups,
-  everyPackageIncludes,
-  faqs,
-  packageOffers,
-  processSteps,
-  proofStories,
-  studioPrinciples,
-} from '@/lib/site-content';
-import { buildFaqSchema, buildMetadata, buildWebPageSchema } from '@/lib/seo';
+import dynamic from 'next/dynamic';
+import Link from 'next/link';
 
-const pageTitle = 'Las Vegas Web Design for Founder-Led Service Businesses';
+import { StructuredData } from '@/components/site/structured-data';
+import { everyPackageIncludes, packageOffers } from '@/lib/site-content';
+import { buildMetadata, buildWebPageSchema } from '@/lib/seo';
+
+const PackageChoiceLink = dynamic(
+  () => import('@/components/site/package-choice-link').then((module) => module.PackageChoiceLink),
+  {
+    loading: () => (
+      <a
+        href='#project-form'
+        className='inline-flex min-h-12 w-full items-center justify-between border-t border-[var(--line-strong)] py-4 text-sm font-semibold text-[var(--ink)]'>
+        Choose package
+        <span aria-hidden='true'>↗</span>
+      </a>
+    ),
+  },
+);
+
+const pageTitle = 'Honolulu Web Design for Founder-Led Service Businesses';
+
 const pageDescription =
-  'Blake Marcus Studio builds clear, human, premium websites for founder-led service businesses in Las Vegas and nationwide.';
+  'Blake Marcus Studio builds clear, premium websites for founder-led service businesses in Honolulu and nationwide. View packages and the guided process.';
 
 export const metadata = buildMetadata({
   title: pageTitle,
   description: pageDescription,
   path: '/',
   keywords: [
-    'Las Vegas web design studio',
-    'Las Vegas website designer',
-    'Nevada website designer',
-    'founder-led service business web design',
+    'Honolulu web design',
+    'Honolulu web designer',
+    'service business web design',
+    'founder-led service business websites',
   ],
 });
 
-const heroSignals = [
+const outcomes = [
   {
-    icon: 'compass',
-    text: 'Las Vegas based, working with founder-led service businesses in Nevada and beyond.',
+    number: '01',
+    title: 'Clearer offer',
+    body: 'People understand what you do and who it is for without connecting the dots themselves.',
   },
   {
-    icon: 'deposit',
-    text: 'Most projects are scoped between $2,000 and $8,000.',
+    number: '02',
+    title: 'Stronger trust',
+    body: 'The website looks as credible and considered as the business behind it.',
   },
   {
-    icon: 'growth',
-    text: 'Three clear packages instead of a vague proposal maze.',
+    number: '03',
+    title: 'Cleaner next step',
+    body: 'Visitors know whether to inquire, book, or buy, and exactly how to do it.',
   },
-] as const;
+];
 
-const buyingSteps = [
+const process = [
   {
-    icon: 'growth',
-    label: 'Choose the package that fits where the business is now.',
+    number: '01',
+    title: 'Reserve and share the context',
+    body: 'Choose a package and place the credited $150 deposit. It reserves time in the production schedule and unlocks the detailed intake.',
   },
   {
-    icon: 'deposit',
-    label: 'Place the deposit to reserve your production slot.',
+    number: '02',
+    title: 'Confirm the scope',
+    body: 'We confirm the deliverables, timeline, project price, and remaining payment schedule before production begins.',
   },
   {
-    icon: 'launch',
-    label: 'Move into intake, kickoff, and a structured build.',
+    number: '03',
+    title: 'Build and launch',
+    body: 'The project moves through focused checkpoints, clear feedback, launch QA, and a practical handoff.',
   },
-] as const;
+];
 
-const studioSnapshot = [
-  {
-    icon: 'deposit',
-    label: 'Typical investment',
-    value: '$2K to $8K',
-  },
-  {
-    icon: 'kickoff',
-    label: 'Typical timeline',
-    value: '1 to 4 weeks',
-  },
-  {
-    icon: 'growth',
-    label: 'Best-fit package',
-    value: 'Growth',
-  },
-] as const;
+const eyebrowClasses = 'text-xs font-semibold uppercase tracking-[0.22em] text-[var(--primary)] pb-3';
+
+const inputClasses =
+  'min-h-12 w-full border border-[var(--line-strong)] bg-white px-4 py-3 text-[15px] text-[var(--ink)] outline-none transition-colors placeholder:text-[var(--muted)] focus-visible:border-[var(--primary)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--primary)]';
 
 export default function HomePage() {
-  const featuredPackage = packageOffers.find((offer) => offer.featured) ?? packageOffers[1];
-
   return (
     <>
-      <StructuredData data={buildWebPageSchema({ title: pageTitle, description: pageDescription })} />
-      <StructuredData data={buildFaqSchema(faqs.slice(0, 4))} />
-      <section className='px-4 pb-12 pt-6 sm:px-6 lg:px-8'>
-        <div className='mx-auto grid max-w-6xl gap-6 xl:grid-cols-[minmax(0,1.45fr)_minmax(20rem,26rem)]'>
-          <div className='overflow-hidden rounded-[2.8rem] border border-[var(--card-border-strong)] bg-[linear-gradient(150deg,rgba(255,255,255,0.98)_0%,rgba(248,250,251,0.94)_45%,rgba(231,238,234,0.9)_100%)] p-8 shadow-[var(--shadow-lg)] sm:p-10 lg:p-12'>
-            <div className='space-y-8'>
-              <div className='flex flex-wrap gap-3'>
-                <p className='fade-up inline-flex items-center gap-3 rounded-full border border-[var(--line-soft)] bg-[rgba(255,255,255,0.8)] px-4 py-2 text-[10px] font-semibold uppercase tracking-[0.3em] text-[var(--muted-strong)] shadow-[var(--shadow-sm)] [--delay:40ms]'>
-                  <SiteChipMark icon='spark' tone='primary' />
-                  For founder-led service businesses
-                </p>
-                <p className='fade-up inline-flex items-center rounded-full border border-[var(--line-soft)] bg-[rgba(255,255,255,0.7)] px-4 py-2 text-[10px] font-semibold uppercase tracking-[0.28em] text-[var(--muted-strong)] shadow-[var(--shadow-sm)] [--delay:120ms]'>
-                  Human copy. Clear next steps.
-                </p>
-              </div>
-
-              <div className='space-y-6'>
-                <h1 className='fade-up max-w-4xl text-balance text-5xl leading-[0.88] text-[var(--ink)] sm:text-6xl lg:text-7xl [--delay:160ms]'>
-                  Websites that make good service businesses easier to trust, understand, and choose.
-                </h1>
-                <p className='fade-up max-w-2xl text-lg leading-8 text-[var(--ink-muted)] [--delay:220ms]'>
-                  Blake Marcus Studio helps founder-led service businesses turn scattered ideas into clear, premium websites that sound human, build trust quickly, and make the next step easy for the right clients.
-                </p>
-              </div>
-
-              <div className='fade-up flex flex-wrap items-center gap-4 [--delay:280ms]'>
-                <PrimaryLink href='/start'>Choose Your Package</PrimaryLink>
-                <SecondaryLink href='/process'>See How It Works</SecondaryLink>
-              </div>
-
-              <div className='grid gap-3 sm:grid-cols-3'>
-                {heroSignals.map((item, index) => (
-                  <div
-                    key={item.text}
-                    className='fade-up rounded-[1.7rem] border border-[var(--line-soft)] bg-[rgba(255,255,255,0.72)] px-5 py-5 text-sm leading-6 text-[var(--ink-muted)] shadow-[var(--shadow-sm)]'
-                    style={{ ['--delay' as string]: `${340 + index * 70}ms` }}>
-                    <SiteIconBadge
-                      icon={item.icon}
-                      size='sm'
-                      tone={index === 1 ? 'accent' : 'primary'}
-                    />
-                    <p className='mt-4'>{item.text}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-
-          <aside className='grid gap-5'>
-            <div className='chrome-panel rounded-[2.2rem] border border-[var(--card-border)] bg-[color:var(--card-bg)] p-6 shadow-[var(--shadow-md)]'>
-              <p className='inline-flex items-center gap-3 rounded-full border border-[var(--line-soft)] bg-[rgba(255,255,255,0.8)] px-4 py-2 text-[10px] font-semibold uppercase tracking-[0.3em] text-[var(--muted-strong)]'>
-                <SiteChipMark icon='spark' tone='accent' />
-                Studio snapshot
-              </p>
-
-              <div className='mt-6 grid gap-4'>
-                {studioSnapshot.map(({ icon, label, value }) => (
-                  <div
-                    key={label}
-                    className='rounded-[1.5rem] border border-[var(--line-soft)] bg-[rgba(255,255,255,0.7)] px-5 py-4'>
-                    <div className='flex items-start gap-4'>
-                      <SiteIconBadge icon={icon} tone='accent' size='sm' />
-                      <div>
-                        <p className='text-[10px] font-semibold uppercase tracking-[0.28em] text-[var(--muted-strong)]'>
-                          {label}
-                        </p>
-                        <p className='mt-2 text-xl text-[var(--ink)]'>{value}</p>
-                      </div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-
-              <div className='mt-6 rounded-[1.7rem] border border-[var(--line)] bg-[var(--panel-strong)] p-5'>
-                <p className='text-sm leading-7 text-[var(--ink-muted)]'>
-                  Best for businesses that already do strong work, but need the website to explain that value with more clarity, warmth, and confidence.
-                </p>
-              </div>
-            </div>
-
-            <div className='rounded-[2.2rem] border border-[var(--card-border-strong)] bg-[linear-gradient(155deg,rgba(255,255,255,0.96)_0%,rgba(231,238,234,0.94)_100%)] p-6 shadow-[var(--shadow-md)]'>
-              <p className='text-[10px] font-semibold uppercase tracking-[0.3em] text-[var(--muted-strong)]'>
-                Best fit for most clients
-              </p>
-              <div className='mt-4 flex items-start gap-4'>
-                <SiteIconBadge icon={packageIconsBySlug[featuredPackage.slug]} tone='primary' />
-                <div>
-                  <h2 className='text-4xl leading-none text-[var(--ink)]'>{featuredPackage.name}</h2>
-                  <p className='mt-2 text-sm font-medium text-[var(--accent)]'>
-                    {featuredPackage.startingPrice}
-                  </p>
-                </div>
-              </div>
-              <p className='mt-4 text-sm leading-7 text-[var(--ink-muted)]'>
-                {featuredPackage.summary}
-              </p>
-
-              <ul className='mt-5 space-y-3'>
-                {featuredPackage.includes.slice(0, 3).map((item) => (
-                  <li key={item} className='flex gap-3 text-sm leading-6 text-[var(--ink-muted)]'>
-                    <SiteListMark icon='spark' tone='primary' />
-                    <span>{item}</span>
-                  </li>
-                ))}
-              </ul>
-
-              <div className='mt-6 flex flex-wrap gap-3'>
-                <PrimaryLink href={`/deposit?package=${featuredPackage.slug}`} className='w-full justify-between sm:w-auto'>
-                  Reserve Growth
-                </PrimaryLink>
-                <SecondaryLink href='/services' className='w-full sm:w-auto'>
-                  Compare Packages
-                </SecondaryLink>
-              </div>
-            </div>
-          </aside>
-        </div>
-      </section>
-
-      <section className='px-4 pb-20 sm:px-6 lg:px-8'>
-        <div className='mx-auto grid max-w-6xl gap-6 lg:grid-cols-[minmax(0,0.92fr)_minmax(0,1.08fr)]'>
-          <div className='chrome-panel rounded-[2.4rem] border border-[var(--card-border)] bg-[color:var(--card-bg)] p-8 shadow-[var(--shadow-md)] sm:p-10'>
-            <SectionIntro
-              eyebrow='Who it is for'
-              title='Built for businesses that already do credible work and need the website to finally reflect it.'
-              copy='This studio works best when the business is solid, but the online first impression feels pieced together, undersells the offer, or makes people work too hard to understand why it matters.'
-            />
-
-            <div className='mt-8 rounded-[1.8rem] border border-[var(--line)] bg-[var(--panel-strong)] p-6'>
-              <p className='text-[10px] font-semibold uppercase tracking-[0.28em] text-[var(--muted-strong)]'>
-                The standard
-              </p>
-              <p className='mt-3 text-sm leading-7 text-[var(--ink-muted)]'>
-                Calm design, stronger hierarchy, and messaging that sounds considered instead of improvised. The goal is not to make the business louder — it is to make it easier to believe.
-              </p>
-            </div>
-          </div>
-
-          <div className='grid gap-4 sm:grid-cols-2'>
-            {audienceGroups.map((group, index) => (
-              <div
-                key={group}
-                className='rounded-[1.8rem] border border-[var(--line-soft)] bg-[rgba(255,255,255,0.78)] px-5 py-5 text-sm leading-6 text-[var(--ink-muted)] shadow-[var(--shadow-sm)] sm:min-h-[8.75rem]'>
-                <p className='text-[10px] font-semibold uppercase tracking-[0.28em] text-[var(--muted-strong)]'>
-                  0{index + 1}
-                </p>
-                <p className='mt-3 max-w-[16rem]'>{group}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className='border-y border-[var(--line)] bg-[rgba(255,255,255,0.34)] px-4 py-20 sm:px-6 lg:px-8'>
-        <div className='mx-auto max-w-6xl space-y-10'>
-          <div className='grid gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(18rem,22rem)] lg:items-end'>
-            <SectionIntro
-              eyebrow='Packages'
-              title='Three ways to work together, with one clear starting point for most businesses.'
-              copy='The offer is intentionally structured so you can understand the scope, investment, and next step without a long sales call or a foggy custom quote cycle.'
-            />
-
-            <div className='rounded-[2rem] border border-[var(--card-border)] bg-[color:var(--card-bg)] p-6 shadow-[var(--shadow-sm)]'>
-              <p className='text-[10px] font-semibold uppercase tracking-[0.3em] text-[var(--muted-strong)]'>
-                Buying flow
-              </p>
-              <ol className='mt-5 space-y-4'>
-                {buyingSteps.map((step, index) => (
-                  <li key={step.label} className='flex items-start gap-4'>
-                    <SiteIconBadge icon={step.icon} size='sm' tone='primary' />
-                    <div className='pt-0.5'>
-                      <p className='text-[10px] font-semibold uppercase tracking-[0.24em] text-[var(--muted-strong)]'>
-                        0{index + 1}
-                      </p>
-                      <p className='mt-1 text-sm leading-6 text-[var(--ink-muted)]'>{step.label}</p>
-                    </div>
-                  </li>
-                ))}
-              </ol>
-            </div>
-          </div>
-
-          <div className='grid gap-6 xl:grid-cols-[minmax(0,1.5fr)_minmax(18rem,22rem)]'>
-            <div className='grid gap-6 lg:grid-cols-3'>
-              {packageOffers.map((offer) => (
-                <PackageCard key={offer.slug} offer={offer} compact />
-              ))}
-            </div>
-
-            <aside className='rounded-[2.2rem] border border-[var(--card-border)] bg-[color:var(--card-bg)] p-6 shadow-[var(--shadow-md)]'>
-              <p className='text-[10px] font-semibold uppercase tracking-[0.3em] text-[var(--muted-strong)]'>
-                Every package includes
-              </p>
-              <ul className='mt-5 space-y-4'>
-                {everyPackageIncludes.map((item) => (
-                  <li key={item} className='flex gap-3 text-sm leading-6 text-[var(--ink-muted)]'>
-                    <SiteListMark icon='care' tone='accent' />
-                    <span>{item}</span>
-                  </li>
-                ))}
-              </ul>
-              <div className='mt-6'>
-                <PrimaryLink href='/services'>See Packages</PrimaryLink>
-              </div>
-            </aside>
-          </div>
-        </div>
-      </section>
-
-      <section className='px-4 py-20 sm:px-6 lg:px-8'>
-        <div className='mx-auto max-w-6xl'>
-          <div className='grid gap-8 lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)] lg:items-end'>
-            <SectionIntro
-              eyebrow='Process'
-              title='A project flow that keeps momentum high without making you chase clarity.'
-              copy='The structure is simple on purpose: deposit, intake, kickoff, build, launch. Each step is there to remove guesswork and keep the work moving cleanly.'
-            />
-
-            <div className='rounded-[2rem] border border-[var(--card-border)] bg-[color:var(--card-bg)] p-6 shadow-[var(--shadow-sm)]'>
-              <p className='text-sm leading-7 text-[var(--ink-muted)]'>
-                The process is built to feel calm, but not passive. Every checkpoint should make the next decision easier.
-              </p>
-            </div>
-          </div>
-
-          <div className='mt-10 grid gap-5 lg:grid-cols-5'>
-            {processSteps.map((step) => (
-              <article
-                key={step.number}
-                className='rounded-[2rem] border border-[var(--line-soft)] bg-[rgba(255,255,255,0.8)] p-5 shadow-[var(--shadow-sm)]'>
-                <div className='flex items-start justify-between gap-4'>
-                  <SiteIconBadge icon={processIconsByNumber[step.number]} tone='primary' />
-                  <span className='text-[10px] font-semibold uppercase tracking-[0.24em] text-[var(--muted-strong)]'>
-                    Step {step.number}
-                  </span>
-                </div>
-                <h3 className='mt-5 text-2xl leading-tight text-[var(--ink)]'>{step.title}</h3>
-                <p className='mt-3 text-sm leading-6 text-[var(--ink-muted)]'>{step.body}</p>
-              </article>
-            ))}
-          </div>
-
-          <div className='mt-8'>
-            <PrimaryLink href='/process'>See The Process</PrimaryLink>
-          </div>
-        </div>
-      </section>
-
-      <section className='border-y border-[var(--line)] bg-[rgba(255,255,255,0.36)] px-4 py-20 sm:px-6 lg:px-8'>
-        <div className='mx-auto max-w-6xl space-y-12'>
-          <SectionIntro
-            eyebrow='Proof'
-            title='The work is built to make a business easier to trust, easier to understand, and easier to choose.'
-            copy='A strong site should create clarity before it chases volume. These proof stories show the kind of shift the studio is built to create.'
-          />
-
-          <div className='grid gap-6 lg:grid-cols-3'>
-            {proofStories.map((story, index) => (
-              <article
-                key={story.title}
-                className='rounded-[2.1rem] border border-[var(--card-border)] bg-[color:var(--card-bg)] p-6 shadow-[var(--shadow-md)]'>
-                <SiteIconBadge
-                  icon={proofIconsByLabel[story.label]}
-                  tone={index === 1 ? 'primary' : 'accent'}
-                />
-                <p className='mt-4 text-[10px] font-semibold uppercase tracking-[0.3em] text-[var(--muted-strong)]'>
-                  {story.label}
-                </p>
-                <h3 className='mt-4 text-3xl leading-[0.96] text-[var(--ink)]'>
-                  {story.title}
-                </h3>
-                <p className='mt-4 text-sm leading-7 text-[var(--ink-muted)]'>{story.summary}</p>
-
-                <ul className='mt-5 space-y-3'>
-                  {story.bullets.map((bullet) => (
-                    <li key={bullet} className='flex gap-3 text-sm leading-6 text-[var(--ink-muted)]'>
-                      <SiteListMark icon='spark' tone={index === 1 ? 'primary' : 'accent'} />
-                      <span>{bullet}</span>
-                    </li>
-                  ))}
-                </ul>
-              </article>
-            ))}
-          </div>
-
-          <div>
-            <PrimaryLink href='/work'>See Proof</PrimaryLink>
-          </div>
-        </div>
-      </section>
-
-      <section className='px-4 py-20 sm:px-6 lg:px-8'>
-        <div className='mx-auto grid max-w-6xl gap-10 lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)] lg:items-start'>
-          <div className='space-y-6'>
-            <SectionIntro
-              eyebrow='Studio'
-              title='One partner, one point of view, and a process designed to stay cohesive from first idea through launch.'
-              copy='You work directly with the person shaping the message, structure, design, and build. That keeps communication tighter and the final result more resolved.'
-            />
-
-            <div className='grid gap-4'>
-              {studioPrinciples.map((principle) => (
-                <article
-                  key={principle.title}
-                  className='rounded-[1.8rem] border border-[var(--card-border)] bg-[color:var(--card-bg)] p-5 shadow-[var(--shadow-sm)]'>
-                  <SiteIconBadge
-                    icon={studioIconsByTitle[principle.title]}
-                    tone={principle.title === 'Built for trust' ? 'accent' : 'primary'}
-                    size='sm'
-                  />
-                  <h3 className='mt-4 text-2xl text-[var(--ink)]'>{principle.title}</h3>
-                  <p className='mt-3 text-sm leading-6 text-[var(--ink-muted)]'>{principle.body}</p>
-                </article>
-              ))}
-            </div>
-
-            <PrimaryLink href='/studio'>Meet The Studio</PrimaryLink>
-          </div>
-
-          <div className='rounded-[2.4rem] border border-[var(--card-border)] bg-[color:var(--card-bg)] p-8 shadow-[var(--shadow-md)] sm:p-10'>
-            <SectionIntro
-              eyebrow='FAQ'
-              title='The common questions should be answered before the project starts.'
-              copy='The aim is to remove hesitation, not create more of it. A good-fit client should know how this works before they pay a deposit.'
-              className='max-w-none'
-            />
-
-            <div className='mt-8 grid gap-4'>
-              {faqs.slice(0, 4).map((faq) => (
-                <article
-                  key={faq.question}
-                  className='rounded-[1.6rem] border border-[var(--line-soft)] bg-[rgba(255,255,255,0.74)] p-5'>
-                  <h3 className='text-2xl leading-tight text-[var(--ink)]'>{faq.question}</h3>
-                  <p className='mt-3 text-sm leading-6 text-[var(--ink-muted)]'>{faq.answer}</p>
-                </article>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <CtaBand
-        eyebrow='Start'
-        title='If the business is ready for a website that feels clearer and more credible, the next step should be simple.'
-        copy='Choose the package that fits, place the $150 deposit, and move into a guided project flow that keeps the work clear from day one.'
-        href='/start'
-        ctaLabel='Start With The Deposit'
+      <StructuredData
+        data={buildWebPageSchema({
+          title: pageTitle,
+          description: pageDescription,
+        })}
       />
+
+      {/* HERO */}
+      <section
+        aria-labelledby='hero-heading'
+        className='border-b border-[var(--line)] px-5 pb-20 pt-20 sm:px-8 sm:pb-24 sm:pt-24 lg:px-12 lg:pb-28 lg:pt-28'>
+        <div className='mx-auto max-w-7xl'>
+          <div className='max-w-[72rem]'>
+            <div className='flex items-center gap-4'>
+              <span aria-hidden='true' className='h-px w-8 shrink-0 bg-[var(--primary)]' />
+              <p className={`${eyebrowClasses} pb-3`}>
+                Honolulu web design for founder-led service businesses
+              </p>
+            </div>
+
+            <h1
+              id='hero-heading'
+              className='mt-7 max-w-[68rem] text-balance text-[clamp(3rem,6.2vw,6.25rem)] font-medium leading-[1.04] tracking-[-0.045em] text-[var(--ink)]'>
+              Websites that make your business easier to trust and easier to hire.
+            </h1>
+
+            <p className='mt-8 max-w-[42rem] text-lg leading-8 text-[var(--ink-muted)] sm:text-xl sm:leading-9'>
+              Clear, conversion-focused websites for founder-led service businesses in Honolulu and
+              nationwide. Built without the drag of a traditional agency process.
+            </p>
+
+            <div className='mt-9 flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-6'>
+              <Link
+                href='#project-form'
+                className='action-surface primary-cta inline-flex min-h-14 items-center justify-center gap-8 px-7 py-4 text-[15px] font-semibold focus-visible:outline-2 focus-visible:outline-offset-4'>
+                Start with a $150 deposit
+                <span aria-hidden='true'>↗</span>
+              </Link>
+
+              <Link
+                href='#packages'
+                className='inline-flex min-h-14 items-center justify-center gap-3 px-3 py-4 text-[15px] font-semibold text-[var(--ink)] underline decoration-[var(--line-strong)] underline-offset-4 transition-colors hover:text-[var(--primary)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--primary)] motion-reduce:transition-none'>
+                Compare packages
+                <span aria-hidden='true'>↘</span>
+              </Link>
+            </div>
+
+            <p className='mt-4 max-w-[42rem] text-sm leading-6 text-[var(--ink-muted)]'>
+              Projects start at $2,000. Your $150 deposit is credited toward the project total.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* VALUE PROPOSITION */}
+      <section className='px-5 py-20 sm:px-8 sm:py-24 lg:px-12 lg:py-28'>
+        <div className='mx-auto max-w-7xl'>
+          <div className='grid gap-7 lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)] lg:items-end lg:gap-20'>
+            <div>
+              <p className={`${eyebrowClasses} pb-3`}>The problem</p>
+
+              <h2 className='mt-5 max-w-xl text-balance text-[clamp(2.75rem,5vw,4.5rem)] font-medium leading-[1.02] tracking-[-0.035em] text-[var(--ink)]'>
+                Good business.
+                <span className='block'>Weak website.</span>
+              </h2>
+            </div>
+
+            <p className='max-w-xl text-lg leading-8 text-[var(--ink-muted)] lg:pb-1'>
+              If your work is strong but your website feels pieced together, buries the offer, or
+              leaves visitors unsure what to do next, that is the problem I fix.
+            </p>
+          </div>
+
+          <div className='mt-14 border-t border-[var(--line-strong)] sm:mt-16'>
+            {outcomes.map((outcome) => (
+              <article
+                key={outcome.number}
+                className='grid gap-4 border-b border-[var(--line)] py-8 sm:py-10 md:grid-cols-[4rem_minmax(0,0.8fr)_minmax(0,1fr)] md:items-start md:gap-8'>
+                <p className='pt-1 font-mono text-sm text-[var(--primary)]'>{outcome.number}</p>
+
+                <h3 className='text-3xl font-medium leading-tight tracking-[-0.025em] text-[var(--ink)]'>
+                  {outcome.title}
+                </h3>
+
+                <p className='max-w-xl text-base leading-8 text-[var(--ink-muted)]'>
+                  {outcome.body}
+                </p>
+              </article>
+            ))}
+          </div>
+
+          <p className='mt-8 max-w-3xl text-sm leading-7 text-[var(--ink-muted)]'>
+            Best for founder-led service businesses that value clear communication, focused
+            feedback, and a defined scope. Not built for unlimited revisions, enterprise
+            procurement, or the cheapest possible website.
+          </p>
+        </div>
+      </section>
+
+      {/* PACKAGES */}
+      <section
+        id='packages'
+        aria-labelledby='packages-heading'
+        className='scroll-mt-24 border-y border-[var(--line)] bg-[#f7f7f5] px-5 py-20 sm:px-8 sm:py-24 lg:px-12 lg:py-28'>
+        <div className='mx-auto max-w-7xl'>
+          <div className='max-w-4xl'>
+            <p className={`${eyebrowClasses} pb-3`}>Packages</p>
+
+            <h2
+              id='packages-heading'
+              className='mt-5 max-w-3xl text-balance text-[clamp(2.75rem,5vw,4.5rem)] font-medium leading-[1.02] tracking-[-0.035em] text-[var(--ink)]'>
+              Choose the build that fits your business now.
+            </h2>
+
+            <p className='mt-6 max-w-2xl text-lg leading-8 text-[var(--ink-muted)]'>
+              Three defined packages. Clear starting prices. Final scope is confirmed after intake
+              and before production begins.
+            </p>
+          </div>
+
+          <div className='mt-12 grid gap-4 lg:grid-cols-3 lg:items-stretch'>
+            {packageOffers.map((offer) => {
+              const featured = offer.featured;
+
+              return (
+                <article
+                  key={offer.slug}
+                  className={`flex min-h-[28rem] flex-col border p-7 sm:p-8 ${
+                    featured
+                      ? 'border-[var(--ink)] bg-[var(--ink)] text-white'
+                      : 'border-[var(--line-strong)] bg-white text-[var(--ink)]'
+                  }`}>
+                  <div className='flex min-h-7 flex-wrap items-center justify-between gap-3'>
+                    <p
+                      className={`text-xs font-semibold uppercase tracking-[0.2em] pb-3 ${
+                        featured ? 'text-[#b8d0bd]' : 'text-[var(--primary)]'
+                      }`}>
+                      {offer.eyebrow}
+                    </p>
+
+                    {featured && (
+                      <span className='border border-white/40 px-2.5 py-1 text-xs font-semibold uppercase tracking-[0.12em] text-white'>
+                        Recommended
+                      </span>
+                    )}
+                  </div>
+
+                  <h3 className='mt-10 text-[clamp(2rem,2.6vw,2.75rem)] font-medium leading-tight tracking-[-0.035em]'>
+                    {offer.name}
+                  </h3>
+
+                  <p className='mt-5 font-mono text-lg font-semibold'>{offer.startingPrice}</p>
+
+                  <p
+                    className={`mt-1 font-mono text-xs ${
+                      featured ? 'text-white/65' : 'text-[var(--ink-muted)]'
+                    }`}>
+                    {offer.timeline}
+                  </p>
+
+                  <p
+                    className={`mt-8 text-base leading-8 ${
+                      featured ? 'text-white/80' : 'text-[var(--ink-muted)]'
+                    }`}>
+                    {offer.summary}
+                  </p>
+
+                  <div className='mt-auto pt-12'>
+                    <PackageChoiceLink
+                      packageSlug={offer.slug}
+                      className={`inline-flex min-h-14 w-full items-center justify-between gap-4 border-t py-4 text-sm font-semibold transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 motion-reduce:transition-none ${
+                        featured
+                          ? 'border-white/30 text-white hover:text-[#b8d0bd] focus-visible:outline-white'
+                          : 'border-[var(--line-strong)] text-[var(--ink)] hover:text-[var(--primary)] focus-visible:outline-[var(--primary)]'
+                      }`}>
+                      Choose {offer.name}
+                      <span aria-hidden='true'>↗</span>
+                    </PackageChoiceLink>
+                  </div>
+                </article>
+              );
+            })}
+          </div>
+
+          <p className='mt-8 max-w-4xl text-sm leading-7 text-[var(--ink-muted)]'>
+            Every package includes {everyPackageIncludes.join(', ').toLowerCase()}.
+          </p>
+        </div>
+      </section>
+
+      {/* PROCESS */}
+      <section
+        id='process'
+        aria-labelledby='process-heading'
+        className='scroll-mt-24 px-5 py-20 sm:px-8 sm:py-24 lg:px-12 lg:py-28'>
+        <div className='mx-auto max-w-7xl'>
+          <div className='grid gap-12 lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)] lg:gap-20'>
+            <div>
+              <p className={`${eyebrowClasses} pb-3`}>The process</p>
+
+              <h2
+                id='process-heading'
+                className='mt-5 max-w-xl text-balance text-[clamp(2.75rem,5vw,4.5rem)] font-medium leading-[1.02] tracking-[-0.035em] text-[var(--ink)]'>
+                Guided, without the agency drag.
+              </h2>
+
+              <p className='mt-7 max-w-lg text-lg leading-8 text-[var(--ink-muted)]'>
+                You work directly with Blake from structure and messaging through design,
+                development, and launch. Nothing is handed through layers of account managers.
+              </p>
+            </div>
+
+            <ol className='border-t border-[var(--line-strong)]'>
+              {process.map((step) => (
+                <li
+                  key={step.number}
+                  className='grid gap-4 border-b border-[var(--line)] py-8 sm:grid-cols-[4rem_minmax(0,1fr)] sm:gap-6 sm:py-9'>
+                  <span className='font-mono text-2xl leading-none text-[var(--primary)]'>
+                    {step.number}
+                  </span>
+
+                  <div>
+                    <h3 className='text-2xl font-medium leading-tight tracking-[-0.025em] text-[var(--ink)] sm:text-3xl'>
+                      {step.title}
+                    </h3>
+
+                    <p className='mt-4 max-w-xl text-base leading-8 text-[var(--ink-muted)]'>
+                      {step.body}
+                    </p>
+                  </div>
+                </li>
+              ))}
+            </ol>
+          </div>
+        </div>
+      </section>
+
+      {/* PROJECT INTAKE */}
+      <section
+        id='project-form'
+        aria-labelledby='project-form-heading'
+        className='scroll-mt-20 bg-[var(--ink)] px-5 py-20 text-white sm:px-8 sm:py-24 lg:px-12 lg:py-28'>
+        <div className='mx-auto grid max-w-7xl gap-12 lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)] lg:items-start lg:gap-20'>
+          <div>
+            <p className='text-xs font-semibold uppercase tracking-[0.22em] text-[#b8d0bd]'>
+              Start your project
+            </p>
+
+            <h2
+              id='project-form-heading'
+              className='mt-5 max-w-xl text-balance text-[clamp(2.75rem,5vw,4.5rem)] font-medium leading-[1.02] tracking-[-0.035em] text-white'>
+              Reserve your project slot.
+            </h2>
+
+            <p className='mt-7 max-w-lg text-lg leading-8 text-white/75'>
+              Choose a package and enter your details. You&apos;ll continue to Stripe for the
+              credited $150 deposit, then complete the detailed project intake.
+            </p>
+
+            <dl className='mt-10 grid gap-7 border-t border-white/25 pt-8 text-sm leading-7 text-white/75'>
+              <div>
+                <dt className='font-semibold text-white'>
+                  Is the deposit part of the project price?
+                </dt>
+                <dd className='mt-1'>
+                  Yes. The full $150 is credited toward the final project total.
+                </dd>
+              </div>
+
+              <div>
+                <dt className='font-semibold text-white'>When is the final scope confirmed?</dt>
+                <dd className='mt-1'>After intake and before production begins.</dd>
+              </div>
+
+              <div>
+                <dt className='font-semibold text-white'>Do you work outside Honolulu?</dt>
+                <dd className='mt-1'>
+                  Yes. Blake Marcus Studio is based in Honolulu and works with founder-led service
+                  businesses in Hawaii and nationwide.
+                </dd>
+              </div>
+            </dl>
+          </div>
+
+          <form
+            action='/api/checkout/deposit'
+            method='POST'
+            aria-labelledby='project-form-heading'
+            className='bg-[#f7f7f5] p-6 text-[var(--ink)] sm:p-9 lg:p-10'>
+            <div className='grid gap-5 sm:grid-cols-2'>
+              <label className='grid gap-2 text-sm font-medium'>
+                Your name
+                <input
+                  className={inputClasses}
+                  type='text'
+                  name='fullName'
+                  autoComplete='name'
+                  required
+                />
+              </label>
+
+              <label className='grid gap-2 text-sm font-medium'>
+                Work email
+                <input
+                  className={inputClasses}
+                  type='email'
+                  name='email'
+                  autoComplete='email'
+                  required
+                />
+              </label>
+
+              <label className='grid gap-2 text-sm font-medium sm:col-span-2'>
+                Business name
+                <input
+                  className={inputClasses}
+                  type='text'
+                  name='businessName'
+                  autoComplete='organization'
+                  required
+                />
+              </label>
+            </div>
+
+            <fieldset className='mt-8'>
+              <legend className='text-sm font-semibold'>Choose a package</legend>
+
+              <div className='mt-3 grid border border-[var(--line-strong)]'>
+                {packageOffers.map((offer) => (
+                  <label
+                    key={offer.slug}
+                    className='flex cursor-pointer flex-wrap items-center justify-between gap-3 border-b border-[var(--line)] px-4 py-4 last:border-b-0 has-[:checked]:bg-[var(--primary-soft)]'>
+                    <span className='flex items-center gap-3'>
+                      <input
+                        id={`package-${offer.slug}`}
+                        type='radio'
+                        name='package'
+                        value={offer.slug}
+                        required
+                        className='h-4 w-4 shrink-0 accent-[var(--primary)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--primary)]'
+                      />
+
+                      <span className='text-sm font-semibold'>{offer.name}</span>
+                    </span>
+
+                    <span className='text-xs text-[var(--ink-muted)]'>{offer.startingPrice}</span>
+                  </label>
+                ))}
+              </div>
+            </fieldset>
+
+            <label className='mt-6 flex cursor-pointer items-start gap-3 border border-[var(--line-strong)] bg-white p-4 text-sm leading-6 text-[var(--ink-muted)]'>
+              <input
+                type='checkbox'
+                name='acknowledgePolicy'
+                value='on'
+                required
+                className='mt-1 h-4 w-4 shrink-0 accent-[var(--primary)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--primary)]'
+              />
+
+              <span>
+                I understand the $150 deposit reserves a project slot, is credited toward the total,
+                and does not approve the final scope or remaining balance.
+              </span>
+            </label>
+
+            <button
+              type='submit'
+              className='action-surface primary-cta mt-6 inline-flex min-h-14 w-full cursor-pointer items-center justify-between gap-4 px-6 py-4 text-[15px] font-semibold focus-visible:outline-2 focus-visible:outline-offset-2'>
+              Continue to the $150 deposit
+              <span aria-hidden='true'>↗</span>
+            </button>
+
+            <p className='mt-4 text-xs leading-6 text-[var(--muted)]'>
+              You will continue to secure Stripe Checkout. Scope and the remaining balance are
+              confirmed before production begins.
+            </p>
+
+            <p className='mt-4 text-xs leading-6 text-[var(--muted)]'>
+              Need Blake to confirm the fit first?{' '}
+              <a
+                href='mailto:hello@blakemarcus.com?subject=Project%20fit%20check'
+                className='font-semibold text-[var(--ink)] underline decoration-[var(--line-strong)] underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--primary)]'>
+                Email project details
+              </a>
+              .
+            </p>
+          </form>
+        </div>
+      </section>
     </>
   );
 }

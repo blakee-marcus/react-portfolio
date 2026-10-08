@@ -5,18 +5,18 @@ import { StructuredData } from '@/components/site/structured-data';
 import { proofStories } from '@/lib/site-content';
 import { buildMetadata, buildWebPageSchema } from '@/lib/seo';
 
-const pageTitle = 'Las Vegas Web Design Proof';
+const pageTitle = 'Web Design Work for Founder-Led Service Businesses';
 const pageDescription =
-  'See how Blake Marcus Studio sharpens positioning, trust, and conversion for founder-led service business websites in Las Vegas and beyond.';
+  'See how Blake Marcus Studio approaches positioning, trust, and conversion for founder-led service business websites in Honolulu and nationwide.';
 
 export const metadata: Metadata = buildMetadata({
   title: pageTitle,
   description: pageDescription,
   path: '/work',
   keywords: [
-    'Las Vegas website portfolio',
-    'Las Vegas web design examples',
-    'service business website case studies',
+    'service business website examples',
+    'founder-led business web design',
+    'web design work',
   ],
 });
 
@@ -56,7 +56,7 @@ export default function WorkPage() {
                 icon={proofIconsByLabel[story.label]}
                 tone={story.label === 'Creative studio' ? 'primary' : 'accent'}
               />
-              <p className='mt-4 text-[11px] font-semibold uppercase tracking-[0.28em] text-[var(--muted)]'>
+              <p className='mt-4 text-xs font-semibold uppercase tracking-[0.28em] pb-3 text-[var(--muted)]'>
                 {story.label}
               </p>
               <h2 className='mt-4 text-3xl leading-[1.02] text-[var(--ink)]'>{story.title}</h2>

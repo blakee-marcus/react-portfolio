@@ -545,7 +545,7 @@ Prioritize questions around:
 * Maintenance
 * What happens after payment
 * Whether clients need branding first
-* Whether the studio works with businesses outside Las Vegas
+* Whether the studio works with businesses outside Honolulu
 
 ## FAQ Style
 
@@ -696,13 +696,13 @@ Must include:
 
 Priority market:
 
-**Las Vegas**
+**Honolulu**
 
 Use local language naturally.
 
 Good phrases:
 
-* Web design for Las Vegas service businesses
+* Web design for Honolulu service businesses
 * Website design for local businesses
 * Boutique web design studio
 * High-converting websites for service businesses
@@ -714,11 +714,11 @@ Local SEO copy should still sound premium and human.
 
 Bad:
 
-> Las Vegas web design company offering Las Vegas website design for Las Vegas businesses needing web design in Las Vegas.
+> Honolulu web design company offering Honolulu website design for Honolulu businesses needing web design in Honolulu.
 
 Better:
 
-> Blake Marcus Studio helps Las Vegas service businesses turn unclear websites into polished, conversion-focused customer paths.
+> Blake Marcus Studio helps Honolulu service businesses turn unclear websites into polished, conversion-focused customer paths.
 
 ---
 

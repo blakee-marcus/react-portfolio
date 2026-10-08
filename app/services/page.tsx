@@ -6,19 +6,19 @@ import { PackageCard } from '@/components/site/package-card';
 import { carePlan, everyPackageIncludes, packageOffers } from '@/lib/site-content';
 import { buildMetadata, buildOfferCatalogSchema, buildWebPageSchema } from '@/lib/seo';
 
-const pageTitle = 'Website Packages for Founder-Led Service Businesses';
+const pageTitle = 'Website Packages for Service Businesses in Honolulu';
 const pageDescription =
-  'Compare Blake Marcus Studio website packages for founder-led service businesses, then start with a $150 deposit when the fit feels clear.';
+  'Compare website packages for founder-led service businesses in Honolulu and nationwide, with clear pricing and a guided start from deposit to launch.';
 
 export const metadata: Metadata = buildMetadata({
   title: pageTitle,
   description: pageDescription,
   path: '/services',
   keywords: [
-    'Las Vegas web design packages',
-    'website package pricing Las Vegas',
+    'Honolulu web design packages',
+    'website design pricing Honolulu',
     'service business website packages',
-    'founder-led service business web design',
+    'website packages for small businesses',
   ],
 });
 
@@ -77,7 +77,7 @@ export default function ServicesPage() {
           </div>
 
           <aside className='rounded-[2rem] border border-[var(--card-border-strong)] bg-[linear-gradient(155deg,rgba(255,255,255,0.96)_0%,rgba(231,238,234,0.9)_100%)] p-6 shadow-[var(--shadow-md)]'>
-            <p className='text-[11px] font-semibold uppercase tracking-[0.28em] text-[var(--muted-strong)]'>
+            <p className='text-xs font-semibold uppercase tracking-[0.28em] pb-3 text-[var(--muted-strong)]'>
               Best fit for most clients
             </p>
             <div className='mt-5 flex items-start gap-4'>
@@ -108,7 +108,7 @@ export default function ServicesPage() {
             />
 
             <div className='rounded-[2rem] border border-[var(--card-border)] bg-[color:var(--card-bg)] p-6 shadow-[var(--shadow-sm)]'>
-              <p className='text-[10px] font-semibold uppercase tracking-[0.3em] text-[var(--muted-strong)]'>
+              <p className='text-xs font-semibold uppercase tracking-[0.3em] pb-3 text-[var(--muted-strong)]'>
                 Every package includes
               </p>
               <ul className='mt-5 space-y-4'>
@@ -156,7 +156,7 @@ export default function ServicesPage() {
                     size='sm'
                   />
                   <div>
-                    <p className='text-[10px] font-semibold uppercase tracking-[0.24em] text-[var(--muted-strong)]'>
+                    <p className='text-xs font-semibold uppercase tracking-[0.24em] pb-3 text-[var(--muted-strong)]'>
                       0{index + 1}
                     </p>
                     <p className='mt-2 text-sm leading-7 text-[var(--ink-muted)]'>{note}</p>

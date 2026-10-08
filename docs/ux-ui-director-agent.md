@@ -653,11 +653,11 @@ The site should support local discoverability without sounding keyword-stuffed.
 
 Priority market:
 
-**Las Vegas**
+**Honolulu**
 
 Use local language naturally around:
 
-* Web design for Las Vegas service businesses
+* Web design for Honolulu service businesses
 * Website design for local businesses
 * Boutique web design studio
 * High-converting websites for service businesses

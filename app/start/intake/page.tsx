@@ -158,7 +158,9 @@ export default async function IntakePage({ searchParams }: { searchParams: Intak
     <section className='px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24'>
       <div className='mx-auto max-w-6xl space-y-8'>
         {statusMessage ? (
-          <div className='rounded-[1.6rem] border border-[var(--line-strong)] bg-[var(--accent-soft)] px-5 py-4 text-sm leading-6 text-[var(--ink-muted)]'>
+          <div
+            role='alert'
+            className='rounded-[1.6rem] border border-[var(--line-strong)] bg-[var(--accent-soft)] px-5 py-4 text-sm leading-6 text-[var(--ink-muted)]'>
             <p className='font-semibold text-[var(--ink)]'>{statusMessage.title}</p>
             <p className='mt-1'>{statusMessage.body}</p>
           </div>
@@ -211,14 +213,18 @@ export default async function IntakePage({ searchParams }: { searchParams: Intak
           </div>
         ) : null}
 
-        <form action='/start/intake/submit' method='POST' className='space-y-6'>
+        <form
+          action='/start/intake/submit'
+          method='POST'
+          aria-label='Project intake'
+          className='space-y-6'>
           {fieldGroups.map((group, groupIndex) => (
             <section
               key={group.title}
               className='rounded-[2rem] border border-[var(--line)] bg-[color:var(--panel)/0.84] p-6 shadow-[var(--shadow-md)] sm:p-7'>
               <div className='flex flex-wrap items-start justify-between gap-4'>
                 <div>
-                  <p className='text-[11px] font-semibold uppercase tracking-[0.28em] text-[var(--muted)]'>
+                  <p className='text-xs font-semibold uppercase tracking-[0.28em] pb-3 text-[var(--muted)]'>
                     0{groupIndex + 1}
                   </p>
                   <h2 className='mt-3 text-3xl leading-tight text-[var(--ink)]'>{group.title}</h2>

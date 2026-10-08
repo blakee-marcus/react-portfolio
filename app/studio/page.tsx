@@ -5,18 +5,19 @@ import { StructuredData } from '@/components/site/structured-data';
 import { fitNotes, studioPrinciples } from '@/lib/site-content';
 import { buildMetadata, buildWebPageSchema } from '@/lib/seo';
 
-const pageTitle = 'Las Vegas Web Design Studio';
+const pageTitle = 'Honolulu Web Design Studio';
 const pageDescription =
-  'Blake Marcus Studio is a Las Vegas web design studio building calm, premium websites for founder-led service businesses in Nevada and nationwide.';
+  'A founder-led web design studio based in Honolulu, building clear, premium websites for service businesses in Hawaii and nationwide.';
 
 export const metadata: Metadata = buildMetadata({
   title: pageTitle,
   description: pageDescription,
   path: '/studio',
   keywords: [
-    'Las Vegas web design studio',
-    'Las Vegas freelance web designer',
-    'Nevada web design studio',
+    'Honolulu web design studio',
+    'Honolulu website designer',
+    'Hawaii web design studio',
+    'boutique web design studio',
   ],
 });
 
@@ -38,12 +39,12 @@ export default function StudioPage() {
           <SectionIntro
             as='h1'
             eyebrow='Studio'
-            title='A Las Vegas studio for service businesses that want a stronger website, clearer words, and a calmer process.'
-            copy='Blake Marcus Studio is built for founders who want something more thoughtful than a generic freelancer experience, without the drag and complexity of a traditional agency. Based in Las Vegas, the studio focuses on websites that feel premium, sound human, and stay straightforward from start to finish.'
+            title='A Honolulu web design studio for service businesses that want a stronger website, clearer words, and a calmer process.'
+            copy='Blake Marcus Studio is a founder-led web design studio based in Honolulu. The studio builds clear, premium websites for service businesses in Hawaii and nationwide, with direct communication from strategy and copy through design, development, and launch.'
           />
 
           <div className='rounded-[2rem] border border-[var(--line)] bg-[color:var(--panel)/0.82] p-6 shadow-[var(--shadow-md)]'>
-            <p className='text-[11px] font-semibold uppercase tracking-[0.28em] text-[var(--muted)]'>
+            <p className='text-xs font-semibold uppercase tracking-[0.28em] pb-3 text-[var(--muted)]'>
               What that means for you
             </p>
             <p className='mt-4 text-sm leading-7 text-[var(--ink-muted)]'>

@@ -162,17 +162,18 @@ Avoid or deprioritize businesses that:
 
 ## Primary Market
 
-Las Vegas and surrounding areas.
+Honolulu and the island of Oʻahu.
 
 ## Secondary Markets
 
-Use only after Las Vegas outreach is moving:
+Use only after Honolulu outreach is moving:
 
-* Henderson
-* Summerlin
-* North Las Vegas
-* Long Beach
-* Southern California service businesses Blake has natural connection to
+* East Honolulu
+* Kailua
+* Kāneʻohe
+* Kapolei
+* Neighbor Island service businesses
+* Nationwide service businesses with a strong fit
 
 ## Local Positioning Rule
 
@@ -180,11 +181,11 @@ Local language should feel natural.
 
 Good:
 
-> I work with service businesses in Las Vegas that need a clearer, more polished website path from first impression to inquiry.
+> I work with service businesses in Honolulu that need a clearer, more polished website path from first impression to inquiry.
 
 Bad:
 
-> I am the best Las Vegas web design expert for Las Vegas web design services in Las Vegas.
+> I am the best Honolulu web design expert for Honolulu web design services in Honolulu.
 
 ---
 

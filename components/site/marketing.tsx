@@ -4,7 +4,7 @@ import { SiteChipMark, SiteIcon } from '@/components/site/icon-suite';
 import { cn } from '@/lib/utils';
 
 const eyebrowClasses =
-  'inline-flex items-center gap-3 rounded-full border border-[var(--line-soft)] bg-[color:var(--card-bg)] px-4 py-2 text-[10px] font-semibold uppercase tracking-[0.3em] text-[var(--muted-strong)] shadow-[var(--shadow-sm)]';
+  'inline-flex items-center gap-3 rounded-full border border-[var(--line-soft)] bg-[color:var(--card-bg)] px-4 py-2 text-xs font-semibold uppercase tracking-[0.3em] text-[var(--muted-strong)] shadow-[var(--shadow-sm)] pb-3';
 
 const actionClasses =
   'action-surface inline-flex items-center justify-center rounded-full shadow-[var(--shadow-sm)]';
@@ -115,7 +115,7 @@ export function CtaBand({
           </div>
 
           <div className='chrome-panel rounded-[1.9rem] border border-white/70 bg-[rgba(255,255,255,0.82)] p-6 shadow-[var(--shadow-sm)]'>
-            <p className='text-[10px] font-semibold uppercase tracking-[0.3em] text-[var(--muted-strong)]'>
+            <p className='text-xs font-semibold uppercase tracking-[0.3em] text-[var(--muted-strong)]'>
               What happens next
             </p>
             <ol className='mt-5 space-y-4'>

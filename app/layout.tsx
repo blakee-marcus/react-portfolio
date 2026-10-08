@@ -1,74 +1,54 @@
 import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/next';
+import { IBM_Plex_Sans, Newsreader } from 'next/font/google';
 import Link from 'next/link';
 import React from 'react';
-import { SiteChipMark } from '@/components/site/icon-suite';
 import { SiteHeader } from '@/components/site/site-header';
 import { StructuredData } from '@/components/site/structured-data';
 import { rootMetadata, siteSchema } from '@/lib/seo';
 import './globals.css';
 
+const newsreader = Newsreader({
+  variable: '--font-newsreader',
+  subsets: ['latin'],
+  weight: ['400', '500', '600'],
+});
+
+const ibmPlexSans = IBM_Plex_Sans({
+  variable: '--font-ibm-plex-sans',
+  subsets: ['latin'],
+  weight: ['400', '500', '600'],
+});
+
 export const metadata = rootMetadata;
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang='en-US' className='h-full'>
+    <html lang='en-US' className={`h-full ${newsreader.variable} ${ibmPlexSans.variable}`}>
       <body className='min-h-screen bg-[var(--bg)] text-[var(--ink)] antialiased'>
         <StructuredData data={siteSchema} />
+        <a
+          href='#main-content'
+          className='skip-link'>
+          Skip to main content
+        </a>
         <div className='relative z-10 flex min-h-screen flex-col'>
           <SiteHeader />
-
-          <main className='flex-1'>{children}</main>
-
-          <footer className='px-4 pb-8 pt-16 sm:px-6 sm:pt-20 lg:px-8'>
-            <div className='chrome-panel mx-auto grid max-w-6xl gap-10 rounded-[2.2rem] border border-[var(--card-border)] bg-[color:var(--card-bg)] px-6 py-8 shadow-[var(--shadow-md)] sm:px-8 sm:py-10 lg:grid-cols-[minmax(0,1.4fr)_minmax(0,0.8fr)] lg:items-end'>
-              <div className='space-y-4'>
-                <p className='inline-flex items-center gap-3 rounded-full border border-[var(--line-soft)] bg-[rgba(255,255,255,0.78)] px-4 py-2 text-[10px] font-semibold uppercase tracking-[0.3em] text-[var(--muted-strong)]'>
-                  <SiteChipMark icon='spark' tone='accent' />
-                  Blake Marcus Studio
-                </p>
-                <p className='max-w-xl text-sm leading-7 text-[var(--ink-muted)]'>
-                  Premium, brand-aligned websites for founder-led service businesses that want a
-                  clearer presence, stronger positioning, and a process that does not drag.
-                </p>
+          <main id='main-content' tabIndex={-1} className='flex-1'>
+            {children}
+          </main>
+          <footer className='border-t border-[var(--line)] px-5 py-10 sm:px-8 lg:px-12'>
+            <div className='mx-auto flex max-w-7xl flex-col gap-6 text-sm text-[var(--ink-muted)] sm:flex-row sm:items-end sm:justify-between'>
+              <div>
+                <p className='font-semibold uppercase tracking-[0.16em] text-[var(--ink)]'>Blake Marcus Studio</p>
+                <p className='mt-2'>Based in Honolulu, Hawaii. Working with clients nationwide.</p>
               </div>
-
-              <div className='space-y-4 text-sm text-[var(--ink-muted)]'>
-                <div className='flex flex-wrap gap-x-5 gap-y-2'>
-                  <Link
-                    href='/services'
-                    className='transition-colors duration-200 hover:text-[var(--ink)]'>
-                    Packages
-                  </Link>
-                  <Link
-                    href='/process'
-                    className='transition-colors duration-200 hover:text-[var(--ink)]'>
-                    Process
-                  </Link>
-                  <Link
-                    href='/work'
-                    className='transition-colors duration-200 hover:text-[var(--ink)]'>
-                    Proof
-                  </Link>
-                  <Link
-                    href='/studio'
-                    className='transition-colors duration-200 hover:text-[var(--ink)]'>
-                    Studio
-                  </Link>
-                  <Link
-                    href='/legal'
-                    className='transition-colors duration-200 hover:text-[var(--ink)]'>
-                    Legal
-                  </Link>
-                </div>
-                <p className='text-xs leading-6 text-[var(--muted)]'>
-                  Las Vegas based. Working with founder-led service businesses across Nevada and
-                  nationwide.
-                </p>
-                <p className='text-xs text-[var(--muted)]'>
-                  © {new Date().getFullYear()} Blake Marcus Studio
-                </p>
-              </div>
+              <nav aria-label='Footer navigation' className='flex flex-wrap items-center gap-2 sm:gap-5'>
+                <Link href='/#packages' className='inline-flex min-h-11 items-center px-2 hover:text-[var(--ink)]'>Packages</Link>
+                <Link href='/#process' className='inline-flex min-h-11 items-center px-2 hover:text-[var(--ink)]'>Process</Link>
+                <Link href='/legal' className='inline-flex min-h-11 items-center px-2 hover:text-[var(--ink)]'>Legal</Link>
+                <span className='px-2'>© {new Date().getFullYear()}</span>
+              </nav>
             </div>
           </footer>
         </div>
